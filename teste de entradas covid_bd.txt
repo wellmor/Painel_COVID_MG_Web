@@ -1,0 +1,27 @@
+#tabela endereço
+INSERT INTO `endereco` (`idEndereco`, `logradouroEndereco`, `numeroEndereco`, `complementoEndereco`, `bairroEndereco`, `cidadeEndereco`, `cepEndereco`) VALUES (NULL, 'Rua Doutor Antônio Martins Fortes', '92', 'Terceiro andar', 'Praça da Bandeira', 'Além Paraíba', '36660000');
+
+#tabela pessoa
+INSERT INTO `pessoa` (`idPessoa`, `idEndereco`, `nomePessoa`, `cpfPessoa`, `rgPessoa`) VALUES (NULL, '1', 'Thiago Azevedo da Mota', '13658602643', 'm74125dfe');
+
+#tabela usuario
+INSERT INTO `usuario` (`idUsuario`, `idPessoa`, `emailUsuario`, `senhaUsuario`, `nivelUsuario`, `fotoUsuario`, `notificacoesUsuario`, `celularUsuario`) VALUES (NULL, '1', 'thiagomotax@gmail.com', '123456789', '0', 'fotos/13658602642.png', '1', '32988571452');
+
+#tabela tipo_caso
+INSERT INTO `tipo_caso` (`idTipoCaso`, `descricaoTipoCaso`) VALUES (NULL, 'confirmado');
+
+#tabela localização
+INSERT INTO `localizacao` (`idLocalizacao`, `cidadeLocalizacao`, `latitudeLocalizacao`, `longitudeLocalizacao`) VALUES (NULL, 'Rio Pomba', '-21.2740836', '-43.1979384');
+
+#tabela caso
+INSERT INTO `caso` (`idCaso`, `idTipoCaso`, `idUsuario`, `idLocalizacao`, `dataCaso`) VALUES (NULL, '1', '1', '1', '2020-04-21 06:00:45');
+
+#tabela projeto
+INSERT INTO `projeto` (`idProjeto`, `idUsuario`, `idLocalizacao`, `tituloProjeto`, `descricaoProjeto`, `informacoesProjeto`, `urlProjeto`, `dataProjeto`) VALUES (NULL, '1', '1', 'Rp Solidária', 'Projeto que visa tal coisa', 'Para ajudar, entre em contato através de bla bla bla bla bla bla bla bla bla\r\nbla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla blabla bla bla bla bla bla bla bla bla', 'rpsolidaria.com.br', '2020-04-21 00:00:00');
+
+
+INSERT INTO `alerta` (`idAlerta`, `idUsuario`, `idLocalizacao`, `dataAlerta`, `tituloAlerta`, `conteudoAlerta`) VALUES (NULL, '1', '1', '2020-04-16 00:00:00', '2 casos confirmados em Rio pomba', 'No hospital tal tal 2 novos casos foram confirmados de moradores do bairro xxx');
+
+INSERT INTO `doacao` (`idDoacao`, `idPessoa`, `idLocalizacao`, `tipoDoacao`, `informacoesDoacao`, `statusDoacao`) VALUES (NULL, '1', '1', 'Dinheiro', 'Disponibilizo-me a ajuadar em x reais as causas apoiadas por este projeto', '0');
+
+INSERT INTO `noticia` (`idNoticia`, `idUsuario`, `idLocalizacao`, `tituloNoticia`, `textoNoticia`, `dataNoticia`, `fonteNoticia`) VALUES (NULL, '1', '1', 'Como prevenir-se do corona virus', 'Lavar as mãos x vezes ao dia por no mínimo x segundos pode ajudar a Lavar as mãos x vezes ao dia por no mínimo x segundos pode ajudar a Lavar as mãos x vezes ao dia por no mínimo x segundos pode ajudar a Lavar as mãos x vezes ao dia por no mínimo x segundos pode ajudar a', '2020-04-15 00:00:00', '');

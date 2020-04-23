@@ -1,0 +1,10 @@
+@import "./Vars";
+@import "~bulma/bulma.sass";
+
+html, body {
+    overflow: hidden;
+}
+
+.icon.is-rotate-180 {
+    transform: rotate(180deg);
+}

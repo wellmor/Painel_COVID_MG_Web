@@ -1,7 +1,7 @@
 import Axios from "axios";
 
-// Old API: https://coronavirus-tracker-api.herokuapp.com/all
-const baseUrl = 'https://coronavirus-tracker-api.herokuapp.com/v2';
+// Old API: https://coronavirus-tracker-api.herokuapp.com/all https://coronavirus-tracker-api.herokuapp.com/v2
+const baseUrl = '';
 
 const api = {
     getAllLocation: () => Axios.get(`${baseUrl}/locations`),

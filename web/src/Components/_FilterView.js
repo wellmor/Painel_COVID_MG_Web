@@ -67,7 +67,7 @@ function FilterView(props) {
                         <input
                             className="input"
                             type="text"
-                            placeholder="Leave blank to ignore name-filter."
+                            placeholder="Pesquise a cidade."
                             value={query}
                             onChange={e => setQuery(e.target.value)} />
                     </div>

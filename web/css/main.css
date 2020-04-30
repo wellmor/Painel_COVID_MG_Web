@@ -1,5 +1,5 @@
 body {
-    background-color: #302f2e;
+    background:#aaa;
 }
 .breadcrumb {
   display: flex;
@@ -12,18 +12,22 @@ body {
 }
 
 .jumbotron {
-  background-color: #302f2e;
+    margin-top: 8px;
+  background-color:#ddd;
+  box-shadow: 0 0 4px #000;
+  margin-bottom: 0;
 }
 
 .jumbotron-heading{
-    color: #fff;
+    color: #2b2a2a;
 }
 
 
 .card{
     margin-top: 10px;
-    background-color: #2b2a2a;
+    background-color: #dddddd;
     border-radius: 20px;
+    box-shadow: 0 0 4px #000;
     
 }
 .cor1{
@@ -43,14 +47,15 @@ body {
 }
 
 .subtext{
-    color: #fff;
+    color: #000;
     
 }
 .form-control{
     border-radius: 20px;
     width: 100%;
     padding: 16px 20px;
-    background-color: #2b2a2a;
+    background-color: #ededed;
+    box-shadow: 0 0 4px #000;
 }
 .a.fill-div {
     text-align: center;

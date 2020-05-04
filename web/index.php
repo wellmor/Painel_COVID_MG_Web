@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/LeafletStyles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+
+
   <link rel="icon" href="images/virus.png">  
   
   
@@ -134,8 +137,7 @@
           </div>
         </div>
         <div class="card-body">
-          
-          <div  id="map"></div>
+          <div id="map" style="position: overflow"></div>
           
         </div>
         <div class="card-foot mx-auto" style="width: 60vw; height: 60px;">
@@ -152,7 +154,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <!--Leaflet JS includes-->
-<script src="https://unpkg.com/leaflet@1.3.0/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 <script src="./mapa/dist/leaflet-search.js"></script>
 <script src="./mapa/data/mg-geojson.js"></script>
 <script src="./mapa/dist/BoundaryCanvas.js"></script>

@@ -37,22 +37,16 @@ $texts = $crawler->filter('div[class="textonoticia"]')->first();
 foreach ($texts as $text)
     $noticia = $text->textContent;
 
-$suspeito = preg_split('#(?<!\\\) registrou | casos suspeitos#', $noticia, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE)[2];
-$confirmado = preg_split('#(?<!\\\) registrou | caso confirmado#', $noticia, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE)[1];
-$descartado = preg_split('#(?<!\\\) e | casos descartados#', $noticia, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE)[1];
-
-$noticia = preg_replace('/[`^~\'"]/', null, iconv('UTF-8', 'ASCII//TRANSLIT', $noticia));
-
-if (strtolower($confirmado) == 'nenhum') $confirmado = 0;
+$notificados = preg_replace('/[^0-9]/', '', preg_split('#(?<!\\\)Dos | casos notificados#', $noticia, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE)[1]);
+$descartados = preg_replace('/[^0-9]/', '', preg_split('#(?<!\\\)notificados | foram descartados#', $noticia, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE)[1]);
 
 $dados = array(
 
     'data' => $data,
     'hora' => $hour,
-    'confirmados' => preg_replace('/[^0-9]/', '', $confirmado),
-    'suspeitos' => preg_replace('/[^0-9]/', '', $suspeito),
-    'descartados' => preg_replace('/[^0-9]/', '', $descartado),
-    'noticia' => $noticia
+    'notificados' => $notificados,    
+    'descartados' => $descartados,
+    'fonte' => $linkNoticia
 
 );
 

@@ -61,7 +61,7 @@ Esse é um projeto open source, cujo objetivo é servir para tomada de ações p
 
 ## ✨ Contribuição
 
-Voê pode acessar todos os andamentos do projeto em: ([COVID MG](http://covidmg.com.br/)):
+Você pode acessar todos os andamentos do projeto em: ([COVID MG](http://covidmg.com.br/)):
 
 ## 📝 Licença
 

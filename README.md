@@ -56,13 +56,13 @@ Projeto de compartilhamento de informações, notícias, alertas e outras inicia
 
 ## 🤝 Contribuição
 
-Esse é um projeto open source, cujo objetivo é servir para tomada de ações por parte dos entes públicos de Minas Gerais.
+Esse é um projeto cujo objetivo é servir para tomada de ações por parte dos entes públicos de Minas Gerais.
 
 
 ## ✨ Contribuição
 
-Você pode acessar todos os andamentos do projeto em: ([COVID MG](http://covidmg.com.br/)):
+Você pode acessar todos os andamentos do projeto em: ([COVID MG](http://covidmg.com)):
 
 ## 📝 Licença
 
-Copyright © 2020 [EmComp (https://github.com/01EmComp)](https://github.com/01Emcomp).<br />
+Copyright © 2020 

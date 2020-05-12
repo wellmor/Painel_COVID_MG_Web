@@ -1,20 +1,30 @@
 <?php
 
-$link = mysqli_connect("localhost", "root", "", "covid_db");
+// $link = mysqli_connect("localhost", "root", "", "covid_db");
+include './conexao.php';
+
+$sql = 'SELECT dataAtualizacao FROM atualizacao ORDER BY idAtualizacao DESC LIMIT 1';
+$stmt = $pdo->query($sql);
+$data =  $stmt->fetch();
+$data = $data[0];
+$data = explode('-', $data);
+$ano = $data[0];
+$mes = $data[1];
+$dia = $data[2];
+
 
 if(isset($_REQUEST["cod"])){
-    // Prepare a select statement
     $sql = 'SELECT * FROM caso_sumario WHERE codMunicipio = '.$_REQUEST["cod"].' ';
-    if($result = mysqli_query($link, $sql)){
-        while($row = mysqli_fetch_array($result)){
-            $id_tipo = $row['idTipoCaso'];
-            if($id_tipo == 1) $desconhecido = $row['total'];
-            else if($id_tipo == 2) $obito = $row['total'];
-            else if($id_tipo == 3) $confirmado = $row['total'];
-            else if($id_tipo == 4) $suspeito = $row['total'];
-            else if($id_tipo == 5) $descartado = $row['total'];
-        }
+    $stmt = $pdo->query($sql);
+    while ($row = $stmt->fetch()) {
+        $id_tipo = $row['idTipoCaso'];
+        if($id_tipo == 1) $desconhecido = $row['total'];
+        else if($id_tipo == 3) $obito = $row['total'];
+        else if($id_tipo == 4) $confirmado = $row['total'];
+        else if($id_tipo == 5) $suspeito = $row['total'];
+        else if($id_tipo == 2) $descartado = $row['total'];
     }
+
 }
 ?>
 <!doctype html>
@@ -79,8 +89,8 @@ if(isset($_REQUEST["cod"])){
                     <li class="breadcrumb-item active" aria-current="page"><?php echo $_REQUEST["nome"] ?></li>
                 </ol>
                 <h2 class="jumbotron-heading">Painel CoronaVírus</h2>
-                <p class="lead text-muted">Última Atualização em 07/05/2020</p>
-                <p class="subtext">08/05/2020</p>
+                <p class="lead text-muted">Última Atualização em </p>
+                <p class="subtext"><strong><?php echo $dia.'/'.$mes.'/'.$ano ?></strong></p>
             </section>
             <div class="row">
             <div class="col-md-3">

@@ -1,0 +1,122 @@
+body {
+    background-color: #E0E0E0;
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+  margin-bottom: $breadcrumb-margin-bottom;
+  list-style: none;
+  background-color: #E0E0E0;
+  @include border-radius($border-radius);
+}
+
+.jumbotron {
+  background-color: #E0E0E0;
+}
+
+.jumbotron-heading{
+    color: #2b2a2a;
+}
+
+
+.card{
+    margin-top: 10px;
+    background-color: #FAFAFA;
+    border-radius: 20px;
+    
+}
+.cor1{
+    color: #2a88e8;
+}
+
+.cor2{
+    color: #e8cb2a;
+}
+
+.cor3{
+    color: #2ec111;
+}
+
+.cor4{
+    color: #e82a49;
+}
+
+.subtext{
+    color: #2b2a2a;
+    
+}
+
+.form-control{
+    border-radius: 20px;
+    width: 100%;
+    padding: 16px 20px;
+    background-color: #FAFAFA;
+}
+.a.fill-div {
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+.card-borda-azul{
+    border-left: 5px solid #2a88e8;
+}
+
+.card-borda-amarelo{
+    border-left: 5px solid #e8cb2a;
+}
+
+.card-borda-verde{
+    border-left: 5px solid #2ec111;
+}
+
+.card-borda-vermelho{
+    border-left: 5px solid #e82a49;
+}
+.modal-content-cor{
+    background-color: #2b2a2a;
+}
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: #302f2e;    
+}
+.modal-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem;
+  background: #fff;    
+  border-bottom: 0px solid;
+}
+
+.modal-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-top: 0px solid #2b2a2a;
+  background: #2b2a2a;    
+}
+.modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #2b2a2a;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}

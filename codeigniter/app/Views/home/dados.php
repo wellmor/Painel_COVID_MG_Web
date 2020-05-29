@@ -129,8 +129,19 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h3 class="cor1"><?php if (isset($casos['suspeitosCaso'])) echo $casos['suspeitosCaso'];
-                                                                else echo '0'; ?></h3>
+                                        <h3 class="cor1">
+                                            <?php
+                                                if (isset($casos['suspeitosCaso'])) {
+                                                    if ($casos['suspeitosCaso'] != 0) {
+                                                        echo $casos['suspeitosCaso'];
+                                                    } else {
+                                                        echo 'Não informado';
+                                                    }
+                                                } else {
+                                                    echo 'Não cadastrado';
+                                                }
+                                                ?></h3>
+
                                         <p class="subtext">Casos Suspeitos</p>
                                     </div>
                                     <div class="col">
@@ -146,8 +157,18 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h3 class="cor2"><?php if (isset($casos['confirmadosCaso'])) echo $casos['confirmadosCaso'];
-                                                                else echo '0'; ?></h3>
+                                        <h3 class="cor2">
+                                            <?php
+                                                if (isset($casos['confirmadosCaso'])) {
+                                                    if ($casos['confirmadosCaso'] != 0) {
+                                                        echo $casos['confirmadosCaso'];
+                                                    } else {
+                                                        echo 'Não informado';
+                                                    }
+                                                } else {
+                                                    echo 'Não cadastrado';
+                                                }
+                                                ?></h3>
                                         <p class="subtext">Confirmados</p>
                                     </div>
                                     <div class="col">
@@ -163,8 +184,18 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h3 class="cor3"><?php if (isset($casos['descartadosCaso'])) echo $casos['descartadosCaso'];
-                                                                else echo '0'; ?></h3>
+                                        <h3 class="cor3">
+                                            <?php
+                                                if (isset($casos['descartadosCaso'])) {
+                                                    if ($casos['descartadosCaso'] != 0) {
+                                                        echo $casos['descartadosCaso'];
+                                                    } else {
+                                                        echo 'Não informado';
+                                                    }
+                                                } else {
+                                                    echo 'Não cadastrado';
+                                                }
+                                                ?></h3>
                                         <p class="subtext">Casos Descartados</p>
                                     </div>
                                     <div class="col">
@@ -180,8 +211,18 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h3 class="cor4"><?php if (isset($casos['obitosCaso'])) echo $casos['obitosCaso'];
-                                                                else echo '0'; ?></h3>
+                                        <h3 class="cor4">
+                                            <?php
+                                                if (isset($casos['obitosCaso'])) {
+                                                    if ($casos['obitosCaso'] != 0) {
+                                                        echo $casos['obitosCaso'];
+                                                    } else {
+                                                        echo 'Não informado';
+                                                    }
+                                                } else {
+                                                    echo 'Não cadastrado';
+                                                }
+                                                ?></h3>
                                         <p class="subtext">Casos de Óbitos</p>
                                     </div>
                                     <div class="col">
@@ -197,8 +238,18 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h3 class="cor5"><?php if (isset($casos['recuperadosCaso'])) echo $casos['recuperadosCaso'];
-                                                                else echo '0'; ?></h3>
+                                        <h3 class="cor5">
+                                            <?php
+                                                if (isset($casos['recuperadosCaso'])) {
+                                                    if ($casos['recuperadosCaso'] != 0) {
+                                                        echo $casos['recuperadosCaso'];
+                                                    } else {
+                                                        echo 'Não informado';
+                                                    }
+                                                } else {
+                                                    echo 'Não cadastrado';
+                                                }
+                                                ?></h3>
                                         <p class="subtext">Casos Recuperados</p>
                                     </div>
                                     <div class="col">

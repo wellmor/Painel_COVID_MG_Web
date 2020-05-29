@@ -28,7 +28,7 @@ class Home extends BaseController
 		$model = new CasosModel();
 		// echo "o id eh ". $id . "<br>";
 
-		$query = $model->query("Select * FROM casos c, municipios m WHERE c.idMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio ORDER BY c.idCaso DESC LIMIT 1");
+		$query = $model->query("Select * FROM casos c, municipios m WHERE c.idMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio ORDER BY c.dataCaso DESC LIMIT 1");
 		$data['casos'] = $query->getRowArray();
 
 

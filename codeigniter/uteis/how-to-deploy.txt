@@ -1,0 +1,11 @@
+change httpd.conf
+codeigniter_deploy\aplicacao\public_html
+
+
+change ci4 default paths
+
+1) ci > .env > development
+2) public_html > index.php > $pathsPath > '../codeigniter/app' (voltar o diretorio)
+3) arrumar problema de loading, base_url - codeigniter/app/config/App.php - no caso do local, tirar o :8080, no do servidor, colocar o ip ou dominio
+
+NÃO ESQUECER DE DAR COMPOSER UPDATE

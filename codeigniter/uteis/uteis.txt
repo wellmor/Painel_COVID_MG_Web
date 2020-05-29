@@ -1,0 +1,55 @@
+atualizar versão do php usuario servidor(pro composer update)
+
+alias php='/opt/cpanel/ea-php73/root/usr/bin/php'
+export PATH="/opt/cpanel/ea-php73/root/usr/bin:$PATH"
+
+
+app/App.php
+http://covidmg.com/repositories/painel-covid-adm
+
+app/Database.php
+credenciais server
+
+
+editando a versão do php do site via htaccess
+lembrar de trocar ou vai dar unexpected string etc
+<IfModule mime_module>
+ AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+ </IfModule> 
+
+
+
+---cache
+header("Cache-control: no-store, no-cache, must-revalidate");
+header("Expires: Mon, 26 Jun 1997 05:00:00 GMT");
+header("Pragma: no-cache");
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+--
+
+
+
+
+
+-----------------tutorial
+fazer local antes no xampp
+separar o ci pra colocar na root da hospedagem do public pra colocar no public_html da hospedagem (segurança e organização)
+
+change httpd.conf no root document pro root do public_html (change slash)
+
+go to .env
+change to development
+change database etc
+open index.php and change $pathsPath pra '../codeigniter/app/...'
+
+
+dps abrir o App.php em config
+trocar $baseUrl pro diretorio atual do ci(não o public_html)
+
+colocar a public no gitignore pra nao vir sempre
+
+
+arrumar base url
+
+------
+https://suporte.hostgator.com.br/hc/pt-br/articles/360006664913-Como-alterar-a-vers%C3%A3o-do-PHP-
+

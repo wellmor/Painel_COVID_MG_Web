@@ -223,7 +223,7 @@
                     },
                     {
                         data: "datax",
-                        
+
                     },
                     {
                         data: "fonte",
@@ -271,7 +271,7 @@
                         title: 'Painel Covid 19 - Relatório de Casos - emitido em ' + dataAtualFormatada(),
                         text: '<i class=""></i> imprimir',
                         exportOptions: {
-                            columns: [1,3,4,5,6,7,8]
+                            columns: [1, 3, 4, 5, 6, 7, 8]
                         }
                     },
                     {
@@ -279,7 +279,7 @@
                         title: 'Painel Covid 19 - Relatório de Casos - emitido em ' + dataAtualFormatada(),
                         text: '<i class=""></i> pdf',
                         exportOptions: {
-                            columns: [1,3,45,6,7,8]
+                            columns: [1, 3, 45, 6, 7, 8]
                         }
                     },
                     {
@@ -287,7 +287,7 @@
                         title: 'Painel Covid 19 - Relatório de Casos - emitido em ' + dataAtualFormatada(),
                         text: '<i class=""></i> excel',
                         exportOptions: {
-                            columns: [1,3,4,5,6,7,8]
+                            columns: [1, 3, 4, 5, 6, 7, 8]
                         }
                     }
                 ],
@@ -336,7 +336,12 @@
                         table.ajax.reload();
                         $('#id').val("");
                         $('#exampleModal').modal('hide')
+                        alert("Relatório de casos salvo com sucesso");
+                    },
+                    error: function() {
+                        alert("Erro ao salvar relatório de casos");
                     }
+
                 });
                 return false;
             });
@@ -364,6 +369,10 @@
                 url: "../casos/deleteDt/" + id,
                 success: function(result) {
                     table.ajax.reload();
+                    alert("Relatório de casos excluído com sucesso");
+                },
+                error: function() {
+                    alert("Erro ao excluir relatório de casos");
                 }
             });
         }

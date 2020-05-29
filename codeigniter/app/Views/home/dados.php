@@ -214,12 +214,33 @@
                                 <div class="row">
                                     <div class="col">
                                         <p class="subtext">Seja alertado</p>
-                                        <button type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</button>
+                                        <!-- <button type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</button> -->
+                                        <a href="" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-bell"></i> Alerta</a>
+
                                     </div>
                                     <div class="col">
                                         <img class="img" src="https://image.flaticon.com/icons/svg/1157/1157000.svg" width="70" height="70" align="right" alt="">
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Em Construção</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img src="https://www.portugal-didactico.com/wp-content/uploads/2020/01/paginaEmConstrucao.png" width="100%" height="100%">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                             </div>
                         </div>
                     </div>

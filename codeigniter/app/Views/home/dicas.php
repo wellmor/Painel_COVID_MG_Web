@@ -57,7 +57,7 @@
     <main role="main">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="Index.php">Buscar</a></li>
+                <li class="breadcrumb-item"><a href="/home">Buscar</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Dicas</li>
             </ol>
             <section class="jumbotron text-center p-0">

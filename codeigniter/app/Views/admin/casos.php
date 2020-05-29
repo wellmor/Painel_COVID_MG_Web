@@ -197,6 +197,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script>
         $.ajax({
             type: "get",
@@ -336,10 +337,11 @@
                         table.ajax.reload();
                         $('#id').val("");
                         $('#exampleModal').modal('hide')
-                        alert("Relatório de casos salvo com sucesso");
+                        toast("Relatório de casos salvo com sucesso", "success");
+
                     },
                     error: function() {
-                        alert("Erro ao salvar relatório de casos");
+                        toast("Erro ao salvar relatório de casos", "error");
                     }
 
                 });
@@ -364,18 +366,36 @@
 
         //deleção
         function deletar(id) {
-            $.ajax({
-                type: "DELETE",
-                url: "../casos/deleteDt/" + id,
-                success: function(result) {
-                    table.ajax.reload();
-                    alert("Relatório de casos excluído com sucesso");
-                },
-                error: function() {
-                    alert("Erro ao excluir relatório de casos");
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: "Você não poderá desfazer isso!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, excluir!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: "../casos/deleteDt/" + id,
+                        success: function(result) {
+                            table.ajax.reload();
+                            // alert("Relatório de casos excluído com sucesso");
+                            toast("Relatório de casos excluído com sucesso", "success");
+                        },
+                        error: function() {
+                            toast("Erro ao excluir relatório de casos", "error");
+                        }
+                    });
                 }
-            });
+            })
         }
+
+
+
+
+
 
         function dataAtualFormatada() {
             var data = new Date(),
@@ -384,6 +404,19 @@
                 ano = data.getFullYear();
             time = data.getHours() + "h" + data.getMinutes() + "min";
             return " " + dia + "-" + mes + "-" + ano + " " + time;
+        }
+
+        function toast(message, icon) {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000
+            });
+            Toast.fire({
+                icon: icon, //'success'
+                title: message //'Signed in successfully'
+            });
         }
 
         function formatarData(datax) {

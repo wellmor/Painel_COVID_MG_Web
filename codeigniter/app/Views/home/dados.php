@@ -555,7 +555,7 @@
                 var data = geojson;
                 // console.log(data + "datae")
 
-                var map = L.map('map').setView([latitude, longitude], 9),
+                var map = L.map('map').setView([latitude-0.2, longitude], 10),
                     osmUrl = 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
                     osmAttribution = '';
 

@@ -174,7 +174,7 @@
                 </div>
             </section>-->
       <h2 class="jumbotron-heading"><i class="fas fa-map"></i> Minas Gerais</h2>
-      <p class="lead text-muted"><i class="fas fa-stopwatch"></i> Última Atualização 08/04/2020</p>
+      <!-- <p class="lead text-muted"><i class="fas fa-stopwatch"></i> Última Atualização 08/04/2020</p> -->
       <div class="row">
         <div class="col-md-4">
           <div class="card animated bounceInUp fast">

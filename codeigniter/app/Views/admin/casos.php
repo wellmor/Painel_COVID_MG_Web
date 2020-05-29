@@ -153,23 +153,23 @@
                             <input type="hidden" id="idMunicipio" name="idMunicipio">
                             <div class="col-sm-6">
                                 <label>Confirmados </label>
-                                <input type="text" class="form-control" name="confirmados" id="confirmados" placeholder="confirmados">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="confirmados" id="confirmados" placeholder="confirmados">
                             </div>
                             <div class="col-sm-6">
                                 <label>Suspeitos </label>
-                                <input type="text" class="form-control" name="suspeitos" id="suspeitos" placeholder="suspeitos">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="suspeitos" id="suspeitos" placeholder="suspeitos">
                             </div>
                             <div class="col-sm-6">
                                 <label>Descartados</label>
-                                <input type="text" class="form-control" name="descartados" id="descartados" placeholder="descartados">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="descartados" id="descartados" placeholder="descartados">
                             </div>
                             <div class="col-sm-6">
                                 <label>Recuperados</label>
-                                <input type="text" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
+                                <input type="number" oninput="this.value = Math.abs(this.value)"  min="0" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
                             </div>
                             <div class="col-sm-6">
                                 <label>Obitos</label>
-                                <input type="text" class="form-control" name="obitos" id="obitos" placeholder="obitos">
+                                <input type="number" oninput="this.value = Math.abs(this.value)"min="0" class="form-control" name="obitos" id="obitos" placeholder="obitos">
                             </div>
                             <div class="col-sm-6">
                                 <label>Data</label>
@@ -198,6 +198,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
     <script>
         $.ajax({
             type: "get",
@@ -343,11 +344,12 @@
                     error: function() {
                         toast("Erro ao salvar relatório de casos", "error");
                     }
-
                 });
                 return false;
             });
         });
+
+
 
         //modal de edição
         function editar(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {

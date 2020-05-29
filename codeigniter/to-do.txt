@@ -1,2 +1,0 @@
---Schema
-acertar tabela localização, pois, por exemplo, quando houverem mais de 2 casos em Rio Pomba, apareceram 2 registros pra cadastrar. De repente filtrar por cidade as doações etc, exceto a tabela de casos(onde uma precisão pode ser benéfica) pode facilitar o sistema.

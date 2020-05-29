@@ -1,0 +1,40 @@
+Se você está vendo isso, provavelmente faz parte do projeto. Então siga os passos abaixo para instalação em localhost:
+
+-Primeiramente, vc deve ter o xampp(ou semelhante, recomendo o xampp) instalado e configurado com um ambiente php em versão 7.2 > (ou vai ter error de namespaces e o framework não vai funcionar)
+
+-Em segundo lugar, você deverá instalar as dependências do framework utilizando "composer update" (https://getcomposer.org/download/)
+
+-Lembre-se também de importar o banco de dados (bd_covid.sql) presente no diretório de pastas do repositório
+
+-Após isso, vc deverá manter a configuração de pastas do repositório, ou mudar várioos caminhos, o que pode dificultar um pouco (caminhos em env e app>config>App.php) e configurar o http.conf do seu apache para apontar para o caminho base do seu public html. Para isso:
+
+-Abrir o arquivo http.conf
+No xampp, há um botão Config no Xampp Control Panel que quando clica aparece a opção "Apache(http.conf)", aí é só clicar, abrir e editar a Linha DocumentRoot e a subsequente, como no meu caso
+
+#
+DocumentRoot "C:/xamppNew/htdocs/covid_repositorio_oficial/public_html"
+<Directory "C:/xamppNew/htdocs/covid_repositorio_oficial/public_html">
+-------
+
+Como este é um repositório utilizado para deploy automático com o servidor, vc deverá também alterar as credenciais de banco de dados dentro da pasta .env ou em app>Config>Database.php
+
+opção 1: na .env (o .env é gerado após o composer update)
+	database.default.hostname = localhost
+	database.default.database = bd_covid
+	database.default.username = root
+	database.default.password = 
+	database.default.DBDriver = MySQLi
+que no caso é a minha configuração de uso em localhost
+
+opção 2: na pasta App>Config>Database.php
+public $default = [
+		'DSN'      => '',
+		'hostname' => 'localhost',
+		'username' => 'root',
+		'password' => '',
+		'database' => 'covid_db',
+		'DBDriver' => 'MySQLi',
+só editar essas primeiras linhas com suas credenciais.
+
+Quaiquer dúvidas, só enviar mensagem pra mim(Thiago) ou Ariel.
+

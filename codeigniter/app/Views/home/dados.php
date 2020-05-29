@@ -237,7 +237,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <img src="https://www.portugal-didactico.com/wp-content/uploads/2020/01/paginaEmConstrucao.png" width="100%" height="100%">
+                                <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -268,7 +268,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-12">
                         <div class="card animated bounceInUp slow delay-1s">
                             <div class="card-body">
                                 <h5 class="subtext">Gráficos</h5>

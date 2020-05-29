@@ -34,7 +34,7 @@
                             <li><a href="/home/projetos" class="text-white">Projetos</a></li>
                             <li><a href="/home/dicas" class="text-white">Dicas</a></li>
                             <li><a href="#" class="text-white">Doação</a></li>
-                            <li><a href="../Users" class="text-white">Login</a></li>
+                            <li><a href="/admin" class="text-white">Login</a></li>
                         </ul>
                     </div>
                 </div>

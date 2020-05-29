@@ -155,8 +155,26 @@
           <input class="form-control" id="pesquisa" autocomplete="off" type="text" placeholder="Buscar">
           <div class="result"></div>
         </div>
-
       </section>
+      <!--Substituir essa section abaixo pela de cima para filtrar por microregião também
+        <section class="jumbotron text-center ">
+                <h2 class="jumbotron-heading">Painel CoronaVírus</h2>
+                <p class="lead text-muted"><i class="fas fa-map"></i> Escolha sua cidade:</p>
+                <div class="input-group md-form mt-0 animated flash slow">
+                    <input class="form-control" type="text" placeholder="Buscar" aria-label="Search">
+                     <div class="input-group-append">
+                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            Microrregião
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Ubá</a>
+                            <a class="dropdown-item" href="#">Juiz de Fora</a>
+                          </div>
+                     </div>
+                </div>
+            </section>-->
+      <h2 class="jumbotron-heading"><i class="fas fa-map"></i> Minas Gerais</h2>
+      <p class="lead text-muted"><i class="fas fa-stopwatch"></i> Última Atualização 08/04/2020</p>
       <div class="row">
         <div class="col-md-4">
           <div class="card animated bounceInUp fast">
@@ -199,7 +217,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <img src="https://www.portugal-didactico.com/wp-content/uploads/2020/01/paginaEmConstrucao.png" width="100%" height="100%">
+                <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>

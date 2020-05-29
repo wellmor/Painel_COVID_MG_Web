@@ -6,6 +6,8 @@ Se você está vendo isso, provavelmente faz parte do projeto. Então siga os pa
 
 -Lembre-se também de importar o banco de dados (bd_covid.sql) presente no diretório de pastas do repositório
 
+-Depois de clonar o repositório, é necessário executar o comando "composer update" para atualizar as dependências do Code Igniter
+
 -Após isso, vc deverá manter a configuração de pastas do repositório, ou mudar várioos caminhos, o que pode dificultar um pouco (caminhos em env e app>config>App.php) e configurar o http.conf do seu apache para apontar para o caminho base do seu public html. Para isso:
 
 -Abrir o arquivo http.conf
@@ -18,7 +20,7 @@ DocumentRoot "C:/xamppNew/htdocs/covid_repositorio_oficial/public_html"
 
 Como este é um repositório utilizado para deploy automático com o servidor, vc deverá também alterar as credenciais de banco de dados dentro da pasta .env ou em app>Config>Database.php
 
-opção 1: na .env (o .env é gerado após o composer update)
+opção 1(ideal): na .env (o .env é gerado após o composer update)
 	database.default.hostname = localhost
 	database.default.database = bd_covid
 	database.default.username = root
@@ -36,5 +38,4 @@ public $default = [
 		'DBDriver' => 'MySQLi',
 só editar essas primeiras linhas com suas credenciais.
 
-Quaiquer dúvidas, só enviar mensagem pra mim(Thiago) ou Ariel.
-
+Quaisquer dúvidas, só enviar mensagem pra mim(Thiago) ou Ariel.

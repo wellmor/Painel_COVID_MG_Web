@@ -60,12 +60,12 @@
                 Casos
               </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" href="/admin/noticias">
                 <span data-feather="book-open"></span>
                 Notícias
               </a>
-            </li>
+            </li> -->
           </ul>
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Meus dados</span>

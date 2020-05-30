@@ -419,7 +419,7 @@
         <script>
             function formatarData(datax) {
                 var data = new Date(datax),
-                    dia = (data.getDate()+1).toString().padStart(2, '0'),
+                    dia = (data.getDate()).toString().padStart(2, '0'),
                     mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
                     ano = data.getFullYear();
                 return " " + dia + "/" + mes + "/" + ano + " ";
@@ -440,7 +440,9 @@
                     dataType: 'JSON',
                     success: function(data) {
                         for (var key in data) {
-                            dataCaso.push(formatarData(data[key].datax))
+                            dataE = (data[key].datax).split("-")
+                            datex = dataE[2] + "/" + dataE[1] + "/" + dataE[0];
+                            dataCaso.push(datex);
                             confirmados.push(data[key].confirmados)
                             suspeitos.push(data[key].suspeitos)
                             descartados.push(data[key].descartados)

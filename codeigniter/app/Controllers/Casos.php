@@ -13,8 +13,8 @@ class Casos extends Controller
     {
         $data = [];
         $model = new MunicipiosModel();
-        $id = session()->get('id');
-        $query = $model->query("SELECT users_municipio.idMunicipio FROM users_municipio INNER JOIN users ON users.id = users_municipio.idUser INNER JOIN municipios ON idUsers_municipio = municipios.idMunicipio WHERE users_municipio.idUser=" . $id);
+        $id = session()->get('idUsuario');
+        $query = $model->query("SELECT usuario_municipio.idMunicipio FROM usuario_municipio INNER JOIN usuario ON usuario.idUsuario = usuario_municipio.idUsuario INNER JOIN municipio ON idusuario_municipio = municipio.idMunicipio WHERE usuario_municipio.idUsuario=" . $id);
         $data = $query->getResult('array');
         return view('admin/casos', $data);
     }
@@ -31,7 +31,7 @@ class Casos extends Controller
             'obitosCaso' => $this->request->getVar('obitos'),
             'recuperadosCaso' => $this->request->getVar('recuperados'),
             'dataCaso' => date("Y-m-d"),
-            'idUsuario' => session()->get('id'),
+            'idUsuario' => session()->get('idCaso'),
             'dataCaso' => $this->request->getVar('data-caso'),
             'fonteCaso' => $this->request->getVar('fonte')
         ]);

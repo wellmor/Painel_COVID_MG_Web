@@ -12,7 +12,7 @@ class Municipios extends Controller
     public function getDados()
     {
         $model = new MunicipiosModel();
-        $query = $model->query("SELECT municipios.idMunicipio, municipios.nomeMunicipio FROM users_municipio INNER JOIN municipios ON users_municipio.idMunicipio = municipios.idMunicipio WHERE users_municipio.idUser=" . session()->get('id') . " ORDER BY municipios.nomeMunicipio");
+        $query = $model->query("SELECT municipio.idMunicipio, municipio.nomeMunicipio FROM usuario_municipio INNER JOIN municipio ON usuario_municipio.idMunicipio = municipio.idMunicipio WHERE usuario_municipio.idUsuario=" . session()->get('idUsuario') . " ORDER BY municipio.nomeMunicipio");
         $municipios = $query->getResult('array');
         echo json_encode($municipios);
     }

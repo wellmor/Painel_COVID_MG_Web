@@ -16,19 +16,15 @@ class Users extends BaseController
 	{
 		$data = [];
 		helper(['form']);
-
-		//echo($this->request->getMethod());
-
 		if ($this->request->getMethod() == 'post') {
-			//let's do the validation here
 			$rules = [
-				'email' => 'required|min_length[6]|max_length[50]|valid_email',
-				'password' => 'required|min_length[8]|max_length[255]|validateUser[email,password]',
+				'emailUsuario' => 'required|min_length[6]|max_length[50]|valid_email',
+				'senhaUsuario' => 'required|min_length[8]|max_length[255]|validateUser[email,senhaUsuario]',
 			];
 
 			$errors = [
-				'password' => [
-					'validateUser' => 'Email or Password don\'t match'
+				'senhaUsuario' => [
+					'validateUser' => 'Email ou senha incorreto'
 				]
 			];
 
@@ -36,12 +32,8 @@ class Users extends BaseController
 				$data['validation'] = $this->validator;
 			} else {
 				$model = new UserModel();
-
-				$user = $model->where('email', $this->request->getVar('email'))
-					->first();
-
+				$user = $model->where('emailUsuario', $this->request->getVar('emailUsuario'))->first();
 				$this->setUserSession($user);
-				//$session->setFlashdata('success', 'Successful Registration');
 				return redirect()->to('/admin/painel');
 			}
 		}
@@ -52,9 +44,9 @@ class Users extends BaseController
 	private function setUserSession($user)
 	{
 		$data = [
-			'id' => $user['id'],
-			'firstname' => $user['firstname'],
-			'email' => $user['email'],
+			'idUsuario' => $user['idUsuario'],
+			'nomeUsuario' => $user['nomeUsuario'],
+			'emailUsuario' => $user['emailUsuario'],
 			'isLoggedIn' => true,
 		];
 
@@ -64,39 +56,37 @@ class Users extends BaseController
 
 	public function profile()
 	{
-
 		$data = [];
 		helper(['form']);
 		$model = new UserModel();
 
 		if ($this->request->getMethod() == 'post') {
-			//let's do the validation here
 			$rules = [];
 
-			if ($this->request->getPost('password') != '') {
-				$rules['password'] = 'required|min_length[8]|max_length[255]';
-				$rules['password_confirm'] = 'matches[password]';
+			if ($this->request->getPost('senhaUsuario') != '') {
+				$rules['senhaUsuario'] = 'required|min_length[8]|max_length[255]';
+				$rules['senhaUsuario_confirm'] = 'matches[senhaUsuario]';
 			}
 
 			if (!$this->validate($rules)) {
 				$data['validation'] = $this->validator;
 			} else {
-
 				$newData = [
-					'id' => session()->get('id'),
-					'firstname' => $this->request->getPost('firstname'),
+					'idUsuario' => session()->get('idUsuario'),
+					'nomeUsuario' => $this->request->getPost('nomeUsuario'),
 				];
-				if ($this->request->getPost('password') != '') {
-					$newData['password'] = $this->request->getPost('password');
-				}
-				$model->save($newData);
 
-				session()->setFlashdata('success', 'Successfuly Updated');
+				if ($this->request->getPost('senhaUsuario') != '') {
+					$newData['senhaUsuario'] = $this->request->getPost('senhaUsuario');
+				}
+
+				$model->save($newData);
+				session()->setFlashdata('success', 'Perfil atualizado com sucesso!');
 				return redirect()->to('/admin/perfil');
 			}
 		}
 
-		$data['user'] = $model->where('id', session()->get('id'))->first();
+		$data['user'] = $model->where('idUsuario', session()->get('idUsuario'))->first();
 		echo view('admin/profile', $data);
 	}
 

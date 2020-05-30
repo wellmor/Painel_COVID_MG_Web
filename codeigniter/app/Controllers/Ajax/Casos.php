@@ -12,9 +12,9 @@ class Casos extends Controller
     public function getDados()
     {
         $model = new CasosModel();
-        $model->select("casos.dataCaso, casos.fonteCaso, casos.idCaso, casos.idMunicipio, casos.confirmadosCaso, casos.suspeitosCaso, casos.obitosCaso, casos.descartadosCaso, casos.recuperadosCaso, casos.created_at, municipios.nomeMunicipio");
-        $model->join('municipios', 'municipios.idMunicipio = casos.idMunicipio');
-        $model->where("idUsuario", session()->get('id'));
+        $model->select("caso.dataCaso, caso.fonteCaso, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, caso.created_at, municipio.nomeMunicipio");
+        $model->join('municipio', 'municipio.idMunicipio = caso.idMunicipio');
+        $model->where("idUsuario", session()->get('idUsuario'));
         $casos = $model->findAll();
         $i = 0;
         $data = array();

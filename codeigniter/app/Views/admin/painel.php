@@ -74,7 +74,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/admin/perfil">
                 <span data-feather="user"></span>
-                Perfil (<?= session()->get('firstname') ?>)
+                Perfil (<?= session()->get('nomeUsuario') ?>)
               </a>
             </li>
             <li class="nav-item">

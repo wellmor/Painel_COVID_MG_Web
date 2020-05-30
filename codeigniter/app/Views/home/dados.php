@@ -132,7 +132,7 @@
                                         <h3 class="cor1">
                                             <?php
                                                 if (isset($casos['suspeitosCaso'])) {
-                                                    if ($casos['suspeitosCaso'] != 0) {
+                                                    if ($casos['suspeitosCaso'] != null) {
                                                         echo $casos['suspeitosCaso'];
                                                     } else {
                                                         echo 'Não informado';
@@ -160,7 +160,7 @@
                                         <h3 class="cor2">
                                             <?php
                                                 if (isset($casos['confirmadosCaso'])) {
-                                                    if ($casos['confirmadosCaso'] != 0) {
+                                                    if ($casos['confirmadosCaso'] != null) {
                                                         echo $casos['confirmadosCaso'];
                                                     } else {
                                                         echo 'Não informado';
@@ -187,13 +187,13 @@
                                         <h3 class="cor3">
                                             <?php
                                                 if (isset($casos['descartadosCaso'])) {
-                                                    if ($casos['descartadosCaso'] != 0) {
+                                                    if ($casos['descartadosCaso'] != null) {
                                                         echo $casos['descartadosCaso'];
                                                     } else {
                                                         echo 'Não informado';
                                                     }
                                                 } else {
-                                                    echo 'Não cadastrado';
+                                                    echo 'Não informado';
                                                 }
                                                 ?></h3>
                                         <p class="subtext">Casos Descartados</p>
@@ -214,7 +214,7 @@
                                         <h3 class="cor4">
                                             <?php
                                                 if (isset($casos['obitosCaso'])) {
-                                                    if ($casos['obitosCaso'] != 0) {
+                                                    if ($casos['obitosCaso'] != null) {
                                                         echo $casos['obitosCaso'];
                                                     } else {
                                                         echo 'Não informado';
@@ -241,7 +241,7 @@
                                         <h3 class="cor5">
                                             <?php
                                                 if (isset($casos['recuperadosCaso'])) {
-                                                    if ($casos['recuperadosCaso'] != 0) {
+                                                    if ($casos['recuperadosCaso'] != null) {
                                                         echo $casos['recuperadosCaso'];
                                                     } else {
                                                         echo 'Não informado';

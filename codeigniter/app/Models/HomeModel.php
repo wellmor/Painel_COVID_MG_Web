@@ -6,6 +6,6 @@ class HomeModel extends Model{
     
     protected $table = "municipios";
     protected $primaryKey = "idMunicipio";
-    protected $allowedFields = ['idMunicipio', 'nomeMunicipio', 'codMunicipio'];
+    protected $allowedFields = ['slugMunicipio', 'idMunicipio', 'nomeMunicipio', 'codMunicipio'];
 
 }

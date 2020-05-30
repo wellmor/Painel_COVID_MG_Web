@@ -22,8 +22,8 @@
           <?php endif; ?>
           <form action="/admin" method="post">
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" name="emailUsuario" id="email" value="<?= set_value('email') ?>">
+              <label for="emailUsuario">Email</label>
+              <input type="text" class="form-control" name="emailUsuario" id="emailUsuario" value="<?= set_value('emailUsuario') ?>">
             </div>
             <div class="form-group">
               <label for="senhaUsuario">Senha</label>

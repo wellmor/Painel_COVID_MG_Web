@@ -74,14 +74,13 @@ class Users extends BaseController
 				$newData = [
 					'idUsuario' => session()->get('idUsuario'),
 					'nomeUsuario' => $this->request->getPost('nomeUsuario'),
-				];
 
+				];
 				if ($this->request->getPost('senhaUsuario') != '') {
 					$newData['senhaUsuario'] = $this->request->getPost('senhaUsuario');
 				}
-
-				$model->save($newData);
-				session()->setFlashdata('success', 'Perfil atualizado com sucesso!');
+				$model->set($newData)->where('idUsuario', session()->get('idUsuario'))->update();
+				session()->setFlashdata('success', 'Senha alterada com sucesso');
 				return redirect()->to('/admin/perfil');
 			}
 		}

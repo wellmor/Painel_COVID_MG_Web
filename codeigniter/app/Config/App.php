@@ -21,8 +21,8 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	// public $baseURL = 'http://covidmg.com/';
-	public $baseURL = 'http://localhost/';
+	public $baseURL = 'http://covidmg.com/';
+	// public $baseURL = 'http://localhost/';
 
 
 	/*

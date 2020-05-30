@@ -11,7 +11,7 @@ class Noticias extends Controller
     public function getDados()  
     {
         $model = new NoticiasModel();
-        $model->select("idNoticia, tituloNoticia, conteudoNoticia", "created_at");
+        $model->select("idNoticia, tituloNoticia, textoNoticia", "created_at");
         $model->where("idUsuario", session()->get('id'));
 
         $noticias = $model->findAll();

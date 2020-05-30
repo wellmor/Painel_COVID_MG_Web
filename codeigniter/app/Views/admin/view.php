@@ -23,11 +23,11 @@
           <form action="/admin" method="post">
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email') ?>">
+              <input type="text" class="form-control" name="emailUsuario" id="email" value="<?= set_value('email') ?>">
             </div>
             <div class="form-group">
-              <label for="password">Senha</label>
-              <input type="password" class="form-control" name="password" id="password" value="">
+              <label for="senhaUsuario">Senha</label>
+              <input type="password" class="form-control" name="senhaUsuario" id="senhaUsuario" placeholder="Insira sua senha">
             </div>
             <?php if (isset($validation)) : ?>
               <div class="col-12">

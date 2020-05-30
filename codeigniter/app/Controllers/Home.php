@@ -21,21 +21,12 @@ class Home extends BaseController
 	{
 		return view('/home/dicas');
 	}
-
+	
 	public function municipio($id = null)
 	{
-
 		$model = new CasosModel();
-		// echo "o id eh ". $id . "<br>";
-
-		$query = $model->query("Select * FROM casos c, municipios m WHERE c.idMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio ORDER BY c.dataCaso DESC LIMIT 1");
+		$query = $model->query("SELECT * FROM caso c, municipio m WHERE c.idMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio ORDER BY c.dataCaso DESC LIMIT 1");
 		$data['casos'] = $query->getRowArray();
-
-
-		// $data['casos'] = 
-		// var_dump($data['casos']);
-		// var_dump($casos);
-
 		return view('/home/dados', $data);
 	}
 }

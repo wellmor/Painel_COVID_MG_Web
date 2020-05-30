@@ -80,7 +80,7 @@
             <li class="nav-item">
               <a class="nav-link active" href="/admin/perfil">
                 <span data-feather="user"></span>
-                Perfil (<?= session()->get('firstname') ?>)
+                Perfil (<?= session()->get('nomeUsuario') ?>)
               </a>
             </li>
             <li class="nav-item">
@@ -93,15 +93,11 @@
         </div>
       </nav>
 
-
       <!-- conteudo -->
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
-
           <div class="container">
             <h1 class="h2">Perfil</h1>
-
             <hr>
             <?php if (session()->get('success')) : ?>
               <div class="alert alert-success" role="alert">
@@ -112,26 +108,26 @@
               <div class="row">
                 <div class="col-12 col-sm-12">
                   <div class="form-group">
-                    <label for="firstname">Primeiro nome</label>
-                    <input type="text" class="form-control" readonly name="firstname" id="firstname" value="<?= set_value('firstname', $user['firstname']) ?>">
+                    <label for="nomeUsuario">Nome</label>
+                    <input type="text" class="form-control" readonly name="nomeUsuario" id="nomeUsuario" value="<?= set_value('nomeUsuario', $user['nomeUsuario']) ?>">
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" readonly id="email" value="<?= $user['email'] ?>">
+                    <input type="text" class="form-control" readonly id="emailUsuario" value="<?= $user['emailUsuario'] ?>">
                   </div>
                 </div>
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="password">Senha</label>
-                    <input type="password" class="form-control" name="password" id="password" value="">
+                    <label for="senhaUsuario">Senha</label>
+                    <input type="password" class="form-control" name="senhaUsuario" id="senhaUsuario" value="">
                   </div>
                 </div>
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="password_confirm">Repita a senha</label>
-                    <input type="password" class="form-control" name="password_confirm" id="password_confirm" value="">
+                    <label for="senhaUsuario_confirm">Repita a senha</label>
+                    <input type="password" class="form-control" name="senhaUsuario_confirm" id="senhaUsuario_confirm" value="">
                   </div>
                 </div>
                 <?php if (isset($validation)) : ?>

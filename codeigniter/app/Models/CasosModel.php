@@ -4,11 +4,11 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CasosModel extends Model 
-{   
-    protected $table = "casos";
+class CasosModel extends Model
+{
+    protected $table = "caso";
     protected $primaryKey = "idCaso";
-    protected $allowedFields = ['dataCaso', 'fonteCaso', 'idCaso', 'idMunicipio', 'idUsuario', 'suspeitosCaso', 'confirmadosCaso', 'descartadosCaso', 'obitosCaso', 'recuperadosCaso'];
+    protected $allowedFields = ['idCaso', 'idMunicipio', 'idUsuario', 'fonteCaso', 'dataCaso', 'suspeitosCaso', 'confirmadosCaso', 'descartadosCaso', 'obitosCaso', 'recuperadosCaso'];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 

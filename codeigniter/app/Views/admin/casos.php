@@ -13,7 +13,6 @@
     <!-- Bootstrap core CSS -->
     <link href="../assets/bootstrap.min.css" rel="stylesheet">
 
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
@@ -79,7 +78,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/perfil">
                                 <span data-feather="user"></span>
-                                Perfil (<?= session()->get('firstname') ?>)
+                                Perfil (<?= session()->get('nomeUsuario') ?>)
                             </a>
                         </li>
                         <li class="nav-item">

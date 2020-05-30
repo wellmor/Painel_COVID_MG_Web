@@ -6,8 +6,7 @@ use CodeIgniter\Model;
 
 class MunicipiosModel extends Model
 {
-
-    protected $table = "municipios";
+    protected $table = "municipio";
     protected $primaryKey = "idMunicipio";
-    protected $allowedFields = ['idMunicipio', 'nomeMunicipio', 'codMunicipio'];
+    protected $allowedFields = ['idMunicipio', 'nomeMunicipio', 'facebookMunicipio'];
 }

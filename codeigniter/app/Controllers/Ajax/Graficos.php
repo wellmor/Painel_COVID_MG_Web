@@ -12,7 +12,7 @@ class Graficos extends Controller
     public function getDados($id = null)
     {
         $model = new CasosModel();
-        $query = $model->query("SELECT c.idCaso as id, c.dataCaso as dat, c.confirmadosCaso as conf, c.suspeitosCaso as susp, c.obitosCaso as ob, c.descartadosCaso as desca, c.recuperadosCaso as recu, m.nomeMunicipio as nome FROM casos c, municipios m WHERE m.idMunicipio = c.idMunicipio AND c.idMunicipio = ".$id." ORDER BY dataCaso ASC");
+        $query = $model->query("SELECT c.idCaso as id, c.dataCaso as dat, c.confirmadosCaso as conf, c.suspeitosCaso as susp, c.obitosCaso as ob, c.descartadosCaso as desca, c.recuperadosCaso as recu, m.nomeMunicipio as nome FROM caso c, municipio m WHERE m.idMunicipio = c.idMunicipio AND c.idMunicipio = " . $id . " ORDER BY dataCaso ASC");
         $casos = $query->getResult('array');
 
         $i = 0;
@@ -28,7 +28,7 @@ class Graficos extends Controller
             $data[$i]['municipio'] = $caso['nome'];
             $i++;
         }
-       
+
 
         echo json_encode($data);
     }

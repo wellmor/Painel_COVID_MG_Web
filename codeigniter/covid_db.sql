@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 30-Maio-2020 às 04:02
+-- Tempo de geração: 30-Maio-2020 às 04:49
 -- Versão do servidor: 10.4.11-MariaDB
 -- versão do PHP: 7.4.5
 
@@ -51,11 +51,11 @@ CREATE TABLE `caso` (
   `idUsuario` int(11) NOT NULL,
   `fonteCaso` varchar(150) NOT NULL,
   `dataCaso` date DEFAULT NULL,
-  `suspeitosCaso` varchar(45) NOT NULL,
-  `confirmadosCaso` varchar(45) NOT NULL,
-  `descartadosCaso` varchar(45) NOT NULL,
-  `obitosCaso` varchar(45) NOT NULL,
-  `recuperadosCaso` varchar(45) NOT NULL,
+  `suspeitosCaso` varchar(45) DEFAULT NULL,
+  `confirmadosCaso` varchar(45) DEFAULT NULL,
+  `descartadosCaso` varchar(45) DEFAULT NULL,
+  `obitosCaso` varchar(45) DEFAULT NULL,
+  `recuperadosCaso` varchar(45) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime NOT NULL
@@ -66,9 +66,15 @@ CREATE TABLE `caso` (
 --
 
 INSERT INTO `caso` (`idCaso`, `idMunicipio`, `idUsuario`, `fonteCaso`, `dataCaso`, `suspeitosCaso`, `confirmadosCaso`, `descartadosCaso`, `obitosCaso`, `recuperadosCaso`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 9, 8, 'dd', '1998-04-28', '2', '1', '3', '5', '4', '2020-05-29 20:48:37', '2020-05-29 20:50:37', '2020-05-29 20:50:37'),
+(1, 9, 8, 'dd', '1998-04-28', '2', 'null', '3', '5', '4', '2020-05-29 20:48:37', '2020-05-29 20:50:37', '2020-05-29 20:50:37'),
 (2, 10, 8, 'ddd', '1998-04-28', '2', '1', '3', '555', '4', '2020-05-29 20:50:33', '2020-05-29 20:51:24', '0000-00-00 00:00:00'),
-(3, 10, 8, 'dadas', '2020-05-29', '89', '88', '90', '92', '91', '2020-05-29 20:53:52', '2020-05-29 20:53:52', '0000-00-00 00:00:00');
+(3, 10, 8, 'dadas', '2020-05-29', '89', '88', '90', '92', '91', '2020-05-29 20:53:52', '2020-05-29 20:53:52', '0000-00-00 00:00:00'),
+(4, 8, 8, 'http://localhost/admin/casos', '2020-04-27', '88', '77', '99', '121', '111', '2020-05-29 21:09:26', '2020-05-29 21:09:26', '0000-00-00 00:00:00'),
+(5, 8, 8, 'dasdsadadas', '2020-01-28', '18', '15', '20', '26', '25', '2020-05-29 21:11:55', '2020-05-29 21:11:55', '0000-00-00 00:00:00'),
+(6, 8, 8, 'dassa', '2020-03-28', '88', '99', '77', '88', '66', '2020-05-29 21:12:56', '2020-05-29 21:12:56', '0000-00-00 00:00:00'),
+(7, 11, 8, 'eu', '1998-04-28', '0', '0', '0', '0', '0', '2020-05-29 21:30:44', '2020-05-29 21:41:54', '0000-00-00 00:00:00'),
+(8, 11, 8, '', '0000-00-00', '', '0', '', '', '', '2020-05-29 21:36:46', '2020-05-29 21:36:46', '0000-00-00 00:00:00'),
+(9, 12, 8, 'dasdasd', '1998-04-28', '15', '14', '16', '18', '17', '2020-05-29 21:45:49', '2020-05-29 21:45:49', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -147,7 +153,7 @@ INSERT INTO `municipio` (`idMunicipio`, `nomeMunicipio`, `facebookMunicipio`, `c
 (9, 'Piraúba', 'municipio.pirauba', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'pirauba'),
 (10, 'Rio Pomba', 'riopomba', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'rio-pomba'),
 (11, 'Tabuleiro', 'prefeituradetabuleiro', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'tabuleiro'),
-(12, 'Silverânia', 'Prefeitura-Municipal-de-Silveirânia-2030149240557298', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'silverania'),
+(12, 'Silveirânia', 'Prefeitura-Municipal-de-Silveirânia-2030149240557298', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'silverania'),
 (13, 'Rodeiro', 'prefeituraderodeiromg', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'rodeiro'),
 (14, 'Divinésia', 'prefeituraDivinesia', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'divinesia'),
 (15, 'Guarani', 'Prefeitura-Municipal-de-Guarani-205479812800138', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'guarani'),
@@ -400,7 +406,7 @@ ALTER TABLE `alerta`
 -- AUTO_INCREMENT de tabela `caso`
 --
 ALTER TABLE `caso`
-  MODIFY `idCaso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idCaso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `doacao`

@@ -152,7 +152,7 @@
                             <input type="hidden" id="idMunicipio" name="idMunicipio">
                             <div class="col-sm-6">
                                 <label>Confirmados </label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="confirmados" id="confirmados" placeholder="confirmados">
+                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="confirmados" id="confirmados" placeholder="confirmados">
                             </div>
                             <div class="col-sm-6">
                                 <label>Suspeitos </label>

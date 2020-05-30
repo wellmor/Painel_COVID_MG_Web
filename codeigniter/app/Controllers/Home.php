@@ -25,7 +25,9 @@ class Home extends BaseController
 	public function municipio($id = null)
 	{
 		$model = new CasosModel();
-		$query = $model->query("SELECT * FROM caso c, municipio m WHERE c.idMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio ORDER BY c.dataCaso DESC LIMIT 1");
+		// echo "o id eh ". $id . "<br>";
+
+		$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio ORDER BY c.dataCaso DESC LIMIT 1");
 		$data['casos'] = $query->getRowArray();
 		return view('/home/dados', $data);
 	}

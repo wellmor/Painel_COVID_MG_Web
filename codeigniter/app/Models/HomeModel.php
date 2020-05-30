@@ -8,5 +8,5 @@ class HomeModel extends Model
 {
     protected $table = "municipio";
     protected $primaryKey = "idMunicipio";
-    protected $allowedFields = ['idMunicipio', 'nomeMunicipio', 'facebookMunicipio'];
+    protected $allowedFields = ['slugMunicipio', 'idMunicipio', 'nomeMunicipio', 'facebookMunicipio'];
 }

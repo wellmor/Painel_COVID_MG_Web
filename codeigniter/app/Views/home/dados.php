@@ -132,7 +132,7 @@
                                         <h3 class="cor1">
                                             <?php
                                                 if (isset($casos['suspeitosCaso'])) {
-                                                    if ($casos['suspeitosCaso'] != 0) {
+                                                    if ($casos['suspeitosCaso'] != "") {
                                                         echo $casos['suspeitosCaso'];
                                                     } else {
                                                         echo 'Não informado';
@@ -160,7 +160,7 @@
                                         <h3 class="cor2">
                                             <?php
                                                 if (isset($casos['confirmadosCaso'])) {
-                                                    if ($casos['confirmadosCaso'] != 0) {
+                                                    if ($casos['confirmadosCaso'] != "") {
                                                         echo $casos['confirmadosCaso'];
                                                     } else {
                                                         echo 'Não informado';
@@ -187,13 +187,13 @@
                                         <h3 class="cor3">
                                             <?php
                                                 if (isset($casos['descartadosCaso'])) {
-                                                    if ($casos['descartadosCaso'] != 0) {
+                                                    if ($casos['descartadosCaso'] != "") {
                                                         echo $casos['descartadosCaso'];
                                                     } else {
                                                         echo 'Não informado';
                                                     }
                                                 } else {
-                                                    echo 'Não cadastrado';
+                                                    echo 'Não informado';
                                                 }
                                                 ?></h3>
                                         <p class="subtext">Casos Descartados</p>
@@ -214,7 +214,7 @@
                                         <h3 class="cor4">
                                             <?php
                                                 if (isset($casos['obitosCaso'])) {
-                                                    if ($casos['obitosCaso'] != 0) {
+                                                    if ($casos['obitosCaso'] != "") {
                                                         echo $casos['obitosCaso'];
                                                     } else {
                                                         echo 'Não informado';
@@ -241,7 +241,7 @@
                                         <h3 class="cor5">
                                             <?php
                                                 if (isset($casos['recuperadosCaso'])) {
-                                                    if ($casos['recuperadosCaso'] != 0) {
+                                                    if ($casos['recuperadosCaso'] != "") {
                                                         echo $casos['recuperadosCaso'];
                                                     } else {
                                                         echo 'Não informado';
@@ -313,7 +313,7 @@
                                 <h5 class="subtext">Noticias</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Atualize-se com infomações oficias</h6>
                                 <!-- alterar as referencias da div pro campo da tabela municipio que contem o identificador da pagina -->
-                                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
                                     <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
                                 </div>
                             </div>

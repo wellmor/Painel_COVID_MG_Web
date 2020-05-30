@@ -255,8 +255,8 @@
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editar(\'' + row.id + '\' , \'' + row.confirmados + '\' , \'' + row.suspeitos + '\', \'' + row.descartados + '\' , \'' + row.obitos + '\' , \'' + row.recuperados + '\' , \'' + row.municipio + '\', \'' + row.datax + '\', \'' + row.idMunicipio + '\', \'' + row.fonte + '\');return false;">Editar</a>' +
-                                ' <a href="" class="btn btn-outline-danger" onClick="deletar(' + row.id + ');return false;">Excluir</a></div>';
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editar(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletar(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
                         },
                     }
                 ],
@@ -352,16 +352,16 @@
 
         //modal de edição
         function editar(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {
-            modalEd(municipio, datax);
-            $('#id').val(id);
-            $('#idMunicipio').val(idMunicipio);
-            $('#confirmados').val(confirmados);
-            $('#suspeitos').val(suspeitos);
-            $('#obitos').val(obitos);
-            $('#recuperados').val(recuperados);
-            $('#descartados').val(descartados);
-            $('#data-caso').val(datax);
-            $('#fonte').val(fonte);
+            modalEd(decodeURIComponent(municipio), decodeURIComponent(datax));
+            $('#id').val(decodeURIComponent(id));
+            $('#idMunicipio').val(decodeURIComponent(idMunicipio));
+            $('#confirmados').val(decodeURIComponent(confirmados));
+            $('#suspeitos').val(decodeURIComponent(suspeitos));
+            $('#obitos').val(decodeURIComponent(obitos));
+            $('#recuperados').val(decodeURIComponent(recuperados));
+            $('#descartados').val(decodeURIComponent(descartados));
+            $('#data-caso').val(decodeURIComponent(datax));
+            $('#fonte').val(decodeURIComponent(fonte));
 
         }
 
@@ -379,7 +379,7 @@
                 if (result.value) {
                     $.ajax({
                         type: "DELETE",
-                        url: "../casos/deleteDt/" + id,
+                        url: "../casos/deleteDt/" + decodeURIComponent(id),
                         success: function(result) {
                             table.ajax.reload();
                             // alert("Relatório de casos excluído com sucesso");

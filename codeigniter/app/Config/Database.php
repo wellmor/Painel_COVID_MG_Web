@@ -56,7 +56,7 @@ class Database extends \CodeIgniter\Database\Config
 		'hostname' => 'localhost',
 		'username' => 'covidmg_dash',
 		'password' => '84068905',
-		'database' => 'covidmg_db',
+		'database' => 'covidmg_bd',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',
 		'pConnect' => false,

@@ -46,3 +46,7 @@ Options All -Indexes
 # Disable server signature start
     ServerSignature Off
 # Disable server signature end
+
+<IfModule mime_module>
+ AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+ </IfModule> 

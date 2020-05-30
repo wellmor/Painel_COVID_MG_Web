@@ -31,7 +31,7 @@ class Casos extends Controller
             'obitosCaso' => $this->request->getVar('obitos'),
             'recuperadosCaso' => $this->request->getVar('recuperados'),
             'dataCaso' => date("Y-m-d"),
-            'idUsuario' => session()->get('idCaso'),
+            'idUsuario' => session()->get('idUsuario'),
             'dataCaso' => $this->request->getVar('data-caso'),
             'fonteCaso' => $this->request->getVar('fonte')
         ]);

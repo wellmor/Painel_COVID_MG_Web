@@ -1,0 +1,1 @@
+adicionar as pastas de configuração na lista do gitignore para não precisar mudá-las de novo se a alteração for feita de localhost

@@ -130,9 +130,9 @@
                                     <div class="col">
                                         <h3 class="cor1">
                                             <?php
-                                            if (isset($casos['suspeitosCaso'])) {
-                                                if ($casos['suspeitosCaso'] != "") {
-                                                    echo $casos['suspeitosCaso'];
+                                            if (isset($casos['confirmadosCaso'])) {
+                                                if ($casos['confirmadosCaso'] != "") {
+                                                    echo $casos['confirmadosCaso'];
                                                 } else {
                                                     echo '<div style="font-size: 19px;">Não informado</div>';
                                                 }
@@ -140,8 +140,7 @@
                                                 echo '<div style="font-size: 19px;">Não cadastrado</div>';
                                             }
                                             ?></h3>
-
-                                        <p class="subtext">Casos Suspeitos</p>
+                                        <p class="subtext">Casos Confirmados</p>
                                     </div>
                                     <div class="col">
                                         <img class="img" src="/assets/images/resultado.png" width="70" height="70" align="right" alt="">
@@ -158,9 +157,9 @@
                                     <div class="col">
                                         <h3 class="cor2">
                                             <?php
-                                            if (isset($casos['confirmadosCaso'])) {
-                                                if ($casos['confirmadosCaso'] != "") {
-                                                    echo $casos['confirmadosCaso'];
+                                            if (isset($casos['suspeitosCaso'])) {
+                                                if ($casos['suspeitosCaso'] != "") {
+                                                    echo $casos['suspeitosCaso'];
                                                 } else {
                                                     echo '<div style="font-size: 19px;">Não informado</div>';
                                                 }
@@ -168,7 +167,7 @@
                                                 echo '<div style="font-size: 19px;">Não cadastrado</div>';
                                             }
                                             ?></h3>
-                                        <p class="subtext">Confirmados</p>
+                                        <p class="subtext">Casos Suspeitos</p>
                                     </div>
                                     <div class="col">
                                         <img class="img" src="/assets/images/pesquisa.png" width="70" height="70" align="right" alt="">

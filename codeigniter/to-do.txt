@@ -1,9 +1,5 @@
 -Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria
 
+(?) Acho que o interessante na página do usuário é o gráfico. O mapa e a página do facebook que aparecem poderiam ser menores, uma vez que o mapa só mostra os dados do último boletim quando o usuário clica na cidade e esta informação é uma janela bem pequena em relação ao mapa. O link do facebook também poderia ser diminuído. Penso que o destaque nesta página seria o gráfico.
 
--Os cards na página do usuário estão ficando deformados, isto é, ficam fora do padrão, pois os textos acabaram ficando com 2 linhas em alguns, por exemplo, Casos recuperados (2 linhas), sendo que em outros fica com apenas 1 linha. Assim acabam ficando desalinhados.
-
--No gráfico, quando clico em qualquer aba, a página atualiza e volta pro topo. Daí tenho de ficar rolando novamente até o gráfico. Acaba ficando meio frustrante a UX.
-
-
--Acho que o interessante na página do usuário é o gráfico. O mapa e a página do facebook que aparecem poderiam ser menores, uma vez que o mapa só mostra os dados do último boletim quando o usuário clica na cidade e esta informação é uma janela bem pequena em relação ao mapa. O link do facebook também poderia ser diminuído. Penso que o destaque nesta página seria o gráfico.
+- Mudar cores dos gráficos de acordo com o tipo de caso

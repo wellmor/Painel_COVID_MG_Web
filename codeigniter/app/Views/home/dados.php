@@ -119,9 +119,8 @@
                         <li class="breadcrumb-item active" aria-current="page"><?= esc($casos['nomeMunicipio']) ?></li>
                     </ol>
                     <h2 class="jumbotron-heading">Painel CoronaVírus</h2>
-                    <p class="lead text-muted">Última Atualização em </p>
-                    <p class="subtext"><strong><?php echo date("d/m/Y", strtotime($casos['dataCaso'])) ?></strong></p>
-                    <p class="subtext"><small>fonte: <?php echo $casos['fonteCaso'] ?></small></p>
+                    <p class="lead text-muted">Última atualização feita em <strong><?php echo date("d/m/Y", strtotime($casos['dataCaso'])) ?></strong></p>
+                    <p class="subtext"><small><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></small></p>
                 </section>
                 <div class="row">
                     <div class="col-md-4">
@@ -131,16 +130,16 @@
                                     <div class="col">
                                         <h3 class="cor1">
                                             <?php
-                                                if (isset($casos['suspeitosCaso'])) {
-                                                    if ($casos['suspeitosCaso'] != "") {
-                                                        echo $casos['suspeitosCaso'];
-                                                    } else {
-                                                        echo '<div style="font-size: 16px;">Não informado</div>';
-                                                    }
+                                            if (isset($casos['suspeitosCaso'])) {
+                                                if ($casos['suspeitosCaso'] != "") {
+                                                    echo $casos['suspeitosCaso'];
                                                 } else {
-                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
+                                                    echo '<div style="font-size: 19px;">Não informado</div>';
                                                 }
-                                                ?></h3>
+                                            } else {
+                                                echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            }
+                                            ?></h3>
 
                                         <p class="subtext">Casos Suspeitos</p>
                                     </div>
@@ -159,16 +158,16 @@
                                     <div class="col">
                                         <h3 class="cor2">
                                             <?php
-                                                if (isset($casos['confirmadosCaso'])) {
-                                                    if ($casos['confirmadosCaso'] != "") {
-                                                        echo $casos['confirmadosCaso'];
-                                                    } else {
-                                                        echo '<div style="font-size: 16px;">Não informado</div>';
-                                                    }
+                                            if (isset($casos['confirmadosCaso'])) {
+                                                if ($casos['confirmadosCaso'] != "") {
+                                                    echo $casos['confirmadosCaso'];
                                                 } else {
-                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
+                                                    echo '<div style="font-size: 19px;">Não informado</div>';
                                                 }
-                                                ?></h3>
+                                            } else {
+                                                echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            }
+                                            ?></h3>
                                         <p class="subtext">Confirmados</p>
                                     </div>
                                     <div class="col">
@@ -186,16 +185,16 @@
                                     <div class="col">
                                         <h3 class="cor3">
                                             <?php
-                                                if (isset($casos['descartadosCaso'])) {
-                                                    if ($casos['descartadosCaso'] != "") {
-                                                        echo $casos['descartadosCaso'];
-                                                    } else {
-                                                        echo '<div style="font-size: 16px;">Não informado</div>';
-                                                    }
+                                            if (isset($casos['descartadosCaso'])) {
+                                                if ($casos['descartadosCaso'] != "") {
+                                                    echo $casos['descartadosCaso'];
                                                 } else {
-                                                    echo '<div style="font-size: 16px;">Não informado</div>';
+                                                    echo '<div style="font-size: 19px;">Não informado</div>';
                                                 }
-                                                ?></h3>
+                                            } else {
+                                                echo '<div style="font-size: 19px;">Não informado</div>';
+                                            }
+                                            ?></h3>
                                         <p class="subtext">Casos Descartados</p>
                                     </div>
                                     <div class="col">
@@ -213,16 +212,16 @@
                                     <div class="col">
                                         <h3 class="cor4">
                                             <?php
-                                                if (isset($casos['obitosCaso'])) {
-                                                    if ($casos['obitosCaso'] != "") {
-                                                        echo $casos['obitosCaso'];
-                                                    } else {
-                                                        echo '<div style="font-size: 16px;">Não informado</div>';
-                                                    }
+                                            if (isset($casos['obitosCaso'])) {
+                                                if ($casos['obitosCaso'] != "") {
+                                                    echo $casos['obitosCaso'];
                                                 } else {
-                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
+                                                    echo '<div style="font-size: 19px;">Não informado</div>';
                                                 }
-                                                ?></h3>
+                                            } else {
+                                                echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            }
+                                            ?></h3>
                                         <p class="subtext">Casos de Óbitos</p>
                                     </div>
                                     <div class="col">
@@ -240,16 +239,16 @@
                                     <div class="col">
                                         <h3 class="cor5">
                                             <?php
-                                                if (isset($casos['recuperadosCaso'])) {
-                                                    if ($casos['recuperadosCaso'] != "") {
-                                                        echo $casos['recuperadosCaso'];
-                                                    } else {
-                                                        echo '<div style="font-size: 16px;">Não informado</div>';
-                                                    }
+                                            if (isset($casos['recuperadosCaso'])) {
+                                                if ($casos['recuperadosCaso'] != "") {
+                                                    echo $casos['recuperadosCaso'];
                                                 } else {
-                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
+                                                    echo '<div style="font-size: 19px;">Não informado</div>';
                                                 }
-                                                ?></h3>
+                                            } else {
+                                                echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            }
+                                            ?></h3>
                                         <p class="subtext">Casos Recuperados</p>
                                     </div>
                                     <div class="col">
@@ -321,10 +320,9 @@
                     </div>
                     <div class="col-md-12">
                         <div class="card animated bounceInUp slow delay-1s">
-                            <div class="card-body">
+                            <div class="card-body" style="height:670px">
                                 <h5 class="subtext">Gráficos</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
-
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="confirmados-tab" data-toggle="tab" href="#confirmados" role="tab" aria-controls="confirmados" aria-selected="true">Confirmados</a>
@@ -342,31 +340,27 @@
                                         <a class="nav-link" id="obitos-tab" data-toggle="tab" href="#obitos" role="tab" aria-controls="obitos" aria-selected="false">Óbitos</a>
                                     </li>
                                 </ul>
-
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" width="400" height="400"></canvas>
+                                        <canvas id="chartConfirmados" width="800" height="400"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" width="400" height="400"></canvas>
-
+                                        <canvas id="chartSuspeitos" width="800" height="400"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" width="400" height="400"></canvas>
+                                        <canvas id="chartDescartados" width="800" height="400"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" width="400" height="400"></canvas>
+                                        <canvas id="chartRecuperados" width="800" height="400"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" width="400" height="400"></canvas>
+                                        <canvas id="chartObitos" width="800" height="400"></canvas>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!--<div class="row">
                 <div class="col-md-4">
                     <div class="card">

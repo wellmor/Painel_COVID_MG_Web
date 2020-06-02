@@ -135,10 +135,10 @@
                                                     if ($casos['suspeitosCaso'] != "") {
                                                         echo $casos['suspeitosCaso'];
                                                     } else {
-                                                        echo 'Não informado';
+                                                        echo '<div style="font-size: 16px;">Não informado</div>';
                                                     }
                                                 } else {
-                                                    echo 'Não cadastrado';
+                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
                                                 }
                                                 ?></h3>
 
@@ -163,10 +163,10 @@
                                                     if ($casos['confirmadosCaso'] != "") {
                                                         echo $casos['confirmadosCaso'];
                                                     } else {
-                                                        echo 'Não informado';
+                                                        echo '<div style="font-size: 16px;">Não informado</div>';
                                                     }
                                                 } else {
-                                                    echo 'Não cadastrado';
+                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
                                                 }
                                                 ?></h3>
                                         <p class="subtext">Confirmados</p>
@@ -190,10 +190,10 @@
                                                     if ($casos['descartadosCaso'] != "") {
                                                         echo $casos['descartadosCaso'];
                                                     } else {
-                                                        echo 'Não informado';
+                                                        echo '<div style="font-size: 16px;">Não informado</div>';
                                                     }
                                                 } else {
-                                                    echo 'Não informado';
+                                                    echo '<div style="font-size: 16px;">Não informado</div>';
                                                 }
                                                 ?></h3>
                                         <p class="subtext">Casos Descartados</p>
@@ -217,10 +217,10 @@
                                                     if ($casos['obitosCaso'] != "") {
                                                         echo $casos['obitosCaso'];
                                                     } else {
-                                                        echo 'Não informado';
+                                                        echo '<div style="font-size: 16px;">Não informado</div>';
                                                     }
                                                 } else {
-                                                    echo 'Não cadastrado';
+                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
                                                 }
                                                 ?></h3>
                                         <p class="subtext">Casos de Óbitos</p>
@@ -244,10 +244,10 @@
                                                     if ($casos['recuperadosCaso'] != "") {
                                                         echo $casos['recuperadosCaso'];
                                                     } else {
-                                                        echo 'Não informado';
+                                                        echo '<div style="font-size: 16px;">Não informado</div>';
                                                     }
                                                 } else {
-                                                    echo 'Não cadastrado';
+                                                    echo '<div style="font-size: 16px;">Não cadastrado</div>';
                                                 }
                                                 ?></h3>
                                         <p class="subtext">Casos Recuperados</p>

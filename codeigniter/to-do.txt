@@ -3,3 +3,14 @@
 (?) Acho que o interessante na página do usuário é o gráfico. O mapa e a página do facebook que aparecem poderiam ser menores, uma vez que o mapa só mostra os dados do último boletim quando o usuário clica na cidade e esta informação é uma janela bem pequena em relação ao mapa. O link do facebook também poderia ser diminuído. Penso que o destaque nesta página seria o gráfico.
 
 - Mudar cores dos gráficos de acordo com o tipo de caso
+
+-encurtar tamanho do link na pagina de casos
+
+nome pra clicar em cima na cidade
+clica na microrregião e aparece as cidades checkbox
+
+enter ao pesquisar
+
+remover inicio do link
+
+informativo cidades da microrregiao

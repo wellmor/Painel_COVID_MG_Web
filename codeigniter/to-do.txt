@@ -1,5 +1,34 @@
--Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria
 
-(?) Acho que o interessante na página do usuário é o gráfico. O mapa e a página do facebook que aparecem poderiam ser menores, uma vez que o mapa só mostra os dados do último boletim quando o usuário clica na cidade e esta informação é uma janela bem pequena em relação ao mapa. O link do facebook também poderia ser diminuído. Penso que o destaque nesta página seria o gráfico.
+QUINTA AGORA - PRIORIDADE
 
-- Mudar cores dos gráficos de acordo com o tipo de caso
+- listar dados de minas na home como padrão (minas gerais como cidade) - Ariel
+
+- pesquisa na home (td na home)- Thiago
+
+- associar cidade a microrregião - Ariel
+
+- projetos - colocar os projetos estaticos - pelo menos 6 - Ariel
+
+- se confirmados = 0, recuperados e obitos é 0 - Thiago
+
+OUTROS
+
+- filtrar dados do datatable conforme dropdown de casos(mostrar so da cidade selecionada)
+TODOS - APARECE TODO
+
+- Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria (Ariel)
+
+- Mudar cores dos gráficos de acordo com o tipo de caso (Thiago)
+
+- mostra a microrregião, e pode clicar no mapa e atualizar a pagina - Thiago 
+
+- alerta de casos (ao clicar em cadastrar caso, notificar pessoas que colocaram o email no alerta)  - Ariel
+
+SERVIDOR
+
+- SSL (alterar .env servidor)
+- BACKUP (manualmente provisório)
+
+THALES
+
+- Rodapé com boostrap 4

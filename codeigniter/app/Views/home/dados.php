@@ -17,7 +17,6 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/regular.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" crossorigin="anonymous"></script>
-
     <style>
         p {
             width: 100%;
@@ -265,6 +264,7 @@
                     </div>
                 </section>
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
+
                 <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></p>
                 <p class="subtext small"><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
 
@@ -715,7 +715,7 @@
                 var data = geojson;
                 // console.log(data + "datae")
 
-                var map = L.map('map').setView([latitude, longitude-correcao], zoom),
+                var map = L.map('map').setView([latitude, longitude - correcao], zoom),
                     osmUrl = 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
                     osmAttribution = '';
 

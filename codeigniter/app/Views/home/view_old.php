@@ -13,7 +13,6 @@
       width: 100%;
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/TypeWatch/3.0.1/jquery.typewatch.js"></script>
   <script type="text/javascript" charset="utf-8">
     function delay(callback, ms) {
       var timer = 0;

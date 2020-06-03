@@ -44,7 +44,9 @@
             <div class="container d-flex justify-content-between">
                 <a href="Index.php" class="navbar-brand d-flex align-items-center">
                     <strong>
-                        <h6>COVID-19/MINAS GERAIS <i class="fas fa-virus"></i></h6>
+                        <div class="container">
+                            <img src="https://trello-attachments.s3.amazonaws.com/5e95f929e05def876f6b6218/5ebdcf3e42dfab04157c06c7/c8076c23f7c311be8870da68b7e08bf6/Logo.png" style="width: 192px; height: 56px">
+                        </div>
                     </strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">

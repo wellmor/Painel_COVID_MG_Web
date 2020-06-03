@@ -18,7 +18,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home'); //Pagina inicial acessa o controller home
-$routes->setDefaultMethod('index'); //Com o método index
+$routes->setDefaultMethod('municipio'); //Com o método index
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);

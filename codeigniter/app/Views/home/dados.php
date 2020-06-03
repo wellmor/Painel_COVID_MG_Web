@@ -11,6 +11,121 @@
     <link rel="stylesheet" href="/assets/css/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
     <link rel="icon" href="/assets/images/virus.png">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/regular.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" crossorigin="anonymous"></script>
+
+    <style>
+        p {
+            width: 100%;
+        }
+
+        .jumbotron {
+            background-color: #E0E0E0;
+            padding: 1rem 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            width: 100%;
+            padding: 16px 20px;
+            background-color: #FAFAFA;
+        }
+    </style>
+
+    <!-- pesquisa -->
+    <script type="text/javascript" charset="utf-8">
+        function delay(callback, ms) {
+            var timer = 0;
+            return function() {
+                var context = this,
+                    args = arguments;
+                clearTimeout(timer);
+                timer = setTimeout(function() {
+                    callback.apply(context, args);
+                }, ms || 0);
+            };
+        }
+
+
+        $(document).ready(function() {
+            $('.search-box input[type="text"]').on("keyup input", delay(function(e) {
+                /* Get input value on change */
+                var inputVal = $(this).val();
+                var resultDropdown = $(this).siblings(".result");
+                if (inputVal.length) {
+                    //alert(inputVal);
+                    $.ajax({
+                        type: "GET",
+                        url: "/Ajax/Pesquisa/getDados/" + inputVal,
+                        success: function(result) {
+                            resultDropdown.html(result);
+                        },
+                    });
+                } else {
+                    resultDropdown.empty();
+                }
+            }, 500));
+
+            // Set search input value on click of result item
+            $(document).on("click", ".result p", function() {
+                var url = $(event.target).find("a").prop("href"); // getting the clicked element with event target.
+                window.location = url;
+                $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+                $(this).parent(".result").empty();
+            });
+        });
+    </script>
+
+    <style type="text/css">
+        body {
+            font-family: Arail, sans-serif;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        /* Formatting search box */
+        .result {
+            /* position: absolute; */
+            z-index: 999;
+            top: 100%;
+            width: 80%;
+            left: 0;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .search-box input[type="text"],
+        .result {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Formatting result items */
+        .result p {
+            margin: 0;
+            padding: 7px 10px;
+            border: 1px solid #CCCCCC;
+            border-top: none;
+            cursor: pointer;
+        }
+
+        .result p:hover {
+            background: #f2f2f2;
+        }
+
+        a.disable-links {
+            pointer-events: none;
+        }
+    </style>
+
+    <!-- pesquisa -->
 
     <!-- graficos -->
     <style>
@@ -101,7 +216,10 @@
                 <div class="container d-flex justify-content-between">
                     <a href="/home" class="navbar-brand d-flex align-items-center">
                         <strong>
-                            <h6>COVID-19/MINAS GERAIS</h6>
+                            <!-- <h6>COVID-19/MINAS GERAIS</h6> -->
+                            <div class="container">
+                                <img src="https://trello-attachments.s3.amazonaws.com/5e95f929e05def876f6b6218/5ebdcf3e42dfab04157c06c7/c8076c23f7c311be8870da68b7e08bf6/Logo.png" style="width: 192px; height: 56px">
+                            </div>
                         </strong>
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,16 +231,45 @@
 
         <main role="main">
             <div class="container">
-                <section class="jumbotron text-center p-0">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/home">Buscar</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= esc($casos['nomeMunicipio']) ?></li>
-                    </ol>
+                <!-- <section class="jumbotron text-center ">
                     <h2 class="jumbotron-heading">Painel CoronaVírus</h2>
-                    <p class="lead text-muted">Última atualização feita em <strong><?php echo date("d/m/Y", strtotime($casos['dataCaso'])) ?></strong></p>
-                    <p class="subtext"><small><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></small></p>
+                    <p class="lead text-muted"><i class="fas fa-map"></i> Escolha sua cidade:</p>
+                    <div class="input-group md-form mt-0 animated flash slow">
+                        <input class="form-control" type="text" placeholder="Buscar" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                Microrregião
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Ubá</a>
+                                <a class="dropdown-item" href="#">Juiz de Fora</a>
+                            </div>
+                        </div>
+                    </div>
+                </section> -->
+                <section class="jumbotron text-center ">
+                    <!-- <h2 class="jumbotron-heading">Painel CoronaVírus</h2> -->
+                    <p class="lead text-muted"><i class="fas fa-search"></i> Escolha sua cidade...</p>
+                    <div class="input-group md-form mt-0 animated flash slow search-box">
+                        <input class="form-control" type="text" id="pesquisa" placeholder="Digite o nome do município..." aria-label="Search" style="height: 50px; border-radius: 15px">
+                        <div class="input-group-append">
+                            <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                                Microrregião
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Ubá</a>
+                                <a class="dropdown-item" href="#">Juiz de Fora</a>
+                            </div> -->
+                        </div>
+                        <div class="result"></div>
+                    </div>
                 </section>
+                <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
+                <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></p>
+                <p class="subtext small"><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
+
                 <div class="row">
+
                     <div class="col-md-4">
                         <div class="card card-borda-azul animated bounceInUp slow">
                             <div class="card-body">
@@ -140,10 +287,10 @@
                                                 echo '<div style="font-size: 19px;">Não cadastrado</div>';
                                             }
                                             ?></h3>
-                                        <p class="subtext">Casos Confirmados</p>
+                                        <p class="subtext">Confirmados</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="/assets/images/resultado.png" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="/assets/images/pesquisa.png" width="70" height="70" align="right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -167,10 +314,10 @@
                                                 echo '<div style="font-size: 19px;">Não cadastrado</div>';
                                             }
                                             ?></h3>
-                                        <p class="subtext">Casos Suspeitos</p>
+                                        <p class="subtext">Suspeitos</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="/assets/images/pesquisa.png" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="/assets/images/resultado.png" width="70" height="70" align="right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -194,7 +341,7 @@
                                                 echo '<div style="font-size: 19px;">Não informado</div>';
                                             }
                                             ?></h3>
-                                        <p class="subtext">Casos Descartados</p>
+                                        <p class="subtext">Descartados</p>
                                     </div>
                                     <div class="col">
                                         <img class="img" src="/assets/images/cancelar.png" width="70" height="70" align="right" alt="">
@@ -221,7 +368,7 @@
                                                 echo '<div style="font-size: 19px;">Não cadastrado</div>';
                                             }
                                             ?></h3>
-                                        <p class="subtext">Casos de Óbitos</p>
+                                        <p class="subtext">Óbitos</p>
                                     </div>
                                     <div class="col">
                                         <img class="img" src="/assets/images/certidao-de-obito.png" width="70" height="70" align="right" alt="">
@@ -248,7 +395,7 @@
                                                 echo '<div style="font-size: 19px;">Não cadastrado</div>';
                                             }
                                             ?></h3>
-                                        <p class="subtext">Casos Recuperados</p>
+                                        <p class="subtext">Recuperados</p>
                                     </div>
                                     <div class="col">
                                         <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70" height="70" align="right" alt="">
@@ -398,13 +545,14 @@
         <script src="/assets/dist/BoundaryCanvas.js"></script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
+        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <!-- graficos -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+
+
         <script>
 
         </script>
@@ -523,35 +671,51 @@
             //valores exemplos definidos em mg-geojson.js
             $(document).ready(function() {
                 nome = '<?= $casos['nomeMunicipio'] ?>';
+                slug = '<?= $casos['slugMunicipio'] ?>';
                 nome = nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
                 nome = nome.toLowerCase();
                 nome = nome.replace(/ /g, '-')
-                $.getJSON(
-                    'https://servicodados.ibge.gov.br/api/v1/localidades/municipios/' + nome,
-                    function(data) {
-                        id = data['id'];
+                if (slug != 'minas-gerais') {
+                    $.getJSON(
+                        'https://servicodados.ibge.gov.br/api/v1/localidades/municipios/' + nome,
+                        function(data) {
+                            id = data['id'];
 
-                        link = "https://servicodados.ibge.gov.br/api/v2/malhas/" + id + "?formato=application/vnd.geo+json";
-                        $.getJSON(link,
-                            function(data) {
-                                console.log(data);
-                                geojson = data['features']['0']['geometry'];
-                                coordinate = geojson['coordinates'][0][0];
+                            link = "https://servicodados.ibge.gov.br/api/v2/malhas/" + id + "?formato=application/vnd.geo+json";
+                            $.getJSON(link,
+                                function(data) {
+                                    // console.log(data);
+                                    geojson = data['features']['0']['geometry'];
+                                    coordinate = geojson['coordinates'][0][0];
 
-                                test(parseFloat(coordinate[1]), parseFloat(coordinate[0]));
-                                console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
-                            })
-                    }
-                );
+                                    test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 10, 0.03);
+                                    // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
+                                })
+                        }
+                    );
+                } else {
+                    link = "https://servicodados.ibge.gov.br/api/v2/malhas/31?formato=application/vnd.geo+json";
+                    $.getJSON(link,
+                        function(data) {
+                            // console.log(data);
+                            geojson = data['features']['0']['geometry'];
+                            coordinate = geojson['coordinates'][0][0];
+
+                            test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 3);
+                            // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
+                        })
+
+
+                }
                 // setTimeout(function(){ alert("Hello"); }, 3000);
             });
 
 
-            function test(latitude, longitude) {
+            function test(latitude, longitude, zoom, correcao) {
                 var data = geojson;
                 // console.log(data + "datae")
 
-                var map = L.map('map').setView([latitude - 0.2, longitude], 10),
+                var map = L.map('map').setView([latitude, longitude-correcao], zoom),
                     osmUrl = 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
                     osmAttribution = '';
 

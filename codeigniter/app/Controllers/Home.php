@@ -7,9 +7,14 @@ use CodeIgniter\Controller;
 
 class Home extends BaseController
 {
-	public function index()
+	public function index($id = "minas-gerais")
 	{
-		return view('/home/view');
+		$model = new CasosModel();
+		// echo "o id eh ". $id . "<br>";
+
+		$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
+		$data['casos'] = $query->getRowArray();
+		return view('/home/dados', $data);
 	}
 
 	public function projetos()
@@ -22,7 +27,7 @@ class Home extends BaseController
 		return view('/home/dicas');
 	}
 	
-	public function municipio($id = null)
+	public function pesquisa($id = "")
 	{
 		$model = new CasosModel();
 		// echo "o id eh ". $id . "<br>";

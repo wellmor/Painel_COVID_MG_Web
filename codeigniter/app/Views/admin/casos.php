@@ -164,11 +164,11 @@
                             </div>
                             <div class="col-sm-6">
                                 <label>Recuperados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)"  min="0" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
                             </div>
                             <div class="col-sm-6">
                                 <label>Obitos</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)"min="0" class="form-control" name="obitos" id="obitos" placeholder="obitos">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="obitos" id="obitos" placeholder="obitos">
                             </div>
                             <div class="col-sm-6">
                                 <label>Data</label>
@@ -210,7 +210,7 @@
                 $.each(data, function(i, d) {
                     selectbox.append('<option value="' + d.idMunicipio + '">' + d.nomeMunicipio + '</option>');
                 });
-                selectbox.append('<option value="" selected disabled hidden>Clique aqui para selecionar</option>');
+                selectbox.append('<option value="" selected>Clique aqui para selecionar</option>');
             }
         });
         var table;
@@ -323,6 +323,17 @@
                 .end();
         })
 
+        //filter by selected value on second column(municipio)
+        $("#municipio").on('change', function() {
+            //filter by selected value on second column
+            if($('#municipio option:selected').text() == 'Clique aqui para selecionar'){
+                table.column(3).search("").draw();
+            }
+            else{
+                table.column(3).search($('#municipio option:selected').text()).draw();
+            }
+        });
+        
         //cadastro e edição
         $(document).ready(function() {
             $('#btn').click(function() {
@@ -422,7 +433,7 @@
 
         function formatarData(datax) {
             var data = new Date(datax),
-                dia = (data.getDate()+1).toString().padStart(2, '0'),
+                dia = (data.getDate() + 1).toString().padStart(2, '0'),
                 mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
                 ano = data.getFullYear();
             return " " + dia + "/" + mes + "/" + ano + " ";

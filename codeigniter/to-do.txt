@@ -1,6 +1,6 @@
 QUINTA AGORA - PRIORIDADE
 
-- associar cidade a microrregião - Ariel
+- associar cidade a microrregião - Ariel (feito)
 
 - projetos - colocar os projetos estaticos - pelo menos 6 - Ariel
 

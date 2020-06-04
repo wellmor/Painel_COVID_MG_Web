@@ -467,7 +467,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="card animated bounceInUp slow delay-1s">
-                            <div class="card-body" style="height:670px">
+                            <div class="card-body" style="height:130vh; height: auto;">
                                 <h5 class="subtext">Gráficos</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -489,19 +489,19 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" width="800" height="400"></canvas>
+                                        <canvas id="chartConfirmados" height="200vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" width="800" height="400"></canvas>
+                                        <canvas id="chartSuspeitos" height="200vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" width="800" height="400"></canvas>
+                                        <canvas id="chartDescartados" height="200vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" width="800" height="400"></canvas>
+                                        <canvas id="chartRecuperados" height="200vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" width="800" height="400"></canvas>
+                                        <canvas id="chartObitos" height="200vh"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -537,7 +537,7 @@
                     </div>
                 </div> 
             </div> -->
-                <div class="row">
+                <div class="row bounceInUp slow delay-1s">
                     <div class="col-md-4">
                         <div class="card animated bounceInUp fast">
                             <div class="card-body text-center">
@@ -651,7 +651,8 @@
                         let chartConfirmados = new Chart(ctc, {
                             type: 'line',
                             data: confirmadosData,
-                            backgroundColor: '#FF0000'
+                            backgroundColor: '#ff0000'
+
                         });
 
                         // grafico suspeitos

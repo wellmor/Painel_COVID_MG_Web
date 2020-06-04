@@ -2,10 +2,11 @@ QUINTA AGORA - PRIORIDADE
 
 - associar cidade a microrregião - Ariel (feito)
 
-- projetos - colocar os projetos estaticos - pelo menos 6 - Ariel
+- projetos - colocar os projetos estaticos - pelo menos 6 - Ariel (feito)
 
-- migrar (melhor forma) cards da antiga home
+- migrar (melhor forma) cards da antiga home (feito (?))
 
+- corrigir gráfico em mobile (feito, porém volto um bugzin que sobe o gráfico dps que muda de caso, corrigir em breve)
 
 OUTROS
 

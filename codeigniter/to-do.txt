@@ -12,7 +12,7 @@ OUTROS
 
 - Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria (Ariel)
 
-- Mudar cores dos gráficos de acordo com o tipo de caso (Thiago)
+- Mudar cores dos gráficos de acordo com o tipo de caso (Thiago) (Ariel, tentei mas não consegui. Obs: alterando direto na função infelizmente não reconhece não sei o porque ainda)
 
 - mostra a microrregião, e pode clicar no mapa e atualizar a pagina - Thiago 
 
@@ -20,18 +20,11 @@ OUTROS
 
 SERVIDOR
 
-- SSL (alterar .env servidor)
 - BACKUP (manualmente provisório)
 
-THALES
-
-- Rodapé com boostrap 4
-=======
-
 Extras
-- Mudar cores dos gráficos de acordo com o tipo de caso
 
--encurtar tamanho do link na pagina de casos
+- Encurtar tamanho do link na pagina de casos
 
 nome pra clicar em cima na cidade
 clica na microrregião e aparece as cidades checkbox

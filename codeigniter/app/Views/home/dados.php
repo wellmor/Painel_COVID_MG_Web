@@ -263,6 +263,7 @@
                         <div class="result"></div>
                     </div>
                 </section>
+
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
 
                 <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></p>
@@ -290,7 +291,7 @@
                                         <p class="subtext">Confirmados</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="/assets/images/pesquisa.png" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="/assets/images/pesquisa.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -317,7 +318,7 @@
                                         <p class="subtext">Suspeitos</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="/assets/images/resultado.png" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="/assets/images/resultado.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -344,7 +345,7 @@
                                         <p class="subtext">Descartados</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="/assets/images/cancelar.png" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="/assets/images/cancelar.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -371,7 +372,7 @@
                                         <p class="subtext">Óbitos</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="/assets/images/certidao-de-obito.png" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="/assets/images/certidao-de-obito.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +399,7 @@
                                         <p class="subtext">Recuperados</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -415,7 +416,7 @@
 
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="https://image.flaticon.com/icons/svg/1157/1157000.svg" width="70" height="70" align="right" alt="">
+                                        <img class="img" src="https://image.flaticon.com/icons/svg/1157/1157000.svg" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +428,7 @@
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Em Construção</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Ops! Página em construção!</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -510,7 +511,7 @@
                 <!--<div class="row">
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-body" align="center">
+                        <div class="card-body text-center">
                             <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
                             <h5 class="subtext">Unidade Saúde</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
@@ -519,7 +520,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-body" align="center">
+                        <div class="card-body text-center">
                             <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
                             <h5 class="subtext">Unidade Saúde</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
@@ -528,7 +529,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-body" align="center">
+                        <div class="card-body text-center">
                             <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
                             <h5 class="subtext">Unidade Saúde</h5>
                             <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
@@ -536,6 +537,57 @@
                     </div>
                 </div> 
             </div> -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card animated bounceInUp fast">
+                            <div class="card-body text-center">
+                                <img src="/assets/images/business%20(1).png" width="70" height="70" alt="">
+                                <h5 class="subtext mt-2">Projetos</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Projetos desenvolvido pelo IF Sudeste</h6>
+                                <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card animated bounceInUp fast">
+                            <div class="card-body text-center">
+                                <img src="/assets/images/dicas.png" width="70" height="70" alt="">
+                                <h5 class="subtext mt-2">Dicas</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">O que você precisa saber e fazer</h6>
+                                <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card animated bounceInUp fast">
+                            <div class="card-body text-center">
+                                <img src="/assets/images/caixa.png" width="70" height="70" alt="">
+                                <h5 class="subtext mt-2">Doação</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">O que você precisa saber e fazer</h6>
+                                <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Em Construção</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -552,10 +604,6 @@
         <!-- graficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
 
-
-        <script>
-
-        </script>
         <!-- graficos -->
         <script>
             function formatarData(datax) {
@@ -724,9 +772,6 @@
                     attribution: osmAttribution,
                     trackAttribution: true
                 }).addTo(map);
-
-
-
 
                 var featuresLayer = new L.GeoJSON(data, {
                     style: function(feature) {

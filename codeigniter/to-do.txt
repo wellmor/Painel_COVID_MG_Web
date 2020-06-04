@@ -1,16 +1,13 @@
-
 QUINTA AGORA - PRIORIDADE
 
 - associar cidade a microrregião - Ariel
 
 - projetos - colocar os projetos estaticos - pelo menos 6 - Ariel
 
-- se confirmados = 0, recuperados e obitos é 0 - Thiago
+- migrar (melhor forma) cards da antiga home
+
 
 OUTROS
-
-- filtrar dados do datatable conforme dropdown de casos(mostrar so da cidade selecionada)
-TODOS - APARECE TODO
 
 - Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria (Ariel)
 

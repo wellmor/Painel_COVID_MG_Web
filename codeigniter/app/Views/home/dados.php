@@ -52,7 +52,7 @@
 
 
         $(document).ready(function() {
-            $('.search-box input[type="text"]').on("keyup input", delay(function(e) {
+            $('.search-box input[type="text"]').on("click keyup input", delay(function(e) {
                 /* Get input value on change */
                 var inputVal = $(this).val();
                 var resultDropdown = $(this).siblings(".result");

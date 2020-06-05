@@ -573,6 +573,8 @@
         <!-- graficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
         <script>
+        
+
             function formatarData(datax) {
                 var data = new Date(datax),
                     dia = (data.getDate()).toString().padStart(2, '0'),
@@ -611,14 +613,15 @@
                             labels: [...dataCaso],
                             datasets: [{
                                 label: 'Casos confirmados',
-                                data: [...confirmados]
+                                data: [...confirmados],
+                                borderColor: 'rgb(255, 0, 0)',
                             }]
                         };
                         let ctc = $("#chartConfirmados");
                         let chartConfirmados = new Chart(ctc, {
                             type: 'line',
                             data: confirmadosData,
-                            backgroundColor: '#ff0000'
+
 
                         });
 
@@ -627,7 +630,9 @@
                             labels: [...dataCaso],
                             datasets: [{
                                 label: 'Casos suspeitos',
-                                data: [...suspeitos]
+                                data: [...suspeitos],
+                                borderColor: 'rgb(255, 115, 0)'
+
                             }]
                         };
                         let cts = $("#chartSuspeitos");
@@ -641,13 +646,14 @@
                             labels: [...dataCaso],
                             datasets: [{
                                 label: 'Casos descartados',
-                                data: [...descartados]
+                                data: [...descartados],
+                                borderColor: 'rgb(0, 0, 255)'
                             }]
                         };
                         let ctd = $("#chartDescartados");
                         let chartDescartados = new Chart(ctd, {
                             type: 'line',
-                            data: descartadosData
+                            data: descartadosData,
                         });
 
                         // grafico obitos
@@ -655,7 +661,8 @@
                             labels: [...dataCaso],
                             datasets: [{
                                 label: 'Casos óbitos',
-                                data: [...obitos]
+                                data: [...obitos],
+                                borderColor: 'rgb(0, 0, 0)',
                             }]
                         };
                         let cto = $("#chartObitos");
@@ -669,7 +676,8 @@
                             labels: [...dataCaso],
                             datasets: [{
                                 label: 'Casos recuperados',
-                                data: [...recuperados]
+                                data: [...recuperados],
+                                borderColor: 'rgb(0, 255, 0)'
                             }]
                         };
                         let ctr = $("#chartRecuperados");

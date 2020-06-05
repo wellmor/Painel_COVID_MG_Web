@@ -217,7 +217,7 @@
                         <strong>
                             <!-- <h6>COVID-19/MINAS GERAIS</h6> -->
                             <div class="container">
-                                <img src="https://trello-attachments.s3.amazonaws.com/5e95f929e05def876f6b6218/5ebdcf3e42dfab04157c06c7/c8076c23f7c311be8870da68b7e08bf6/Logo.png" style="width: 192px; height: 56px">
+                                <img src="/assets/images/logo.png" style="width: 192px; height: 56px">
                             </div>
                         </strong>
                     </a>
@@ -266,7 +266,7 @@
 
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
 
-                <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></p>
+                <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
                 <p class="subtext small"><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
 
                 <div class="row">
@@ -465,7 +465,7 @@
                 <div class="row" style="margin-bottom:50px">
                     <div class="col-md-7">
                         <div class="card animated bounceInUp slow delay-1s">
-                            <div class="card-body" style="height:270vh; height: auto;">
+                            <div class="card-body" style="height: auto;">
                                 <h5 class="subtext">Gráficos</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -487,19 +487,19 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" height="300vh"></canvas>
+                                        <canvas id="chartConfirmados" height="208vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" height="300vh"></canvas>
+                                        <canvas id="chartSuspeitos" height="208vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" height="300vh"></canvas>
+                                        <canvas id="chartDescartados" height="208vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" height="300vh"></canvas>
+                                        <canvas id="chartRecuperados" height="208vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" height="300vh"></canvas>
+                                        <canvas id="chartObitos" height="208vh"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -508,50 +508,67 @@
                     <div class="card animated bounceInUp slow delay-1s col-md-5">
                         <div class="card animated bounceInUp fast" style="margin:15px">
                             <div class="card-body text-center">
-                                <img src="/assets/images/business%20(1).png" width="70" height="70">
-                                <h5 class="subtext mt-2">Projetos</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Projetos desenvolvido pelo IF Sudeste</h6>
-                                <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="/assets/images/business%20(1).png" width="70" height="70">
+                                        <h5 class="subtext mt-2">Projetos</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card-subtitle mb-4 text-muted">Projetos desenvolvido pelo IF Sudeste</div>
+                                        <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="card animated bounceInUp fast" style="margin:15px">
                             <div class="card-body text-center">
-                                <img src="/assets/images/dicas.png" width="70" height="70">
-                                <h5 class="subtext mt-2">Dicas</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">O que você precisa saber e fazer</h6>
-                                <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="/assets/images/dicas.png" width="70" height="70">
+                                        <h5 class="subtext mt-2">Dicas</h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6 class="card-subtitle mb-4 text-muted">O que você precisa saber e fazer</h6>
+                                        <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
                         <div class="card animated bounceInUp fast" style="margin:15px">
                             <div class="card-body text-center">
-                                <img src="/assets/images/caixa.png" width="70" height="70">
-                                <h5 class="subtext mt-2">Doação</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">O que você precisa saber e fazer</h6>
-                                <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
-
-                            </div>
-                        </div>
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Em construção</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="/assets/images/caixa.png" width="70" height="70">
+                                        <h5 class="subtext mt-2">Doação</h5>
                                     </div>
-                                    <div class="modal-body">
-                                        <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    <div class="col-md-6">
+                                        <h6 class="card-subtitle mb-4 text-muted">Saiba como ajudar</h6>
+                                        <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Em construção</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            </div>
             </div>
             </div>
         </main>

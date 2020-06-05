@@ -275,7 +275,7 @@
                         <div class="card card-borda-azul animated bounceInUp slow">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-left">
                                         <h3 class="cor1">
                                             <?php
                                             if (isset($casos['confirmadosCaso'])) {
@@ -290,7 +290,7 @@
                                             ?></h3>
                                         <p class="subtext">Confirmados</p>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-right">
                                         <img class="img" src="/assets/images/pesquisa.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
@@ -302,7 +302,7 @@
                         <div class="card card-borda-amarelo animated bounceInUp slow">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-left">
                                         <h3 class="cor2">
                                             <?php
                                             if (isset($casos['suspeitosCaso'])) {
@@ -317,7 +317,7 @@
                                             ?></h3>
                                         <p class="subtext">Suspeitos</p>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-right">
                                         <img class="img" src="/assets/images/resultado.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
@@ -329,7 +329,7 @@
                         <div class="card card-borda-verde animated bounceInUp slow">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-left">
                                         <h3 class="cor3">
                                             <?php
                                             if (isset($casos['descartadosCaso'])) {
@@ -344,7 +344,7 @@
                                             ?></h3>
                                         <p class="subtext">Descartados</p>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-right">
                                         <img class="img" src="/assets/images/cancelar.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
@@ -356,7 +356,7 @@
                         <div class="card card-borda-vermelho animated bounceInUp slow">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-left">
                                         <h3 class="cor4">
                                             <?php
                                             if (isset($casos['obitosCaso'])) {
@@ -372,18 +372,17 @@
                                         <p class="subtext">Óbitos</p>
                                     </div>
                                     <div class="col">
-                                        <img class="img" src="/assets/images/certidao-de-obito.png" width="70" height="70 text-right" alt="">
+                                        <img class="img text-right" src="/assets/images/certidao-de-obito.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-md-4">
                         <div class="card card-borda-rosa animated bounceInUp slow">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-left">
                                         <h3 class="cor5">
                                             <?php
                                             if (isset($casos['recuperadosCaso'])) {
@@ -398,7 +397,7 @@
                                             ?></h3>
                                         <p class="subtext">Recuperados</p>
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-right">
                                         <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
@@ -409,13 +408,12 @@
                         <div class="card  animated bounceInUp slow">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col text-left">
                                         <p class="subtext">Seja alertado</p>
                                         <!-- <button type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</button> -->
                                         <a href="" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-bell"></i> Alerta</a>
-
                                     </div>
-                                    <div class="col">
+                                    <div class="col text-right">
                                         <img class="img" src="https://image.flaticon.com/icons/svg/1157/1157000.svg" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
@@ -423,7 +421,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -442,7 +439,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-7">
                         <div class="card animated bounceInUp slow delay-1s">
@@ -465,9 +461,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                </div>
+                <div class="row" style="margin-bottom:50px">
+                    <div class="col-md-7">
                         <div class="card animated bounceInUp slow delay-1s">
-                            <div class="card-body" style="height:130vh; height: auto;">
+                            <div class="card-body" style="height:270vh; height: auto;">
                                 <h5 class="subtext">Gráficos</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -489,105 +487,72 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" height="200vh"></canvas>
+                                        <canvas id="chartConfirmados" height="300vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" height="200vh"></canvas>
+                                        <canvas id="chartSuspeitos" height="300vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" height="200vh"></canvas>
+                                        <canvas id="chartDescartados" height="300vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" height="200vh"></canvas>
+                                        <canvas id="chartRecuperados" height="300vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" height="200vh"></canvas>
+                                        <canvas id="chartObitos" height="300vh"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--<div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
-                            <h5 class="subtext">Unidade Saúde</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
-                            <h5 class="subtext">Unidade Saúde</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
-                            <h5 class="subtext">Unidade Saúde</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
-                        </div>
-                    </div>
-                </div> 
-            </div> -->
-                <div class="row bounceInUp slow delay-1s">
-                    <div class="col-md-4">
-                        <div class="card animated bounceInUp fast">
+                    <div class="card animated bounceInUp slow delay-1s col-md-5">
+                        <div class="card animated bounceInUp fast" style="margin:15px">
                             <div class="card-body text-center">
-                                <img src="/assets/images/business%20(1).png" width="70" height="70" alt="">
+                                <img src="/assets/images/business%20(1).png" width="70" height="70">
                                 <h5 class="subtext mt-2">Projetos</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Projetos desenvolvido pelo IF Sudeste</h6>
                                 <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card animated bounceInUp fast">
+                        <div class="card animated bounceInUp fast" style="margin:15px">
                             <div class="card-body text-center">
-                                <img src="/assets/images/dicas.png" width="70" height="70" alt="">
+                                <img src="/assets/images/dicas.png" width="70" height="70">
                                 <h5 class="subtext mt-2">Dicas</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">O que você precisa saber e fazer</h6>
                                 <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4">
-                        <div class="card animated bounceInUp fast">
+                        <div class="card animated bounceInUp fast" style="margin:15px">
                             <div class="card-body text-center">
-                                <img src="/assets/images/caixa.png" width="70" height="70" alt="">
+                                <img src="/assets/images/caixa.png" width="70" height="70">
                                 <h5 class="subtext mt-2">Doação</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">O que você precisa saber e fazer</h6>
                                 <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
+
                             </div>
                         </div>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Em Construção</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Em construção</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -801,3 +766,33 @@
     window.alert('Ainda não foram encontrados dados para a cidade selecionada');
     window.location.href='/home';
     </script>"); ?>
+
+<!--<div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
+                            <h5 class="subtext">Unidade Saúde</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
+                            <h5 class="subtext">Unidade Saúde</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
+                            <h5 class="subtext">Unidade Saúde</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
+                        </div>
+                    </div>
+                </div> 
+            </div> -->

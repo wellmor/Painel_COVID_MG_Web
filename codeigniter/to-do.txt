@@ -1,12 +1,11 @@
-QUINTA AGORA - PRIORIDADE
+PRINCIPAIS
 
-- associar cidade a microrregião - Ariel (feito)
+- ver uma maneira de notificação (OneSignal, talvez)
 
-- projetos - colocar os projetos estaticos - pelo menos 6 - Ariel (feito)
+- ver sobre Google Analytics (Wellington)
 
-- migrar (melhor forma) cards da antiga home (feito (?))
+- corrigir falso positivo do McAfee
 
-- corrigir gráfico em mobile (feito, porém volto um bugzin que sobe o gráfico dps que muda de caso, corrigir em breve)
 
 OUTROS
 
@@ -20,18 +19,18 @@ OUTROS
 
 SERVIDOR
 
-- BACKUP (manualmente provisório)
+- BACKUP automático (manualmente provisório)
 
-Extras
+EXTRAS
 
 - Encurtar tamanho do link na pagina de casos
 
-nome pra clicar em cima na cidade
-clica na microrregião e aparece as cidades checkbox
+- nome pra clicar em cima na cidade
 
-enter ao pesquisar
+- clica na microrregião e aparece as cidades checkbox
 
-remover inicio do link
+- enter ao pesquisar
 
-informativo cidades da microrregiao
+- remover inicio do link
 
+- informativo cidades da microrregiao

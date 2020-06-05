@@ -451,7 +451,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom:50px">
+                <div class="row">
                     <div class="col-md-7">
                         <div class="card animated bounceInUp slow delay-1s">
                             <div class="card-body" style="height: auto;">
@@ -494,70 +494,71 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card animated bounceInUp slow delay-1s col-md-5">
-                        <div class="card animated bounceInUp fast" style="margin:15px">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="/assets/images/business%20(1).png" width="70" height="70">
-                                        <h5 class="subtext mt-2">Projetos</h5>
+                    <div class="col-md-5">
+                        <div class="card animated bounceInUp slow delay-1s ">
+                            <div class="card animated bounceInUp fast" style="margin:15px">
+                                <div class="card-body text-center">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="/assets/images/business%20(1).png" width="70" height="70">
+                                            <h5 class="subtext mt-2">Projetos</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card-subtitle mb-4 text-muted">Projetos desenvolvidos pelo IF Sudeste</div>
+                                            <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="card-subtitle mb-4 text-muted">Projetos desenvolvido pelo IF Sudeste</div>
-                                        <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                </div>
+                            </div>
+                            <div class="card animated bounceInUp fast" style="margin:15px">
+                                <div class="card-body text-center">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="/assets/images/dicas.png" width="70" height="70">
+                                            <h5 class="subtext mt-2">Dicas</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="card-subtitle mb-4 text-muted">O que você precisa saber e fazer</h6>
+                                            <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card animated bounceInUp fast" style="margin:15px">
+                                <div class="card-body text-center">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="/assets/images/caixa.png" width="70" height="70">
+                                            <h5 class="subtext mt-2">Doação</h5>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="card-subtitle mb-4 text-muted">Saiba como ajudar</h6>
+                                            <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card animated bounceInUp fast" style="margin:15px">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="/assets/images/dicas.png" width="70" height="70">
-                                        <h5 class="subtext mt-2">Dicas</h5>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Em construção</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
-                                    <div class="col-md-6">
-                                        <h6 class="card-subtitle mb-4 text-muted">O que você precisa saber e fazer</h6>
-                                        <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                    <div class="modal-body">
+                                        <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card animated bounceInUp fast" style="margin:15px">
-                            <div class="card-body text-center">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="/assets/images/caixa.png" width="70" height="70">
-                                        <h5 class="subtext mt-2">Doação</h5>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                     </div>
-                                    <div class="col-md-6">
-                                        <h6 class="card-subtitle mb-4 text-muted">Saiba como ajudar</h6>
-                                        <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Em construção</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
@@ -573,8 +574,6 @@
         <!-- graficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
         <script>
-        
-
             function formatarData(datax) {
                 var data = new Date(datax),
                     dia = (data.getDate()).toString().padStart(2, '0'),

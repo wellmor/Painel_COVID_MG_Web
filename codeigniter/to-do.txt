@@ -1,11 +1,10 @@
 PRINCIPAIS
 
-- ver uma maneira de notificação (OneSignal, talvez)
+- alerta de casos (ao clicar em cadastrar caso, notificar pessoas que colocaram o email no alerta) [ONESIGNAL]  - Ariel
 
 - ver sobre Google Analytics (Wellington)
 
 - corrigir falso positivo do McAfee
-
 
 OUTROS
 
@@ -14,8 +13,6 @@ OUTROS
 - Mudar cores dos gráficos de acordo com o tipo de caso (Thiago) (Ariel, tentei mas não consegui. Obs: alterando direto na função infelizmente não reconhece não sei o porque ainda)
 
 - mostra a microrregião, e pode clicar no mapa e atualizar a pagina - Thiago 
-
-- alerta de casos (ao clicar em cadastrar caso, notificar pessoas que colocaram o email no alerta)  - Ariel
 
 SERVIDOR
 

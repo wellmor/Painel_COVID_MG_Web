@@ -13,7 +13,6 @@
     <link rel="icon" href="/assets/images/virus.png">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/regular.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" crossorigin="anonymous"></script>
@@ -191,42 +190,37 @@
         <div id="fb-root"></div>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v7.0&appId=204305290231388&autoLogAppEvents=1"></script>
 
-        <header>
-            <div class="collapse bg-dark" id="navbarHeader">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8 col-md-7 py-4">
-                            <h4 class="text-white">Sobre o projeto</h4>
-                            <p class="text-muted"> Painel de Informações e Emissão de Alertas no Enfrentamento ao COVID-19 nas Microrregiões de Ubá e Juiz de Fora</p>
-                        </div>
-                        <div class="col-sm-4 offset-md-1 py-4">
-                            <h4 class="text-white">Menu</h4>
-                            <ul class="list-unstyled">
-                                <li><a href="/home/projetos" class="text-white">Projetos</a></li>
-                                <li><a href="/home/dicas" class="text-white">Dicas</a></li>
-                                <li><a href="#" class="text-white">Doação</a></li>
-                                <li><a href="/admin" class="text-white">Login</a></li>
-                            </ul>
-                        </div>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">Sobre o projeto</h4>
+                        <p class="text-muted"> Painel de Informações e Emissão de Alertas no Enfrentamento ao COVID-19 nas Microrregiões de Ubá e Juiz de Fora</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Menu</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="/home/projetos" class="text-white">Projetos</a></li>
+                            <li><a href="/home/dicas" class="text-white">Dicas</a></li>
+                            <li><a href="#" class="text-white">Doação</a></li>
+                            <li><a href="/admin" class="text-white">Login</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="navbar navbar-dark bg-dark box-shadow">
-                <div class="container d-flex justify-content-between">
-                    <a href="/home" class="navbar-brand d-flex align-items-center">
-                        <strong>
-                            <!-- <h6>COVID-19/MINAS GERAIS</h6> -->
-                            <div class="container">
-                                <img src="/assets/images/logo.png" style="width: 192px; height: 56px">
-                            </div>
-                        </strong>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark box-shadow">
+            <div class="container d-flex justify-content-between">
+                <a href="/home" class="navbar-brand d-flex align-items-center">
+                    <div class="container">
+                        <img src="/assets/images/logo.png" style="width: 192px; height: 56px">
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
             </div>
-        </header>
+        </div>
 
         <main role="main">
             <div class="container">
@@ -247,7 +241,6 @@
                     </div>
                 </section> -->
                 <section class="jumbotron text-center ">
-                    <!-- <h2 class="jumbotron-heading">Painel CoronaVírus</h2> -->
                     <p class="lead text-muted"><i class="fas fa-search"></i> Escolha sua cidade...</p>
                     <div class="input-group md-form mt-0 animated flash slow search-box">
                         <input class="form-control" type="text" id="pesquisa" placeholder="Digite o nome do município..." aria-label="Search" style="height: 50px; border-radius: 15px">
@@ -263,14 +256,10 @@
                         <div class="result"></div>
                     </div>
                 </section>
-
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
-
                 <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
                 <p class="subtext small"><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
-
                 <div class="row">
-
                     <div class="col-md-4">
                         <div class="card card-borda-azul animated bounceInUp slow">
                             <div class="card-body">
@@ -371,8 +360,8 @@
                                             ?></h3>
                                         <p class="subtext">Óbitos</p>
                                     </div>
-                                    <div class="col">
-                                        <img class="img text-right" src="/assets/images/certidao-de-obito.png" width="70" height="70 text-right" alt="">
+                                    <div class="col text-right">
+                                        <img class="img" src="/assets/images/certidao-de-obito.png" width="70" height="70 text-right" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -569,8 +558,6 @@
                     </div>
                 </div>
             </div>
-            </div>
-            </div>
         </main>
         <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
@@ -585,8 +572,6 @@
 
         <!-- graficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
-
-        <!-- graficos -->
         <script>
             function formatarData(datax) {
                 var data = new Date(datax),
@@ -735,8 +720,6 @@
                             test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 3);
                             // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
                         })
-
-
                 }
                 // setTimeout(function(){ alert("Hello"); }, 3000);
             });

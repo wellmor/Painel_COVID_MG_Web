@@ -218,6 +218,7 @@
             table = $('#tableCasos').DataTable({
                 "ajax": "../Ajax/Casos/getDados",
                 "processing": true,
+                "order": [[ 1, "desc" ]],
                 columns: [{
                         data: "id",
                         visible: false

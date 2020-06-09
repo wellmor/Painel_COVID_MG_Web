@@ -1,12 +1,14 @@
 PRINCIPAIS
 
+- adicionar um "ver mais" redirecionando pra todos os projetos do power bi na área de projetos
+
+- substituir gráfico com notícia 
+
 - alerta de casos (ao clicar em cadastrar caso, notificar pessoas que colocaram o email no alerta) [ONESIGNAL]  - Ariel
 
-- ver sobre Google Analytics (Wellington)
+OUTROS
 
 - corrigir falso positivo do McAfee
-
-OUTROS
 
 - Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria (Ariel)
 

@@ -12,6 +12,7 @@ class Pesquisa extends Controller
     {
         $model = new HomeModel();
         // $model->select("nomeMunicipio, idMunicipio, codMunicipio");
+        $model->orderby('nomeMunicipio', 'ASC');
         $pesquisas = $model->findAll();
 
         $microrregiao = null;

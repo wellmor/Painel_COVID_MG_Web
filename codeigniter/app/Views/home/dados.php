@@ -277,14 +277,7 @@
                                         });
                                     </script>
 
-                                    <li class="btn dropdown-item" style="padding-left: 10px;" data-microrregiao="microrregiao-jf">
-                                        <a href="google.com" style="text-decoration: none; color: black;">
-                                            <h5 class="name text-center">Juiz de Fora</h5>
-                                        </a>
-                                    </li>
-                                    <li class="btn dropdown-item" style="padding-left: 10px" data-microrregiao="microrregiao-uba">
-                                        <h5 class="name text-center">Ubá</h5>
-                                    </li>
+                            
 
                                     <!-- <li class="btn dropdown-item" style="padding-left: 10px;" data-microrregiao="microrregiao-jf">
                                     <a href="/home/pesquisa/rio-pomba" style="text-decoration: none; color: black;">

@@ -13,10 +13,86 @@
     <link rel="icon" href="/assets/images/virus.png">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/regular.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" crossorigin="anonymous"></script>
+
     <style>
+        .scrollbar {
+            float: left;
+            /* height: 300px; */
+            width: 65px;
+            background: #F5F5F5;
+            overflow-y: scroll;
+        }
+
+        .force-overflow {
+            max-height: 200px;
+        }
+
+        #wrapper {
+            text-align: center;
+            margin: auto;
+        }
+
+        #scrollbarzera::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+
+        #scrollbarzera::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+
+        #scrollbarzera::-webkit-scrollbar-thumb {
+            background-color: rgba(60, 60, 60, 0.1);
+            border-radius: 3px;
+        }
+
+        .form-control:focus {
+            border-color: #cccccc;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+    </style>
+    <style>
+        #municipios {
+            display: none;
+        }
+
+        .list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #test {
+            border-bottom: 1px solid #ccc;
+            display: block;
+            border-color: rgba(220, 220, 220, 0.9);
+        }
+
+        .list--list-item {
+            /* padding-bottom: 20px; */
+            border-bottom: 1px solid #ccc;
+        }
+
+        .list--list-item:last-child {
+            border-bottom: 0;
+            margin: 0;
+        }
+
+        .no-result {
+            display: none;
+        }
+
+        li a {
+            display: block;
+        }
+
         p {
             width: 100%;
         }
@@ -33,100 +109,7 @@
             padding: 16px 20px;
             background-color: #FAFAFA;
         }
-    </style>
 
-    <!-- pesquisa -->
-    <script type="text/javascript" charset="utf-8">
-        function delay(callback, ms) {
-            var timer = 0;
-            return function() {
-                var context = this,
-                    args = arguments;
-                clearTimeout(timer);
-                timer = setTimeout(function() {
-                    callback.apply(context, args);
-                }, ms || 0);
-            };
-        }
-
-
-        $(document).ready(function() {
-            $('.search-box input[type="text"]').on("click keyup input", delay(function(e) {
-                /* Get input value on change */
-                var inputVal = $(this).val();
-                var resultDropdown = $(this).siblings(".result");
-                if (inputVal.length) {
-                    //alert(inputVal);
-                    $.ajax({
-                        type: "GET",
-                        url: "/Ajax/Pesquisa/getDados/" + inputVal,
-                        success: function(result) {
-                            resultDropdown.html(result);
-                        },
-                    });
-                } else {
-                    resultDropdown.empty();
-                }
-            }, 500));
-
-            // Set search input value on click of result item
-            $(document).on("click", ".result p", function() {
-                var url = $(event.target).find("a").prop("href"); // getting the clicked element with event target.
-                window.location = url;
-                $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-                $(this).parent(".result").empty();
-            });
-        });
-    </script>
-
-    <style type="text/css">
-        body {
-            font-family: Arail, sans-serif;
-        }
-
-        .search-box {
-            position: relative;
-        }
-
-        /* Formatting search box */
-        .result {
-            /* position: absolute; */
-            z-index: 999;
-            top: 100%;
-            width: 80%;
-            left: 0;
-            background-color: white;
-            border-radius: 5px;
-        }
-
-        .search-box input[type="text"],
-        .result {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        /* Formatting result items */
-        .result p {
-            margin: 0;
-            padding: 7px 10px;
-            border: 1px solid #CCCCCC;
-            border-top: none;
-            cursor: pointer;
-        }
-
-        .result p:hover {
-            background: #f2f2f2;
-        }
-
-        a.disable-links {
-            pointer-events: none;
-        }
-    </style>
-
-    <!-- pesquisa -->
-
-    <!-- graficos -->
-    <style>
         .highcharts-figure,
         .highcharts-data-table table {
             min-width: 360px;
@@ -169,10 +152,7 @@
         .highcharts-data-table tr:hover {
             background: #f1f7ff;
         }
-    </style>
-    <title>Painel COVID-MG</title>
 
-    <style>
         #map {
             min-height: 600px;
             max-height: 800px
@@ -181,7 +161,18 @@
         a.disable-links {
             pointer-events: none;
         }
+
+        hr {
+            margin-top: 0rem;
+            margin-bottom: 0rem;
+            border: 0;
+            padding: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
     </style>
+    <title>Painel COVID-MG</title>
+
+
 </head>
 
 <?php if (isset($casos)) { ?>
@@ -224,38 +215,91 @@
 
         <main role="main">
             <div class="container">
-                <!-- <section class="jumbotron text-center ">
-                    <h2 class="jumbotron-heading">Painel CoronaVírus</h2>
-                    <p class="lead text-muted"><i class="fas fa-map"></i> Escolha sua cidade:</p>
-                    <div class="input-group md-form mt-0 animated flash slow">
-                        <input class="form-control" type="text" placeholder="Buscar" aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                                Microrregião
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Ubá</a>
-                                <a class="dropdown-item" href="#">Juiz de Fora</a>
+
+                <section class="jumbotron text-center">
+                    <p class="lead text-muted"><i class="fas fa-search"></i> Filtre por microrregião...</p>
+                    <div id="municipio">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group form-check-inline">
+                                    <div class="radio-inline" style="margin-right: 5px">
+                                        <label>
+                                            <input class="filter-all" type="radio" value="todas" name="microrregiao" id="microrregiao-all" checked /> Todas
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-right: 5px">
+                                        <label>
+                                            <input class="filter" type="radio" value="microrregiao-uba" name="microrregiao" id="microrregiao-uba" />
+                                            Ubá
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline" style="margin-right: 5px">
+                                        <label>
+                                            <input class="filter" type="radio" value="microrregiao-jf" name="microrregiao" id="microrregiao-jf" />
+                                            Juiz de Fora
+                                        </label>
+                                    </div>
+                                    <div class="radio-inline">
+                                        <label>
+                                            <input class="filter" type="radio" value="microrregiao-outras" name="microrregiao" id="microrregiao-outras" />
+                                            Outras
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row filter-group">
+                            <div class="col-md-12">
+                                <div class="form-group" style="padding-bottom:0px; margin-bottom: 0px">
+                                    <div class="input-group">
+                                        <input type="text" id="search" class="search form-control form-control-lg" placeholder="Digite o nome da cidade..." style="height: 50px" autocomplete="off" />
+                                        <div class="input-group-append" style="display: none;" id="closeButton">
+                                            <button class="btn btn-secondary" type="button">X</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                </button>
+                            </div>
+                        </div>
+                        <div id="municipios">
+
+                            <div class="no-result">Woops! Não encontramos nada.</div>
+
+                            <div class="scrollbar force-overflow" id="scrollbarzera" style="width: 100%; max-height: 200px; background-color: rgba(245, 245, 245, 0.75); border-radius: 3px; margin-bottom: 50px">
+                                <ul class="list" id="fuck">
+                                    <script>
+                                        $(document).ready(function() {
+
+                                            $("#fuck").load("/Ajax/Pesquisa/getDados");
+                                        });
+                                    </script>
+
+                                    <li class="btn dropdown-item" style="padding-left: 10px;" data-microrregiao="microrregiao-jf">
+                                        <a href="google.com" style="text-decoration: none; color: black;">
+                                            <h5 class="name text-center">Juiz de Fora</h5>
+                                        </a>
+                                    </li>
+                                    <li class="btn dropdown-item" style="padding-left: 10px" data-microrregiao="microrregiao-uba">
+                                        <h5 class="name text-center">Ubá</h5>
+                                    </li>
+
+                                    <!-- <li class="btn dropdown-item" style="padding-left: 10px;" data-microrregiao="microrregiao-jf">
+                                    <a href="/home/pesquisa/rio-pomba" style="text-decoration: none; color: black;">
+                                        <h5 class="name text-center">Juiz de Fora</h5>
+                                    </a>
+                                </li>
+                                <hr /> -->
+
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </section> -->
-                <section class="jumbotron text-center ">
-                    <p class="lead text-muted"><i class="fas fa-search"></i> Escolha sua cidade...</p>
-                    <div class="input-group md-form mt-0 animated flash slow search-box">
-                        <input class="form-control" type="text" id="pesquisa" placeholder="Digite o nome do município..." aria-label="Search" style="height: 50px; border-radius: 15px">
-                        <div class="input-group-append">
-                            <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                                Microrregião
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Ubá</a>
-                                <a class="dropdown-item" href="#">Juiz de Fora</a>
-                            </div> -->
-                        </div>
-                        <div class="result"></div>
-                    </div>
                 </section>
+
+
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
                 <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
                 <p class="subtext small"><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
@@ -561,19 +605,17 @@
                 </div>
                 <!-- footer -->
 
-              
+
             </div>
         </main>
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
         <script src="/assets/dist/leaflet-search.js"></script>
         <script src="/assets/data/mg-geojson.js"></script>
         <script src="/assets/dist/BoundaryCanvas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
         <!-- graficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
@@ -694,6 +736,88 @@
         </script>
 
         <script>
+            //search
+            $('#municipios').hide();
+
+            $('#microrregiao-uba, #microrregiao-jf, #microrregiao-outras, #microrregiao-all').on('click', function() {
+                $('#municipios').fadeIn(300);
+                $('#closeButton').fadeIn(300);
+
+            });
+
+            $('#closeButton').on('click', function() {
+                $('#closeButton').hide();
+                $('#municipios').hide();
+
+            });
+
+            $('#search').on('focus', function() {
+                $('#municipios').fadeIn(300);
+                $('#closeButton').fadeIn(300);
+            });
+
+            var options = {
+                valueNames: [
+                    'name',
+                    {
+                        data: ['microrregiao']
+                    }
+                ],
+            };
+            var municipiosList;
+            $("#fuck").load("/Ajax/Pesquisa/getDados", function() {
+                var municipiosList = new List('municipio', options);
+                $(function() {
+                    //updateList();
+                    $("input[name=microrregiao]").change(updateList);
+
+                    municipiosList.on('updated', function(list) {
+                        if (list.matchingItems.length > 0) {
+                            $('.no-result').hide();
+                        } else {
+                            $('.no-result').show();
+
+                        }
+                    });
+                });
+
+                // function resetList() {
+                //     municipiosList.search();
+                //     municipiosList.filter();
+                //     municipiosList.update();
+                //     $(".filter-all").prop('checked', true);
+                //     $('.filter').prop('checked', false);
+                //     $('.search').val('');
+                //     $('#municipios').hide();
+                //     //console.log('Reset Successfully!');
+                // };
+
+                function updateList() {
+                    var val_microrregiao = $("input[name=microrregiao]:checked").val();
+                    console.log(val_microrregiao);
+
+                    municipiosList.filter(function(item) {
+                        var microrregiaoFilter = false;
+
+                        if (val_microrregiao == "todas") {
+                            microrregiaoFilter = true;
+                        } else {
+                            microrregiaoFilter = item.values().microrregiao == val_microrregiao;
+
+                        }
+
+                        return microrregiaoFilter
+                    });
+                    municipiosList.update();
+                }
+
+                //
+            });
+
+
+
+
+
             var geojson;
             //valores exemplos definidos em mg-geojson.js
             $(document).ready(function() {

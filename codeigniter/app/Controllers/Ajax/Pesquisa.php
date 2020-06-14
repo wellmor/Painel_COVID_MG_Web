@@ -12,17 +12,22 @@ class Pesquisa extends Controller
     {
         $model = new HomeModel();
         // $model->select("nomeMunicipio, idMunicipio, codMunicipio");
-        $model->like("nomeMunicipio", urldecode($term));
-        $pesquisas = $model->findAll(3);
+        $pesquisas = $model->findAll();
 
-        $i = 0;
-        $data = array();
+        $microrregiao = null;
         foreach ($pesquisas as $pesquisa) {
-            if (!empty($pesquisas)) {
-                echo '<p><a style="text-decoration: none; color: black" href="/home/pesquisa/'.$pesquisa['slugMunicipio'].'">'.($pesquisa["nomeMunicipio"]).'</a></p>';
-            } else {
-                echo "<p>Sem resultados</p>";
-            }
+            if ($pesquisa['idMicrorregiao'] == 1)
+                $microrregiao = "uba";
+            else if ($pesquisa['idMicrorregiao'] == 2)
+                $microrregiao = "jf";
+            else if ($pesquisa['idMicrorregiao'] == 3)
+                $microrregiao = "outras";
+
+            echo '<li class="btn dropdown-item list-item" id="test" style="padding-left: 10px;" data-microrregiao="microrregiao-' . $microrregiao . '">
+                <a href="/home/pesquisa/' . $pesquisa['slugMunicipio'] . '" style="text-decoration: none; color: black;">
+                    <h5 class="name text-center">' . $pesquisa['nomeMunicipio'] . '</h5>
+                </a>
+            </li>';
         }
     }
 }

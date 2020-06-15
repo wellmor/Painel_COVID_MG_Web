@@ -31,6 +31,30 @@
                 font-size: 3.5rem;
             }
         }
+
+
+        .fuck {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, .8) url('../assets/loading.gif') 50% 50% no-repeat;
+        }
+
+        /* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+        body.loading .fuck {
+            overflow: hidden;
+        }
+
+        /* Anytime the body has the loading class, our
+   modal element will be visible */
+        body.loading .fuck {
+            display: block;
+        }
     </style>
     <!-- Custom styles for this template -->
     <link href="../assets/dashboard.css" rel="stylesheet">
@@ -189,7 +213,9 @@
         </div>
     </div>
 
-
+    <div class="fuck">
+        <!-- Place at bottom of page -->
+    </div>
     <script src="../assets/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script src="../assets/dashboard.js"></script>
@@ -218,7 +244,9 @@
             table = $('#tableCasos').DataTable({
                 "ajax": "../Ajax/Casos/getDados",
                 "processing": true,
-                "order": [[ 1, "desc" ]],
+                "order": [
+                    [1, "desc"]
+                ],
                 columns: [{
                         data: "id",
                         visible: false
@@ -327,19 +355,20 @@
         //filter by selected value on second column(municipio)
         $("#municipio").on('change', function() {
             //filter by selected value on second column
-            if($('#municipio option:selected').text() == 'Clique aqui para selecionar'){
+            if ($('#municipio option:selected').text() == 'Clique aqui para selecionar') {
                 table.column(3).search("").draw();
-            }
-            else{
+            } else {
                 table.column(3).search($('#municipio option:selected').text()).draw();
             }
         });
-        
+
         //cadastro e edição
         $(document).ready(function() {
             $('#btn').click(function() {
                 var dados = $('#form').serializeArray();
-                // alert(dados[0]['confirmados']);
+                $('#exampleModal').modal('hide');
+                $body = $("body");
+                $body.addClass("loading");
                 $.ajax({
                     type: "POST",
                     url: "/casos/storeDt",
@@ -348,11 +377,11 @@
                         $('#form').trigger("reset");
                         table.ajax.reload();
                         $('#id').val("");
-                        $('#exampleModal').modal('hide')
+                        $body.removeClass("loading");
                         toast("Relatório de casos salvo com sucesso", "success");
-
                     },
                     error: function() {
+                        $body.removeClass("loading");
                         toast("Erro ao salvar relatório de casos", "error");
                     }
                 });

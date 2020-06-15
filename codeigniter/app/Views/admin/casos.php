@@ -418,15 +418,19 @@
                 confirmButtonText: 'Sim, excluir!'
             }).then((result) => {
                 if (result.value) {
+                    $body = $("body");
+                    $body.addClass("loading");
                     $.ajax({
                         type: "DELETE",
                         url: "../casos/deleteDt/" + decodeURIComponent(id),
                         success: function(result) {
                             table.ajax.reload();
                             // alert("Relatório de casos excluído com sucesso");
+                            $body.removeClass("loading");
                             toast("Relatório de casos excluído com sucesso", "success");
                         },
                         error: function() {
+                            $body.removeClass("loading");
                             toast("Erro ao excluir relatório de casos", "error");
                         }
                     });

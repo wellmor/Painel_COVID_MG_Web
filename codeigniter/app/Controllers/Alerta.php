@@ -19,7 +19,6 @@ class Alerta extends BaseController
 	public function enviar($idMunicipio = null)
 	{
 		$model = new AlertasModel();
-		$idMunicipio = 17;
 		$query = $model->query('SELECT a.idOnesignal, m.nomeMunicipio FROM alerta AS a INNER JOIN municipio as m WHERE a.idMunicipio=m.idMunicipio AND a.idMunicipio = ' . $idMunicipio);
 		$nomeMunicipio = $query->getResult('array')[0]['nomeMunicipio'];
 		$onesignal_ids = array();

@@ -11,6 +11,7 @@
 
     <link rel="icon" href="/assets/images/virus.png">
     <title>Covid-19</title>
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
         window.OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
@@ -18,9 +19,10 @@
                 console.log("OneSignal User ID:", userId);
             });
             OneSignal.init({
+                allowLocalhostAsSecureOrigin: true,
                 appId: "5ea884de-aca8-4ffe-9325-83181ed98de1",
                 notifyButton: {
-                    enable: true,
+                    enable: false,
                 },
             });
         });
@@ -68,27 +70,23 @@
                 <li class="breadcrumb-item active" aria-current="page">Notificacao</li>
             </ol>
             <section class="jumbotron text-center p-0">
-                <h2 class="jumbotron-heading">Notificação</h2>
-                <p class="lead text-muted">Deseja receber notificação de todos os casos da cidade de <b>Rio Pomba</b>?</p>
+                <h2 class="jumbotron-heading">Alertas</h2>
+                <p class="lead text-muted">Deseja receber alerta de todos os casos da cidade de <b><?= $municipio[0]; ?></b>?</p>
             </section>
 
-            <form id="form" method="post" class="row text-center">
-                <div class="col-md-6">
-                    Id OneSignal: <input type="text" class="form-control" name="idOnesignal" id="idOnesignal" value="1">
-                </div>
-                <div class="col-md-6">
-                    Id Municipio: <input type="text" class="form-control" name="idMunicipio" id="idMunicipio" value="1">
-                </div>
+            <form id="form" method="post" class="text-center">
+                <input type="hidden" class="form-control" name="idMunicipio" id="idMunicipio" value="<?= $municipio[2]; ?>">
+                <!-- <input type="hidden" class="form-control" name="idOnesignal" id="idOnesignal" value="0"> -->
                 <div class="col-md-12">
                     <button type="button" class="btn btn-primary" id="btn">Sim</button>
                     <a href="/home"><button type="button" class="btn btn-danger">Não</button></a>
                 </div>
-
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-danger" id="btnAlerta">Enviar teste de alerta</button>
+                    <button type="button" class="btn btn-danger" id="btnAlerta" style="margin-top: 50px; padding: 20px;" <?php if ($municipio[1] ==  0) echo "disabled"; ?>>Alertar <?= $municipio[1]; ?> pessoa(s) de <?= $municipio[0]; ?></button>
                 </div>
-
             </form>
+            <span id="conteudo"></span>
+
         </div>
         <script>
             $(document).ready(function() {
@@ -96,10 +94,10 @@
                     var dados = $('#form').serializeArray();
                     $.ajax({
                         type: "POST",
-                        url: "/alerta/enviarAlerta",
+                        url: "/alerta/enviar",
                         data: dados,
                         success: function(result) {
-                            console.log('sucessalert');
+                            $("#conteudo").html(result);
                         }
                     });
                     return false;
@@ -109,26 +107,33 @@
             $(document).ready(function() {
                 $('#btn').click(function() {
                     var dados = $('#form').serializeArray();
+                    OneSignal.getUserId(function(userId) {
+                        dados.push({
+                            name: "idOnesignal",
+                            value: userId
+                        });
+                    });
+
                     $.ajax({
                         type: "POST",
-                        url: "/alerta/storeDt",
+                        url: "/alerta/salvar",
                         data: dados,
                         success: function(result) {
-                            console.log('sucess');
+                            $("#conteudo").html(result);
+                            console.log(dados);
+
                         }
                     });
                     return false;
                 });
             });
         </script>
-        </div><br><br>
-        <?= file_get_contents('http://localhost//ajax/alertas/getdados'); ?>
+
         </div>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
 
 </body>
 

@@ -436,7 +436,7 @@
                                 <div class="row">
                                     <div class="col text-left">
                                         <p class="subtext">Seja alertado</p>
-                                        <!-- <button type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</button> -->
+                                        <!--<a href="/alerta/municipio/<?= esc($casos['idMunicipio']) ?>" type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</a>-->
                                         <a href="" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-bell"></i> Alerta</a>
                                     </div>
                                     <div class="col text-right">

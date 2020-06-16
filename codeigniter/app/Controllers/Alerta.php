@@ -25,7 +25,8 @@ class Alerta extends BaseController
 		foreach ($query->getResult('array') as $result) {
 			array_push($onesignal_ids, $result['idOnesignal']);
 		}
-
+		var_dump($onesignal_ids);
+		exit;
 		$content = array("en" => 'Novos casos confirmados em ' . $nomeMunicipio . ' clique para mais informações!');
 
 		$fields = array(

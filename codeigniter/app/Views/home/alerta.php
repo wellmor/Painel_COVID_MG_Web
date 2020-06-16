@@ -105,23 +105,24 @@
             });
 
             $(document).ready(function() {
-                $('#btn').click(function() {
-                    var dados = $('#form').serializeArray();
-                    OneSignal.getUserId(function(userId) {
-                        dados.push({
-                            name: "idOnesignal",
-                            value: userId
-                        });
+                var dados = [];
+                OneSignal.getUserId(function(userId) {
+                    dados.push({
+                        name: "idOnesignal",
+                        value: userId
                     });
-
+                    dados.push({
+                        name: "idMunicipio",
+                        value: $("#idMunicipio").val()
+                    });
+                });
+                $('#btn').click(function() {
                     $.ajax({
                         type: "POST",
                         url: "/alerta/salvar",
                         data: dados,
                         success: function(result) {
                             $("#conteudo").html(result);
-                            console.log(dados);
-
                         }
                     });
                     return false;

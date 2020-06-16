@@ -19,14 +19,13 @@ class Alerta extends BaseController
 	public function enviar($idMunicipio = null)
 	{
 		$model = new AlertasModel();
+		$idMunicipio = $this->request->getVar('idMunicipio');
 		$query = $model->query('SELECT a.idOnesignal, m.nomeMunicipio FROM alerta AS a INNER JOIN municipio as m WHERE a.idMunicipio=m.idMunicipio AND a.idMunicipio = ' . $idMunicipio);
 		$nomeMunicipio = $query->getResult('array')[0]['nomeMunicipio'];
 		$onesignal_ids = array();
 		foreach ($query->getResult('array') as $result) {
 			array_push($onesignal_ids, $result['idOnesignal']);
 		}
-		var_dump($onesignal_ids);
-		exit;
 		$content = array("en" => 'Novos casos confirmados em ' . $nomeMunicipio . ' clique para mais informações!');
 
 		$fields = array(

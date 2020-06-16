@@ -22,7 +22,7 @@
                 allowLocalhostAsSecureOrigin: true,
                 appId: "5ea884de-aca8-4ffe-9325-83181ed98de1",
                 notifyButton: {
-                    enable: false,
+                    enable: true,
                 },
             });
         });

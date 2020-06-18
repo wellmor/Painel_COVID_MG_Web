@@ -6,10 +6,11 @@ use App\Models\AlertasModel;
 
 class Alerta extends BaseController
 {
-	public function municipio($idMunicipio)
+	public function municipio($idMunicipio = 57)
 	{
 		$model = new AlertasModel();
 		$query = $model->query('SELECT nomeMunicipio FROM municipio WHERE idMunicipio = ' . $idMunicipio);
+		if (count( $query->getResult('array')) == 0) die("Id inválido");
 		$nomeMunicipio = $query->getResult('array')[0]['nomeMunicipio'];
 		$query = $model->query('SELECT a.idOnesignal FROM alerta AS a INNER JOIN municipio as m WHERE a.idMunicipio=m.idMunicipio AND a.idMunicipio = ' . $idMunicipio);
 		$data['municipio'] = array($nomeMunicipio, count($query->getResult('array')), $idMunicipio);
@@ -35,8 +36,8 @@ class Alerta extends BaseController
 		);
 
 		$fields = json_encode($fields);
-		print("\nJSON sent:\n");
-		print($fields);
+		//print("\nJSON sent:\n");
+		//print($fields);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -56,9 +57,11 @@ class Alerta extends BaseController
 	public function salvar()
 	{
 		$model = new AlertasModel();
-		$model->save([
+		$data = [
 			'idMunicipio' => $this->request->getVar('idMunicipio'),
 			'idOnesignal' => $this->request->getVar('idOnesignal'),
-		]);
+		];
+		if($model->save($data)) return "Sucesso!";
+		else return "Erro";
 	}
 }

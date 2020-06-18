@@ -17,6 +17,7 @@
         OneSignal.push(function() {
             OneSignal.getUserId(function(userId) {
                 console.log("OneSignal User ID:", userId);
+                if (userId == null) alert("Clique no botão inferior direito abaixo e se inscreva para receber notificações antes de aceitar.");
             });
             OneSignal.init({
                 allowLocalhostAsSecureOrigin: true,
@@ -82,10 +83,14 @@
                     <a href="/home"><button type="button" class="btn btn-danger">Não</button></a>
                 </div>
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-danger" id="btnAlerta" style="margin-top: 50px; padding: 20px;" <?php if ($municipio[1] ==  0) echo "disabled"; ?>>Alertar <?= $municipio[1]; ?> pessoa(s) de <?= $municipio[0]; ?></button>
+                    <button type="button" class="btn btn-danger" id="btnAlerta" style="margin-top: 50px; padding: 20px;">Alertar todos de de <?= $municipio[0]; ?></button>
+                    <script>
+                        alert('<?= $municipio[0]; ?> tem <?= $municipio[1]; ?> pessoas cadastradas para receber alerta!');
+                    </script>
                 </div>
             </form>
-            <span id="conteudo"></span>
+            <br>
+            <span id="conteudo" class="text-center"></span>
 
         </div>
         <script>
@@ -97,7 +102,7 @@
                         url: "/alerta/enviar",
                         data: dados,
                         success: function(result) {
-                            $("#conteudo").html(result);
+                            alert(result);
                         }
                     });
                     return false;
@@ -117,15 +122,21 @@
                     });
                 });
                 $('#btn').click(function() {
-                    $.ajax({
-                        type: "POST",
-                        url: "/alerta/salvar",
-                        data: dados,
-                        success: function(result) {
-                            $("#conteudo").html(result);
+                    OneSignal.getUserId(function(userId) {
+                        if (userId == null) {
+                            alert("Clique no botão inferior direito abaixo e se inscreva para receber notificações antes de aceitar.");
+                            return false;
+                        } else {
+                            $.ajax({
+                                type: "POST",
+                                url: "/alerta/salvar",
+                                data: dados,
+                                success: function(result) {
+                                    alert("Você foi cadastrado com sucesso para receber alerta desta cidade!");
+                                }
+                            });
                         }
                     });
-                    return false;
                 });
             });
         </script>

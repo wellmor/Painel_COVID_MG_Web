@@ -11,9 +11,8 @@
   <link rel="icon" href="/assets/images/virus.png">
 
   <!-- Bootstrap core CSS -->
-  <link href="../assets/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.css" />
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <link href="/assets/css/bootstrap.css" rel="stylesheet">
+  <script src="/assets/dist/jquery-3.5.1.js"></script>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -31,7 +30,7 @@
     }
   </style>
   <!-- Custom styles for this template -->
-  <link href="../assets/dashboard.css" rel="stylesheet">
+  <link href="/assets/css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -88,48 +87,18 @@
       </nav>
       <!-- conteudo -->
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <h1 class="h2">Gráfico de Casos Confirmados em Rio Pomba - MG</h1>
+        <!-- <h1 class="h2">Gráfico de Casos Confirmados em Rio Pomba - MG</h1>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <canvas class="my-4" id="myChart" height="120"></canvas>
-        </div>
-
+          <canvas class="my-4" id="myChart" height="120"></canvas> -->
     </div>
+
+  </div>
   </div>
 
-  <script src="../assets/bootstrap.bundle.min.js"></script>
+  <script src="/assets/dist/bootstrap.bundle.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-  <script src="../assets/dashboard.js"></script>
-  <!-- Graphs -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-  <script>
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ["04/05", "06/05", "09/05", "10/05", "13/05", "17/05", "23/05"],
-        datasets: [{
-          data: [0, 1, 3, 5, 9, 15, 24],
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#007bff',
-          borderWidth: 4,
-          pointBackgroundColor: '#007bff'
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: false
-            }
-          }]
-        },
-        legend: {
-          display: false,
-        }
-      }
-    });
-  </script>
+  <script src="/assets/dist/dashboard.js"></script>
+
 </body>
 
 </html>

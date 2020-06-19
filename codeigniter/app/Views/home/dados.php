@@ -6,24 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="expires" content="Mon, 26 Jul 1997 05:00:00 GMT" />
     <meta http-equiv="pragma" content="no-cache" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/main.css">
-    <link rel="stylesheet" href="/assets/css/animate.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-    <link rel="icon" href="/assets/images/virus.png">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/regular.min.js" crossorigin="anonymous"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/assets/css/dados.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css"> <!-- framework base de estilo -->
+    <link rel="stylesheet" href="/assets/css/main.css"> <!-- estilização do tema -->
+    <link rel="stylesheet" href="/assets/css/animate.css"> <!-- dependencia do framework de estilo -->
+    <link rel="stylesheet" href="/assets/css/leaflet.css" /> <!-- estilização própria do mapa -->
+    <link rel="icon" href="/assets/images/virus.png"> <!-- favicon da página -->
+    <link rel="stylesheet" href="/assets/css/dados.css"> <!-- estilo específico da página -->
 
-
+    <script src="/assets/dist/jquery-3.5.1.js"></script> <!-- plugin base -->
     <title>Painel COVID-MG</title>
-
-
 </head>
 
 <?php if (isset($casos)) { ?>
@@ -443,15 +434,17 @@
                 </div>
             </div>
         </main>
-        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
-        <script src="/assets/dist/leaflet-search.js"></script>
-        <script src="/assets/data/mg-geojson.js"></script>
-        <script src="/assets/dist/BoundaryCanvas.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 
-        <!-- graficos -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/assets/dist/bootstrap.js"></script> <!-- script css base -->
+        <script src="/assets/dist/fonte-awesome-all.js"></script> <!-- icones e fontes -->
+        <script src="/assets/dist/leaflet.js"></script> <!-- plugin base do mapa -->
+        <script src="/assets/data/mg-geojson.js"></script> <!-- layout do corte do mapa -->
+        <script src="/assets/dist/BoundaryCanvas.js"></script> <!-- plugin para corte do mapa -->
+        <script src="/assets/dist/lodash.js"></script> <!-- dependencia da pesquisa -->
+        <script src="/assets/dist/list.js"></script> <!-- plugin de auxilio nos filtros da pesquisa -->
+        <script src="/assets/dist/Chart.js"></script> <!-- graficos -->
+
         <script>
             function formatarData(datax) {
                 var data = new Date(datax),
@@ -611,16 +604,6 @@
                     });
                 });
 
-                // function resetList() {
-                //     municipiosList.search();
-                //     municipiosList.filter();
-                //     municipiosList.update();
-                //     $(".filter-all").prop('checked', true);
-                //     $('.filter').prop('checked', false);
-                //     $('.search').val('');
-                //     $('#municipios').hide();
-                //     console.log('Reset Successfully!');
-                // };
 
                 function updateList() {
                     var val_microrregiao = $("input[name=microrregiao]:checked").val();

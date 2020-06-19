@@ -12,11 +12,8 @@
   <title>Painel COVID</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../assets/bootstrap.min.css" rel="stylesheet">
-
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.css" />
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <link href="/assets/css/bootstrap.css" rel="stylesheet">
+  <script src="/assets/dist/jquery-3.5.1.js"></script>
 
   <style>
     .bd-placeholder-img {
@@ -35,7 +32,7 @@
     }
   </style>
   <!-- Custom styles for this template -->
-  <link href="../assets/dashboard.css" rel="stylesheet">
+  <link href="/assets/css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -155,9 +152,9 @@
 
 
 
-  <script src="../assets/bootstrap.bundle.min.js"></script>
+  <script src="/assets/dist/bootstrap.bundle.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-  <script src="../assets/dashboard.js"></script>
+  <script src="/assets/dist/dashboard.js"></script>
 
 </body>
 

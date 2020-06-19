@@ -5,7 +5,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Painel COVID</title>
-      <link href="../assets/bootstrap.min.css" rel="stylesheet">
+      <link href="/assets/css/bootstrap.css" rel="stylesheet">
       <link rel="icon" href="/assets/images/virus.png">
 
     </head>

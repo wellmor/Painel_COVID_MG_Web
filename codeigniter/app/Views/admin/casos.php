@@ -5,16 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.0.1">
+    <meta name="author" content="">
+    <meta name="generator" content="">
     <title>Painel COVID</title>
     <link rel="icon" href="/assets/images/virus.png">
-
-    <!-- Bootstrap core CSS -->
-    <link href="../assets/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/assets/css/datatables.min.css" />
+    <script src="/assets/dist/jquery-3.5.1.js"></script>
 
     <style>
         .bd-placeholder-img {
@@ -31,9 +28,7 @@
                 font-size: 3.5rem;
             }
         }
-
-
-        .fuck {
+        .loader {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -44,20 +39,15 @@
             background: rgba(255, 255, 255, .8) url('../assets/loading.gif') 50% 50% no-repeat;
         }
 
-        /* When the body has the loading class, we turn
-   the scrollbar off with overflow:hidden */
-        body.loading .fuck {
+        body.loading .loader {
             overflow: hidden;
         }
-
-        /* Anytime the body has the loading class, our
-   modal element will be visible */
-        body.loading .fuck {
+        body.loading .loader {
             display: block;
         }
     </style>
-    <!-- Custom styles for this template -->
-    <link href="../assets/dashboard.css" rel="stylesheet">
+
+    <link href="/assets/dashboard.css" rel="stylesheet">
 </head>
 
 <body>
@@ -88,12 +78,6 @@
                                 Casos
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="/admin/noticias">
-                                <span data-feather="book-open"></span>
-                                Notícias
-                            </a>
-                        </li> -->
                     </ul>
                     <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                         <span>Meus dados</span>
@@ -213,12 +197,12 @@
         </div>
     </div>
 
-    <div class="fuck">
-        <!-- Place at bottom of page -->
+    <div class="loader"> <!-- Loading de requisições ajax -->
+
     </div>
-    <script src="../assets/bootstrap.bundle.min.js"></script>
+    <script src="/assets/dist/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-    <script src="../assets/dashboard.js"></script>
+    <script src="/assets/dist/dashboard.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.js"></script>
@@ -341,6 +325,7 @@
 
             });
         });
+
         //evitar edições incompletas, reseta todos os campos
         $('#exampleModal').on('hidden.bs.modal', function(e) {
             $(this)
@@ -389,8 +374,6 @@
             });
         });
 
-
-
         //modal de edição
         function editar(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {
             modalEd(decodeURIComponent(municipio), decodeURIComponent(datax));
@@ -437,11 +420,6 @@
                 }
             })
         }
-
-
-
-
-
 
         function dataAtualFormatada() {
             var data = new Date(),

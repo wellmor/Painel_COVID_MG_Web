@@ -219,7 +219,6 @@
                 <section class="jumbotron text-center">
                     <p class="lead text-muted"><i class="fas fa-search"></i> Filtre por microrregião...</p>
                     <div id="municipio">
-
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group form-check-inline">
@@ -272,31 +271,26 @@
                                 <ul class="list" id="fuck">
                                     <script>
                                         $(document).ready(function() {
-
                                             $("#fuck").load("/Ajax/Pesquisa/getDados");
                                         });
                                     </script>
-
-                            
-
                                     <!-- <li class="btn dropdown-item" style="padding-left: 10px;" data-microrregiao="microrregiao-jf">
                                     <a href="/home/pesquisa/rio-pomba" style="text-decoration: none; color: black;">
                                         <h5 class="name text-center">Juiz de Fora</h5>
                                     </a>
                                 </li>
                                 <hr /> -->
-
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </section>
 
-
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
                 <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
                 <p class="subtext small"><b>FONTE:</b> <a target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
-                <div class="row">
+
+                <div class="row" style="margin-top:20px;">
                     <div class="col-md-4">
                         <div class="card card-borda-azul animated bounceInUp slow">
                             <div class="card-body">
@@ -436,7 +430,7 @@
                                 <div class="row">
                                     <div class="col text-left">
                                         <p class="subtext">Seja alertado</p>
-                                        <!-- <button type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</button> -->
+                                        <!--<a href="/alerta/municipio/<?= esc($casos['idMunicipio']) ?>" type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</a>-->
                                         <a href="" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-bell"></i> Alerta</a>
                                     </div>
                                     <div class="col text-right">
@@ -466,7 +460,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card animated bounceInUp slow delay-1s">
                             <div class="card-body">
                                 <h5 class="subtext">Mapa</h5>
@@ -475,21 +469,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="card animated bounceInUp slow delay-1s">
-                            <div class="card-body">
-                                <h5 class="subtext">Noticias</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Atualize-se com infomações oficiais</h6>
-                                <!-- alterar as referencias da div pro campo da tabela municipio que contem o identificador da pagina -->
-                                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="600" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
-                                    <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <div class="card animated bounceInUp slow delay-1s">
                             <div class="card-body" style="height: auto;">
                                 <h5 class="subtext">Gráficos</h5>
@@ -513,26 +493,40 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" height="208vh"></canvas>
+                                        <canvas id="chartConfirmados" height="323vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" height="208vh"></canvas>
+                                        <canvas id="chartSuspeitos" height="323vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" height="208vh"></canvas>
+                                        <canvas id="chartDescartados" height="323vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" height="208vh"></canvas>
+                                        <canvas id="chartRecuperados" height="323vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" height="208vh"></canvas>
+                                        <canvas id="chartObitos" height="323vh"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="card animated bounceInUp slow delay-1s ">
+                </div>
+                <div class="row" style="margin-bottom: 20px;">
+                    <div class="col-md-6">
+                        <div class="card animated bounceInUp slow delay-1s">
+                            <div class="card-body">
+                                <h5 class="subtext">Notícias</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Atualize-se com informações oficiais</h6>
+                                <!-- alterar as referencias da div pro campo da tabela municipio que contem o identificador da pagina -->
+                                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="450" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                                    <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card animated bounceInUp slow delay-1s">
                             <div class="card animated bounceInUp fast" style="margin:15px">
                                 <div class="card-body text-center">
                                     <div class="row">
@@ -555,7 +549,7 @@
                                             <h5 class="subtext mt-2">Dicas</h5>
                                         </div>
                                         <div class="col-md-6">
-                                            <h6 class="card-subtitle mb-4 text-muted">O que você precisa saber e fazer</h6>
+                                            <div class="card-subtitle mb-4 text-muted">O que você precisa saber e fazer para evitar o contágio</div>
                                             <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                                         </div>
                                     </div>
@@ -569,7 +563,7 @@
                                             <h5 class="subtext mt-2">Doação</h5>
                                         </div>
                                         <div class="col-md-6">
-                                            <h6 class="card-subtitle mb-4 text-muted">Saiba como ajudar</h6>
+                                            <div class="card-subtitle mb-4 text-muted">Saiba como ajudar quem realmente precisa</div>
                                             <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
                                         </div>
                                     </div>
@@ -596,9 +590,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- footer -->
-
-
             </div>
         </main>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
@@ -607,8 +598,6 @@
         <script src="/assets/dist/BoundaryCanvas.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
         <!-- graficos -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
@@ -659,8 +648,6 @@
                         let chartConfirmados = new Chart(ctc, {
                             type: 'line',
                             data: confirmadosData,
-
-
                         });
 
                         // grafico suspeitos
@@ -763,7 +750,6 @@
                 $(function() {
                     //updateList();
                     $("input[name=microrregiao]").change(updateList);
-
                     municipiosList.on('updated', function(list) {
                         if (list.matchingItems.length > 0) {
                             $('.no-result').hide();
@@ -782,7 +768,7 @@
                 //     $('.filter').prop('checked', false);
                 //     $('.search').val('');
                 //     $('#municipios').hide();
-                //     //console.log('Reset Successfully!');
+                //     console.log('Reset Successfully!');
                 // };
 
                 function updateList() {
@@ -806,10 +792,6 @@
 
                 //
             });
-
-
-
-
 
             var geojson;
             //valores exemplos definidos em mg-geojson.js
@@ -891,36 +873,6 @@
 
 </html>
 <?php } else echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Ainda não foram encontrados dados para a cidade selecionada');
+    window.alert('Ainda não foram encontrados dados para a cidade selecionada.);
     window.location.href='/home';
     </script>"); ?>
-
-<!--<div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
-                            <h5 class="subtext">Unidade Saúde</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
-                            <h5 class="subtext">Unidade Saúde</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <img class="img" src="images/hospital.png"width="70" height="70" alt="">          
-                            <h5 class="subtext">Unidade Saúde</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Encontre as mais próximas de você</h6>
-                        </div>
-                    </div>
-                </div> 
-            </div> -->

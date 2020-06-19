@@ -47,7 +47,7 @@
         }
     </style>
 
-    <link href="/assets/dashboard.css" rel="stylesheet">
+    <link href="/assets/css/dashboard.css" rel="stylesheet">
 </head>
 
 <body>

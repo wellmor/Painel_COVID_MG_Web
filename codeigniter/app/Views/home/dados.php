@@ -18,158 +18,9 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/regular.min.js" crossorigin="anonymous"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/solid.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/assets/css/dados.css">
 
-    <style>
-        .scrollbar {
-            float: left;
-            /* height: 300px; */
-            width: 65px;
-            background: #F5F5F5;
-            overflow-y: scroll;
-        }
 
-        .force-overflow {
-            max-height: 200px;
-        }
-
-        #wrapper {
-            text-align: center;
-            margin: auto;
-        }
-
-        #scrollbarzera::-webkit-scrollbar-track {
-            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-            background-color: #F5F5F5;
-        }
-
-        #scrollbarzera::-webkit-scrollbar {
-            width: 6px;
-            background-color: #F5F5F5;
-        }
-
-        #scrollbarzera::-webkit-scrollbar-thumb {
-            background-color: rgba(60, 60, 60, 0.1);
-            border-radius: 3px;
-        }
-
-        .form-control:focus {
-            border-color: #cccccc;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-        }
-    </style>
-    <style>
-        #municipios {
-            display: none;
-        }
-
-        .list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        #test {
-            border-bottom: 1px solid #ccc;
-            display: block;
-            border-color: rgba(220, 220, 220, 0.9);
-        }
-
-        .list--list-item {
-            /* padding-bottom: 20px; */
-            border-bottom: 1px solid #ccc;
-        }
-
-        .list--list-item:last-child {
-            border-bottom: 0;
-            margin: 0;
-        }
-
-        .no-result {
-            display: none;
-        }
-
-        li a {
-            display: block;
-        }
-
-        p {
-            width: 100%;
-        }
-
-        .jumbotron {
-            background-color: #E0E0E0;
-            padding: 1rem 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .form-control {
-            border-radius: 5px;
-            width: 100%;
-            padding: 16px 20px;
-            background-color: #FAFAFA;
-        }
-
-        .highcharts-figure,
-        .highcharts-data-table table {
-            min-width: 360px;
-            max-width: 800px;
-            margin: 1em auto;
-        }
-
-        .highcharts-data-table table {
-            font-family: Verdana, sans-serif;
-            border-collapse: collapse;
-            border: 1px solid #EBEBEB;
-            margin: 10px auto;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .highcharts-data-table caption {
-            padding: 1em 0;
-            font-size: 1.2em;
-            color: #555;
-        }
-
-        .highcharts-data-table th {
-            font-weight: 600;
-            padding: 0.5em;
-        }
-
-        .highcharts-data-table td,
-        .highcharts-data-table th,
-        .highcharts-data-table caption {
-            padding: 0.5em;
-        }
-
-        .highcharts-data-table thead tr,
-        .highcharts-data-table tr:nth-child(even) {
-            background: #f8f8f8;
-        }
-
-        .highcharts-data-table tr:hover {
-            background: #f1f7ff;
-        }
-
-        #map {
-            min-height: 600px;
-            max-height: 800px
-        }
-
-        a.disable-links {
-            pointer-events: none;
-        }
-
-        hr {
-            margin-top: 0rem;
-            margin-bottom: 0rem;
-            border: 0;
-            padding: 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-    </style>
     <title>Painel COVID-MG</title>
 
 
@@ -268,10 +119,10 @@
                             <div class="no-result">Woops! Não encontramos nada.</div>
 
                             <div class="scrollbar force-overflow" id="scrollbarzera" style="width: 100%; max-height: 200px; background-color: rgba(245, 245, 245, 0.75); border-radius: 3px; margin-bottom: 50px">
-                                <ul class="list" id="fuck">
+                                <ul class="list" id="pesquisar">
                                     <script>
                                         $(document).ready(function() {
-                                            $("#fuck").load("/Ajax/Pesquisa/getDados");
+                                            $("#pesquisar").load("/Ajax/Pesquisa/getDados");
                                         });
                                     </script>
                                     <!-- <li class="btn dropdown-item" style="padding-left: 10px;" data-microrregiao="microrregiao-jf">
@@ -745,7 +596,7 @@
                 ],
             };
             var municipiosList;
-            $("#fuck").load("/Ajax/Pesquisa/getDados", function() {
+            $("#pesquisar").load("/Ajax/Pesquisa/getDados", function() {
                 var municipiosList = new List('municipio', options);
                 $(function() {
                     //updateList();

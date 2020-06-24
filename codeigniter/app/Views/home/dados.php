@@ -623,7 +623,7 @@
                                 onClickAfter: function(node, a, item, event) {
                                     event.preventDefault();
                                     // var r = confirm("You will be redirected to:\n" + item.href + "\n\nContinue?");
-                                    window.location.href = "http://localhost/home/pesquisa/" + slugify(item.href);
+                                    window.location.href = "https://covidmg.com/home/pesquisa/" + slugify(item.href);
                                     $('.js-result-container').text('');
 
                                 },

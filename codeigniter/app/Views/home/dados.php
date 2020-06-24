@@ -12,12 +12,54 @@
     <link rel="stylesheet" href="/assets/css/leaflet.css" /> <!-- estilização própria do mapa -->
     <link rel="icon" href="/assets/images/virus.png"> <!-- favicon da página -->
     <link rel="stylesheet" href="/assets/css/dados.css"> <!-- estilo específico da página -->
-
     <script src="/assets/dist/jquery-3.5.1.js"></script> <!-- plugin base -->
+
+
+    <!-- nova-nova pesquisa -->
+    <link rel="stylesheet" href="/assets/css/jquery.typeahead.min.css">
+    <script src="/assets/dist/jquery.typeahead.min.js"></script>
+
+    <style>
+        @media (max-width: 767.98px) {
+            button.typeahead__filter-button {
+                font-family: sans-serif;
+                font-size: 10px;
+                padding: 2px;
+                height: 100%;
+                margin: 0px;
+            }
+        }
+
+        button.typeahead__filter-button {
+            border-radius: 2px;
+        }
+
+        #pesquisar {
+            border-radius: 2px;
+        }
+
+        #type-list .typeahead__list {
+            max-height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $("#pesquisar").click(function() {
+                $("html, body").animate({
+                    scrollTop: $("#back-scroll").offset().top
+                }, 100);
+                return true;
+            });
+        });
+    </script>
+    <!-- nova-nova pesquisa -->
+
     <title>Painel COVID-MG</title>
 </head>
 
-<?php if (isset($casos)) { ?>
 
     <body>
         <div id="fb-root"></div>
@@ -57,75 +99,27 @@
 
         <main role="main">
             <div class="container">
-
                 <section class="jumbotron text-center">
-                    <p class="lead text-muted"><i class="fas fa-search"></i> Filtre por microrregião...</p>
-                    <div id="municipio">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group form-check-inline">
-                                    <div class="radio-inline" style="margin-right: 5px">
-                                        <label>
-                                            <input class="filter-all" type="radio" value="todas" name="microrregiao" id="microrregiao-all" checked /> Todas
-                                        </label>
-                                    </div>
-                                    <div class="radio-inline" style="margin-right: 5px">
-                                        <label>
-                                            <input class="filter" type="radio" value="microrregiao-uba" name="microrregiao" id="microrregiao-uba" />
-                                            Ubá
-                                        </label>
-                                    </div>
-                                    <div class="radio-inline" style="margin-right: 5px">
-                                        <label>
-                                            <input class="filter" type="radio" value="microrregiao-jf" name="microrregiao" id="microrregiao-jf" />
-                                            Juiz de Fora
-                                        </label>
-                                    </div>
-                                    <div class="radio-inline">
-                                        <label>
-                                            <input class="filter" type="radio" value="microrregiao-outras" name="microrregiao" id="microrregiao-outras" />
-                                            Outras
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row filter-group">
-                            <div class="col-md-12">
-                                <div class="form-group" style="padding-bottom:0px; margin-bottom: 0px">
-                                    <div class="input-group">
-                                        <input type="text" id="search" class="search form-control form-control-lg" placeholder="Digite o nome da cidade..." style="height: 50px" autocomplete="off" />
-                                        <div class="input-group-append" style="display: none;" id="closeButton">
-                                            <button class="btn btn-secondary" type="button">X</button>
+                    <!-- pesquisa -->
+                    <div class="card" style="width: 100%">
+                        <div class="card-body">
+                            <h5 class="card-title">Pesquise dados de sua cidade</h5>
+                            <p class="card-text" id="back-scroll">Acompanhe a evolução de casos dos munícipios das <br /> Microrregiões de Ubá, Juiz de Fora e cidades dos entornos!</p>
+                            <div class="container" id="type-list" style="margin: 0px; padding: 0px">
+                                <div class="typeahead__container form-group">
+                                    <div class="typeahead__field">
+                                        <div class="typeahead__query">
+                                            <input class="js-typeahead" placeholder="pesquise aqui..." id="pesquisar" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
-
-                                </button>
-                            </div>
-                        </div>
-                        <div id="municipios">
-
-                            <div class="no-result">Woops! Não encontramos nada.</div>
-
-                            <div class="scrollbar force-overflow" id="scrollbarzera" style="width: 100%; max-height: 200px; background-color: rgba(245, 245, 245, 0.75); border-radius: 3px; margin-bottom: 50px">
-                                <ul class="list" id="pesquisar">
-                                    <script>
-                                        $(document).ready(function() {
-                                            $("#pesquisar").load("/Ajax/Pesquisa/getDados");
-                                        });
-                                    </script>
-                                    <!-- <li class="btn dropdown-item" style="padding-left: 10px;" data-microrregiao="microrregiao-jf">
-                                    <a href="/home/pesquisa/rio-pomba" style="text-decoration: none; color: black;">
-                                        <h5 class="name text-center">Juiz de Fora</h5>
-                                    </a>
-                                </li>
-                                <hr /> -->
-                                </ul>
                             </div>
                         </div>
                     </div>
+
+
+
                 </section>
 
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
@@ -558,155 +552,299 @@
                 });
             });
         </script>
+        <script>
+            $(document).ready(function() {
+
+                var data;
+                //http://localhost/ajax/municipios/getdados
+                $.ajax({
+                    url: "/Ajax/Pesquisa/getDados/", //filtrar por municipio selecionado
+                    method: "GET",
+                    success: function(retorno) {
+                        data = JSON.parse(retorno);
+                        // console.log(data);
+                        typeof $.typeahead === 'function' && $.typeahead({
+                            input: ".js-typeahead",
+                            minLength: 0,
+                            maxItem: false,
+                            searchOnFocus: true,
+                            accent: true,
+                            order: "asc",
+                            offset: true,
+                            hint: true,
+                            group: true,
+                            backdrop: {
+                                "background-color": "#000000",
+                                "opacity": "0.3",
+                                "filter": "alpha(opacity=10)"
+                            },
+                            // maxItemPerGroup: 10,
+                            // cache: true,
+                            groupOrder: function(node, query, result, resultCount, resultCountPerGroup) {
+                                var scope = this,
+                                    sortGroup = [];
+
+                                for (var i in result) {
+                                    sortGroup.push({
+                                        group: i,
+                                        length: result[i].length
+                                    });
+                                }
+                                sortGroup.sort(
+                                    scope.helper.sort(
+                                        ["length"],
+                                        true, // false = desc, the most results on top
+                                        function(a) {
+                                            return a.toString().toUpperCase()
+                                        }
+                                    )
+                                );
+                                return $.map(sortGroup, function(val, i) {
+                                    return val.group
+                                });
+                            },
+                            dropdownFilter: "Minas Gerais",
+                            href: "{{display}}",
+                            template: "{{display}}, <small><em>{{group}}</em></small>",
+                            emptyTemplate: "sem resultados para {{query}}",
+                            source: {
+                                "Microrregião de Ubá": {
+                                    data: data.uba
+                                },
+                                "Microrregião de Juiz de Fora": {
+                                    data: data.jf
+                                },
+                                "Entornos": {
+                                    data: data.entornos
+                                },
+
+                            },
+                            callback: {
+                                onClickAfter: function(node, a, item, event) {
+                                    event.preventDefault();
+                                    // var r = confirm("You will be redirected to:\n" + item.href + "\n\nContinue?");
+                                    window.location.href = "http://localhost/home/pesquisa/" + slugify(item.href);
+                                    $('.js-result-container').text('');
+
+                                },
+                                onResult: function(node, query, obj, objCount) {
+                                    // console.log(objCount)
+                                    var text = "";
+                                    if (query !== "") {
+                                        text = objCount + ' localidades encontrada com "' + query + '"';
+                                    }
+                                    $('.js-result-container').text(text);
+
+                                }
+                            },
+                            debug: false
+                        });
+                    },
+                    error: function(retorno) {
+                        console.log("Error");
+                    }
+                });
+
+
+
+                function slugify(text) {
+                    text = text.toString().toLowerCase().trim();
+
+                    const sets = [{
+                            to: 'a',
+                            from: '[ÀÁÂÃÄÅÆĀĂĄẠẢẤẦẨẪẬẮẰẲẴẶἀ]'
+                        },
+                        {
+                            to: 'c',
+                            from: '[ÇĆĈČ]'
+                        },
+                        {
+                            to: 'd',
+                            from: '[ÐĎĐÞ]'
+                        },
+                        {
+                            to: 'e',
+                            from: '[ÈÉÊËĒĔĖĘĚẸẺẼẾỀỂỄỆ]'
+                        },
+                        {
+                            to: 'g',
+                            from: '[ĜĞĢǴ]'
+                        },
+                        {
+                            to: 'h',
+                            from: '[ĤḦ]'
+                        },
+                        {
+                            to: 'i',
+                            from: '[ÌÍÎÏĨĪĮİỈỊ]'
+                        },
+                        {
+                            to: 'j',
+                            from: '[Ĵ]'
+                        },
+                        {
+                            to: 'ij',
+                            from: '[Ĳ]'
+                        },
+                        {
+                            to: 'k',
+                            from: '[Ķ]'
+                        },
+                        {
+                            to: 'l',
+                            from: '[ĹĻĽŁ]'
+                        },
+                        {
+                            to: 'm',
+                            from: '[Ḿ]'
+                        },
+                        {
+                            to: 'n',
+                            from: '[ÑŃŅŇ]'
+                        },
+                        {
+                            to: 'o',
+                            from: '[ÒÓÔÕÖØŌŎŐỌỎỐỒỔỖỘỚỜỞỠỢǪǬƠ]'
+                        },
+                        {
+                            to: 'oe',
+                            from: '[Œ]'
+                        },
+                        {
+                            to: 'p',
+                            from: '[ṕ]'
+                        },
+                        {
+                            to: 'r',
+                            from: '[ŔŖŘ]'
+                        },
+                        {
+                            to: 's',
+                            from: '[ßŚŜŞŠȘ]'
+                        },
+                        {
+                            to: 't',
+                            from: '[ŢŤ]'
+                        },
+                        {
+                            to: 'u',
+                            from: '[ÙÚÛÜŨŪŬŮŰŲỤỦỨỪỬỮỰƯ]'
+                        },
+                        {
+                            to: 'w',
+                            from: '[ẂŴẀẄ]'
+                        },
+                        {
+                            to: 'x',
+                            from: '[ẍ]'
+                        },
+                        {
+                            to: 'y',
+                            from: '[ÝŶŸỲỴỶỸ]'
+                        },
+                        {
+                            to: 'z',
+                            from: '[ŹŻŽ]'
+                        },
+                        {
+                            to: '-',
+                            from: '[·/_,:;\']'
+                        }
+                    ];
+
+                    sets.forEach(set => {
+                        text = text.replace(new RegExp(set.from, 'gi'), set.to)
+                    });
+
+                    return text
+                        .replace(/\s+/g, '-') // Replace spaces with -
+                        .replace(/[^-a-zа-я\u0370-\u03ff\u1f00-\u1fff]+/g, '') // Remove all non-word chars
+                        .replace(/--+/g, '-') // Replace multiple - with single -
+                        .replace(/^-+/, '') // Trim - from start of text
+                        .replace(/-+$/, '') // Trim - from end of text
+                }
+            });
+        </script>
 
         <script>
-            //search
-            $('#municipios').hide();
-
-            $('#microrregiao-uba, #microrregiao-jf, #microrregiao-outras, #microrregiao-all').on('click', function() {
-                $('#municipios').fadeIn(300);
-                $('#closeButton').fadeIn(300);
-
-            });
-
-            $('#closeButton').on('click', function() {
-                $('#closeButton').hide();
-                $('#municipios').hide();
-
-            });
-
-            $('#search').on('focus', function() {
-                $('#municipios').fadeIn(300);
-                $('#closeButton').fadeIn(300);
-            });
-
-            var options = {
-                valueNames: [
-                    'name',
-                    {
-                        data: ['microrregiao']
-                    }
-                ],
-            };
-            var municipiosList;
-            $("#pesquisar").load("/Ajax/Pesquisa/getDados", function() {
-                var municipiosList = new List('municipio', options);
-                $(function() {
-                    //updateList();
-                    $("input[name=microrregiao]").change(updateList);
-                    municipiosList.on('updated', function(list) {
-                        if (list.matchingItems.length > 0) {
-                            $('.no-result').hide();
-                        } else {
-                            $('.no-result').show();
-
-                        }
-                    });
-                });
-
-
-                function updateList() {
-                    var val_microrregiao = $("input[name=microrregiao]:checked").val();
-                    console.log(val_microrregiao);
-
-                    municipiosList.filter(function(item) {
-                        var microrregiaoFilter = false;
-
-                        if (val_microrregiao == "todas") {
-                            microrregiaoFilter = true;
-                        } else {
-                            microrregiaoFilter = item.values().microrregiao == val_microrregiao;
-
-                        }
-
-                        return microrregiaoFilter
-                    });
-                    municipiosList.update();
-                }
-
-                //
-            });
-
-            var geojson;
-            //valores exemplos definidos em mg-geojson.js
             $(document).ready(function() {
-                nome = '<?= $casos['nomeMunicipio'] ?>';
-                slug = '<?= $casos['slugMunicipio'] ?>';
-                nome = nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-                nome = nome.toLowerCase();
-                nome = nome.replace(/ /g, '-')
-                if (slug != 'minas-gerais') {
-                    $.getJSON(
-                        'https://servicodados.ibge.gov.br/api/v1/localidades/municipios/' + nome,
-                        function(data) {
-                            id = data['id'];
+                var geojson;
+                //valores exemplos definidos em mg-geojson.js
+                $(document).ready(function() {
+                    nome = '<?= $casos['nomeMunicipio'] ?>';
+                    slug = '<?= $casos['slugMunicipio'] ?>';
+                    nome = nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                    nome = nome.toLowerCase();
+                    nome = nome.replace(/ /g, '-')
+                    if (slug != 'minas-gerais') {
+                        $.getJSON(
+                            'https://servicodados.ibge.gov.br/api/v1/localidades/municipios/' + nome,
+                            function(data) {
+                                id = data['id'];
 
-                            link = "https://servicodados.ibge.gov.br/api/v2/malhas/" + id + "?formato=application/vnd.geo+json";
-                            $.getJSON(link,
-                                function(data) {
-                                    // console.log(data);
-                                    geojson = data['features']['0']['geometry'];
-                                    coordinate = geojson['coordinates'][0][0];
+                                link = "https://servicodados.ibge.gov.br/api/v2/malhas/" + id + "?formato=application/vnd.geo+json";
+                                $.getJSON(link,
+                                    function(data) {
+                                        // console.log(data);
+                                        geojson = data['features']['0']['geometry'];
+                                        coordinate = geojson['coordinates'][0][0];
 
-                                    test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 10, 0.03);
-                                    // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
-                                })
-                        }
-                    );
-                } else {
-                    link = "https://servicodados.ibge.gov.br/api/v2/malhas/31?formato=application/vnd.geo+json";
-                    $.getJSON(link,
-                        function(data) {
-                            // console.log(data);
-                            geojson = data['features']['0']['geometry'];
-                            coordinate = geojson['coordinates'][0][0];
+                                        test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 10, 0.03);
+                                        // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
+                                    })
+                            }
+                        );
+                    } else {
+                        link = "https://servicodados.ibge.gov.br/api/v2/malhas/31?formato=application/vnd.geo+json";
+                        $.getJSON(link,
+                            function(data) {
+                                // console.log(data);
+                                geojson = data['features']['0']['geometry'];
+                                coordinate = geojson['coordinates'][0][0];
 
-                            test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 3);
-                            // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
-                        })
-                }
-                // setTimeout(function(){ alert("Hello"); }, 3000);
-            });
-
-
-            function test(latitude, longitude, zoom, correcao) {
-                var data = geojson;
-                // console.log(data + "datae")
-
-                var map = L.map('map').setView([latitude, longitude - correcao], zoom),
-                    osmUrl = 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
-                    osmAttribution = '';
-
-                var osm = L.TileLayer.boundaryCanvas(osmUrl, {
-                    boundary: geom,
-                    attribution: osmAttribution,
-                    trackAttribution: true
-                }).addTo(map);
-
-                var featuresLayer = new L.GeoJSON(data, {
-                    style: function(feature) {
-                        return {
-                            color: '#FF0000'
-                        };
-                    },
-                    onEachFeature: function(feature, marker) {
-                        marker.bindPopup('<p>Confirmados: <?= $casos['confirmadosCaso'] ?></p>' +
-                            '<p>Suspeitos: <?= $casos['suspeitosCaso'] ?></p>' +
-                            '<p>Descartados: <?= $casos['descartadosCaso'] ?></p>' +
-                            '<p>Obitos: <?= $casos['obitosCaso'] ?></p>' +
-                            '<p>Recuperados: <?= $casos['recuperadosCaso'] ?></p>');
+                                test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 3);
+                                // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
+                            })
                     }
+                    // setTimeout(function(){ alert("Hello"); }, 3000);
                 });
 
-                map.addLayer(featuresLayer);
-            }
+
+                function test(latitude, longitude, zoom, correcao) {
+                    var data = geojson;
+                    // console.log(data + "datae")
+
+                    var map = L.map('map').setView([latitude, longitude - correcao], zoom),
+                        osmUrl = 'https://{s}.tile.osm.org/{z}/{x}/{y}.png',
+                        osmAttribution = '';
+
+                    var osm = L.TileLayer.boundaryCanvas(osmUrl, {
+                        boundary: geom,
+                        attribution: osmAttribution,
+                        trackAttribution: true
+                    }).addTo(map);
+
+                    var featuresLayer = new L.GeoJSON(data, {
+                        style: function(feature) {
+                            return {
+                                color: '#FF0000'
+                            };
+                        },
+                        onEachFeature: function(feature, marker) {
+                            marker.bindPopup('<p>Confirmados: <?= $casos['confirmadosCaso'] ?></p>' +
+                                '<p>Suspeitos: <?= $casos['suspeitosCaso'] ?></p>' +
+                                '<p>Descartados: <?= $casos['descartadosCaso'] ?></p>' +
+                                '<p>Obitos: <?= $casos['obitosCaso'] ?></p>' +
+                                '<p>Recuperados: <?= $casos['recuperadosCaso'] ?></p>');
+                        }
+                    });
+
+                    map.addLayer(featuresLayer);
+                }
+            });
         </script>
 
         <script type="text/javascript" src="/assets/dist/labs-common.js"></script>
     </body>
 
 </html>
-<?php } else echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Ainda não foram encontrados dados para a cidade selecionada.);
-    window.location.href='/home';
-    </script>"); ?>

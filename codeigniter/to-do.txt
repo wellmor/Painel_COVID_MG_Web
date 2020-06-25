@@ -1,5 +1,11 @@
 PRINCIPAIS
 
+- A ideia geral é ter uma nova tabela "verificação". Toda vez q eu registrar algum dado para alguma cidade, ele regista o timestamp da verificação para aquela cidade
+Além disso, o dialog de registro dos números, deve ter um checkbox que indica não haver novo boletim pra cidade.
+Esse checkbox vai desabilitar todos os outros campos e lançar apenas o timestamp na verificação
+Dessa forma saberemos a hora de cada lançamento no sistema. E podemos determinar quais cidades estão de fato sem lançamentos,
+desconsiderando aquelas q realmente não tem boletins de atualização
+
 - alerta de casos (ao clicar em cadastrar caso, notificar pessoas que colocaram o email no alerta) [ONESIGNAL]  - Ariel
 
 OUTROS

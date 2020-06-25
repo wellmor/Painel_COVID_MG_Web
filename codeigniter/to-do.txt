@@ -1,9 +1,5 @@
 PRINCIPAIS
 
-- adicionar um "ver mais" redirecionando pra todos os projetos do power bi na área de projetos
-
-- substituir gráfico com notícia 
-
 - alerta de casos (ao clicar em cadastrar caso, notificar pessoas que colocaram o email no alerta) [ONESIGNAL]  - Ariel
 
 OUTROS

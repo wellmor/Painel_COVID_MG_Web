@@ -111,6 +111,14 @@
             </div>
           </div>
         </div>
+        <div class="col-md-12" style="margin-bottom: 30px;">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <a href="https://app.powerbi.com/view?r=eyJrIjoiNzdiMjg2MmEtMmQ1Zi00YzZkLTgwNmMtYzFmMGNmZWIzZDNiIiwidCI6IjAwZjhmMzk0LTU4N2UtNGQ0ZC1hZGNmLWQ2OGIwNzBlMGEwZCJ9" target="_blank">
+                <h5 style="font-size: 17px;">Conheça todos os projetos de Ações de Enfrentamento Coronavirus do IF Sudeste MG</h5></a>
+            </div>
+          </div>
+        </div>
         <!-- FONTE: https://app.powerbi.com/view?r=eyJrIjoiNzdiMjg2MmEtMmQ1Zi00YzZkLTgwNmMtYzFmMGNmZWIzZDNiIiwidCI6IjAwZjhmMzk0LTU4N2UtNGQ0ZC1hZGNmLWQ2OGIwNzBlMGEwZCJ9 -->
       </div>
   </main>

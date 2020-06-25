@@ -335,19 +335,19 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" height="323vh"></canvas>
+                                        <canvas id="chartConfirmados" height="250vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" height="323vh"></canvas>
+                                        <canvas id="chartSuspeitos" height="250vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" height="323vh"></canvas>
+                                        <canvas id="chartDescartados" height="250vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" height="323vh"></canvas>
+                                        <canvas id="chartRecuperados" height="250vh"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" height="323vh"></canvas>
+                                        <canvas id="chartObitos" height="250vh"></canvas>
                                     </div>
                                 </div>
                             </div>

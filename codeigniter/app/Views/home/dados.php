@@ -100,7 +100,6 @@
         <main role="main">
             <div class="container">
                 <section class="jumbotron text-center">
-
                     <!-- pesquisa -->
                     <div class="card" style="width: 100%">
                         <div class="card-body">
@@ -110,16 +109,13 @@
                                 <div class="typeahead__container form-group">
                                     <div class="typeahead__field">
                                         <div class="typeahead__query">
-                                            <input class="js-typeahead" placeholder="pesquise aqui..." id="pesquisar" autocomplete="off">
+                                            <input class="js-typeahead" placeholder="Pesquise aqui..." id="pesquisar" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </section>
 
                 <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
@@ -301,7 +297,7 @@
                             <div class="card-body">
                                 <h5 class="subtext">Mapa</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Visualize diversas informações sobre seu município no mapa interativo</h6>
-                                <div id="map"></div>
+                                <div id="map" style="height: 400px;"></div>
                             </div>
                         </div>
                     </div>
@@ -329,19 +325,19 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" height="250vh"></canvas>
+                                        <canvas id="chartConfirmados" height="203px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" height="250vh"></canvas>
+                                        <canvas id="chartSuspeitos" height="203px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" height="250vh"></canvas>
+                                        <canvas id="chartDescartados" height="203px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" height="250vh"></canvas>
+                                        <canvas id="chartRecuperados" height="203px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" height="250vh"></canvas>
+                                        <canvas id="chartObitos" height="203px"></canvas>
                                     </div>
                                 </div>
                             </div>

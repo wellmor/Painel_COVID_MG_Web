@@ -11,24 +11,38 @@ class Pesquisa extends Controller
     public function getDados($term = null)
     {
         $model = new HomeModel();
-        // $model->select("nomeMunicipio, idMunicipio, codMunicipio");
-        $model->orderby('nomeMunicipio', 'ASC');
-        $pesquisas = $model->findAll();
+        $data = [];
+        $uba = [];
+        $jf = [];
+        $entornos = [];
 
-        $microrregiao = null;
-        foreach ($pesquisas as $pesquisa) {
-            if ($pesquisa['idMicrorregiao'] == 1)
-                $microrregiao = "uba";
-            else if ($pesquisa['idMicrorregiao'] == 2)
-                $microrregiao = "jf";
-            else if ($pesquisa['idMicrorregiao'] == 3)
-                $microrregiao = "outras";
+        $query = $model->query("SELECT nomeMunicipio, idMicrorregiao FROM municipio");
+        $data = $query->getResult('array');
+        $temp = [];
+        foreach ($data as $x) {
 
-            echo '<li class="btn dropdown-item list-item" id="test" style="padding-left: 10px;" data-microrregiao="microrregiao-' . $microrregiao . '">
-                <a href="/home/pesquisa/' . $pesquisa['slugMunicipio'] . '" style="text-decoration: none; color: black;">
-                    <h5 class="name text-center">' . $pesquisa['nomeMunicipio'] . '</h5>
-                </a>
-            </li>';
+            if ($x['idMicrorregiao'] == 1) {
+                // $uba['nome'] = $x['nomeMunicipio'];
+                // $uba['slug'] = $x['slugMunicipio'];
+                $temp = $x['nomeMunicipio'];
+                array_push($uba, $temp);
+            } else if ($x['idMicrorregiao'] == 2) {
+                $temp = $x['nomeMunicipio'];
+                array_push($jf, $temp);
+            } else if ($x['idMicrorregiao'] == 3 || $x['idMicrorregiao'] == 4) {
+                $temp = $x['nomeMunicipio'];
+                array_push($entornos, $temp);
+            }
         }
+
+        $source = [
+            "entornos" => $entornos,
+            "uba" => $uba,
+            "jf" => $jf,
+            
+        ];
+        echo json_encode($source);
+
+        // echo json_encode($data);
     }
 }

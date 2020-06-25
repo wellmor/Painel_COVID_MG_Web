@@ -1,22 +1,34 @@
 PRINCIPAIS
 
+- alerta de casos com onesignal  - Ariel
+
+- Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria - Ariel
+
 - A ideia geral é ter uma nova tabela "verificação". Toda vez q eu registrar algum dado para alguma cidade, ele regista o timestamp da verificação para aquela cidade
 Além disso, o dialog de registro dos números, deve ter um checkbox que indica não haver novo boletim pra cidade.
 Esse checkbox vai desabilitar todos os outros campos e lançar apenas o timestamp na verificação
 Dessa forma saberemos a hora de cada lançamento no sistema. E podemos determinar quais cidades estão de fato sem lançamentos,
-desconsiderando aquelas q realmente não tem boletins de atualização
+desconsiderando aquelas q realmente não tem boletins de atualização - Ariel
 
-- alerta de casos (ao clicar em cadastrar caso, notificar pessoas que colocaram o email no alerta) [ONESIGNAL]  - Ariel
+- aviso redirecionando quando não existirem dados cadastrados na cidade redirecionando pro inicio - Thiago
+
+- grafico tirar descartados e suspeitos - Ariel
+
+- criar pagina sobre com informacoes sobre o projeto e foto dos integrantes - Ariel
+
+- ajax retornar cidade com caso pro Lucas - Ariel
+
+- rodape com logo do if, emcomp e dacc - Thiago
+
+- gerar relatorios de dados na pagina inicial de adm - Thiago
+
+- sumarização microrregiao link azul tratar como cidade / trocar microrregiao por regiao - Thiago
+
+- alterar texto da pesquisa - Thiago
 
 OUTROS
 
-- corrigir falso positivo do McAfee
-
-- Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria (Ariel)
-
-- Mudar cores dos gráficos de acordo com o tipo de caso (Thiago) (Ariel, tentei mas não consegui. Obs: alterando direto na função infelizmente não reconhece não sei o porque ainda)
-
-- mostra a microrregião, e pode clicar no mapa e atualizar a pagina - Thiago 
+- informacao a mais da cidade - Thiago
 
 SERVIDOR
 
@@ -35,3 +47,5 @@ EXTRAS
 - remover inicio do link
 
 - informativo cidades da microrregiao
+
+- mostra a microrregião, e pode clicar no mapa e atualizar a pagina - Thiago

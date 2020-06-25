@@ -296,7 +296,7 @@
                         <div class="card animated bounceInUp slow delay-1s">
                             <div class="card-body">
                                 <h5 class="subtext">Mapa</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Visualize diversas informações sobre seu município no mapa interativo</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Visualize informações sobre seu município no mapa interativo</h6>
                                 <div id="map" style="height: 400px;"></div>
                             </div>
                         </div>
@@ -310,12 +310,12 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="confirmados-tab" data-toggle="tab" href="#confirmados" role="tab" aria-controls="confirmados" aria-selected="true">Confirmados</a>
                                     </li>
-                                    <li class="nav-item">
+<!--                                <li class="nav-item">
                                         <a class="nav-link" id="suspeitos-tab" data-toggle="tab" href="#suspeitos" role="tab" aria-controls="suspeitos" aria-selected="false">Suspeitos</a>
-                                    </li>
-                                    <li class="nav-item">
+                                    </li> -->
+<!--                                <li class="nav-item">
                                         <a class="nav-link" id="descartados-tab" data-toggle="tab" href="#descartados" role="tab" aria-controls="descartados" aria-selected="false">Descartados</a>
-                                    </li>
+                                    </li> -->
                                     <li class="nav-item">
                                         <a class="nav-link" id="recuperados-tab" data-toggle="tab" href="#recuperados" role="tab" aria-controls="recuperados" aria-selected="false">Recuperados</a>
                                     </li>
@@ -325,19 +325,19 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" height="203px"></canvas>
+                                        <canvas id="chartConfirmados" height="215px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" height="203px"></canvas>
+                                        <canvas id="chartSuspeitos" height="215px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" height="203px"></canvas>
+                                        <canvas id="chartDescartados" height="215px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" height="203px"></canvas>
+                                        <canvas id="chartRecuperados" height="215px"></canvas>
                                     </div>
                                     <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" height="203px"></canvas>
+                                        <canvas id="chartObitos" height="215px"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -451,7 +451,7 @@
                 let recuperados = [];
                 let obitos = [];
 
-                let id = <?php echo $casos['idMunicipio']; ?>;
+                let id = <?=$casos['idMunicipio']; ?>;
                 // alert('o id e ' + id);
                 $.ajax({
                     url: "/Ajax/Graficos/getDados/" + id, //filtrar por municipio selecionado
@@ -547,8 +547,7 @@
                     }
                 });
             });
-        </script>
-        <script>
+
             $(document).ready(function() {
 
                 var data;
@@ -640,8 +639,6 @@
                         console.log("Error");
                     }
                 });
-
-
 
                 function slugify(text) {
                     text = text.toString().toLowerCase().trim();

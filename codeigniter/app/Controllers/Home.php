@@ -32,10 +32,14 @@ class Home extends BaseController
 	{
 		$model = new CasosModel();
 
-		$query2 = $model->query("SELECT * from municipio Where slugMunicipio = '" . $id . "'");
-		$existanceTest = $query2->getRowArray();
+		$queryExistenceMunicipio = $model->query("SELECT * from municipio Where slugMunicipio = '" . $id . "'");
+		$municipioTest = $queryExistenceMunicipio->getRowArray();
 
-		if ($existanceTest == null) {
+		$queryExistenceCaso = $model->query("SELECT * from caso c,municipio m Where c.idMunicipio = m.idMunicipio AND m.slugMunicipio = '" . $id . "'");
+		$casoTest = $queryExistenceMunicipio->getRowArray();
+
+
+		if ($municipioTest == null) {
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
 		} else {
 			$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");

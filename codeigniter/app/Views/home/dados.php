@@ -100,7 +100,6 @@
     <main role="main">
         <div class="container">
             <section class="jumbotron text-center">
-
                 <!-- pesquisa -->
                 <div class="card" style="width: 100%">
                     <div class="card-body">
@@ -110,23 +109,20 @@
                             <div class="typeahead__container form-group">
                                 <div class="typeahead__field">
                                     <div class="typeahead__query">
-                                        <input class="js-typeahead" placeholder="pesquise aqui..." id="pesquisar" autocomplete="off">
+                                        <input class="js-typeahead" placeholder="Pesquise aqui..." id="pesquisar" autocomplete="off">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
             </section>
 
             <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
             <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
             <p class="subtext small"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
 
-            <div class="row" style="margin-top:20px;">
+            <div class="row" style="margin-top:20px; margin-bottom:15px;">
                 <div class="col-md-4">
                     <div class="card card-borda-azul animated bounceInUp slow">
                         <div class="card-body">
@@ -138,10 +134,10 @@
                                             if ($casos['confirmadosCaso'] != "") {
                                                 echo $casos['confirmadosCaso'];
                                             } else {
-                                                echo '<div style="font-size: 19px;">Não informado</div>';
+                                                echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                                             }
                                         } else {
-                                            echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                                         }
                                         ?></h3>
                                     <p class="subtext">Confirmados</p>
@@ -155,23 +151,23 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="card card-borda-amarelo animated bounceInUp slow">
+                    <div class="card card-borda-rosa animated bounceInUp slow">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col text-left">
-                                    <h3 class="cor2">
+                                    <h3 class="cor5">
                                         <?php
-                                        if (isset($casos['suspeitosCaso'])) {
-                                            if ($casos['suspeitosCaso'] != "") {
-                                                echo $casos['suspeitosCaso'];
+                                        if (isset($casos['recuperadosCaso'])) {
+                                            if ($casos['recuperadosCaso'] != "") {
+                                                echo $casos['recuperadosCaso'];
                                             } else {
-                                                echo '<div style="font-size: 19px;">Não informado</div>';
+                                                echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                                             }
                                         } else {
-                                            echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                                         }
                                         ?></h3>
-                                    <p class="subtext">Suspeitos</p>
+                                    <p class="subtext">Recuperados</p>
                                 </div>
                                 <div class="col text-right">
                                     <img class="img" src="/assets/images/resultado.png" width="70" height="70 text-right" alt="">
@@ -180,34 +176,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="card card-borda-verde animated bounceInUp slow">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col text-left">
-                                    <h3 class="cor3">
-                                        <?php
-                                        if (isset($casos['descartadosCaso'])) {
-                                            if ($casos['descartadosCaso'] != "") {
-                                                echo $casos['descartadosCaso'];
-                                            } else {
-                                                echo '<div style="font-size: 19px;">Não informado</div>';
-                                            }
-                                        } else {
-                                            echo '<div style="font-size: 19px;">Não informado</div>';
-                                        }
-                                        ?></h3>
-                                    <p class="subtext">Descartados</p>
-                                </div>
-                                <div class="col text-right">
-                                    <img class="img" src="/assets/images/cancelar.png" width="70" height="70 text-right" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="col-md-4">
                     <div class="card card-borda-vermelho animated bounceInUp slow">
                         <div class="card-body">
@@ -219,13 +187,39 @@
                                             if ($casos['obitosCaso'] != "") {
                                                 echo $casos['obitosCaso'];
                                             } else {
-                                                echo '<div style="font-size: 19px;">Não informado</div>';
+                                                echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                                             }
                                         } else {
-                                            echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                                         }
                                         ?></h3>
                                     <p class="subtext">Óbitos</p>
+                                </div>
+                                <div class="col text-right">
+                                    <img class="img" src="/assets/images/cancelar.png" width="70" height="70 text-right" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card card-borda-amarelo animated bounceInUp slow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <h3 class="cor2">
+                                        <?php
+                                        if (isset($casos['suspeitosCaso'])) {
+                                            if ($casos['suspeitosCaso'] != "") {
+                                                echo $casos['suspeitosCaso'];
+                                            } else {
+                                                echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
+                                            }
+                                        } else {
+                                            echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                                        }
+                                        ?></h3>
+                                    <p class="subtext">Suspeitos</p>
                                 </div>
                                 <div class="col text-right">
                                     <img class="img" src="/assets/images/certidao-de-obito.png" width="70" height="70 text-right" alt="">
@@ -235,23 +229,23 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card card-borda-rosa animated bounceInUp slow">
+                    <div class="card card-borda-verde animated bounceInUp slow">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col text-left">
-                                    <h3 class="cor5">
+                                    <h3 class="cor3">
                                         <?php
-                                        if (isset($casos['recuperadosCaso'])) {
-                                            if ($casos['recuperadosCaso'] != "") {
-                                                echo $casos['recuperadosCaso'];
+                                        if (isset($casos['descartadosCaso'])) {
+                                            if ($casos['descartadosCaso'] != "") {
+                                                echo $casos['descartadosCaso'];
                                             } else {
-                                                echo '<div style="font-size: 19px;">Não informado</div>';
+                                                echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                                             }
                                         } else {
-                                            echo '<div style="font-size: 19px;">Não cadastrado</div>';
+                                            echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                                         }
                                         ?></h3>
-                                    <p class="subtext">Recuperados</p>
+                                    <p class="subtext">Descartados</p>
                                 </div>
                                 <div class="col text-right">
                                     <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70" height="70 text-right" alt="">
@@ -262,7 +256,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card  animated bounceInUp slow">
-                        <div class="card-body">
+                        <div class="card-body" style="margin: 3px;">
                             <div class="row">
                                 <div class="col text-left">
                                     <p class="subtext">Seja alertado</p>
@@ -295,13 +289,13 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom:15px;">
                 <div class="col-md-6">
                     <div class="card animated bounceInUp slow delay-1s">
                         <div class="card-body">
                             <h5 class="subtext">Mapa</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Visualize diversas informações sobre seu município no mapa interativo</h6>
-                            <div id="map"></div>
+                            <h6 class="card-subtitle mb-2 text-muted">Visualize informações sobre seu município no mapa interativo</h6>
+                            <div id="map" style="height: 400px;"></div>
                         </div>
                     </div>
                 </div>
@@ -314,12 +308,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" id="confirmados-tab" data-toggle="tab" href="#confirmados" role="tab" aria-controls="confirmados" aria-selected="true">Confirmados</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="suspeitos-tab" data-toggle="tab" href="#suspeitos" role="tab" aria-controls="suspeitos" aria-selected="false">Suspeitos</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="descartados-tab" data-toggle="tab" href="#descartados" role="tab" aria-controls="descartados" aria-selected="false">Descartados</a>
-                                </li>
+                                <!--                                <li class="nav-item">
+                                        <a class="nav-link" id="suspeitos-tab" data-toggle="tab" href="#suspeitos" role="tab" aria-controls="suspeitos" aria-selected="false">Suspeitos</a>
+                                    </li> -->
+                                <!--                                <li class="nav-item">
+                                        <a class="nav-link" id="descartados-tab" data-toggle="tab" href="#descartados" role="tab" aria-controls="descartados" aria-selected="false">Descartados</a>
+                                    </li> -->
                                 <li class="nav-item">
                                     <a class="nav-link" id="recuperados-tab" data-toggle="tab" href="#recuperados" role="tab" aria-controls="recuperados" aria-selected="false">Recuperados</a>
                                 </li>
@@ -329,19 +323,19 @@
                             </ul>
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                    <canvas id="chartConfirmados" height="323vh"></canvas>
+                                    <canvas id="chartConfirmados" height="215px"></canvas>
                                 </div>
                                 <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                    <canvas id="chartSuspeitos" height="323vh"></canvas>
+                                    <canvas id="chartSuspeitos" height="215px"></canvas>
                                 </div>
                                 <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                    <canvas id="chartDescartados" height="323vh"></canvas>
+                                    <canvas id="chartDescartados" height="215px"></canvas>
                                 </div>
                                 <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                    <canvas id="chartRecuperados" height="323vh"></canvas>
+                                    <canvas id="chartRecuperados" height="215px"></canvas>
                                 </div>
                                 <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                    <canvas id="chartObitos" height="323vh"></canvas>
+                                    <canvas id="chartObitos" height="215px"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -551,8 +545,7 @@
                 }
             });
         });
-    </script>
-    <script>
+
         $(document).ready(function() {
 
             var data;
@@ -644,8 +637,6 @@
                     console.log("Error");
                 }
             });
-
-
 
             function slugify(text) {
                 text = text.toString().toLowerCase().trim();

@@ -24,6 +24,5 @@ class Municipios extends Controller
         $query = $model->query("SELECT idMunicipio, idMicrorregiao, nomeMunicipio FROM municipio");
         $municipios = $query->getResult('array');
         echo json_encode($municipios);
-        die("a");
     }
 }

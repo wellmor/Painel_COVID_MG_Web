@@ -184,7 +184,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <label>Fonte</label>
-                                <input type="text" class="form-control" name="fonte" id="fonte" placeholder="fonte">
+                                <input type="text" class="form-control" name="fonte" id="fonte" placeholder="link da fonte">
                             </div>
                         </div>
                     </form>

@@ -131,8 +131,8 @@ p {
 }
 
 #map {
-    min-height: 600px;
-    max-height: 800px
+    min-height: 300px;
+    max-height: 400px
 }
 
 a.disable-links {

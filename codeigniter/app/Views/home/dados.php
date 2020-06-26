@@ -771,7 +771,10 @@
                     $.getJSON(
                         'https://servicodados.ibge.gov.br/api/v1/localidades/municipios/' + nome,
                         function(data) {
-                            id = data['id'];
+                            if(nome == 'vicosa')
+                                id = data[2]['id'];
+                            else
+                                id = data['id'];
 
                             link = "https://servicodados.ibge.gov.br/api/v2/malhas/" + id + "?formato=application/vnd.geo+json";
                             $.getJSON(link,

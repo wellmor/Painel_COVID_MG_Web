@@ -616,7 +616,7 @@
                             onClickAfter: function(node, a, item, event) {
                                 event.preventDefault();
                                 // var r = confirm("You will be redirected to:\n" + item.href + "\n\nContinue?");
-                                window.location.href = "https://covidmg.com/home/pesquisa/" + slugify(item.href);
+                                window.location.href = "<?= base_url() ?>" + "/home/pesquisa/"+slugify(item.href);
                                 $('.js-result-container').text('');
 
                             },
@@ -780,12 +780,12 @@
                                     geojson = data['features']['0']['geometry'];
                                     coordinate = geojson['coordinates'][0][0];
 
-                                    test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 10, 0.03);
+                                    generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 9, 0);
                                     // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
                                 })
                         }
                     );
-                } else {
+                } else if(slug == 'minas-gerais'){
                     link = "https://servicodados.ibge.gov.br/api/v2/malhas/31?formato=application/vnd.geo+json";
                     $.getJSON(link,
                         function(data) {
@@ -793,7 +793,7 @@
                             geojson = data['features']['0']['geometry'];
                             coordinate = geojson['coordinates'][0][0];
 
-                            test(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 5);
+                            generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 5);
                             // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
                         })
                 }
@@ -801,7 +801,7 @@
             });
 
 
-            function test(latitude, longitude, zoom, correcao) {
+            function generateMap(latitude, longitude, zoom, correcao) {
                 var data = geojson;
                 // console.log(data + "datae")
 

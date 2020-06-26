@@ -778,10 +778,16 @@
                                 function(data) {
                                     // console.log(data);
                                     geojson = data['features']['0']['geometry'];
-                                    coordinate = geojson['coordinates'][0][0];
+                                    coordinate = geojson['coordinates'][0][5];
+                                    qtdPontos = geojson['coordinates'][0].length;
+                                    console.log(qtdPontos);
 
-                                    generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 9, 0);
-                                    // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
+                                    if(qtdPontos < 34)
+                                        generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 10, 0);
+                                    else if(qtdPontos >= 34)
+                                        generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 9, 0);
+
+                                    
                                 })
                         }
                     );

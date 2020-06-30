@@ -35,8 +35,8 @@ class Home extends BaseController
 		$queryExistenceMunicipio = $model->query("SELECT * from municipio Where slugMunicipio = '" . $id . "'");
 		$municipioTest = $queryExistenceMunicipio->getRowArray();
 
-		$queryExistenceCaso = $model->query("SELECT * from caso c,municipio m Where c.idMunicipio = m.idMunicipio AND m.slugMunicipio = '" . $id . "'");
-		$casoTest = $queryExistenceMunicipio->getRowArray();
+		// $queryExistenceCaso = $model->query("SELECT * from caso c,municipio m Where c.idMunicipio = m.idMunicipio AND m.slugMunicipio = '" . $id . "'");
+		// $casoTest = $queryExistenceMunicipio->getRowArray();
 
 
 		if ($municipioTest == null) {

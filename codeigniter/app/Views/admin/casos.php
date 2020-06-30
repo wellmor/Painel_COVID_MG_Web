@@ -28,6 +28,7 @@
                 font-size: 3.5rem;
             }
         }
+
         .loader {
             display: none;
             position: fixed;
@@ -42,6 +43,7 @@
         body.loading .loader {
             overflow: hidden;
         }
+
         body.loading .loader {
             display: block;
         }
@@ -102,22 +104,32 @@
             <!-- conteudo -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Casos</h1>
-                    <div class="col-sm-3 text-right">
+                    <h1 class="h2" style="margin-right: 10px">Casos</h1>
+                    <!-- <div class="col-sm-3 text-right">
                         Selecione o municipio
-                    </div>
-                    <div class="col-sm-4 text-right">
+                    </div> -->
+                    <div class="col-md-5 float-right" style="margin:0px; padding:0px">
                         <select class="form-control" id="municipio"></select>
                     </div>
-                    <div class="col-sm-2 text-right">
-                        em seguida clique para cadastrar
-                    </div>
-                    <div class="col-sm-2">
+                    <div class="col-md-6 float-left">
                         <button type="button" class="btn btn-primary" data-toggle="modal" onclick="modalCad()">
+                            <span data-feather="plus"></span>
                             Cadastrar caso
                         </button>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span data-feather="info"></span> Legenda
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#" id="btnLegendasAdd"><span data-feather="plus"></span> Cadastrar</a>
+                                <a class="dropdown-item" href="#" id="btnLegendasGer"><span data-feather="edit-2"></span> Gerenciar</a>
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
+
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" style="width: 100%" id="tableCasos">
                         <thead>
@@ -141,20 +153,20 @@
         <br /><br />
         </main>
     </div>
-    </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <!-- Modal casos -->
+    <div class="modal fade" id="modalCasosAE" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="modalCasosAELabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <h5 class="modal-title" id="modalCasosAELabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="form" method="post">
+                    <form id="formCasos" method="post">
                         <div class="form-group row">
                             <input type="hidden" id="id" name="id">
                             <input type="hidden" id="idMunicipio" name="idMunicipio">
@@ -197,9 +209,78 @@
         </div>
     </div>
 
-    <div class="loader"> <!-- Loading de requisições ajax -->
 
+    <!-- Modal cadastro/edição de legendas -->
+    <div class="modal fade" id="modalLegendasAE" tabindex="-1" role="dialog" aria-labelledby="modalLegendasAELabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLegendasAELabel">Cadastro de legenda</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Munícipio</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Conteúdo:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Modal legenda datatable -->
+
+    <div class="modal fade" id="modalLegendas" tabindex="-1" role="dialog" aria-labelledby="modalLegendasLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLegendasLabel" style="margin-right: 10px">Legendas</h5>
+                    <!-- <button type="button" class="btn btn-outline-primary float-left" id="btnLegendasAdd">
+                        <span data-feather="plus"></span>Nova Legenda
+                    </button> -->
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered" style="width: 100%" id="tableLegendas">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>conteudo</th>
+                                    <th>município</th>
+                                    <th>id municipio</th>
+                                    <th style="width: 20%">ações</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader"></div>
     <script src="/assets/dist/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script src="/assets/dist/dashboard.js"></script>
@@ -209,6 +290,48 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script>
+        //legenda cadastro e edição
+        $(document).ready(function() {
+            $('#btnLegendasAdd').click(function() {
+                $('.modal').modal('hide');
+                $('#modalLegendasAE').modal('show')
+            });
+
+            $('#modalLegendasAE').on('hidden.bs.modal', function(e) {
+                $('#modalLegendas').modal('show');
+
+            });
+            $('#btnLegendasGer').click(function() {
+                $('#modalLegendas').modal('show')
+            });
+
+
+            // $('#btnLegendaAdd').click(function() {
+            //     alert("clicou");
+            //     var dados = $('#formLegenda').serializeArray();
+            //     $('#exampleModal').modal('hide');
+            //     $body = $("body");
+            //     $body.addClass("loading");
+            //     $.ajax({
+            //         type: "POST",
+            //         url: "/casos/storeDt",
+            //         data: dados,
+            //         success: function(result) {
+            //             $('#form').trigger("reset");
+            //             table.ajax.reload();
+            //             $('#id').val("");
+            //             $body.removeClass("loading");
+            //             toast("Relatório de casos salvo com sucesso", "success");
+            //         },
+            //         error: function() {
+            //             $body.removeClass("loading");
+            //             toast("Erro ao salvar relatório de casos", "error");
+            //         }
+            //     });
+            //     return false;
+            // });
+        });
+
         $.ajax({
             type: "get",
             url: "../Ajax/municipios/getDados",
@@ -220,12 +343,13 @@
                 $.each(data, function(i, d) {
                     selectbox.append('<option value="' + d.idMunicipio + '">' + d.nomeMunicipio + '</option>');
                 });
-                selectbox.append('<option value="" selected>Clique aqui para selecionar</option>');
+                selectbox.append('<option value="" selected>Selecione o município...</option>');
             }
         });
-        var table;
+        var tableCasos;
+        var tableLegendas
         $(document).ready(function() {
-            table = $('#tableCasos').DataTable({
+            tableCasos = $('#tableCasos').DataTable({
                 "ajax": "../Ajax/Casos/getDados",
                 "processing": true,
                 "order": [
@@ -326,8 +450,57 @@
             });
         });
 
+        $(document).ready(function() {
+            tableLegendas = $('#tableLegendas').DataTable({
+                "ajax": "../Ajax/Legendas/getDados",
+                "processing": true,
+                "order": [
+                    [1, "desc"]
+                ],
+                columns: [{
+                        data: "id",
+                        visible: false
+                    },
+                    {
+                        data: "conteudo",
+
+                    },
+                    {
+                        data: "municipio"
+                    },
+                    {
+                        data: "idMunicipio",
+                        visible: false
+                    },
+                    {
+                        "mData": null,
+                        "mRender": function(data, type, row) {
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editar(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletar(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
+                        },
+                    }
+                ],
+                responsive: true,
+                "oLanguage": {
+                    "sSearch": "Pesquisa"
+                },
+                "language": {
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima"
+                    },
+                    "processing": "Carregando...",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Desculpe, nada encontrado",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sem registros disponíveis",
+                    "infoFiltered": "(filtrado de _MAX_ total registros)"
+                }
+            });
+        });
+
         //evitar edições incompletas, reseta todos os campos
-        $('#exampleModal').on('hidden.bs.modal', function(e) {
+        $('#modalCasosAE').on('hidden.bs.modal', function(e) {
             $(this)
                 .find("input,textarea,select")
                 .val('')
@@ -340,18 +513,18 @@
         //filter by selected value on second column(municipio)
         $("#municipio").on('change', function() {
             //filter by selected value on second column
-            if ($('#municipio option:selected').text() == 'Clique aqui para selecionar') {
-                table.column(3).search("").draw();
+            if ($('#municipio option:selected').text() == 'Selecione o município...') {
+                tableCasos.column(3).search("").draw();
             } else {
-                table.column(3).search($('#municipio option:selected').text()).draw();
+                tableCasos.column(3).search($('#municipio option:selected').text()).draw();
             }
         });
 
         //cadastro e edição
         $(document).ready(function() {
             $('#btn').click(function() {
-                var dados = $('#form').serializeArray();
-                $('#exampleModal').modal('hide');
+                var dados = $('#formCasos').serializeArray();
+                $('#modalCasosAE').modal('hide');
                 $body = $("body");
                 $body.addClass("loading");
                 $.ajax({
@@ -359,8 +532,8 @@
                     url: "/casos/storeDt",
                     data: dados,
                     success: function(result) {
-                        $('#form').trigger("reset");
-                        table.ajax.reload();
+                        $('#formCasos').trigger("reset");
+                        tableCasos.ajax.reload();
                         $('#id').val("");
                         $body.removeClass("loading");
                         toast("Relatório de casos salvo com sucesso", "success");
@@ -407,7 +580,7 @@
                         type: "DELETE",
                         url: "../casos/deleteDt/" + decodeURIComponent(id),
                         success: function(result) {
-                            table.ajax.reload();
+                            tableCasos.ajax.reload();
                             // alert("Relatório de casos excluído com sucesso");
                             $body.removeClass("loading");
                             toast("Relatório de casos excluído com sucesso", "success");
@@ -452,18 +625,18 @@
         }
 
         function modalEd(municipio, data) {
-            $('#exampleModalLabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatarData(data));
-            $('#exampleModal').modal('show')
+            $('#modalCasosAELabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatarData(data));
+            $('#modalCasosAE').modal('show')
         }
 
         function modalCad(municipio) {
             if ($('#municipio option:selected').val() == "") {
                 alert("Por favor, antes de cadastrar selecione um município para cadastro de relatório de casos");
             } else {
-                $('#exampleModalLabel').text('Cadastro de relatorio de casos: ' + $('#municipio option:selected').text());
+                $('#modalCasosAELabel').text('Cadastro de relatorio de casos: ' + $('#municipio option:selected').text());
                 //$('#idMunicipio').val($('#municipio option:selected').val());
                 $('#idMunicipio').val($('#municipio option:selected').val());
-                $('#exampleModal').modal('show')
+                $('#modalCasosAE').modal('show')
             }
 
         }

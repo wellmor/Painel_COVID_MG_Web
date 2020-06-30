@@ -23,7 +23,7 @@ class Casos extends Controller
     {
         $model = new CasosModel();
         $model->save([
-            'idCaso' => $this->request->getVar('id'),
+            'idCaso' => $this->request->getVar('idCaso'),
             'idMunicipio' => $this->request->getVar('idMunicipio'),
             'confirmadosCaso' => $this->request->getVar('confirmados'),
             'suspeitosCaso' => $this->request->getVar('suspeitos'),

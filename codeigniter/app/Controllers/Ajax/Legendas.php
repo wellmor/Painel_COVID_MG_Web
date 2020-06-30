@@ -17,7 +17,7 @@ class Legendas extends Controller
 
         $query = $model->query(
             "SELECT l.idLegenda as id, l.conteudolegenda as conteudo, m.idMunicipio as idMunicipio, m.nomeMunicipio nomeMunicipio 
-            FROM legenda l, municipio m, usuario_municipio um WHERE um.idUsuario = ".session()->get('idUsuario')." AND um.idMunicipio = m.idMunicipio AND l.idMunicipio = um.idMunicipio");
+            FROM legenda l, municipio m, usuario_municipio um WHERE um.idUsuario = ".session()->get('idUsuario')." AND um.idMunicipio = m.idMunicipio AND l.idMunicipio = um.idMunicipio AND l.deleted_at = '0000-00-00'");
         $legendas = $query->getResult('array');
 
 

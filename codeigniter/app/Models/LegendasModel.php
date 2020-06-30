@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class LegendasModel extends Model
 {
-    protected $table = "legendas";
+    protected $table = "legenda";
     protected $primaryKey = "idLegenda";
     protected $allowedFields = ['idLegenda', 'conteudoLegenda', 'idMunicipio'];
     protected $useTimestamps = true;

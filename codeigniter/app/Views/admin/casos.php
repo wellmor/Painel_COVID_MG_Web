@@ -112,16 +112,16 @@
                         <select class="form-control" id="municipio"></select>
                     </div>
                     <div class="col-md-6 float-left">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="modalCad()">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="modalCadCaso()">
                             <span data-feather="plus"></span>
                             Cadastrar caso
                         </button>
                         <div class="btn-group">
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span data-feather="info"></span> Legenda
+                                <span data-feather="info"></span> Legenda
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#" id="btnLegendasAdd"><span data-feather="plus"></span> Cadastrar</a>
+                                <a class="dropdown-item" href="#" onclick="modalCadLegenda()"><span data-feather="plus"></span> Cadastrar</a>
                                 <a class="dropdown-item" href="#" id="btnLegendasGer"><span data-feather="edit-2"></span> Gerenciar</a>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                 <div class="modal-body">
                     <form id="formCasos" method="post">
                         <div class="form-group row">
-                            <input type="hidden" id="id" name="id">
+                            <input type="hidden" id="idCaso" name="idCaso">
                             <input type="hidden" id="idMunicipio" name="idMunicipio">
                             <div class="col-sm-6">
                                 <label>Confirmados </label>
@@ -203,7 +203,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="btn">Salvar</button>
+                    <button type="button" class="btn btn-primary" id="btnSalvarCaso">Salvar</button>
                 </div>
             </div>
         </div>
@@ -215,32 +215,24 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLegendasAELabel">Cadastro de legenda</h5>
+                    <h5 class="modal-title" id="modalLegendasAELabel"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="formLegendas" method="post">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Munícipio</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="col-form-label">Conteúdo:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <input type="hidden" id="idLegenda" name="idLegenda">
+                            <input type="hidden" id="idMunicipioLeg" name="idMunicipioLeg">
+                            <label for="conteudo" class="col-form-label">Conteúdo:</label>
+                            <textarea class="form-control" id="conteudo" name="conteudo" placeholder="Detalhe como os relatórios de casos estão sendo tratados, se houveram mudanças nas contagens etc."></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-primary" id="btnSalvarLegenda">Salvar</button>
                 </div>
             </div>
         </div>
@@ -292,10 +284,10 @@
     <script>
         //legenda cadastro e edição
         $(document).ready(function() {
-            $('#btnLegendasAdd').click(function() {
-                $('.modal').modal('hide');
-                $('#modalLegendasAE').modal('show')
-            });
+            // $('#btnLegendasAdd').click(function() {
+            //     $('.modal').modal('hide');
+            //     $('#modalLegendasAE').modal('show')
+            // });
 
             $('#modalLegendasAE').on('hidden.bs.modal', function(e) {
                 $('#modalLegendas').modal('show');
@@ -392,8 +384,8 @@
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editar(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
-                                ' <a href="" class="btn btn-outline-danger" onClick="deletar(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarCaso(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletarCaso(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
                         },
                     }
                 ],
@@ -475,8 +467,8 @@
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editar(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
-                                ' <a href="" class="btn btn-outline-danger" onClick="deletar(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLegenda(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.conteudo) + '\' , \'' + encodeURIComponent(row.municipio) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletarLegenda(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
                         },
                     }
                 ],
@@ -520,9 +512,9 @@
             }
         });
 
-        //cadastro e edição
+        //cadastro e edição de casos
         $(document).ready(function() {
-            $('#btn').click(function() {
+            $('#btnSalvarCaso').click(function() {
                 var dados = $('#formCasos').serializeArray();
                 $('#modalCasosAE').modal('hide');
                 $body = $("body");
@@ -548,9 +540,9 @@
         });
 
         //modal de edição
-        function editar(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {
-            modalEd(decodeURIComponent(municipio), decodeURIComponent(datax));
-            $('#id').val(decodeURIComponent(id));
+        function editarCaso(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {
+            modalEdCaso(decodeURIComponent(municipio), decodeURIComponent(datax));
+            $('#idCaso').val(decodeURIComponent(id));
             $('#idMunicipio').val(decodeURIComponent(idMunicipio));
             $('#confirmados').val(decodeURIComponent(confirmados));
             $('#suspeitos').val(decodeURIComponent(suspeitos));
@@ -559,11 +551,20 @@
             $('#descartados').val(decodeURIComponent(descartados));
             $('#data-caso').val(decodeURIComponent(datax));
             $('#fonte').val(decodeURIComponent(fonte));
-
         }
 
-        //deleção
-        function deletar(id) {
+        function editarLegenda(id, conteudo, municipio) {
+            modalEdLegenda(decodeURIComponent(municipio));
+            //esconder modal do legendas
+            $('#idLegenda').val(decodeURIComponent(id));
+            $('#modalLegendas').modal('hide');
+            $('#idLegenda').val(decodeURIComponent(id));
+            $('#idMunicipio').val(decodeURIComponent(idMunicipio));
+            $('#conteudo').val(decodeURIComponent(conteudo));
+        }
+
+        //deleção de caso
+        function deletarCaso(id) {
             Swal.fire({
                 title: 'Tem certeza?',
                 text: "Você não poderá desfazer isso!",
@@ -591,7 +592,66 @@
                         }
                     });
                 }
-            })
+            });
+        }
+
+
+        //cadastro e edição de legendas
+        $(document).ready(function() {
+            $('#btnSalvarLegenda').click(function() {
+                var dados = $('#formLegendas').serializeArray();
+                $('#modalLegendasAE').modal('hide');
+                $body = $("body");
+                $body.addClass("loading");
+                $.ajax({
+                    type: "POST",
+                    url: "/legendas/storeDt",
+                    data: dados,
+                    success: function(result) {
+                        $('#formLegendas').trigger("reset");
+                        tableLegendas.ajax.reload();
+                        $('#id').val("");
+                        $body.removeClass("loading");
+                        toast("Legenda de relatório de casos salvo com sucesso", "success");
+                    },
+                    error: function() {
+                        $body.removeClass("loading");
+                        toast("Erro ao salvar legenda de relatório de casos", "error");
+                    }
+                });
+                return false;
+            });
+        });
+
+        function deletarLegenda(id) {
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: "Você não poderá desfazer isso!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, excluir!'
+            }).then((result) => {
+                if (result.value) {
+                    $body = $("body");
+                    $body.addClass("loading");
+                    $.ajax({
+                        type: "DELETE",
+                        url: "../legendas/deleteDt/" + decodeURIComponent(id),
+                        success: function(result) {
+                            tableLegendas.ajax.reload();
+                            // alert("Relatório de casos excluído com sucesso");
+                            $body.removeClass("loading");
+                            toast("Legenda de relatório de casos excluído com sucesso", "success");
+                        },
+                        error: function() {
+                            $body.removeClass("loading");
+                            toast("Erro ao excluir legenda de relatório de casos", "error");
+                        }
+                    });
+                }
+            });
         }
 
         function dataAtualFormatada() {
@@ -624,21 +684,37 @@
             return " " + dia + "/" + mes + "/" + ano + " ";
         }
 
-        function modalEd(municipio, data) {
+        function modalEdCaso(municipio, data) {
             $('#modalCasosAELabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatarData(data));
             $('#modalCasosAE').modal('show')
         }
 
-        function modalCad(municipio) {
+        function modalEdLegenda(municipio, data) {
+            $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio);
+            $('#modalLegendasAE').modal('show')
+        }
+
+        function modalCadCaso() {
             if ($('#municipio option:selected').val() == "") {
-                alert("Por favor, antes de cadastrar selecione um município para cadastro de relatório de casos");
+                alert("Por favor, antes de cadastrar um relatório de casos, selecione um município.");
             } else {
-                $('#modalCasosAELabel').text('Cadastro de relatorio de casos: ' + $('#municipio option:selected').text());
+                $('#modalCasosAELabel').text('Cadastro de relatorio de casos ' + $('#municipio option:selected').text());
                 //$('#idMunicipio').val($('#municipio option:selected').val());
                 $('#idMunicipio').val($('#municipio option:selected').val());
                 $('#modalCasosAE').modal('show')
             }
+        }
 
+        function modalCadLegenda() {
+            if ($('#municipio option:selected').val() == "") {
+                alert("Por favor, antes de cadastrar uma legenda, selecione um município.");
+            } else {
+                $('#modalLegendasAELabel').text('Cadastro de legenda de casos de ' + $('#municipio option:selected').text());
+                //$('#idMunicipio').val($('#municipio option:selected').val());
+                $('#idMunicipioLeg').val($('#municipio option:selected').val());
+                $('.modal').modal('hide');
+                $('#modalLegendasAE').modal('show')
+            }
         }
     </script>
 </body>

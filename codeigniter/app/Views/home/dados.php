@@ -426,13 +426,11 @@
             <footer class="container">
                 <small class="text-muted">
                     <?php
-                    if (isset($casos['conteudoLegenda']))
-                        echo "*".$casos['conteudoLegenda'];
-                    else
+                    if (isset($legenda)) {
+                        echo "*" . $legenda['conteudoLegenda'];
+                    } else {
                         echo "*Não há dados de legendas para o município selecionado";
-
-                
-
+                    }
                     ?></small>
                 <!-- <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Termos de uso</a> &middot; <a href="#">Contato</a></p> -->
             </footer>

@@ -291,34 +291,9 @@
             $('#btnLegendasGer').click(function() {
                 $('#modalLegendas').modal('show')
             });
-
-
-            // $('#btnLegendaAdd').click(function() {
-            //     alert("clicou");
-            //     var dados = $('#formLegenda').serializeArray();
-            //     $('#exampleModal').modal('hide');
-            //     $body = $("body");
-            //     $body.addClass("loading");
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "/casos/storeDt",
-            //         data: dados,
-            //         success: function(result) {
-            //             $('#form').trigger("reset");
-            //             table.ajax.reload();
-            //             $('#id').val("");
-            //             $body.removeClass("loading");
-            //             toast("Relatório de casos salvo com sucesso", "success");
-            //         },
-            //         error: function() {
-            //             $body.removeClass("loading");
-            //             toast("Erro ao salvar relatório de casos", "error");
-            //         }
-            //     });
-            //     return false;
-            // });
         });
 
+        //inicia os municípios (pode alterar pra ser feito no php, já que não precisa ser assíncrono)
         $.ajax({
             type: "get",
             url: "../Ajax/municipios/getDados",
@@ -333,6 +308,7 @@
                 selectbox.append('<option value="" selected>Selecione o município...</option>');
             }
         });
+
         var tableCasos;
         var tableLegendas
         $(document).ready(function() {
@@ -461,7 +437,7 @@
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLegenda(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.conteudo) + '\' , \'' + encodeURIComponent(row.municipio) + '\');return false;">Editar</a>' +
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLegenda(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.conteudo) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
                                 ' <a href="" class="btn btn-outline-danger" onClick="deletarLegenda(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
                         },
                     }
@@ -545,7 +521,6 @@
 
         //modal de edição
         function editarCaso(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {
-            modalEdCaso(decodeURIComponent(municipio), decodeURIComponent(datax));
             $('#idCaso').val(decodeURIComponent(id));
             $('#idMunicipio').val(decodeURIComponent(idMunicipio));
             $('#confirmados').val(decodeURIComponent(confirmados));
@@ -555,16 +530,15 @@
             $('#descartados').val(decodeURIComponent(descartados));
             $('#data-caso').val(decodeURIComponent(datax));
             $('#fonte').val(decodeURIComponent(fonte));
+            modalEdCaso(decodeURIComponent(municipio), decodeURIComponent(datax));
         }
 
-        function editarLegenda(id, conteudo, municipio) {
-            modalEdLegenda(decodeURIComponent(municipio));
+        function editarLegenda(id, conteudo, municipio, idMunicipio) {
             $('#modalLegendas').modal('hide');
-
             $('#idLegenda').val(decodeURIComponent(id));
-            $('#idLegenda').val(decodeURIComponent(id));
-            $('#idMunicipio').val(decodeURIComponent(idMunicipio));
+            $('#idMunicipioLeg').val(decodeURIComponent(idMunicipio));
             $('#conteudo').val(decodeURIComponent(conteudo));
+            modalEdLegenda(decodeURIComponent(municipio));
         }
 
         //deleção de caso
@@ -694,8 +668,7 @@
         }
 
         function modalEdLegenda(municipio) {
-            $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio);
-            $('#idMunicipioLeg').val($('#municipio option:selected').val());
+            $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio  + "(testes)");
             $('#modalLegendasAE').modal('show')
         }
 
@@ -714,7 +687,7 @@
             if ($('#municipio option:selected').val() == "") {
                 alert("Por favor, antes de cadastrar uma legenda, selecione um município.");
             } else {
-                $('#modalLegendasAELabel').text('Cadastro de legenda de casos de ' + $('#municipio option:selected').text());
+                $('#modalLegendasAELabel').text('Cadastro de legenda de casos de ' + $('#municipio option:selected').text() + "(testes)");
                 $('#idMunicipio2').val($('#municipio option:selected').val());
                 $('#idMunicipioLeg').val($('#municipio option:selected').val());
                 $('.modal').modal('hide');

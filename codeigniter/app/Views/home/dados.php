@@ -429,7 +429,7 @@
                     if (isset($legenda)) {
                         echo "*" . $legenda['conteudoLegenda'];
                     } else {
-                        echo "*Não há dados de legendas para o município selecionado";
+                        echo "*Não há dados de legendas para o local selecionado";
                     }
                     ?></small>
                 <!-- <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Termos de uso</a> &middot; <a href="#">Contato</a></p> -->

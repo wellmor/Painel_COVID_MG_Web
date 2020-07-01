@@ -422,13 +422,22 @@
                     </div>
                 </div>
             </div>
-          
+
             <footer class="container">
-            <small class="text-muted">*Os dados aqui apresentados podem ter discrepância em relação a tal coisa e a tal negócio referente a alguma coisa que eu não sei o que para testes internos referentes a geolocalização dos usuários do site</small>
-            <!-- <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Termos de uso</a> &middot; <a href="#">Contato</a></p> -->
-        </footer>
+                <small class="text-muted">
+                    <?php
+                    if (isset($casos['conteudoLegenda']))
+                        echo "*".$casos['conteudoLegenda'];
+                    else
+                        echo "*Não há dados de legendas para o município selecionado";
+
+                
+
+                    ?></small>
+                <!-- <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Termos de uso</a> &middot; <a href="#">Contato</a></p> -->
+            </footer>
         </main>
-      
+
 
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="/assets/dist/bootstrap.js"></script> <!-- script css base -->

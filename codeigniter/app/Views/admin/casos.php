@@ -122,7 +122,7 @@
                             </button>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="#" onclick="modalCadLegenda()"><span data-feather="plus"></span> Cadastrar</a>
-                                <a class="dropdown-item" href="#" id="btnLegendasGer"><span data-feather="edit-2"></span> Gerenciar</a>
+                                <a class="dropdown-item" href="#" id="btnLegendasGer"><span data-feather="eye"></span> Ver todas</a>
                             </div>
                         </div>
                     </div>
@@ -262,7 +262,7 @@
                                     <th>conteudo</th>
                                     <th>município</th>
                                     <th>id municipio</th>
-                                    <th style="width: 20%">ações</th>
+                                    <th style="width: 10%">ações</th>
                                 </tr>
                             </thead>
                         </table>
@@ -284,11 +284,6 @@
     <script>
         //legenda cadastro e edição
         $(document).ready(function() {
-            // $('#btnLegendasAdd').click(function() {
-            //     $('.modal').modal('hide');
-            //     $('#modalLegendasAE').modal('show')
-            // });
-
             $('#modalLegendasAE').on('hidden.bs.modal', function(e) {
                 $('#modalLegendas').modal('show');
 
@@ -455,7 +450,6 @@
                     },
                     {
                         data: "conteudo",
-
                     },
                     {
                         data: "municipio"
@@ -500,7 +494,17 @@
                 .find("input[type=checkbox], input[type=radio]")
                 .prop("checked", "")
                 .end();
-        })
+        });
+
+        $('#modalLegendasAE').on('hidden.bs.modal', function(e) {
+            $(this)
+                .find("input,textarea,select")
+                .val('')
+                .end()
+                .find("input[type=checkbox], input[type=radio]")
+                .prop("checked", "")
+                .end();
+        });
 
         //filter by selected value on second column(municipio)
         $("#municipio").on('change', function() {
@@ -555,9 +559,9 @@
 
         function editarLegenda(id, conteudo, municipio) {
             modalEdLegenda(decodeURIComponent(municipio));
-            //esconder modal do legendas
-            $('#idLegenda').val(decodeURIComponent(id));
             $('#modalLegendas').modal('hide');
+
+            $('#idLegenda').val(decodeURIComponent(id));
             $('#idLegenda').val(decodeURIComponent(id));
             $('#idMunicipio').val(decodeURIComponent(idMunicipio));
             $('#conteudo').val(decodeURIComponent(conteudo));
@@ -689,8 +693,9 @@
             $('#modalCasosAE').modal('show')
         }
 
-        function modalEdLegenda(municipio, data) {
+        function modalEdLegenda(municipio) {
             $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio);
+            $('#idMunicipioLeg').val($('#municipio option:selected').val());
             $('#modalLegendasAE').modal('show')
         }
 
@@ -710,7 +715,7 @@
                 alert("Por favor, antes de cadastrar uma legenda, selecione um município.");
             } else {
                 $('#modalLegendasAELabel').text('Cadastro de legenda de casos de ' + $('#municipio option:selected').text());
-                //$('#idMunicipio').val($('#municipio option:selected').val());
+                $('#idMunicipio2').val($('#municipio option:selected').val());
                 $('#idMunicipioLeg').val($('#municipio option:selected').val());
                 $('.modal').modal('hide');
                 $('#modalLegendasAE').modal('show')

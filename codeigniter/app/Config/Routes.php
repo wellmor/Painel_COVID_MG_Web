@@ -43,6 +43,10 @@ $routes->group('/admin', function ($routes) {
 	$routes->get('casos', 'Casos::index', ['filter' => 'auth']);
 	$routes->match(['post', 'get'], 'painel', 'Users::painel', ['filter' => 'auth']);
 	$routes->match(['post', 'get'], 'perfil', 'Users::profile', ['filter' => 'auth']);
+
+	$routes->get('casos', 'Casos::deleteDt', ['filter' => 'auth']);
+
+
 });
 
 //Todas as rotas home não exigem autenticação

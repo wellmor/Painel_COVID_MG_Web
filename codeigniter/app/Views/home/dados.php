@@ -105,13 +105,13 @@
                     <!-- pesquisa -->
                     <div class="card" style="width: 100%">
                         <div class="card-body">
-                            <h5 class="card-title">Pesquise dados de sua cidade</h5>
-                            <p class="card-text" id="back-scroll">Acompanhe a evolução de casos dos munícipios das <br /> Microrregiões de Ubá, Juiz de Fora e cidades dos entornos!</p>
+                            <!-- <h5 class="card-title">Pesquise dados de sua cidade</h5> -->
+                            <p class="card-text" id="back-scroll"></p>
                             <div class="container" id="type-list" style="margin: 0px; padding: 0px">
                                 <div class="typeahead__container form-group">
                                     <div class="typeahead__field">
                                         <div class="typeahead__query">
-                                            <input class="js-typeahead" placeholder="Pesquise aqui..." id="pesquisar" autocomplete="off">
+                                            <input class="js-typeahead" placeholder="Pesquise aqui dados de seu município, microrregião ou estado de MG..." id="pesquisar" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>

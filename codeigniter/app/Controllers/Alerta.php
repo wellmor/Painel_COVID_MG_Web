@@ -10,7 +10,7 @@ class Alerta extends BaseController
 	{
 		$model = new AlertasModel();
 		$query = $model->query('SELECT nomeMunicipio FROM municipio WHERE idMunicipio = ' . $idMunicipio);
-		if (count( $query->getResult('array')) == 0) die("Id inválido");
+		if (count($query->getResult('array')) == 0) die("Id inválido");
 		$nomeMunicipio = $query->getResult('array')[0]['nomeMunicipio'];
 		$query = $model->query('SELECT a.idOnesignal FROM alerta AS a INNER JOIN municipio as m WHERE a.idMunicipio=m.idMunicipio AND a.idMunicipio = ' . $idMunicipio);
 		$data['municipio'] = array($nomeMunicipio, count($query->getResult('array')), $idMunicipio);
@@ -61,7 +61,15 @@ class Alerta extends BaseController
 			'idMunicipio' => $this->request->getVar('idMunicipio'),
 			'idOnesignal' => $this->request->getVar('idOnesignal'),
 		];
-		if($model->save($data)) return "Sucesso!";
+		if ($model->save($data)) return "Sucesso!";
 		else return "Erro";
+	}
+
+	public function delete($idOnesignal = null, $idMunicipio = null)
+	{
+		$model = new AlertasModel();
+		$model->where('idOnesignal', $idOnesignal);
+		$model->where('idMunicipio ', $idMunicipio);
+		$model->delete();
 	}
 }

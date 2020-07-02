@@ -1,8 +1,8 @@
 PRINCIPAIS
 
-- alerta de casos com onesignal  - Ariel
+//- alerta de casos com onesignal  - Ariel
 
-- Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria - Ariel
+//- Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria - Ariel
 
 - A ideia geral é ter uma nova tabela "verificação". Toda vez q eu registrar algum dado para alguma cidade, ele regista o timestamp da verificação para aquela cidade
 Além disso, o dialog de registro dos números, deve ter um checkbox que indica não haver novo boletim pra cidade.
@@ -12,11 +12,11 @@ desconsiderando aquelas q realmente não tem boletins de atualização - Ariel
 
 - aviso redirecionando quando não existirem dados cadastrados na cidade redirecionando pro inicio - Thiago
 
-- grafico tirar descartados e suspeitos - Ariel
+//- grafico tirar descartados e suspeitos - Ariel
 
-- criar pagina sobre com informacoes sobre o projeto e foto dos integrantes - Ariel
+//- criar pagina sobre com informacoes sobre o projeto e foto dos integrantes - Ariel
 
-- ajax retornar cidade com caso pro Lucas - Ariel
+//- ajax retornar cidade com caso pro Lucas - Ariel
 
 - rodape com logo do if, emcomp e dacc - Thiago
 

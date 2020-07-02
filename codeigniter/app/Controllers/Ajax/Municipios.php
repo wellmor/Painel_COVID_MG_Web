@@ -17,12 +17,11 @@ class Municipios extends Controller
         echo json_encode($municipios);
     }
 
-    #http://localhost/ajax/municipios/getAllMunicipios
-    public function getAllMunicipios()
+    #http://localhost/ajax/municipios/casos
+    public function casos()
     {
         $model = new MunicipiosModel();
-        $query = $model->query("SELECT idMunicipio, idMicrorregiao, nomeMunicipio FROM municipio");
-        $municipios = $query->getResult('array');
-        echo json_encode($municipios);
+        $query = $model->query("SELECT municipio.nomeMunicipio, caso.dataCaso, caso.confirmadosCaso, caso.recuperadosCaso, caso.obitosCaso,caso.suspeitosCaso,caso.descartadosCaso FROM caso INNER JOIN municipio ON caso.idMunicipio = municipio.idMunicipio");
+        die(json_encode($query->getResult('array'), JSON_PRETTY_PRINT));
     }
 }

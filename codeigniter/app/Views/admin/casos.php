@@ -199,6 +199,8 @@
                                 <input type="text" class="form-control" name="fonte" id="fonte" placeholder="link da fonte">
                             </div>
                         </div>
+                        <div class="modal-title text-center" id="modalCasosAELabelInfo" style="color:red"></div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -668,7 +670,7 @@
         }
 
         function modalEdLegenda(municipio) {
-            $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio  + "(testes)");
+            $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio + "(testes)");
             $('#modalLegendasAE').modal('show')
         }
 
@@ -676,8 +678,23 @@
             if ($('#municipio option:selected').val() == "") {
                 alert("Por favor, antes de cadastrar um relatório de casos, selecione um município.");
             } else {
-                $('#modalCasosAELabel').text('Cadastro de relatorio de casos ' + $('#municipio option:selected').text());
-                //$('#idMunicipio').val($('#municipio option:selected').val());
+                var dados;
+                $.ajax({
+                    url: '../ajax/casos/getLastDados/' + $('#municipio option:selected').val(),
+                    success: function(data) {
+                        dados = JSON.parse(data);
+                        $('#confirmados').val(dados[0].confirmados);
+                        $('#suspeitos').val(dados[0].suspeitos);
+                        $('#descartados').val(dados[0].descartados);
+                        $('#recuperados').val(dados[0].recuperados);
+                        $('#obitos').val(dados[0].obitos);
+                        $('#fonte').val(dados[0].fonte);
+                        //$('#data').val(formatarData(dados[0].datax));
+                        $('#modalCasosAELabel').text('Cadastro de relatorio de casos ' + $('#municipio option:selected').text());
+                        $('#modalCasosAELabelInfo').text('Todos os campos foram automaticamente preenchidos com os últimos dados, que foram cadastrados em ' + dados[0].datax + '. Faça as devidas alterações e atualize.');
+                    }
+                });
+
                 $('#idMunicipio').val($('#municipio option:selected').val());
                 $('#modalCasosAE').modal('show')
             }

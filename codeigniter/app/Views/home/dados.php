@@ -422,15 +422,14 @@
                         </div>
                     </div>
                 </div>
-                <footer class="pt-4 my-md-5 pt-md-5 border-top animated bounceInUp slow text-center" style="padding-bottom: 20px; padding-top:0px">
-                    <div class="row">
+                <footer class="pt-4 my-md-5 pt-md-5 border-top animated bounceInUp slow" style="padding: 0px;">
+                    <!-- <div class="row">
                         <div class="col-sm-12 col-md-4">
                             <img class="mb-2" src="https://sistemas.riopomba.ifsudestemg.edu.br/dacg/atividades/professores/images/IF-10.png" alt="" width="160" height="38">
                             <img class="mb-2" src="https://emcomp.com.br/cardapio/dashboard/Assets/logo.png" alt="" width="160" height="40">
                             <h1 clas="mb-2 display-4" style="display:inline">DACC</h1>
                             <img class="mb-2" src="https://trello-attachments.s3.amazonaws.com/5e95f929e05def876f6b6218/5ebdcf3e42dfab04157c06c7/c8076c23f7c311be8870da68b7e08bf6/Logo.png" alt="" width="160" height="40">
-                            <!-- <small class="d-block mb-3 text-muted float-left">&copy; 2020</small> -->
-                        </div>
+                        </div> -->
                         <!-- <div class="col-6 col-md">
                             <h5>Features</h5>
                             <ul class="list-unstyled text-small">
@@ -442,7 +441,7 @@
                                 <li><a class="text-muted" href="#">Last time</a></li>
                             </ul>
                         </div> -->
-                        <div class="col-sm-6 col-md-4">
+                        <!-- <div class="col-sm-6 col-md-4">
                             <h5>Recursos</h5>
                             <ul class="list-unstyled text-small">
                                 <li><a class="text-muted" href="/admin/">Login</a></li>
@@ -457,8 +456,8 @@
                                 <li><a class="text-muted" href="/home/projetos">Projetos</a></li>
                                 <li><a class="text-muted" href="/home/dicas">Dicas</a></li>
                             </ul>
-                        </div>
-                    </div>
+                        </div> -->
+                    <!-- </div> -->
                     <small class="text-muted">
                         <?php
                         if (isset($legenda)) {

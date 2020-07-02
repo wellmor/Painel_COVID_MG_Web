@@ -1,51 +1,26 @@
 PRINCIPAIS
+- alerta de casos com onesignal  - Ariel
 
-//- alerta de casos com onesignal  - Ariel
+- BACKUP automático (manualmente provisório) - Thiago
 
-//- Se o formulário de inclusão de caso já viesse com os dados da última atualização resolveria - Ariel
+- icone de verificação dentro do modal de casos verificação - Thiago
 
-- A ideia geral é ter uma nova tabela "verificação". Toda vez q eu registrar algum dado para alguma cidade, ele regista o timestamp da verificação para aquela cidade
-Além disso, o dialog de registro dos números, deve ter um checkbox que indica não haver novo boletim pra cidade.
-Esse checkbox vai desabilitar todos os outros campos e lançar apenas o timestamp na verificação
-Dessa forma saberemos a hora de cada lançamento no sistema. E podemos determinar quais cidades estão de fato sem lançamentos,
-desconsiderando aquelas q realmente não tem boletins de atualização - Ariel
+- rodape com logo do if, emcomp e dacc - Ariel
 
-- aviso redirecionando quando não existirem dados cadastrados na cidade redirecionando pro inicio - Thiago
-
-//- grafico tirar descartados e suspeitos - Ariel
-
-//- criar pagina sobre com informacoes sobre o projeto e foto dos integrantes - Ariel
-
-//- ajax retornar cidade com caso pro Lucas - Ariel
-
-- rodape com logo do if, emcomp e dacc - Thiago
-
-- gerar relatorios de dados na pagina inicial de adm - Thiago
+- gerar relatorios de dados na pagina inicial de adm - Wellington
 
 - sumarização microrregiao link azul tratar como cidade / trocar microrregiao por regiao - Thiago
 
-- alterar texto da pesquisa - Thiago
+- Justificar texto de legenda - Ariel
 
-OUTROS
+- Box projeto dica e doações adicionar sobre - Ariel
 
-- informacao a mais da cidade - Thiago
+- Sobre com resumo do projeto e fotos dos membros - Ariel
 
-SERVIDOR
+- Bug data em edição de casos - Thiago
 
-- BACKUP automático (manualmente provisório)
 
-EXTRAS
-
-- Encurtar tamanho do link na pagina de casos
-
-- nome pra clicar em cima na cidade
-
-- clica na microrregião e aparece as cidades checkbox
-
-- enter ao pesquisar
-
-- remover inicio do link
-
-- informativo cidades da microrregiao
+Outros
 
 - mostra a microrregião, e pode clicar no mapa e atualizar a pagina - Thiago
+- Whatsapp Lucas - Thiago

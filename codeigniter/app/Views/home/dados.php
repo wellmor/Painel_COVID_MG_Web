@@ -105,13 +105,13 @@
                     <!-- pesquisa -->
                     <div class="card" style="width: 100%">
                         <div class="card-body">
-                            <!-- <h5 class="card-title">Pesquise dados de sua cidade</h5> -->
+                            <h5 class="card-title">Pesquise dados de sua cidade ou região</h5>
                             <p class="card-text" id="back-scroll"></p>
                             <div class="container" id="type-list" style="margin: 0px; padding: 0px">
                                 <div class="typeahead__container form-group">
                                     <div class="typeahead__field">
                                         <div class="typeahead__query">
-                                            <input class="js-typeahead" placeholder="Pesquise aqui dados de seu município, microrregião ou estado de MG..." id="pesquisar" autocomplete="off">
+                                            <input class="js-typeahead" placeholder="Pesquise aqui dados de seu município, região ou estado de MG..." id="pesquisar" autocomplete="off">
                                         </div>
                                     </div>
                                 </div>
@@ -653,10 +653,10 @@
                             template: "{{display}}, <small><em>{{group}}</em></small>",
                             emptyTemplate: "sem resultados para {{query}}",
                             source: {
-                                "Microrregião de Ubá": {
+                                "Região de Ubá": {
                                     data: data.uba
                                 },
-                                "Microrregião de Juiz de Fora": {
+                                "Região de Juiz de Fora": {
                                     data: data.jf
                                 },
                                 "Entornos": {

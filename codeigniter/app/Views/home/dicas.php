@@ -26,6 +26,7 @@
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">Menu</h4>
                         <ul class="list-unstyled">
+                            <li><a href="/home/sobre" class="text-white">Sobre</a></li>
                             <li><a href="/home/projetos" class="text-white">Projetos</a></li>
                             <li><a href="/home/dicas" class="text-white">Dicas</a></li>
                             <li><a href="#" class="text-white">Doação</a></li>
@@ -167,7 +168,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/assets/dist/jquery-3.5.1.js" ></script>
+    <script src="/assets/dist/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="/assets/dist/bootstrap.js"></script>
 </body>

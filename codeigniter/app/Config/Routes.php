@@ -50,6 +50,7 @@ $routes->group('/home', function ($routes) {
 	$routes->get('/', 'Home::index');
 	$routes->get('projetos', 'Home::projetos');
 	$routes->get('dicas', 'Home::dicas');
+	$routes->get('sobre', 'Home::sobre');
 });
 
 /**

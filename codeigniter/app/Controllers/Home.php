@@ -28,6 +28,11 @@ class Home extends BaseController
 		return view('/home/dicas');
 	}
 
+	public function sobre()
+	{
+		return view('/home/sobre');
+	}
+
 	public function pesquisa($id = "")
 	{
 		$model = new CasosModel();

@@ -101,7 +101,7 @@
 
         <main role="main">
             <div class="container">
-                <section class="jumbotron text-center">
+                <section class="jumbotron text-center animated">
                     <!-- pesquisa -->
                     <div class="card" style="width: 100%">
                         <div class="card-body">
@@ -120,9 +120,9 @@
                     </div>
                 </section>
 
-                <h2 class="jumbotron-heading"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
-                <p class="lead text-muted small"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
-                <p class="subtext small"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
+                <h2 class="jumbotron-heading animated bounceInUp slow"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
+                <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
+                <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
 
                 <div class="row" style="margin-top:20px; margin-bottom:15px;">
                     <div class="col-md-4">
@@ -293,7 +293,7 @@
                 </div>
                 <div class="row" style="margin-bottom:15px;">
                     <div class="col-md-6">
-                        <div class="card animated bounceInUp slow delay-1s">
+                        <div class="card animated bounceInUp slow">
                             <div class="card-body">
                                 <h5 class="subtext">Mapa</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Visualize informações sobre seu município no mapa interativo</h6>
@@ -302,7 +302,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card animated bounceInUp slow delay-1s">
+                        <div class="card animated bounceInUp slow">
                             <div class="card-body" style="height: auto;">
                                 <h5 class="subtext">Gráficos</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
@@ -344,9 +344,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-bottom: 20px;">
+                <div class="row" style="margin-bottom: 10px;">
                     <div class="col-md-6">
-                        <div class="card animated bounceInUp slow delay-1s">
+                        <div class="card animated bounceInUp slow">
                             <div class="card-body">
                                 <h5 class="subtext">Notícias</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Atualize-se com informações oficiais</h6>
@@ -358,7 +358,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card animated bounceInUp slow delay-1s">
+                        <div class="card animated bounceInUp slow">
                             <div class="card animated bounceInUp fast" style="margin:15px">
                                 <div class="card-body text-center">
                                     <div class="row">
@@ -424,7 +424,7 @@
                 </div>
             </div>
 
-            <footer class="container">
+            <footer class="container animated bounceInUp slow" style="margin-bottom: 20px;">
                 <small class="text-muted">
                     <?php
                     if (isset($legenda)) {

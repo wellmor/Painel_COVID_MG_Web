@@ -85,6 +85,42 @@
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
+              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <h5 class="subtext mt-2">Wellington Moreira de Oliveira</h5>
+              <div class="subtext mt-2">Coordenador</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <h5 class="subtext mt-2">Gustavo Miranda Teixeira</h5>
+              <div class="subtext mt-2">Coordenador Adjunto</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <h5 class="subtext mt-2">Lucas Grassano Lattari </h5>
+              <div class="subtext mt-2">Coordenador Adjunto</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <h5 class="subtext mt-2">Flavio Augusto de Freitas</h5>
+              <div class="subtext mt-2">Coordenador Adjunto</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
               <img style="border-radius:50px;" src="https://arielgranato.com.br/img/ariel-granato.jpg" width="" height="90" alt="Projeto Mãos Dadas">
               <h5 class="subtext mt-2">Ariel Granato Bento</h5>
               <div class="subtext mt-2">Aluno Bolsisita</div>
@@ -115,43 +151,6 @@
               <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
               <h5 class="subtext mt-2">Jesus Felipe Candian Silva</h5>
               <div class="subtext mt-2">Aluno Voluntário</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow delay-0s">
-            <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
-              <h5 class="subtext mt-2">Wellington Moreira de Oliveira</h5>
-              <div class="subtext mt-2">Coordenador</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow delay-0s">
-            <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
-              <h5 class="subtext mt-2">Flavio Augusto de Freitas</h5>
-              <div class="subtext mt-2">Coordenador Adjunto</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow delay-0s">
-            <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
-              <h5 class="subtext mt-2">Lucas Grassano Lattari </h5>
-              <div class="subtext mt-2">Coordenador Adjunto</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow delay-0s">
-            <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
-              <h5 class="subtext mt-2">Gustavo Miranda Teixeira</h5>
-              <div class="subtext mt-2">Coordenador Adjunto</div>
-
             </div>
           </div>
         </div>

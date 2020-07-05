@@ -130,8 +130,7 @@
                     <?php } else { ?>
                         <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?> </b></p>
                     <?php }
-                } else {
-                    echo 'adasdasdaads'; ?>
+                } else { ?>
                     <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?> </b></p>
                 <?php } ?>
                 <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>

@@ -125,6 +125,10 @@
                                 <a class="dropdown-item" href="#" id="btnLegendasGer"><span data-feather="eye"></span> Ver todas</a>
                             </div>
                         </div>
+                        <button type="button" class="btn btn-success" data-toggle="modal" onclick="verificarRelatorio()">
+                            <span data-feather="check"></span>
+                            Verificar município
+                        </button>
                     </div>
 
 
@@ -576,6 +580,49 @@
         }
 
 
+        //verificação de relatorio de caso
+        //tratar quando a dataCaso for maior que verificação (nao mostrar verificação)
+        function verificarRelatorio() {
+            if ($('#municipio option:selected').val() == "") {
+                alert("Por favor, antes de verificar um relatório de casos, selecione um município.");
+            } else {
+                var idMunicipio = $('#municipio option:selected').val();
+                var municipio = $('#municipio option:selected').text();
+                Swal.fire({
+                    title: 'Tem certeza?',
+                    text: "Ao confirmar, você constata que que até o atual dia, o último relatório de casos para o munícipio de " + municipio + " é o mais atualizado!",
+                    footer: "*Caso o município tenha regularidade de boletins, não é necessária a verificação.",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    cancelButtonText: 'Cancelar',
+                    confirmButtonText: 'Sim, confirmar!'
+                }).then((result) => {
+                    if (result.value) {
+                        $body = $("body");
+                        $body.addClass("loading");
+                        $.ajax({
+                            type: "POST",
+                            url: "../Verificacoes/storeDt",
+                            data: { idMunicipio: idMunicipio },
+                            //enviar os dados aqui
+                            success: function(result) {
+                                // alert("Relatório de casos excluído com sucesso");
+                                $body.removeClass("loading");
+                                toast("Verificação de relatório de casos cadastrado com sucesso", "success");
+                            },
+                            error: function() {
+                                $body.removeClass("loading");
+                                toast("Erro ao verificar relatório de casos", "error");
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+
         //cadastro e edição de legendas
         $(document).ready(function() {
             $('#btnSalvarLegenda').click(function() {
@@ -670,7 +717,7 @@
         }
 
         function modalEdLegenda(municipio) {
-            $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio + "(testes)");
+            $('#modalLegendasAELabel').text('Editar legenda de relatório de casos de ' + municipio);
             $('#modalLegendasAE').modal('show')
         }
 
@@ -704,7 +751,7 @@
             if ($('#municipio option:selected').val() == "") {
                 alert("Por favor, antes de cadastrar uma legenda, selecione um município.");
             } else {
-                $('#modalLegendasAELabel').text('Cadastro de legenda de casos de ' + $('#municipio option:selected').text() + "(testes)");
+                $('#modalLegendasAELabel').text('Cadastro de legenda de casos de ' + $('#municipio option:selected').text());
                 $('#idMunicipio2').val($('#municipio option:selected').val());
                 $('#idMunicipioLeg').val($('#municipio option:selected').val());
                 $('.modal').modal('hide');

@@ -127,8 +127,11 @@
                     $dataVerificacao = date("d/m/Y", strtotime(esc($verificacao['dataVerificacao'])));
                     if ($dataVerificacao > $dataCaso) { ?>
                         <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?></b> e verificado em <b><?= $dataVerificacao ?></b></p>
+                    <?php } else { ?>
+                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?> </b></p>
                     <?php }
-                } else { ?>
+                } else {
+                    echo 'adasdasdaads'; ?>
                     <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?> </b></p>
                 <?php } ?>
                 <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>

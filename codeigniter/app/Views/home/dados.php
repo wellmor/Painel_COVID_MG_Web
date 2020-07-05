@@ -121,7 +121,16 @@
                 </section>
 
                 <h2 class="jumbotron-heading animated bounceInUp slow"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
-                <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= date("d/m/Y", strtotime(esc($casos['dataCaso']))) ?></b></p>
+                <?php
+                $dataCaso = date("d/m/Y", strtotime(esc($casos['dataCaso'])));
+                if (isset($verificacao)) {
+                    $dataVerificacao = date("d/m/Y", strtotime(esc($verificacao['dataVerificacao'])));
+                    if ($dataVerificacao > $dataCaso) { ?>
+                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?></b> e verificado em <b><?= $dataVerificacao ?></b></p>
+                    <?php }
+                } else { ?>
+                    <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?> </b></p>
+                <?php } ?>
                 <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
 
                 <div class="row" style="margin-top:20px; margin-bottom:15px;">
@@ -430,7 +439,7 @@
                             <h1 clas="mb-2 display-4" style="display:inline">DACC</h1>
                             <img class="mb-2" src="https://trello-attachments.s3.amazonaws.com/5e95f929e05def876f6b6218/5ebdcf3e42dfab04157c06c7/c8076c23f7c311be8870da68b7e08bf6/Logo.png" alt="" width="160" height="40">
                         </div> -->
-                        <!-- <div class="col-6 col-md">
+                    <!-- <div class="col-6 col-md">
                             <h5>Features</h5>
                             <ul class="list-unstyled text-small">
                                 <li><a class="text-muted" href="#">Cool stuff</a></li>
@@ -441,7 +450,7 @@
                                 <li><a class="text-muted" href="#">Last time</a></li>
                             </ul>
                         </div> -->
-                        <!-- <div class="col-sm-6 col-md-4">
+                    <!-- <div class="col-sm-6 col-md-4">
                             <h5>Recursos</h5>
                             <ul class="list-unstyled text-small">
                                 <li><a class="text-muted" href="/admin/">Login</a></li>

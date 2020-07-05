@@ -582,6 +582,7 @@
 
         //verificação de relatorio de caso
         //tratar quando a dataCaso for maior que verificação (nao mostrar verificação)
+        //dataverificacao > datacaso pra mostrar ela
         function verificarRelatorio() {
             if ($('#municipio option:selected').val() == "") {
                 alert("Por favor, antes de verificar um relatório de casos, selecione um município.");

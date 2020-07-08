@@ -122,16 +122,19 @@
 
                 <h2 class="jumbotron-heading animated bounceInUp slow"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
                 <?php
-                $dataCaso = date("d/m/Y", strtotime(esc($casos['dataCaso'])));
+                $dataCaso = esc($casos['dataCaso']);
+                $dataCasoListar  = date("d/m/Y", strtotime(esc($dataCaso)));
                 if (isset($verificacao)) {
-                    $dataVerificacao = date("d/m/Y", strtotime(esc($verificacao['dataVerificacao'])));
+                    $dataVerificacao = esc($verificacao['dataVerificacao']);
+                    $dataVerificacaoListar  = date("d/m/Y", strtotime(esc($dataVerificacao)));
+
                     if ($dataVerificacao > $dataCaso) { ?>
-                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?></b> e verificado em <b><?= $dataVerificacao ?></b></p>
+                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> e verificado em <b><?= $dataVerificacaoListar ?></b></p>
                     <?php } else { ?>
-                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?> </b></p>
+                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b></p>
                     <?php }
                 } else { ?>
-                    <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCaso ?> </b></p>
+                    <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b></p>
                 <?php } ?>
                 <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
 

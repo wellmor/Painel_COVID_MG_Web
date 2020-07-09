@@ -13,7 +13,24 @@
     <link rel="icon" href="/assets/images/virus.png"> <!-- favicon da página -->
     <link rel="stylesheet" href="/assets/css/dados.css"> <!-- estilo específico da página -->
     <script src="/assets/dist/jquery-3.5.1.js"></script> <!-- plugin base -->
-
+    <!-- Push do OneSignal -->
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+        window.OneSignal = window.OneSignal || [];
+        OneSignal.push(function() {
+            OneSignal.getUserId(function(userId) {
+                //console.log("OneSignal User ID:", userId);
+                //if (userId == null) alert("Clique no botão inferior direito abaixo e se inscreva para receber notificações antes de aceitar.");
+            });
+            OneSignal.init({
+                allowLocalhostAsSecureOrigin: true,
+                appId: "5ea884de-aca8-4ffe-9325-83181ed98de1",
+                notifyButton: {
+                    enable: false,
+                },
+            });
+        });
+    </script>
 
     <!-- nova-nova pesquisa -->
     <link rel="stylesheet" href="/assets/css/jquery.typeahead.min.css">
@@ -159,7 +176,7 @@
                                         <p class="subtext">Confirmados</p>
                                     </div>
                                     <div class="col text-right">
-                                        <img class="img" src="/assets/images/pesquisa.png" width="70" height="70 text-right" alt="">
+                                        <img class="img" src="/assets/images/pesquisa.png" width="70px" height="70px">
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +203,7 @@
                                         <p class="subtext">Recuperados</p>
                                     </div>
                                     <div class="col text-right">
-                                        <img class="img" src="/assets/images/resultado.png" width="70" height="70 text-right" alt="">
+                                        <img class="img" src="/assets/images/resultado.png" width="70px" height="70px">
                                     </div>
                                 </div>
                             </div>
@@ -212,7 +229,7 @@
                                         <p class="subtext">Óbitos</p>
                                     </div>
                                     <div class="col text-right">
-                                        <img class="img" src="/assets/images/cancelar.png" width="70" height="70 text-right" alt="">
+                                        <img class="img" src="/assets/images/certidao-de-obito.png" width="70px" height="70px">
                                     </div>
                                 </div>
                             </div>
@@ -238,7 +255,7 @@
                                         <p class="subtext">Suspeitos</p>
                                     </div>
                                     <div class="col text-right">
-                                        <img class="img" src="/assets/images/certidao-de-obito.png" width="70" height="70 text-right" alt="">
+                                        <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70px" height="70px">
                                     </div>
                                 </div>
                             </div>
@@ -264,23 +281,25 @@
                                         <p class="subtext">Descartados</p>
                                     </div>
                                     <div class="col text-right">
-                                        <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70" height="70 text-right" alt="">
+                                        <img class="img" src="/assets/images/cancelar.png" width="70px" height="70px">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="card  animated bounceInUp slow">
+                        <div class="card animated bounceInUp slow">
                             <div class="card-body" style="margin: 3px;">
                                 <div class="row">
                                     <div class="col text-left">
-                                        <p class="subtext">Seja alertado</p>
-                                        <!--<a href="/alerta/municipio/<?= esc($casos['idMunicipio']) ?>" type="button" class="btn btn-warning"><i class="fas fa-bell"></i> Alerta</a>-->
-                                        <a href="" type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-bell"></i> Alerta</a>
+                                        <form id="formAlerta" method="post">
+                                            <p class="subtext">Seja alertado</p>
+                                            <input type="hidden" class="form-control" name="idMunicipio" id="idMunicipio" value="<?= esc($casos['idMunicipio']) ?>">
+                                            <button type="button" class="btn btn-warning" id="my-notification-button"></button>
+                                        </form>
                                     </div>
                                     <div class="col text-right">
-                                        <img class="img" src="https://image.flaticon.com/icons/svg/1157/1157000.svg" width="70" height="70 text-right" alt="">
+                                        <img class="img" src="https://image.flaticon.com/icons/svg/1157/1157000.svg" width="70px" height="70px">
                                     </div>
                                 </div>
                             </div>
@@ -324,10 +343,10 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="confirmados-tab" data-toggle="tab" href="#confirmados" role="tab" aria-controls="confirmados" aria-selected="true">Confirmados</a>
                                     </li>
-                                    <!--                                <li class="nav-item">
+                                    <!--<li class="nav-item">
                                         <a class="nav-link" id="suspeitos-tab" data-toggle="tab" href="#suspeitos" role="tab" aria-controls="suspeitos" aria-selected="false">Suspeitos</a>
                                     </li> -->
-                                    <!--                                <li class="nav-item">
+                                    <!--<li class="nav-item">
                                         <a class="nav-link" id="descartados-tab" data-toggle="tab" href="#descartados" role="tab" aria-controls="descartados" aria-selected="false">Descartados</a>
                                     </li> -->
                                     <li class="nav-item">
@@ -378,7 +397,7 @@
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <img src="/assets/images/dicas.png" width="70" height="70">
+                                                <img src="/assets/images/dicas.png" width="70px" height="70">
                                                 <h5 class="subtext mt-2">Dicas</h5>
                                             </div>
                                             <div class="col-md-6">
@@ -394,7 +413,7 @@
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <img src="/assets/images/business%20(1).png" width="70" height="70">
+                                                <img src="/assets/images/business%20(1).png" width="70px" height="70">
                                                 <h5 class="subtext mt-2">Projetos</h5>
                                             </div>
                                             <div class="col-md-6">
@@ -412,7 +431,7 @@
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <img src="/assets/images/sobre.png" width="70" height="70">
+                                                <img src="/assets/images/sobre.png" width="70px" height="70">
                                                 <h5 class="subtext mt-2">Sobre</h5>
                                             </div>
                                             <div class="col-md-6">
@@ -428,7 +447,7 @@
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <img src="/assets/images/caixa.png" width="70" height="70">
+                                                <img src="/assets/images/caixa.png" width="70px" height="70">
                                                 <h5 class="subtext mt-2">Doação</h5>
                                             </div>
                                             <div class="col-md-6">
@@ -909,6 +928,106 @@
 
                     map.addLayer(featuresLayer);
                 }
+            });
+
+            function onManageWebPushSubscriptionButtonClicked(event) {
+                getSubscriptionState().then(function(state) {
+                    if (state.isPushEnabled) {
+                        var dados = [];
+                        OneSignal.getUserId(function(userId) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/alerta/delete/" + userId + "/" + $("#idMunicipio").val(),
+                                data: dados,
+                                success: function(result) {
+                                    alert("Você não será mais alertado para novas atualizações.");
+                                }
+                            });
+                        });
+                        OneSignal.setSubscription(false);
+                    } else {
+                        if (state.isOptedOut) {
+                            /* If the user's subscription state changes during the page's session, update the button text */
+                            var dados = [];
+                            OneSignal.getUserId(function(userId) {
+                                dados.push({
+                                    name: "idOnesignal",
+                                    value: userId
+                                });
+                                dados.push({
+                                    name: "idMunicipio",
+                                    value: $("#idMunicipio").val()
+                                });
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/alerta/salvar",
+                                    data: dados,
+                                    success: function(result) {
+                                        alert("Tudo certo!\nAgora você ficará por dentro de novas atualizações diretamente no seu navegador!\nVocê pode se descadastrar a qualquer momento.");
+                                    }
+                                });
+                            });
+                            OneSignal.setSubscription(true);
+                        } else {
+                            OneSignal.registerForPushNotifications();
+                        }
+                    }
+                });
+                event.preventDefault();
+            }
+
+            function updateMangeWebPushSubscriptionButton(buttonSelector) {
+                var hideWhenSubscribed = false;
+                var subscribeText = "Alerta";
+                var unsubscribeText = "Descadastrar";
+
+                getSubscriptionState().then(function(state) {
+                    var buttonText = !state.isPushEnabled || state.isOptedOut ? subscribeText : unsubscribeText;
+
+                    var element = document.querySelector(buttonSelector);
+                    if (element === null) {
+                        return;
+                    }
+
+                    element.removeEventListener('click', onManageWebPushSubscriptionButtonClicked);
+                    element.addEventListener('click', onManageWebPushSubscriptionButtonClicked);
+                    element.textContent = buttonText;
+
+                    if (state.hideWhenSubscribed && state.isPushEnabled) {
+                        element.style.display = "none";
+                    } else {
+                        element.style.display = "";
+                    }
+                });
+            }
+
+            function getSubscriptionState() {
+                return Promise.all([
+                    OneSignal.isPushNotificationsEnabled(),
+                    OneSignal.isOptedOut()
+                ]).then(function(result) {
+                    var isPushEnabled = result[0];
+                    var isOptedOut = result[1];
+                    return {
+                        isPushEnabled: isPushEnabled,
+                        isOptedOut: isOptedOut
+                    };
+                });
+            }
+
+            var OneSignal = OneSignal || [];
+            var buttonSelector = "#my-notification-button";
+
+            /* This example assumes you've already initialized OneSignal */
+            OneSignal.push(function() {
+                // If we're on an unsupported browser, do nothing
+                if (!OneSignal.isPushNotificationsSupported()) {
+                    return;
+                }
+                updateMangeWebPushSubscriptionButton(buttonSelector);
+                OneSignal.on("subscriptionChange", function(isSubscribed) {
+                    updateMangeWebPushSubscriptionButton(buttonSelector);
+                });
             });
         </script>
 

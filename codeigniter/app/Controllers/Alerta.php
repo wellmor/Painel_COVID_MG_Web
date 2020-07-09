@@ -22,13 +22,13 @@ class Alerta extends BaseController
 		$model = new AlertasModel();
 		$idMunicipio = $this->request->getVar('idMunicipio');
 		$query = $model->query('SELECT a.idOnesignal, m.nomeMunicipio FROM alerta AS a INNER JOIN municipio as m WHERE a.idMunicipio=m.idMunicipio AND a.idMunicipio = ' . $idMunicipio);
-		$nomeMunicipio = $query->getResult('array')[0]['nomeMunicipio'];
+		$nomeMunicipio = $query->getFirstRow('array')['nomeMunicipio'];
 		$onesignal_ids = array();
 		foreach ($query->getResult('array') as $result) {
 			array_push($onesignal_ids, $result['idOnesignal']);
 		}
-		$content = array("en" => 'Novos casos confirmados em ' . $nomeMunicipio . ' clique para mais informações!');
 
+		$content = array("en" => 'Novos casos confirmados em ' . $nomeMunicipio . ' clique para mais informações!');
 		$fields = array(
 			'app_id' => "5ea884de-aca8-4ffe-9325-83181ed98de1",
 			'include_player_ids' => $onesignal_ids,

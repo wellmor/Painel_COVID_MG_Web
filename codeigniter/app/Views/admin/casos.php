@@ -521,6 +521,21 @@
                         toast("Erro ao salvar relatório de casos", "error");
                     }
                 });
+
+                var idMunicipioAlerta = $('#formCasos').serializeArray();
+                $.ajax({
+                    type: "POST",
+                    url: "/alerta/enviar",
+                    data: idMunicipioAlerta,
+                    success: function(result) {
+                        var result = JSON.parse(result);
+                        if (result.recipients > 0) alert(result.recipients + " pessoas foram notificadas com sucesso!");
+                        else alert("Nenhuma pessoa está cadastrada para receber alerta dessa cidade ainda.");
+                    },
+                    error: function() {
+                        console.log("Ocorreu um erro ao enviar alertas.");
+                    }
+                });
                 return false;
             });
         });
@@ -579,7 +594,6 @@
             });
         }
 
-
         //verificação de relatorio de caso
         //tratar quando a dataCaso for maior que verificação (nao mostrar verificação)
         //dataverificacao > datacaso pra mostrar ela
@@ -592,7 +606,7 @@
                 Swal.fire({
                     title: 'Tem certeza?',
                     text: "Ao confirmar, você constata que que até o atual dia, o último relatório de casos para o munícipio de " + municipio + " é o mais atualizado!",
-                    footer: "*Caso o município tenha regularidade de boletins, não é necessária a verificação.",
+                    footer: "* Caso o município tenha regularidade de boletins, não é necessária a verificação.",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -606,7 +620,9 @@
                         $.ajax({
                             type: "POST",
                             url: "../Verificacoes/storeDt",
-                            data: { idMunicipio: idMunicipio },
+                            data: {
+                                idMunicipio: idMunicipio
+                            },
                             //enviar os dados aqui
                             success: function(result) {
                                 // alert("Relatório de casos excluído com sucesso");

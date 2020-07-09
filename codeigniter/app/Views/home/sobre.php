@@ -58,21 +58,20 @@
       <div class="row" style="margin-bottom: 15px;">
         <div class="col-md-12">
           <div class="card animated bounceInUp slow delay-0s">
-            <div class="card-body text-left">
-              O projeto realiza o tratamento de informações extraídas de outros sistemas e fontes de dados disponíveis:
-              <ul>
-                <li>Obtenção de informações de boletins da Secretaria de Estado de Saúde de Minas Gerais, Ministério da Saúde, DATASUS, dentre outros;
-                <li>Compilação de informações de boletins em mapas interativos com informações de suspeitos, infectados e casualidades;
-                <li>Extração e sintetização de informações do número de leitos e hospitais disponíveis para tratamento de infectados;</li>
-                <li>Obtenção de notícias relevantes para moradores das localidades cobertas pelo projeto através da replicação de informes divulgados pela área de comunicação das prefeituras;</li>
-              </ul>
-              Usuários do sistema também serão capazes de contribuir no combate à pandemia e suas consequências econômicas:</li>
-              <ul>
-                <li>Possibilidade de cadastro de projetos locais de suporte no combate à pandemia, reforçando ações locais de assistência;</li>
-                <li>Informar a disponibilidade de recebimento de doações de mantimentos e itens de primeira necessidade para moradores afetados pelas consequências econômicas da pandemia;</li>
-                <li>Recebimento de alertas através de mensagens ou endereços eletrônicos;</li>
-                <li>Notificação de casos suspeitos, que serão repassados às prefeituras para devido acompanhamento.
-              </ul>
+            <div class="card-body text-justify">
+              <p>O mundo inteiro vem enfrentando uma luta árdua contra uma pandemia inesperada provocada pelo novo coronavírus causador da doença COVID-19.</p>
+              <p>Órgãos internacionais, nacionais, estaduais, municipais, bem como entidades e empresas privadas, têm trabalhado incessantemente, tanto no
+                tratamento e busca de vacinas/remédios, quanto na prevenção e controle da doença através do compartilhamento de informações. </p>
+              <p>Neste sentido, percebe-se uma lacuna referente à concentração da disseminação de informações relacionados à COVID-19 no âmbito municipal e regional, que
+                muitas vezes é limitada a notícias publicadas no site oficial de prefeituras e/ou posts de redes sociais. </p>
+              <p>Tal lacuna se traduz em um problema de acesso a informações importantes como número de novos casos, número de pacientes recuperados, número de leitos disponíveis,
+                impactos relacionados à flexibilização do isolamento social, dentre outros, prejudicando ações locais e regionais de enfrentamento à pandemia. </p>
+              <p>
+                <p>Neste sentido, este projeto de extensão é um painel digital, disponível nas plataformas web e mobile, para o compartilhamento de
+                  informações georreferenciadas, emissão de alertas, análise estatísticas de dados e visualização de projetos e informações sobre doações relacionados
+                  ao enfrentamento da COVID-19 nos municípios das microrregiões de Ubá e Juiz de Fora.</p>
+                <p>A partir deste painel digital, projetado e desenvolvido pelos alunos e professores do curso de Ciência da Computação do Campus Rio Pomba, cidadãos
+                  e líderes municipais e regionais poderão tomar decisões mais assertivas relacionadas ao combate da pandemia.</p>
             </div>
           </div>
         </div>
@@ -85,81 +84,99 @@
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Wellington Moreira de Oliveira</h5>
               <div class="subtext mt-2">Coordenador</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Gustavo Miranda Teixeira</h5>
               <div class="subtext mt-2">Coordenador Adjunto</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Lucas Grassano Lattari </h5>
               <div class="subtext mt-2">Coordenador Adjunto</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Flavio Augusto de Freitas</h5>
               <div class="subtext mt-2">Coordenador Adjunto</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://arielgranato.com.br/img/ariel-granato.jpg" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="https://arielgranato.com.br/img/ariel-granato.jpg" height="90">
               <h5 class="subtext mt-2">Ariel Granato Bento</h5>
-              <div class="subtext mt-2">Aluno Bolsisita</div>
+              <div class="subtext mt-2">Aluno Bolsista</div>
+              <a href="https://www.facebook.com/arielgranatob"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="http://lattes.cnpq.br/4570802963822154"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/thiago.png" height="90">
               <h5 class="subtext mt-2">Thiago Azevedo da Mota</h5>
-              <div class="subtext mt-2">Aluno Bolsisita</div>
+              <div class="subtext mt-2">Aluno Bolsista</div>
+              <a href="https://www.facebook.com/thiag0m"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="http://lattes.cnpq.br/5204345026625844"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Talles Yago Faria Cota</h5>
               <div class="subtext mt-2">Aluno Voluntário</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Jesus Felipe Candian Silva</h5>
               <div class="subtext mt-2">Aluno Voluntário</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://i0.wp.com/www.saint-mary.church/wp-content/uploads/2018/09/Profile-icon-9.png" width="" height="90" alt="Projeto Mãos Dadas">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Misael Guilhardes de Freitas</h5>
               <div class="subtext mt-2">Aluno Voluntário</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>

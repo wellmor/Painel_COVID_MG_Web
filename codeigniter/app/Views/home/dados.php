@@ -146,12 +146,12 @@
                     $dataVerificacaoListar  = date("d/m/Y", strtotime(esc($dataVerificacao)));
 
                     if ($dataVerificacao > $dataCaso) { ?>
-                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> e verificado em <b><?= $dataVerificacaoListar ?></b></p>
+                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> e verificado em <b><?= $dataVerificacaoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
                     <?php } else { ?>
-                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b></p>
+                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
                     <?php }
                 } else { ?>
-                    <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b></p>
+                    <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
                 <?php } ?>
                 <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
 
@@ -393,7 +393,7 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                <div class="card animated bounceInUp slow" style="margin:5px">
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -409,7 +409,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                <div class="card animated bounceInUp slow" style="margin:5px">
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -427,7 +427,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                <div class="card animated bounceInUp slow" style="margin:5px">
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -443,7 +443,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                <div class="card animated bounceInUp slow" style="margin:5px">
                                     <div class="card-body text-center">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -486,7 +486,7 @@
                             <a href="https://emcomp.com.br/"><img src="https://emcomp.com.br/cardapio/dashboard/Assets/logo.png" width="160" height="40"></a>
                         </div>
                         <div class="col-sm-12 col-md-4">
-                            <h1 style="display:inline">DACC</h1>
+                            <a href="https://universodiscreto.com/dacc/"><img src="/assets/images/dacc.jpg" width="160" height="38"></a>
                         </div>
                         <div class="col-sm-12 col-md-4">
                             <a href="https://www.ifsudestemg.edu.br/riopomba"><img src="https://sistemas.riopomba.ifsudestemg.edu.br/dacg/atividades/professores/images/IF-10.png" width="160" height="38"></a>
@@ -496,7 +496,7 @@
                             </div>-->
                     </div>
                 </div>
-                <div class="animated bounceInUp slow" style="margin: 20px;">
+                <div class="animated bounceInUp slow" style="margin: 20px;" id="informacao-caso">
                     <div class="text-muted text-justify" style="font-size: 14px;">
                         <?php
                         if (isset($legenda)) {

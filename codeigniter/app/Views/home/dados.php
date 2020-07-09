@@ -365,52 +365,76 @@
                                 <h5 class="subtext">Notícias</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Atualize-se com informações oficiais</h6>
                                 <!-- alterar as referencias da div pro campo da tabela municipio que contem o identificador da pagina -->
-                                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="450" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="250" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
                                     <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card animated bounceInUp slow">
-                            <div class="card animated bounceInUp fast" style="margin:15px">
-                                <div class="card-body text-center">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img src="/assets/images/business%20(1).png" width="70" height="70">
-                                            <h5 class="subtext mt-2">Projetos</h5>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-subtitle mb-4 text-muted">Projetos desenvolvidos pelo IF Sudeste</div>
-                                            <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card animated bounceInUp fast" style="margin:15px">
-                                <div class="card-body text-center">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img src="/assets/images/dicas.png" width="70" height="70">
-                                            <h5 class="subtext mt-2">Dicas</h5>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="card-subtitle mb-4 text-muted">O que você precisa saber e fazer para evitar o contágio</div>
-                                            <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                    <div class="card-body text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="/assets/images/dicas.png" width="70" height="70">
+                                                <h5 class="subtext mt-2">Dicas</h5>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card-subtitle mb-4 text-muted">Como se previnir facilmente</div>
+                                                <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card animated bounceInUp fast" style="margin:15px">
-                                <div class="card-body text-center">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <img src="/assets/images/caixa.png" width="70" height="70">
-                                            <h5 class="subtext mt-2">Doação</h5>
+                            <div class="col-md-6">
+                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                    <div class="card-body text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="/assets/images/business%20(1).png" width="70" height="70">
+                                                <h5 class="subtext mt-2">Projetos</h5>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card-subtitle mb-4 text-muted">Projetos feitos pelo IF Sudeste</div>
+                                                <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="card-subtitle mb-4 text-muted">Saiba como ajudar quem realmente precisa</div>
-                                            <a href="" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                    <div class="card-body text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="/assets/images/sobre.png" width="70" height="70">
+                                                <h5 class="subtext mt-2">Sobre</h5>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card-subtitle mb-4 text-muted">Quem desenvolve o projeto</div>
+                                                <a href="/home/sobre" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card animated bounceInUp fast" style="margin:5px">
+                                    <div class="card-body text-center">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="/assets/images/caixa.png" width="70" height="70">
+                                                <h5 class="subtext mt-2">Doação</h5>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="card-subtitle mb-4 text-muted">Ajudando quem precisa</div>
+                                                <a href="#" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

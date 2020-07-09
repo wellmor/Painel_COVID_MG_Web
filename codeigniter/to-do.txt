@@ -1,26 +1,21 @@
 PRINCIPAIS
-- alerta de casos com onesignal  - Ariel
 
-- BACKUP automático (manualmente provisório) - Thiago
-
-- icone de verificação dentro do modal de casos verificação - Thiago
-
-- rodape com logo do if, emcomp e dacc - Ariel
+- corrigir cadastro de alerta em mais de 1 cidade (estado)  - Ariel/Thiago
 
 - gerar relatorios de dados na pagina inicial de adm - Wellington
 
-- sumarização microrregiao link azul tratar como cidade / trocar microrregiao por regiao - Thiago
-
-- Justificar texto de legenda - Ariel
-
-- Box projeto dica e doações adicionar sobre - Ariel
-
-- Sobre com resumo do projeto e fotos dos membros - Ariel
-
 - Bug data em edição de casos - Thiago
 
+- listar os municipios e a ultima data de inserção de relatorio de casos e verificações - Thiago
+
+- adicionar id do ultimo relatório de casos na hora de verificar o municipio - Thiago
+
+- corrigir inteiro em casos - Ariel/Thiago
 
 Outros
 
+- sumarização microrregiao link azul tratar como cidade / trocar microrregiao por regiao - Thiago
+
 - mostra a microrregião, e pode clicar no mapa e atualizar a pagina - Thiago
+
 - Whatsapp Lucas - Thiago

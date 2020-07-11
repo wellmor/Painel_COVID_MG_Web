@@ -8,7 +8,7 @@ class VerificacoesModel extends Model
 {
     protected $table = "verificacao";
     protected $primaryKey = "idVerificacao";
-    protected $allowedFields = ['idVerificacao', 'dataVerificacao', 'idUsuario', 'idMunicipio'];
+    protected $allowedFields = ['idVerificacao', 'dataVerificacao', 'idUsuario', 'idMunicipio', 'idCaso'];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 

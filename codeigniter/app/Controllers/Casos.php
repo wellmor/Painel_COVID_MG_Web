@@ -42,4 +42,12 @@ class Casos extends Controller
         $model = new CasosModel();
         $model->delete($id);
     }
+
+    public function lastCasosId($id = null)
+    {
+        $model = new CasosModel();
+        $query = $model->query("Select * FROM caso c WHERE c.idMunicipio = '" . $id . "'  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
+        $data = $query->getRowArray();
+        return $data['idCaso'];
+    }
 }

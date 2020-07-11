@@ -15,9 +15,15 @@ class Verificacoes extends Controller
         $model->save([
             'idMunicipio' => $this->request->getVar('idMunicipio'),
             'idUsuario' => session()->get('idUsuario'),
+            'idCaso' => $this->request->getVar('idLastCaso'),
             'dataVerificacao' => date('Y/m/d'),
         ]);
     }
+
+
+
+
+
     public function index(){
         echo "TESTE";
     }

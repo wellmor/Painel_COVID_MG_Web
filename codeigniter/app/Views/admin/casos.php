@@ -603,39 +603,55 @@
             } else {
                 var idMunicipio = $('#municipio option:selected').val();
                 var municipio = $('#municipio option:selected').text();
-                Swal.fire({
-                    title: 'Tem certeza?',
-                    text: "Ao confirmar, você constata que que até o atual dia, o último relatório de casos para o munícipio de " + municipio + " é o mais atualizado!",
-                    footer: "* Caso o município tenha regularidade de boletins, não é necessária a verificação.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    cancelButtonText: 'Cancelar',
-                    confirmButtonText: 'Sim, confirmar!'
-                }).then((result) => {
-                    if (result.value) {
-                        $body = $("body");
-                        $body.addClass("loading");
-                        $.ajax({
-                            type: "POST",
-                            url: "../Verificacoes/storeDt",
-                            data: {
-                                idMunicipio: idMunicipio
-                            },
-                            //enviar os dados aqui
-                            success: function(result) {
-                                // alert("Relatório de casos excluído com sucesso");
-                                $body.removeClass("loading");
-                                toast("Verificação de relatório de casos cadastrado com sucesso", "success");
-                            },
-                            error: function() {
-                                $body.removeClass("loading");
-                                toast("Erro ao verificar relatório de casos", "error");
+                //pegar o id do ultimo relatorio de casos cadastrado
+                $.ajax({
+                    type: "GET",
+                    url: "../Casos/lastCasosId/" + decodeURIComponent(idMunicipio),
+                    //enviar os dados aqui
+                    success: function(result) {
+                        var idLastCaso = result;
+                        // alert(idLastCaso);
+                        Swal.fire({
+                            title: 'Tem certeza?',
+                            text: "Ao confirmar, você constata que que até o atual dia, o último relatório de casos para o munícipio de " + municipio + " é o mais atualizado!",
+                            footer: "* Caso o município tenha regularidade de boletins, não é necessária a verificação.",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            cancelButtonText: 'Cancelar',
+                            confirmButtonText: 'Sim, confirmar!'
+                        }).then((result) => {
+                            if (result.value) {
+                                $body = $("body");
+                                $body.addClass("loading");
+                                $.ajax({
+                                    type: "POST",
+                                    url: "../Verificacoes/storeDt",
+                                    data: {
+                                        idMunicipio: idMunicipio,
+                                        idLastCaso: idLastCaso
+                                    },
+                                    //enviar os dados aqui
+                                    success: function(result) {
+                                        // alert("Relatório de casos excluído com sucesso");
+                                        $body.removeClass("loading");
+                                        toast("Verificação de relatório de casos cadastrado com sucesso", "success");
+                                    },
+                                    error: function() {
+                                        $body.removeClass("loading");
+                                        toast("Erro ao verificar relatório de casos", "error");
+                                    }
+                                });
                             }
                         });
+                    },
+                    error: function() {
+                        $body.removeClass("loading");
+                        toast("Erro ao resgatar ultimo do relatório de casos", "error");
                     }
                 });
+
             }
         }
 
@@ -721,13 +737,13 @@
         }
 
         function formatDate(input) {
-                var datePart = input.match(/\d+/g),
-                    year = datePart[0], // get only two digits
-                    month = datePart[1],
-                    day = datePart[2];
+            var datePart = input.match(/\d+/g),
+                year = datePart[0], // get only two digits
+                month = datePart[1],
+                day = datePart[2];
 
-                return day + '/' + month + '/' + year;
-            }
+            return day + '/' + month + '/' + year;
+        }
 
         function modalEdCaso(municipio, data) {
 

@@ -720,16 +720,18 @@
             });
         }
 
-        function formatarData(datax) {
-            var data = new Date(datax),
-                dia = (data.getDate() + 1).toString().padStart(2, '0'),
-                mes = (data.getMonth() + 1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
-                ano = data.getFullYear();
-            return " " + dia + "/" + mes + "/" + ano + " ";
-        }
+        function formatDate(input) {
+                var datePart = input.match(/\d+/g),
+                    year = datePart[0], // get only two digits
+                    month = datePart[1],
+                    day = datePart[2];
+
+                return day + '/' + month + '/' + year;
+            }
 
         function modalEdCaso(municipio, data) {
-            $('#modalCasosAELabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatarData(data));
+
+            $('#modalCasosAELabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatDate(data));
             $('#modalCasosAE').modal('show')
         }
 

@@ -18,10 +18,6 @@
     <script>
         window.OneSignal = window.OneSignal || [];
         OneSignal.push(function() {
-            OneSignal.getUserId(function(userId) {
-                //console.log("OneSignal User ID:", userId);
-                //if (userId == null) alert("Clique no botão inferior direito abaixo e se inscreva para receber notificações antes de aceitar.");
-            });
             OneSignal.init({
                 allowLocalhostAsSecureOrigin: true,
                 appId: "5ea884de-aca8-4ffe-9325-83181ed98de1",
@@ -295,7 +291,7 @@
                                         <form id="formAlerta" method="post">
                                             <p class="subtext">Seja alertado</p>
                                             <input type="hidden" class="form-control" name="idMunicipio" id="idMunicipio" value="<?= esc($casos['idMunicipio']) ?>">
-                                            <button type="button" class="btn btn-warning" id="my-notification-button">Alerta*</button>
+                                            <button type="button" class="btn btn-warning" id="my-notification-button"><img src="/assets/loading.gif" width="20px" height="20px"></button>
                                         </form>
                                     </div>
                                     <div class="col text-right">
@@ -870,14 +866,11 @@
                                         geojson = data['features']['0']['geometry'];
                                         coordinate = geojson['coordinates'][0][5];
                                         qtdPontos = geojson['coordinates'][0].length;
-                                        console.log(qtdPontos);
-
+                                        //console.log(qtdPontos);
                                         if (qtdPontos < 34)
                                             generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 10, 0);
                                         else if (qtdPontos >= 34)
                                             generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 9, 0);
-
-
                                     })
                             }
                         );
@@ -895,7 +888,6 @@
                     }
                     // setTimeout(function(){ alert("Hello"); }, 3000);
                 });
-
 
                 function generateMap(latitude, longitude, zoom, correcao) {
                     var data = geojson;
@@ -925,12 +917,12 @@
                                 '<p>Recuperados: <?= $casos['recuperadosCaso'] ?></p>');
                         }
                     });
-
                     map.addLayer(featuresLayer);
                 }
             });
 
             function onManageWebPushSubscriptionButtonClicked(event) {
+
                 getSubscriptionState().then(function(state) {
                     if (state.isPushEnabled) {
                         var dados = [];
@@ -1019,7 +1011,6 @@
 
             var OneSignal = OneSignal || [];
             var buttonSelector = "#my-notification-button";
-
             /* This example assumes you've already initialized OneSignal */
             OneSignal.push(function() {
                 // If we're on an unsupported browser, do nothing
@@ -1032,22 +1023,31 @@
                 });
             });
 
-/*             var dados = [];
-            OneSignal.getUserId(function(userId) {
-                $.ajax({
-                    type: "POST",
-                    url: "/alerta/verificaSeIdEstaEmMunicipio/" + userId + "/" + $("#idMunicipio").val(),
-                    data: dados,
-                    success: function(result) {
-                        if(result == "true") alert("Está cadastrado");
-                        else alert("Não está cadastrado");
-                    }
+            OneSignal.push(function() {
+                OneSignal.getUserId(function(userId) {
+                    var dados = [];
+                    $.ajax({
+                        type: "POST",
+                        url: "/alerta/verificaSeIdEstaEmMunicipio/" + userId + "/" + $("#idMunicipio").val(),
+                        data: dados,
+                        success: function(result) {
+                            if (result == "true") {
+                                //alert("Está cadastrado");
+                                OneSignal.setSubscription(true);
+
+                            } else {
+                                //alert("Não está cadastrado");
+                                OneSignal.setSubscription(false);
+                            }
+                        }
+                    });
                 });
-            }); */
+            });
         </script>
 
         <script type="text/javascript" src="/assets/dist/labs-common.js"></script>
     </body>
+
 <?php } else {
     echo ('<script LANGUAGE="JavaScript">
   window.alert("Ainda não existem relatórios de casos para a cidade selecionada.");

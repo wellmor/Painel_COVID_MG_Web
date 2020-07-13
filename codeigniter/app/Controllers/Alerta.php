@@ -72,4 +72,16 @@ class Alerta extends BaseController
 		$model->where('idMunicipio ', $idMunicipio);
 		$model->delete();
 	}
+
+	public function verificaSeIdEstaEmMunicipio($idOnesignal = null, $idMunicipio = null)
+	{
+		$model = new AlertasModel();
+		$consultaIdEmMunicipio = $model
+			->where('idOnesignal', $idOnesignal)
+			->where('idMunicipio', $idMunicipio)
+			->first();
+		if (!empty($consultaIdEmMunicipio))
+			return "true";
+		else return "false";
+	}
 }

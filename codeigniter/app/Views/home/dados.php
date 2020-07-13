@@ -945,6 +945,7 @@
                             });
                         });
                         OneSignal.setSubscription(false);
+
                     } else {
                         if (state.isOptedOut) {
                             /* If the user's subscription state changes during the page's session, update the button text */
@@ -968,6 +969,7 @@
                                 });
                             });
                             OneSignal.setSubscription(true);
+
                         } else {
                             OneSignal.registerForPushNotifications();
                         }
@@ -1029,6 +1031,19 @@
                     updateMangeWebPushSubscriptionButton(buttonSelector);
                 });
             });
+
+/*             var dados = [];
+            OneSignal.getUserId(function(userId) {
+                $.ajax({
+                    type: "POST",
+                    url: "/alerta/verificaSeIdEstaEmMunicipio/" + userId + "/" + $("#idMunicipio").val(),
+                    data: dados,
+                    success: function(result) {
+                        if(result == "true") alert("Está cadastrado");
+                        else alert("Não está cadastrado");
+                    }
+                });
+            }); */
         </script>
 
         <script type="text/javascript" src="/assets/dist/labs-common.js"></script>

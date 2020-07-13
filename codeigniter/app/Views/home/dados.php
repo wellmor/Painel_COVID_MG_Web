@@ -146,7 +146,7 @@
                     $dataVerificacaoListar  = date("d/m/Y", strtotime(esc($dataVerificacao)));
 
                     if ($dataVerificacao > $dataCaso) { ?>
-                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> e verificado em <b><?= $dataVerificacaoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
+                        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> e verificado<a href="#informacao-caso">*</a> em <b><?= $dataVerificacaoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
                     <?php } else { ?>
                         <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
                     <?php }
@@ -295,7 +295,7 @@
                                         <form id="formAlerta" method="post">
                                             <p class="subtext">Seja alertado</p>
                                             <input type="hidden" class="form-control" name="idMunicipio" id="idMunicipio" value="<?= esc($casos['idMunicipio']) ?>">
-                                            <button type="button" class="btn btn-warning" id="my-notification-button"></button>
+                                            <button type="button" class="btn btn-warning" id="my-notification-button">Alerta*</button>
                                         </form>
                                     </div>
                                     <div class="col text-right">

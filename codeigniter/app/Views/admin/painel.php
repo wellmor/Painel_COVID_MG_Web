@@ -98,11 +98,11 @@
                   <th>município</th>
                   <th>último relatório de casos</th>
                   <th>última verificação de relatório</th>
-                  <th>confirmados</th>
+                  <!-- <th>confirmados</th>
                   <th>suspeitos</th>
                   <th>descartados</th>
                   <th>recuperados</th>
-                  <th>óbitos</th>
+                  <th>óbitos</th> -->
                 </tr>
               </thead>
             </table>
@@ -135,21 +135,21 @@
           {
             data: "maxDataVerificacao",
           },
-          {
-            data: "confirmados",
-          },
-          {
-            data: "suspeitos",
-          },
-          {
-            data: "descartados",
-          },
-          {
-            data: "recuperados",
-          },
-          {
-            data: "obitos",
-          },
+          // {
+          //   data: "confirmados",
+          // },
+          // {
+          //   data: "suspeitos",
+          // },
+          // {
+          //   data: "descartados",
+          // },
+          // {
+          //   data: "recuperados",
+          // },
+          // {
+          //   data: "obitos",
+          // },
         ],
         responsive: true,
         "oLanguage": {

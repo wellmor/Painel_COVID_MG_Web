@@ -28,7 +28,21 @@ class Painel extends Controller
         LEFT JOIN verificacao v ON v.idMunicipio = c.idMunicipio
         GROUP BY c.idMunicipio");
         $data = $query->getResult('array');
-  
+        $i = 0;
+        // foreach ($data as $x) {
+        //     $data[$i]['id'] = $caso['idCaso'];
+        //     $data[$i]['datax'] = $caso['dataCaso'];
+        //     $data[$i]['fonte'] = $caso['fonteCaso'];
+        //     $data[$i]['confirmados'] = $caso['confirmadosCaso'];
+        //     $data[$i]['suspeitos'] = $caso['suspeitosCaso'];
+        //     $data[$i]['obitos'] = $caso['obitosCaso'];
+        //     $data[$i]['descartados'] = $caso['descartadosCaso'];
+        //     $data[$i]['recuperados'] = $caso['recuperadosCaso'];
+        //     $data[$i]['municipio'] = $caso['nomeMunicipio'];
+        //     $data[$i]['idMunicipio'] = $caso['idMunicipio'];
+        //     $i++;
+        // }
+
         $dados = [
             'data' => $data
         ];

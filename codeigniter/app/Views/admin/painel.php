@@ -12,6 +12,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="/assets/css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/assets/css/datatables.min.css" />
   <script src="/assets/dist/jquery-3.5.1.js"></script>
   <style>
     .bd-placeholder-img {
@@ -87,18 +88,88 @@
       </nav>
       <!-- conteudo -->
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-        <!-- <h1 class="h2">Gráfico de Casos Confirmados em Rio Pomba - MG</h1>
+        <h1 class="h2">Informações gerais dos municípios</h1>
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-          <canvas class="my-4" id="myChart" height="120"></canvas> -->
-    </div>
 
-  </div>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered" style="width: 100%" id="tablePainel">
+              <thead>
+                <tr>
+                  <th>município</th>
+                  <th>último relatório de casos</th>
+                  <th>última verificação de relatório</th>
+                  <th>confirmados</th>
+                  <th>suspeitos</th>
+                  <th>descartados</th>
+                  <th>recuperados</th>
+                  <th>óbitos</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+
+    </div>
   </div>
 
   <script src="/assets/dist/bootstrap.bundle.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
   <script src="/assets/dist/dashboard.js"></script>
-
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      tableLegendas = $('#tablePainel').DataTable({
+        "ajax": "../Ajax/Painel/getDados",
+        "processing": true,
+        "order": [
+          [1, "desc"]
+        ],
+        columns: [{
+            data: "nome",
+          },
+          {
+            data: "maxDataCaso"
+          },
+          {
+            data: "maxDataVerificacao",
+          },
+          {
+            data: "confirmados",
+          },
+          {
+            data: "suspeitos",
+          },
+          {
+            data: "descartados",
+          },
+          {
+            data: "recuperados",
+          },
+          {
+            data: "obitos",
+          },
+        ],
+        responsive: true,
+        "oLanguage": {
+          "sSearch": "Pesquisa"
+        },
+        "language": {
+          "paginate": {
+            "previous": "Anterior",
+            "next": "Próxima"
+          },
+          "processing": "Carregando...",
+          "lengthMenu": "Mostrar _MENU_ registros por página",
+          "zeroRecords": "Desculpe, nada encontrado",
+          "info": "Página _PAGE_ de _PAGES_",
+          "infoEmpty": "Sem registros disponíveis",
+          "infoFiltered": "(filtrado de _MAX_ total registros)"
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>

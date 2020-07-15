@@ -17,6 +17,14 @@ class Municipios extends Controller
         echo json_encode($municipios);
     }
 
+    public function getDadosMunicipioResponsavel()
+    {
+        $model = new MunicipiosModel();
+        $query = $model->query("SELECT municipio.idMunicipio FROM usuario_municipio INNER JOIN municipio ON usuario_municipio.idMunicipio = municipio.idMunicipio WHERE usuario_municipio.idUsuario='" . session()->get('idUsuario') . "' ORDER BY municipio.nomeMunicipio");
+        $municipios = $query->getResult('array');
+        echo json_encode($municipios);
+    }
+
     #http://localhost/ajax/municipios/casos
     public function casos()
     {

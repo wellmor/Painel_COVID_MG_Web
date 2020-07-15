@@ -13,6 +13,7 @@
   <!-- Bootstrap core CSS -->
   <link href="/assets/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/assets/css/datatables.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="/assets/dist/jquery-3.5.1.js"></script>
   <style>
     .bd-placeholder-img {
@@ -99,6 +100,8 @@
                   <th>último relatório de casos</th>
                   <th>última verificação de relatório</th>
                   <th>última atualização</th>
+                  <th>id</th>
+                  <th>u.a non-formated</th>
                   <!-- <th>confirmados</th>
                   <th>suspeitos</th>
                   <th>descartados</th>
@@ -109,7 +112,25 @@
             </table>
           </div>
         </div>
+    </div>
 
+    <div class="modal fade" id="sumarioMunicipios" tabindex="-1" role="dialog" aria-labelledby="sumarioMunicipiosLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sumarioMunicipiosLabel">Sumário de atualizações</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -120,8 +141,11 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/cr-1.5.2/r-2.2.5/datatables.min.js"></script>
   <script>
+    var tablePainel;
     $(document).ready(function() {
-      tableLegendas = $('#tablePainel').DataTable({
+      $('#sumarioMunicipios').modal('show');
+
+      tablePainel = $('#tablePainel').DataTable({
         "ajax": "../Ajax/Painel/getDados",
         "processing": true,
         "order": [
@@ -139,6 +163,14 @@
           {
             data: "ultimaAtualizacao",
           },
+          {
+            data: "id",
+            visible: false
+          },
+          {
+            data: "ultimaAtualizacaoNonFormatted",
+            visible: false
+          }
           // {
           //   data: "suspeitos",
           // },
@@ -167,8 +199,55 @@
           "info": "Página _PAGE_ de _PAGES_",
           "infoEmpty": "Sem registros disponíveis",
           "infoFiltered": "(filtrado de _MAX_ total registros)"
+        },
+        "fnInitComplete": function() {
+          var dadosTabela = tablePainel.rows().data();
+          var listaResponsavel = [];
+          //faço uma requisicao que retorna os ids das cidades que ele é responsável
+          $.ajax({
+            type: "GET",
+            url: "../Ajax/municipios/getDadosMunicipioResponsavel",
+            success: function(data) {
+              var dados = JSON.parse(data);
+              jQuery.each(dados, function(i, val) {
+                listaResponsavel.push(val.idMunicipio);
+              });
+              var content = "";
+              dadosTabela.each(function(value, index) {
+                if (listaResponsavel.includes(value.id)) {
+                  var dataAtual = new Date();
+                  var dataAttISO = value.ultimaAtualizacaoNonFormatted.split("-");
+                  var dataAttOBJ = new Date(dataAttISO[0], dataAttISO[1] - 1, dataAttISO[2]); //fazer cast
+                  var Difference_In_Time = dataAtual.getTime() - dataAttOBJ.getTime();
+                  var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+                  var roundDifferenceDays = Math.floor(Difference_In_Days);
+                  console.log(roundDifferenceDays);
+                  //se inclui, verifico a ultimaDataAtualização e monto uma string pra ser mostrada no final
+                  if (roundDifferenceDays == 0) { //tudo ok
+                    content += "<h6>" + value.nome + " - <span style='color: green'>atualizado hoje <i class='fa fa-check' aria-hidden='true'></i></span></h6>";
+                  } else if (roundDifferenceDays == 1) { //atualizado ontem, faça sua atualização diária
+                    content += "<h6>" + value.nome + " - <span style='color: orange'>atualizado ontem <i class='fa fa-exclamation-triangle' aria-hidden='true'></i></span></h6>";
+                  } else { //atualizado há dois dias, atualize os dados
+                    content += "<h6>" + value.nome + " - <span style='color: red'>sem atualizações há dois dias ou mais <i class='fa fa-times-circle' aria-hidden='true'></i></span></h6>";
+                  }
+                  $('#sumarioMunicipios').find('.modal-body').html(content);
+                }
+              });
+            },
+            error: function() {
+
+            }
+          });
         }
       });
+
+      function getDataAtual() {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        return Date(yyyy, mm, dd);
+      }
     });
   </script>
 </body>

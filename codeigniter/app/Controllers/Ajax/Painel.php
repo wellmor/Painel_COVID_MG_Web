@@ -12,7 +12,7 @@ class Painel extends Controller
     public function getDados()
     {
         $model = new PainelModel();
-        $query = $model->query("SELECT m.nomeMunicipio as nome, c.idMunicipio as id, 
+        $query = $model->query("SELECT m.nomeMunicipio as nome, m.idMunicipio as id, 
         IF(IFNULL(c.idCaso, '') = '', '-', c.idCaso) AS idCaso, 
         IF(IFNULL(v.idVerificacao, '') = '', '-', v.idVerificacao) AS idVerificacao, 
         IF(IFNULL(c.dataCaso, '') = '', '-', max(c.dataCaso)) AS maxDataCaso,
@@ -32,29 +32,29 @@ class Painel extends Controller
         $data = [];
         foreach ($dados as $x) {
             $data[$i]['nome'] = $x['nome'];
-            if($x['maxDataCaso'] != '-')
+            $data[$i]['id'] = $x['id'];
+            if ($x['maxDataCaso'] != '-')
                 $data[$i]['maxDataCaso'] = date("d/m/Y", strtotime($x['maxDataCaso']));
-            if($x['maxDataVerificacao'] != '-')
+            if ($x['maxDataVerificacao'] != '-')
                 $data[$i]['maxDataVerificacao'] = date("d/m/Y", strtotime($x['maxDataVerificacao']));
-            else   
+            else
                 $data[$i]['maxDataVerificacao'] = '-';
 
-            if($x['maxDataCaso'] == '-' && $x['maxDataVerificacao'] == '-'){
+            if ($x['maxDataCaso'] == '-' && $x['maxDataVerificacao'] == '-') {
                 $data[$i]['ultimaAtualizacao'] = 'Sem atualizações';
-            }
-            else if($x['maxDataCaso'] == '-'){
+            } else if ($x['maxDataCaso'] == '-') {
                 $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataVerificacao']));
-            }
-            else if($x['maxDataVerificacao'] == '-'){
+                $data[$i]['ultimaAtualizacaoNonFormatted'] = $x['maxDataVerificacao'];
+            } else if ($x['maxDataVerificacao'] == '-') {
                 $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataCaso']));
-            }
-            else if($x['maxDataVerificacao'] > $x['maxDataCaso']){
+                $data[$i]['ultimaAtualizacaoNonFormatted'] = $x['maxDataCaso'];
+            } else if ($x['maxDataVerificacao'] > $x['maxDataCaso']) {
                 $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataVerificacao']));
-            }
-            else if($x['maxDataCaso'] >= $x['maxDataVerificacao']){
+                $data[$i]['ultimaAtualizacaoNonFormatted'] = $x['maxDataVerificacao'];
+            } else if ($x['maxDataCaso'] >= $x['maxDataVerificacao']) {
                 $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataCaso']));
-            }
-            else{
+                $data[$i]['ultimaAtualizacaoNonFormatted'] = $x['maxDataCaso'];
+            } else {
                 $data[$i]['ultimaAtualizacao'] = 'Algo deu errado';
             }
             $i++;

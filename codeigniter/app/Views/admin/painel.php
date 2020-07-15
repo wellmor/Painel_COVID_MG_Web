@@ -143,7 +143,6 @@
   <script>
     var tablePainel;
     $(document).ready(function() {
-      $('#sumarioMunicipios').modal('show');
 
       tablePainel = $('#tablePainel').DataTable({
         "ajax": "../Ajax/Painel/getDados",
@@ -231,6 +230,7 @@
                     content += "<h6>" + value.nome + " - <span style='color: red'>sem atualizações há dois dias ou mais <i class='fa fa-times-circle' aria-hidden='true'></i></span></h6>";
                   }
                   $('#sumarioMunicipios').find('.modal-body').html(content);
+                  $('#sumarioMunicipios').modal('show');
                 }
               });
             },

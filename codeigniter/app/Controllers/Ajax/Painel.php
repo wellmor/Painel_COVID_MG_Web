@@ -32,22 +32,27 @@ class Painel extends Controller
         $data = [];
         foreach ($dados as $x) {
             $data[$i]['nome'] = $x['nome'];
-            $data[$i]['maxDataCaso'] = $x['maxDataCaso'];
-            $data[$i]['maxDataVerificacao'] = $x['maxDataVerificacao'];
+            if($x['maxDataCaso'] != '-')
+                $data[$i]['maxDataCaso'] = date("d/m/Y", strtotime($x['maxDataCaso']));
+            if($x['maxDataVerificacao'] != '-')
+                $data[$i]['maxDataVerificacao'] = date("d/m/Y", strtotime($x['maxDataVerificacao']));
+            else   
+                $data[$i]['maxDataVerificacao'] = '-';
+
             if($x['maxDataCaso'] == '-' && $x['maxDataVerificacao'] == '-'){
                 $data[$i]['ultimaAtualizacao'] = 'Sem atualizações';
             }
             else if($x['maxDataCaso'] == '-'){
-                $data[$i]['ultimaAtualizacao'] = $x['maxDataVerificacao'];
+                $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataVerificacao']));
             }
             else if($x['maxDataVerificacao'] == '-'){
-                $data[$i]['ultimaAtualizacao'] = $x['maxDataCaso'];
+                $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataCaso']));
             }
             else if($x['maxDataVerificacao'] > $x['maxDataCaso']){
-                $data[$i]['ultimaAtualizacao'] = $x['maxDataVerificacao'];
+                $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataVerificacao']));
             }
             else if($x['maxDataCaso'] >= $x['maxDataVerificacao']){
-                $data[$i]['ultimaAtualizacao'] = $x['maxDataCaso'];
+                $data[$i]['ultimaAtualizacao'] = date("d/m/Y", strtotime($x['maxDataCaso']));
             }
             else{
                 $data[$i]['ultimaAtualizacao'] = 'Algo deu errado';

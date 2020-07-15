@@ -98,6 +98,7 @@
                   <th>município</th>
                   <th>último relatório de casos</th>
                   <th>última verificação de relatório</th>
+                  <th>última atualização</th>
                   <!-- <th>confirmados</th>
                   <th>suspeitos</th>
                   <th>descartados</th>
@@ -135,9 +136,9 @@
           {
             data: "maxDataVerificacao",
           },
-          // {
-          //   data: "confirmados",
-          // },
+          {
+            data: "ultimaAtualizacao",
+          },
           // {
           //   data: "suspeitos",
           // },

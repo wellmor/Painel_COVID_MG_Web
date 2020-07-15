@@ -27,21 +27,33 @@ class Painel extends Controller
            JOIN municipio m ON c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00')
         LEFT JOIN verificacao v ON v.idMunicipio = c.idMunicipio
         GROUP BY c.idMunicipio");
-        $data = $query->getResult('array');
+        $dados = $query->getResult('array');
         $i = 0;
-        // foreach ($data as $x) {
-        //     $data[$i]['id'] = $caso['idCaso'];
-        //     $data[$i]['datax'] = $caso['dataCaso'];
-        //     $data[$i]['fonte'] = $caso['fonteCaso'];
-        //     $data[$i]['confirmados'] = $caso['confirmadosCaso'];
-        //     $data[$i]['suspeitos'] = $caso['suspeitosCaso'];
-        //     $data[$i]['obitos'] = $caso['obitosCaso'];
-        //     $data[$i]['descartados'] = $caso['descartadosCaso'];
-        //     $data[$i]['recuperados'] = $caso['recuperadosCaso'];
-        //     $data[$i]['municipio'] = $caso['nomeMunicipio'];
-        //     $data[$i]['idMunicipio'] = $caso['idMunicipio'];
-        //     $i++;
-        // }
+        $data = [];
+        foreach ($dados as $x) {
+            $data[$i]['nome'] = $x['nome'];
+            $data[$i]['maxDataCaso'] = $x['maxDataCaso'];
+            $data[$i]['maxDataVerificacao'] = $x['maxDataVerificacao'];
+            if($x['maxDataCaso'] == '-' && $x['maxDataVerificacao'] == '-'){
+                $data[$i]['ultimaAtualizacao'] = 'Sem atualizações';
+            }
+            else if($x['maxDataCaso'] == '-'){
+                $data[$i]['ultimaAtualizacao'] = $x['maxDataVerificacao'];
+            }
+            else if($x['maxDataVerificacao'] == '-'){
+                $data[$i]['ultimaAtualizacao'] = $x['maxDataCaso'];
+            }
+            else if($x['maxDataVerificacao'] > $x['maxDataCaso']){
+                $data[$i]['ultimaAtualizacao'] = $x['maxDataVerificacao'];
+            }
+            else if($x['maxDataCaso'] >= $x['maxDataVerificacao']){
+                $data[$i]['ultimaAtualizacao'] = $x['maxDataCaso'];
+            }
+            else{
+                $data[$i]['ultimaAtualizacao'] = 'Algo deu errado';
+            }
+            $i++;
+        }
 
         $dados = [
             'data' => $data

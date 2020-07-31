@@ -28,8 +28,9 @@ class Graficos extends Controller
             $data[$i]['municipio'] = $caso['nome'];
             $i++;
         }
-
-
         echo json_encode($data);
     }
+
+    //get dados 
+ 
 }

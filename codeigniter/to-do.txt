@@ -1,9 +1,9 @@
 PRINCIPAIS
 - trocar formato de dados dos casos(confirmadosCaso) - ariel
 - sumarização de microrregiões(store proccedure agendada pra rodar em determinados horários?) - guardar dados sumarizados diarios referentes as cidades das microrregioes(sumarização diaria) - - sumarização microrregiao link azul tratar como cidade / trocar microrregiao por regiao - thiago
-- filtro no gráfico (ultimos 7 dias, ultimos 15 etc) - highcharts
 - carregar data atual no cadastro de relatorio - ariel
 - alterar o formato da listagem de noticias - thiago
+- filtro no gráfico (ultimos 7 dias, ultimos 15 etc) - highcharts
 
 --extras
 - mostra a microrregião, e pode clicar no mapa e atualizar a pagina

@@ -50,4 +50,7 @@ class Casos extends Controller
         $data = $query->getRowArray();
         return $data['idCaso'];
     }
+
+    
+
 }

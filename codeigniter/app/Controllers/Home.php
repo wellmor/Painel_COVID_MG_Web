@@ -65,4 +65,57 @@ class Home extends BaseController
 			return view('/home/dados', $data);
 		}
 	}
+
+	public function getDadosSummarization()
+	{
+		$model = new CasosModel();
+		$query = $model->query("SELECT c.dataCaso, SUM(c.confirmadosCaso) as confirmados
+        FROM municipio m, caso c    
+        WHERE m.idMunicipio = c.idMunicipio
+        AND m.idMicrorregiao = 2 
+        AND c.confirmadosCaso != 0
+        GROUP BY c.dataCaso
+		");
+		$casos = $query->getResult('array');
+		// echo json_encode($casos);
+		//http://localhost/home/getDadosSummarization
+
+		//como esses outliers surgem? SELECT * FROM caso c,municipio m WHERE c.dataCaso = '2020-04-13' and m.idMicrorregiao = 2 and c.idMunicipio = m.idMunicipio 
+		//(apenas 2 confirmados na microrregiao 2 para aquele dia) = FALTAM REGISTROS DOS OUTROS MUNICIPIOS DAQUELA REGIAO NAQUELE DIA
+
+		//SELECT * FROM caso c,municipio m WHERE c.dataCaso = '2020-04-14' and m.idMicrorregiao = 2 and c.idMunicipio = m.idMunicipio
+		//apparentemente, segue a curva de cadastro ok
+
+		//Qual o problema? Municipios que nao tiveram/tem atualizações constantes dos relatorios de casos
+		//As verificações podem ajudar no problema acima, porém, por ser uma tabela nova, não vai ajudar tanto (mas ajuda)
+
+		//Solução: procurar alguma técnica de remoção de outliers
+		//		-por exemplo, 1) replicar dados anteriores em registros ausentes
+		//		-2) ignorar registros muito discrepantes, como apresentado abaixo(lógicamente à custo acurácia), porém,
+				//há a necessodade de implementar algum algoritmo que aprofunde-se nas informações dos casos, 
+				//por exemplo: 3444 - 244 - 3500 - OUTLIER DE FÁCIL DETECCÇÃO
+				// 4325 - 244 - 255 - MÉDIA DETECÇÃO - ele volta a subir baseado no anterior, mas é muito discrepante se comparado
+				//ao nó anterior ao primeiro outlier
+
+				//esquemas de média para remoção: um pouco ineficazes devido ao crecsimento exponencial: 2, 4, 8, 16, 32, 64, 128
+				//																			media: ~36.28 - 5 registros perdidos
+				//																			Z score?
+
+				//Ou tentar observar padrões simples, perder alguns dados e encontrar padrões que resolvam especificamente nosso problema
+		
+
+		echo $casos[0]['confirmados'] . '<br/>';
+		for ($i = 1; $i < sizeof($casos); $i++) {
+
+			$confirmados = $casos[$i]['confirmados'];
+			$data = $casos[$i]['dataCaso'];
+
+			
+			if($confirmados < $casos[$i-1]['confirmados'])
+				echo "<span style='color:red'>trouble</span>";
+
+			echo $confirmados . ' ' . $data . "<br/>";
+
+		}
+	}
 }

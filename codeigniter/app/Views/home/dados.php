@@ -13,6 +13,7 @@
     <link rel="icon" href="/assets/images/virus.png"> <!-- favicon da página -->
     <link rel="stylesheet" href="/assets/css/dados.css"> <!-- estilo específico da página -->
     <script src="/assets/dist/jquery-3.5.1.js"></script> <!-- plugin base -->
+
     <!-- Push do OneSignal -->
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     <script>
@@ -335,40 +336,8 @@
                             <div class="card-body" style="height: auto;">
                                 <h5 class="subtext">Gráficos</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
-                                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="confirmados-tab" data-toggle="tab" href="#confirmados" role="tab" aria-controls="confirmados" aria-selected="true">Confirmados</a>
-                                    </li>
-                                    <!--<li class="nav-item">
-                                        <a class="nav-link" id="suspeitos-tab" data-toggle="tab" href="#suspeitos" role="tab" aria-controls="suspeitos" aria-selected="false">Suspeitos</a>
-                                    </li> -->
-                                    <!--<li class="nav-item">
-                                        <a class="nav-link" id="descartados-tab" data-toggle="tab" href="#descartados" role="tab" aria-controls="descartados" aria-selected="false">Descartados</a>
-                                    </li> -->
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="recuperados-tab" data-toggle="tab" href="#recuperados" role="tab" aria-controls="recuperados" aria-selected="false">Recuperados</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="obitos-tab" data-toggle="tab" href="#obitos" role="tab" aria-controls="obitos" aria-selected="false">Óbitos</a>
-                                    </li>
-                                </ul>
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active chart-container" style="position: relative;" id="confirmados" role="tabpanel" aria-labelledby="confirmados-tab">
-                                        <canvas id="chartConfirmados" height="215px"></canvas>
-                                    </div>
-                                    <div class="tab-pane fade" id="suspeitos" role="tabpanel" aria-labelledby="suspeitos-tab">
-                                        <canvas id="chartSuspeitos" height="215px"></canvas>
-                                    </div>
-                                    <div class="tab-pane fade" id="descartados" role="tabpanel" aria-labelledby="descartados-tab">
-                                        <canvas id="chartDescartados" height="215px"></canvas>
-                                    </div>
-                                    <div class="tab-pane fade" id="recuperados" role="tabpanel" aria-labelledby="recuperados-tab">
-                                        <canvas id="chartRecuperados" height="215px"></canvas>
-                                    </div>
-                                    <div class="tab-pane fade" id="obitos" role="tabpanel" aria-labelledby="obitos-tab">
-                                        <canvas id="chartObitos" height="215px"></canvas>
-                                    </div>
-                                </div>
+                                <div id="container" style="height: 100%;"></div>
+
                             </div>
                         </div>
                     </div>
@@ -454,6 +423,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -515,7 +485,9 @@
         <script src="/assets/dist/lodash.js"></script> <!-- dependencia da pesquisa -->
         <script src="/assets/dist/list.js"></script> <!-- plugin de auxilio nos filtros da pesquisa -->
         <script src="/assets/dist/Chart.js"></script> <!-- graficos -->
-
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script type="text/javascript" src="https://www.highcharts.com/samples/data/three-series-1000-points.js"></script>
         <script>
             function formatarData(datax) {
                 var data = new Date(datax),
@@ -527,8 +499,6 @@
             $(document).ready(function() {
                 let dataCaso = [];
                 let confirmados = [];
-                let suspeitos = [];
-                let descartados = [];
                 let recuperados = [];
                 let obitos = [];
 
@@ -540,91 +510,94 @@
                     dataType: 'JSON',
                     success: function(data) {
                         for (var key in data) {
-                            dataE = (data[key].datax).split("-")
-                            datex = dataE[2] + "/" + dataE[1] + "/" + dataE[0];
-                            dataCaso.push(datex);
-                            confirmados.push(data[key].confirmados)
-                            suspeitos.push(data[key].suspeitos)
-                            descartados.push(data[key].descartados)
-                            recuperados.push(data[key].recuperados)
-                            obitos.push(data[key].obitos)
+                            // datex = dataE[2] + "/" + dataE[1] + "/" + dataE[0];
+                            var dataCaso = new Date(data[key].datax);
+                            var dataUNIX = dataCaso.getTime();
+                            // console.log(dataCaso + dataUNIX);
+                            if (!isNaN(dataUNIX)) {
+                                let confirmadosLocal = [dataUNIX, parseInt(data[key].confirmados)];
+                                // console.log(confirmadosLocal);
+
+                                confirmados.push(confirmadosLocal);
+
+                                let recuperadosLocal = [dataUNIX, parseInt(data[key].recuperados)];
+                                recuperados.push(recuperadosLocal);
+
+                                let obitosLocal = [dataUNIX, parseInt(data[key].obitos)];
+                                obitos.push(obitosLocal);
+
+                                confirmados.push(confirmadosLocal);
+                                recuperados.push(recuperadosLocal)
+                                obitos.push(obitosLocal)
+                            }
                         }
+                        console.log(confirmados);
+                        console.log([
+                            [122121331221, 12],
+                            [132133122132231, 1444]
+                        ]);
 
-                        // grafico confirmados
-                        let confirmadosData = {
-                            labels: [...dataCaso],
-                            datasets: [{
-                                label: 'Casos confirmados',
-                                data: [...confirmados],
-                                borderColor: 'rgb(255, 0, 0)',
-                            }]
-                        };
-                        let ctc = $("#chartConfirmados");
-                        let chartConfirmados = new Chart(ctc, {
-                            type: 'line',
-                            data: confirmadosData,
+                        Highcharts.stockChart('container', {
+                            legend: {
+                                enabled: true
+                            },
+                            scrollbar: {
+                                enabled: false
+                            },
+                            rangeSelector: {
+                                buttonTheme: {
+                                    width: 50
+                                },
+                                inputEditDateFormat: '%Y/%m/%d',
+                                inputDateFormat: '%d/%m/%Y',
+                                buttons: [{
+                                        type: 'day',
+                                        count: 7,
+                                        text: '7d',
+                                    },
+                                    {
+                                        type: 'day',
+                                        count: 15,
+                                        text: '15d'
+                                    }, {
+                                        type: 'month',
+                                        count: 1,
+                                        text: '1m'
+                                    }, {
+                                        type: 'month',
+                                        count: 3,
+                                        text: '3m'
+                                    }, {
+                                        type: 'all',
+                                        text: 'Todos'
+                                    }
+                                ],
+                            },
+                            useHighStocks: false,
+                            navigator: {
+                                enabled: false,
+                            },
+                            credits: {
+                                text: '*Clique nas legendas para filtrar por tipo de caso',
+                                href: 'http://www.example.com'
+                            },
+                            series: [{
+                                    name: 'Confirmados',
+                                    color: 'orange',
+                                    data: confirmados
+                                }, {
+                                    name: 'Recuperados',
+                                    color: 'green',
+                                    data: recuperados
+                                },
+                                {
+                                    name: 'Óbitos',
+                                    color: 'red',
+                                    data: obitos
+                                },
+                            ],
                         });
 
-                        // grafico suspeitos
-                        let suspeitosData = {
-                            labels: [...dataCaso],
-                            datasets: [{
-                                label: 'Casos suspeitos',
-                                data: [...suspeitos],
-                                borderColor: 'rgb(255, 115, 0)'
-
-                            }]
-                        };
-                        let cts = $("#chartSuspeitos");
-                        let chartSuspeitos = new Chart(cts, {
-                            type: 'line',
-                            data: suspeitosData
-                        });
-
-                        // grafico descartados
-                        let descartadosData = {
-                            labels: [...dataCaso],
-                            datasets: [{
-                                label: 'Casos descartados',
-                                data: [...descartados],
-                                borderColor: 'rgb(0, 0, 255)'
-                            }]
-                        };
-                        let ctd = $("#chartDescartados");
-                        let chartDescartados = new Chart(ctd, {
-                            type: 'line',
-                            data: descartadosData,
-                        });
-
-                        // grafico obitos
-                        let obitosData = {
-                            labels: [...dataCaso],
-                            datasets: [{
-                                label: 'Casos óbitos',
-                                data: [...obitos],
-                                borderColor: 'rgb(0, 0, 0)',
-                            }]
-                        };
-                        let cto = $("#chartObitos");
-                        let chartObitos = new Chart(cto, {
-                            type: 'line',
-                            data: obitosData
-                        });
-
-                        // grafico recuperados
-                        let recuperadosData = {
-                            labels: [...dataCaso],
-                            datasets: [{
-                                label: 'Casos recuperados',
-                                data: [...recuperados],
-                                borderColor: 'rgb(0, 255, 0)'
-                            }]
-                        };
-                        let ctr = $("#chartRecuperados");
-                        let chartRecuperados = new Chart(ctr, {
-                            type: 'line',
-                            data: recuperadosData
-                        });
                     }
                 });
             });
@@ -1045,6 +1018,35 @@
             });
         </script>
 
+        <!-- novos gráficos -->
+        <script>
+            $(function() {
+                Highcharts.setOptions({
+                    lang: {
+                        months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                        shortMonths: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                        weekdays: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                        loading: ['Atualizando o gráfico...aguarde'],
+                        contextButtonTitle: 'Exportar gráfico',
+                        decimalPoint: ',',
+                        thousandsSep: '.',
+                        downloadJPEG: 'Baixar imagem JPEG',
+                        downloadPDF: 'Baixar arquivo PDF',
+                        downloadPNG: 'Baixar imagem PNG',
+                        downloadSVG: 'Baixar vetor SVG',
+                        printChart: 'Imprimir gráfico',
+                        rangeSelectorFrom: 'De',
+                        rangeSelectorTo: 'Até',
+                        rangeSelectorZoom: 'Filtrar',
+                        resetZoom: 'Limpar Zoom',
+                        resetZoomTitle: 'Voltar Zoom para nível 1:1',
+                        viewFullscreen: 'Ver em tela cheia'
+                    }
+                });
+
+            });
+        </script>
+        <!--  -->
         <script type="text/javascript" src="/assets/dist/labs-common.js"></script>
     </body>
 

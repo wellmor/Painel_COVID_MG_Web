@@ -1,0 +1,7 @@
+fatal error quando coloca versão 4.0.4 do CI
+
+Declaration of App\Filters\UsersCheck::before(CodeIgniter\HTTP\RequestInterface $request) must be compatible with CodeIgniter\Filters\FilterInterface::before(CodeIgniter\HTTP\RequestInterface $request, $arguments = NULL) search →
+
+
+abrir o composer.json e alterar para
+		"codeigniter4/framework": "4.0.3"

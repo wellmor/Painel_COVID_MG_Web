@@ -546,7 +546,7 @@
                             },
                             rangeSelector: {
                                 buttonTheme: {
-                                    width: 50
+                                    width: 30
                                 },
                                 inputEditDateFormat: '%Y/%m/%d',
                                 inputDateFormat: '%d/%m/%Y',
@@ -569,7 +569,7 @@
                                         text: '3m'
                                     }, {
                                         type: 'all',
-                                        text: 'Todos'
+                                        text: 'Tudo'
                                     }
                                 ],
                             },

@@ -366,7 +366,7 @@
                                                 <h5 class="subtext mt-2">Dicas</h5>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="card-subtitle mb-4 text-muted">Como se previnir facilmente</div>
+                                                <div class="card-subtitle mb-4 text-muted">Como se prevenir facilmente</div>
                                                 <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                                             </div>
                                         </div>

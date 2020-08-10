@@ -579,7 +579,7 @@
                             },
                             credits: {
                                 text: '*Clique nas legendas para filtrar por tipo de caso',
-                                href: 'http://www.example.com'
+                                href: '#'
                             },
                             series: [{
                                     name: 'Confirmados',

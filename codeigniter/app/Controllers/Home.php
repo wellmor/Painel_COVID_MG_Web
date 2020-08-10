@@ -97,15 +97,17 @@ class Home extends BaseController
 				// 4325 - 244 - 255 - MÉDIA DETECÇÃO - ele volta a subir baseado no anterior, mas é muito discrepante se comparado
 				//ao nó anterior ao primeiro outlier
 
-				//esquemas de média para remoção: um pouco ineficazes devido ao crecsimento exponencial: 2, 4, 8, 16, 32, 64, 128
+		//esquemas de média para remoção: um pouco ineficazes devido ao crecsimento exponencial: 2, 4, 8, 16, 32, 64, 128
 				//																			media: ~36.28 - 5 registros perdidos
 				//																			Z score?
 
-				//Ou tentar observar padrões simples, perder alguns dados e encontrar padrões que resolvam especificamente nosso problema
+		//Ou tentar observar padrões simples, perder alguns dados e encontrar padrões que resolvam especificamente nosso problema
+		//Preencher todos os dias(base perfeita rsrs)
 		
 
 		echo $casos[0]['confirmados'] . '<br/>';
 		for ($i = 1; $i < sizeof($casos); $i++) {
+			
 
 			$confirmados = $casos[$i]['confirmados'];
 			$data = $casos[$i]['dataCaso'];

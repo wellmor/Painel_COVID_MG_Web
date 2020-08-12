@@ -66,17 +66,11 @@ class Home extends BaseController
 		}
 	}
 
-	public function getDadosSummarization()
+	public function testes()
 	{
-		$model = new CasosModel();
-		$query = $model->query("SELECT c.dataCaso, SUM(c.confirmadosCaso) as confirmados
-        FROM municipio m, caso c    
-        WHERE m.idMunicipio = c.idMunicipio
-        AND m.idMicrorregiao = 2 
-        AND c.confirmadosCaso != 0
-        GROUP BY c.dataCaso
-		");
-		$casos = $query->getResult('array');
+
+		return view('/home/testes');
+
 		// echo json_encode($casos);
 		//http://localhost/home/getDadosSummarization
 
@@ -92,32 +86,18 @@ class Home extends BaseController
 		//Solução: procurar alguma técnica de remoção de outliers
 		//		-por exemplo, 1) replicar dados anteriores em registros ausentes
 		//		-2) ignorar registros muito discrepantes, como apresentado abaixo(lógicamente à custo acurácia), porém,
-				//há a necessodade de implementar algum algoritmo que aprofunde-se nas informações dos casos, 
-				//por exemplo: 3444 - 244 - 3500 - OUTLIER DE FÁCIL DETECCÇÃO
-				// 4325 - 244 - 255 - MÉDIA DETECÇÃO - ele volta a subir baseado no anterior, mas é muito discrepante se comparado
-				//ao nó anterior ao primeiro outlier
+		//há a necessodade de implementar algum algoritmo que aprofunde-se nas informações dos casos, 
+		//por exemplo: 3444 - 244 - 3500 - OUTLIER DE FÁCIL DETECCÇÃO
+		// 4325 - 244 - 255 - MÉDIA DETECÇÃO - ele volta a subir baseado no anterior, mas é muito discrepante se comparado
+		//ao nó anterior ao primeiro outlier
 
 		//esquemas de média para remoção: um pouco ineficazes devido ao crecsimento exponencial: 2, 4, 8, 16, 32, 64, 128
-				//																			media: ~36.28 - 5 registros perdidos
-				//																			Z score?
+		//																			media: ~36.28 - 5 registros perdidos
+		//																			Z score?
 
 		//Ou tentar observar padrões simples, perder alguns dados e encontrar padrões que resolvam especificamente nosso problema
 		//Preencher todos os dias(base perfeita rsrs)
-		
 
-		echo $casos[0]['confirmados'] . '<br/>';
-		for ($i = 1; $i < sizeof($casos); $i++) {
-			
 
-			$confirmados = $casos[$i]['confirmados'];
-			$data = $casos[$i]['dataCaso'];
-
-			
-			if($confirmados < $casos[$i-1]['confirmados'])
-				echo "<span style='color:red'>trouble</span>";
-
-			echo $confirmados . ' ' . $data . "<br/>";
-
-		}
 	}
 }

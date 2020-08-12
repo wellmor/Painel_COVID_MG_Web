@@ -42,6 +42,7 @@ $routes->group('/admin', function ($routes) {
 	$routes->get('noticias', 'Noticias::index', ['filter' => 'auth']);
 	$routes->get('casos', 'Casos::index', ['filter' => 'auth']);
 	$routes->match(['post', 'get'], 'painel', 'Users::painel', ['filter' => 'auth']);
+	$routes->match(['get'], 'testes', 'Testes::index', ['filter' => 'auth']);
 	$routes->match(['post', 'get'], 'perfil', 'Users::profile', ['filter' => 'auth']);
 
 	$routes->get('casos', 'Casos::deleteDt', ['filter' => 'auth']);

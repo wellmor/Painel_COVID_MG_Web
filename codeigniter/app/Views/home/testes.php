@@ -63,7 +63,9 @@
           <h6>Gráfico de sumarização Microrregião de Juiz de Fora</h6>
           <div id="container-jf"></div>
           <a href="<?php base_url() ?>/Ajax/Graficos/getDadosSumarizacaoJf" style="font-family: Roboto; font-size: 20px">Exportar dados em JSON</a>
-
+        </div>
+        <div class="col-md-12 text-center" style="font-family: Roboto; font-size:20px; padding-top: 20px"> 
+          <a href="https://drive.google.com/file/d/1lm3MIBP8NsY3AnVGZ7pRZJmkINlJBaTx/view?usp=sharing">Fazer download da base de dados completa em SQL (12/08/2020 19:40)</a>
         </div>
       </div>
     </div>

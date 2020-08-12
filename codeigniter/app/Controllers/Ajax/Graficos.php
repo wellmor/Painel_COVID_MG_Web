@@ -36,7 +36,6 @@ class Graficos extends Controller
         $query = $model->query("SELECT c.dataCaso, SUM(c.confirmadosCaso) as confirmados,
         SUM(c.recuperadosCaso) as recuperados,
         SUM(c.obitosCaso) as obitos
-
         FROM municipio m, caso c    
         WHERE m.idMunicipio = c.idMunicipio
         AND m.idMicrorregiao = 1 

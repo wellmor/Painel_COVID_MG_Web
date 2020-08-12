@@ -38,18 +38,37 @@
   <!-- header -->
 
   <!-- conteudo -->
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h6>Gráfico de sumarização Microrregião de Ubá</h6>
-        <div id="container-uba"></div>
+  <style>
+    .vertical-center {
+      min-height: 100%;
+      /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh;
+      /* These two lines are counted as one :-)       */
+      background-color: white;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+  <div class="jumbotron vertical-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h6>Gráfico de sumarização Microrregião de Ubá</h6>
+          <div id="container-uba"></div>
+          <a href="<?php base_url() ?>/Ajax/Graficos/getDadosSumarizacaoUba" style="font-family: Roboto; font-size: 20px">Exportar dados em JSON</a>
+
+        </div>
+        <div class="col-md-5">
+          <h6>Gráfico de sumarização Microrregião de Juiz de Fora</h6>
+          <div id="container-jf"></div>
+          <a href="<?php base_url() ?>/Ajax/Graficos/getDadosSumarizacaoJf" style="font-family: Roboto; font-size: 20px">Exportar dados em JSON</a>
+
+        </div>
       </div>
-      <div class="col-md-4">
-        <h6>Gráfico de sumarização Microrregião de Juiz de Fora</h6>
-        <div id="container-jf"></div>
-      </div>
-     
     </div>
+
+
   </div>
 
 
@@ -76,22 +95,15 @@
         dataType: 'JSON',
         success: function(data) {
           for (var key in data) {
-            // datex = dataE[2] + "/" + dataE[1] + "/" + dataE[0];
             var dataCaso = new Date(data[key].dataCaso);
             var dataUNIX = dataCaso.getTime();
-            // console.log(dataCaso + dataUNIX);
             if (!isNaN(dataUNIX)) {
               let confirmadosLocal = [dataUNIX, parseInt(data[key].confirmados)];
-              // console.log(confirmadosLocal);
-
               confirmados.push(confirmadosLocal);
-
               let recuperadosLocal = [dataUNIX, parseInt(data[key].recuperados)];
               recuperados.push(recuperadosLocal);
-
               let obitosLocal = [dataUNIX, parseInt(data[key].obitos)];
               obitos.push(obitosLocal);
-
               confirmados.push(confirmadosLocal);
               recuperados.push(recuperadosLocal)
               obitos.push(obitosLocal)
@@ -177,29 +189,20 @@
         dataType: 'JSON',
         success: function(data) {
           for (var key in data) {
-            // datex = dataE[2] + "/" + dataE[1] + "/" + dataE[0];
             var dataCaso = new Date(data[key].dataCaso);
             var dataUNIX = dataCaso.getTime();
-            // console.log(dataCaso + dataUNIX);
             if (!isNaN(dataUNIX)) {
               let confirmadosLocal = [dataUNIX, parseInt(data[key].confirmados)];
-              // console.log(confirmadosLocal);
-
               confirmados.push(confirmadosLocal);
-
               let recuperadosLocal = [dataUNIX, parseInt(data[key].recuperados)];
               recuperados.push(recuperadosLocal);
-
               let obitosLocal = [dataUNIX, parseInt(data[key].obitos)];
               obitos.push(obitosLocal);
-
               confirmados.push(confirmadosLocal);
               recuperados.push(recuperadosLocal)
               obitos.push(obitosLocal)
             }
           }
-
-
           Highcharts.stockChart('container-jf', {
             legend: {
               enabled: true

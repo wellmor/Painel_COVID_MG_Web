@@ -339,8 +339,8 @@
                 <div id="container" style="height: 100%;"></div>
                 <div class="float-right">
                   <div class="btn-group" id="toggle_event_editing">
-                    <button type="button" class="btn btn-info btn-sm locked_active">escala linear</button>
-                    <button type="button" class="btn btn-default btn-sm unlocked_inactive">escala logarítmica</button>
+                    <button type="button" class="btn btn-primary btn-sm locked_active">escala linear</button>
+                    <button type="button" class="btn btn-light btn-sm unlocked_inactive">escala logarítmica</button>
                   </div>
                 </div>
               </div>
@@ -1063,8 +1063,8 @@
         }
 
         /* reverse locking status */
-        $('#toggle_event_editing button').eq(0).toggleClass('locked_inactive locked_active btn-default btn-info');
-        $('#toggle_event_editing button').eq(1).toggleClass('unlocked_inactive unlocked_active btn-info btn-default');
+        $('#toggle_event_editing button').eq(0).toggleClass('locked_inactive locked_active btn-primary btn-light');
+        $('#toggle_event_editing button').eq(1).toggleClass('unlocked_inactive unlocked_active btn-light btn-primary');
       });
     </script>
     <!--  -->

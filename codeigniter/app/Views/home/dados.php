@@ -337,7 +337,12 @@
                 <h5 class="subtext">Gráficos</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
                 <div id="container" style="height: 100%;"></div>
-
+                <div class="float-right">
+                  <div class="btn-group" id="toggle_event_editing">
+                    <button type="button" class="btn btn-info btn-sm locked_active">escala linear</button>
+                    <button type="button" class="btn btn-default btn-sm unlocked_inactive">escala logarítmica</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -1040,6 +1045,26 @@
           }
         });
 
+      });
+
+
+
+      $('#toggle_event_editing button').click(function() {
+        if ($(this).hasClass('locked_active') || $(this).hasClass('unlocked_inactive')) {
+          /* code to do when unlocking */
+          $('#container').highcharts().yAxis[0].update({
+            type: 'logarithmic'
+          });
+        } else {
+          /* code to do when locking */
+          $('#container').highcharts().yAxis[0].update({
+            type: 'linear'
+          });
+        }
+
+        /* reverse locking status */
+        $('#toggle_event_editing button').eq(0).toggleClass('locked_inactive locked_active btn-default btn-info');
+        $('#toggle_event_editing button').eq(1).toggleClass('unlocked_inactive unlocked_active btn-info btn-default');
       });
     </script>
     <!--  -->

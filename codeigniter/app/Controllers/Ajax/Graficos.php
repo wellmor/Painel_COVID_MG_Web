@@ -30,7 +30,39 @@ class Graficos extends Controller
         }
         echo json_encode($data);
     }
+    public function getDadosSumarizacaoUba()
+    {
+        $model = new CasosModel();
+        $query = $model->query("SELECT c.dataCaso, SUM(c.confirmadosCaso) as confirmados,
+        SUM(c.recuperadosCaso) as recuperados,
+        SUM(c.obitosCaso) as obitos
+        FROM municipio m, caso c    
+        WHERE m.idMunicipio = c.idMunicipio
+        AND m.idMicrorregiao = 1 
+        GROUP BY c.dataCaso
+		");
+        $casos = $query->getResult('array');
+        echo json_encode($casos);
+    }
+
+    public function getDadosSumarizacaoJf()
+    {
+        $model = new CasosModel();
+        $query = $model->query("SELECT c.dataCaso, SUM(c.confirmadosCaso) as confirmados,
+        SUM(c.recuperadosCaso) as recuperados,
+        SUM(c.obitosCaso) as obitos
+
+        FROM municipio m, caso c    
+        WHERE m.idMunicipio = c.idMunicipio
+        AND m.idMicrorregiao = 2 
+        GROUP BY c.dataCaso
+		");
+        $casos = $query->getResult('array');
+        echo json_encode($casos);
+    }
+
+
 
     //get dados 
- 
+
 }

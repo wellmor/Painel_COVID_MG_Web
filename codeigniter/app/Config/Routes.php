@@ -56,6 +56,8 @@ $routes->group('/home', function ($routes) {
 	$routes->get('projetos', 'Home::projetos');
 	$routes->get('dicas', 'Home::dicas');
 	$routes->get('sobre', 'Home::sobre');
+	$routes->get('download-dados-csv', 'ExportarCSV::index');
+
 });
 
 /**

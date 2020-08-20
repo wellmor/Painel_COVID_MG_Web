@@ -502,43 +502,49 @@
         $(document).ready(function() {
             $('#btnSalvarCaso').click(function() {
                 var dados = $('#formCasos').serializeArray();
-                $('#modalCasosAE').modal('hide');
-                $body = $("body");
-                $body.addClass("loading");
-                $.ajax({
-                    type: "POST",
-                    url: "/casos/storeDt",
-                    data: dados,
-                    success: function(result) {
-                        $('#formCasos').trigger("reset");
-                        tableCasos.ajax.reload();
-                        $('#id').val("");
-                        $body.removeClass("loading");
-                        toast("Relatório de casos salvo com sucesso", "success");
-                    },
-                    error: function() {
-                        $body.removeClass("loading");
-                        toast("Erro ao salvar relatório de casos", "error");
-                    }
-                });
+                console.log(dados[7].value)
+                if (dados[7].value == "") {
+                    alert("Por favor, preencha a data corretamente")
+                } else {
+                    $('#modalCasosAE').modal('hide');
+                    $body = $("body");
+                    $body.addClass("loading");
+                    $.ajax({
+                        type: "POST",
+                        url: "/casos/storeDt",
+                        data: dados,
+                        success: function(result) {
+                            $('#formCasos').trigger("reset");
+                            tableCasos.ajax.reload();
+                            $('#id').val("");
+                            $body.removeClass("loading");
+                            toast("Relatório de casos salvo com sucesso", "success");
+                        },
+                        error: function() {
+                            $body.removeClass("loading");
+                            toast("Erro ao salvar relatório de casos", "error");
+                        }
+                    });
 
-                var idMunicipioAlerta = $('#formCasos').serializeArray();
-                $.ajax({
-                    type: "POST",
-                    url: "/alerta/enviar",
-                    data: idMunicipioAlerta,
-                    success: function(result) {
-                        var result = JSON.parse(result);
-                        if (result.recipients > 0) alert(result.recipients + " pessoas foram notificadas com sucesso!");
-                        else alert("Nenhuma pessoa está cadastrada para receber alerta dessa cidade ainda.");
-                    },
-                    error: function() {
-                        console.log("Ocorreu um erro ao enviar alertas.");
-                    }
-                });
-                return false;
+                    var idMunicipioAlerta = $('#formCasos').serializeArray();
+                    $.ajax({
+                        type: "POST",
+                        url: "/alerta/enviar",
+                        data: idMunicipioAlerta,
+                        success: function(result) {
+                            var result = JSON.parse(result);
+                            if (result.recipients > 0) alert(result.recipients + " pessoas foram notificadas com sucesso!");
+                            else alert("Nenhuma pessoa está cadastrada para receber alerta dessa cidade ainda.");
+                        },
+                        error: function() {
+                            console.log("Ocorreu um erro ao enviar alertas.");
+                        }
+                    });
+                    return false;
+                }
             });
         });
+
 
         //modal de edição
         function editarCaso(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {

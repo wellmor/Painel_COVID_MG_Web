@@ -546,8 +546,10 @@
                   borderWidth: 2
                 },
                 mapNavigation: {
+                  enabled: true,
                   enableMouseWheelZoom: true
                 },
+                zoomType: 'x',
                 scrollbar: {
                   enabled: false
                 },

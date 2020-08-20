@@ -492,6 +492,7 @@
     <script src="/assets/dist/Chart.js"></script> <!-- graficos -->
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+    <script src="http://code.highcharts.com/maps/modules/map.js"></script>
     <script type="text/javascript" src="https://www.highcharts.com/samples/data/three-series-1000-points.js"></script>
     <script>
       function formatarData(datax) {
@@ -541,6 +542,9 @@
             Highcharts.stockChart('container', {
               legend: {
                 enabled: true
+              },
+              mapNavigation: {
+                enableMouseWheelZoom: true
               },
               scrollbar: {
                 enabled: false

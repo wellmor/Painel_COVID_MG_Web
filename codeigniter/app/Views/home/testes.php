@@ -85,14 +85,25 @@
   <script type="text/javascript" src="https://www.highcharts.com/samples/data/three-series-1000-points.js"></script>
   <script>
     $(document).ready(function() {
+      var outlineIndexesGlobal = [];
+
+      // remove duuplicates from the glboal array
+      // var names = ["Mike", "Matt", "Nancy", "Adam", "Jenny", "Nancy", "Carl"];
+      // var uniqueNames = [];
+      // $.each(names, function(i, el) {
+      //   if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+      // });
+
       function filterOutliers(someArray) {
+
         // Copy the values, rather than operating on references to existing values
         var values = someArray.concat();
-        // console.log(values, 'ae');
+
         // Then sort
         values.sort(function(a, b) {
           return a - b;
         });
+
         /* Then find a generous IQR. This is generous because if (values.length / 4) 
          * is not an int, then really you should average the two elements on either 
          * side to find q1.
@@ -101,27 +112,16 @@
         // Likewise for q3. 
         var q3 = values[Math.ceil((values.length * (3 / 4)))];
         var iqr = q3 - q1;
+
         // Then find min and max values
         var maxValue = q3 + iqr * 1.5;
         var minValue = q1 - iqr * 1.5;
-        // Then filter anything beyond or beneath these values.
-        var filteredValues = values.filter(
-          (function(x) {
-            
-          }), (index => {
-            console.log('ae')
-          })
-        );
 
-        var filteredValues = values.filter((x, index, arr) => {
-          if((x <= maxValue) && (x >= minValue)){
-            
-            return x;
-          }
-          else{
-            console.log("eh outlier de index " + index);
-          }
+        // Then filter anything beyond or beneath these values.
+        var filteredValues = values.filter(function(x) {
+          return (x <= maxValue) && (x >= minValue);
         });
+
         // Then return
         return filteredValues;
       }
@@ -129,9 +129,12 @@
 
       let dataCaso = [];
       let confirmados = [];
-      let confirmadosTest = [];
       let recuperados = [];
       let obitos = [];
+
+      let confirmadosTest = [];
+      let recuperadosTest = [];
+
 
       // alert('o id e ' + id);
       $.ajax({
@@ -146,8 +149,11 @@
               let confirmadosLocal = [dataUNIX, parseInt(data[key].confirmados)];
               confirmados.push(confirmadosLocal);
               confirmadosTest.push(parseInt(data[key].confirmados));
+
               let recuperadosLocal = [dataUNIX, parseInt(data[key].recuperados)];
               recuperados.push(recuperadosLocal);
+              recuperadosTest.push(parseInt(data[key].recuperados));
+
               let obitosLocal = [dataUNIX, parseInt(data[key].obitos)];
               obitos.push(obitosLocal);
               confirmados.push(confirmadosLocal);
@@ -156,8 +162,8 @@
             }
           }
 
-          // console.log(confirmados);
-          var filtered = filterOutliers(confirmadosTest);
+          console.log(recuperadosTest);
+          var filtered = filterOutliers(recuperadosTest);
           console.log(filtered);
 
           Highcharts.stockChart('container-uba', {

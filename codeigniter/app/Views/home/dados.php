@@ -541,68 +541,90 @@
 
 
             Highcharts.stockChart('container', {
-              legend: {
-                enabled: true
-              },
-              mapNavigation: {
-                enableMouseWheelZoom: true
-              },
-              scrollbar: {
-                enabled: false
-              },
-              rangeSelector: {
-                buttonTheme: {
-                  width: 30
+                legend: {
+                  enabled: true,
+                  borderWidth: 2
                 },
-                inputEditDateFormat: '%Y/%m/%d',
-                inputDateFormat: '%d/%m/%Y',
-                buttons: [{
-                    type: 'day',
-                    count: 7,
-                    text: '7d',
+                mapNavigation: {
+                  enableMouseWheelZoom: true
+                },
+                scrollbar: {
+                  enabled: false
+                },
+                rangeSelector: {
+                  buttonTheme: {
+                    width: 30
+                  },
+                  inputEditDateFormat: '%Y/%m/%d',
+                  inputDateFormat: '%d/%m/%Y',
+                  buttons: [{
+                      type: 'day',
+                      count: 7,
+                      text: '7d',
+                    },
+                    {
+                      type: 'day',
+                      count: 15,
+                      text: '15d'
+                    }, {
+                      type: 'month',
+                      count: 1,
+                      text: '1m'
+                    }, {
+                      type: 'month',
+                      count: 3,
+                      text: '3m'
+                    }, {
+                      type: 'all',
+                      text: 'Tudo'
+                    }
+                  ],
+                },
+                useHighStocks: false,
+                navigator: {
+                  enabled: false,
+                },
+                plotOptions: {
+                  series: {
+                    showCheckbox: true
+                  }
+                },
+
+                credits: {
+                  text: '*Clique nas legendas para filtrar por tipo de caso',
+                  href: '#'
+                },
+                series: [{
+                    name: 'Confirmados',
+                    color: 'orange',
+                    data: confirmados,
+                    selected: true
+                  }, {
+                    name: 'Recuperados',
+                    color: 'green',
+                    data: recuperados,
+                    selected: true
                   },
                   {
-                    type: 'day',
-                    count: 15,
-                    text: '15d'
-                  }, {
-                    type: 'month',
-                    count: 1,
-                    text: '1m'
-                  }, {
-                    type: 'month',
-                    count: 3,
-                    text: '3m'
-                  }, {
-                    type: 'all',
-                    text: 'Tudo'
-                  }
+                    name: 'Óbitos',
+                    color: 'red',
+                    data: obitos,
+                    selected: true
+                  },
                 ],
               },
-              useHighStocks: false,
-              navigator: {
-                enabled: false,
-              },
-              credits: {
-                text: '*Clique nas legendas para filtrar por tipo de caso',
-                href: '#'
-              },
-              series: [{
-                  name: 'Confirmados',
-                  color: 'orange',
-                  data: confirmados
-                }, {
-                  name: 'Recuperados',
-                  color: 'green',
-                  data: recuperados
-                },
-                {
-                  name: 'Óbitos',
-                  color: 'red',
-                  data: obitos
-                },
-              ],
-            });
+              function(chart) {
+                Highcharts.each(chart.legend.allItems, function(p, i) {
+                  $(p.checkbox).change(
+                    function() {
+                      if (this.checked) {
+                        chart.legend.allItems[i].show();
+                      } else {
+                        chart.legend.allItems[i].hide();
+                      }
+                    });
+                });
+              });
 
           }
         });

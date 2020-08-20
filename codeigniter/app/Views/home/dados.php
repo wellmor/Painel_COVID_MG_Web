@@ -593,8 +593,7 @@
                 },
 
                 credits: {
-                  text: '*Clique nas legendas para filtrar por tipo de caso',
-                  href: '#'
+                  enabled: false
                 },
                 series: [{
                     name: 'Confirmados',

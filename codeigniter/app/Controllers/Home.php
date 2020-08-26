@@ -24,6 +24,11 @@ class Home extends BaseController
 		return view('/home/dados', $data);
 	}
 
+	public function doacoes()
+	{
+		return view('/home/doacoes');
+	}
+
 	public function projetos()
 	{
 		return view('/home/projetos');

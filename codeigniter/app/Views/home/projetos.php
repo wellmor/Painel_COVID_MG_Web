@@ -25,7 +25,7 @@
             <li><a href="/home/sobre" class="text-white">Sobre</a></li>
             <li><a href="/home/projetos" class="text-white">Projetos</a></li>
             <li><a href="/home/dicas" class="text-white">Dicas</a></li>
-            <li><a href="#" class="text-white">Doação</a></li>
+            <li><a href="/home/doacoes" class="text-white">Doação</a></li>
             <li><a href="/admin" class="text-white">Login</a></li>
           </ul>
         </div>
@@ -116,7 +116,8 @@
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
               <a href="https://app.powerbi.com/view?r=eyJrIjoiNzdiMjg2MmEtMmQ1Zi00YzZkLTgwNmMtYzFmMGNmZWIzZDNiIiwidCI6IjAwZjhmMzk0LTU4N2UtNGQ0ZC1hZGNmLWQ2OGIwNzBlMGEwZCJ9" target="_blank">
-                <h5 style="font-size: 17px;">Conheça todos os projetos de Ações de Enfrentamento Coronavirus do IF Sudeste MG</h5></a>
+                <h5 style="font-size: 17px;">Conheça todos os projetos de Ações de Enfrentamento Coronavirus do IF Sudeste MG</h5>
+              </a>
             </div>
           </div>
         </div>

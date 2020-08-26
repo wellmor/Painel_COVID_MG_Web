@@ -93,7 +93,7 @@
               <li><a href="/home/sobre" class="text-white">Sobre</a></li>
               <li><a href="/home/projetos" class="text-white">Projetos</a></li>
               <li><a href="/home/dicas" class="text-white">Dicas</a></li>
-              <li><a href="#" class="text-white">Doação</a></li>
+              <li><a href="/home/doacoes" class="text-white">Doação</a></li>
               <li><a href="/admin" class="text-white">Login</a></li>
             </ul>
           </div>
@@ -327,7 +327,7 @@
               <div class="card-body">
                 <h5 class="subtext">Mapa</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Visualize informações sobre seu município no mapa interativo</h6>
-                <div id="map" style="height: 400px;"></div>
+                <div id="map" style="height: 440px;"></div>
               </div>
             </div>
           </div>
@@ -354,7 +354,7 @@
                 <h5 class="subtext">Notícias</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Atualize-se com informações oficiais</h6>
                 <!-- alterar as referencias da div pro campo da tabela municipio que contem o identificador da pagina -->
-                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="250" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
                   <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
                 </div>
               </div>
@@ -371,7 +371,7 @@
                         <h5 class="subtext mt-2">Dicas</h5>
                       </div>
                       <div class="col-md-6">
-                        <div class="card-subtitle mb-4 text-muted">Como se prevenir facilmente</div>
+                        <div class="card-subtitle mb-4 text-muted">Dicas de como se prevenir facilmente</div>
                         <a href="/home/dicas" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                       </div>
                     </div>
@@ -387,7 +387,7 @@
                         <h5 class="subtext mt-2">Projetos</h5>
                       </div>
                       <div class="col-md-6">
-                        <div class="card-subtitle mb-4 text-muted">Projetos feitos pelo IF Sudeste</div>
+                        <div class="card-subtitle mb-4 text-muted">Projetos feitos pelo IF Sudeste Rio Pomba</div>
                         <a href="/home/projetos" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                       </div>
                     </div>
@@ -405,7 +405,7 @@
                         <h5 class="subtext mt-2">Sobre</h5>
                       </div>
                       <div class="col-md-6">
-                        <div class="card-subtitle mb-4 text-muted">Quem desenvolve o projeto</div>
+                        <div class="card-subtitle mb-4 text-muted">Quem desenvolve o projeto CovidMG</div>
                         <a href="/home/sobre" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                       </div>
                     </div>
@@ -421,8 +421,8 @@
                         <h5 class="subtext mt-2">Doação</h5>
                       </div>
                       <div class="col-md-6">
-                        <div class="card-subtitle mb-4 text-muted">Ajudando quem precisa</div>
-                        <a href="#" type="button" class="btn btn-outline-dark btn-block" data-toggle="modal" data-target="#exampleModal">Ver mais</a>
+                        <div class="card-subtitle mb-4 text-muted">Ajude quem realmente precisa doando</div>
+                        <a href="/home/doacoes" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                       </div>
                     </div>
                   </div>
@@ -454,26 +454,23 @@
         <div class="card animated bounceInUp slow text-center" style="padding:30px; margin-bottom:15px;">
           <div class="row">
             <div class="col-sm-12 col-md-4">
-              <a href="https://emcomp.com.br/"><img src="https://emcomp.com.br/cardapio/dashboard/Assets/logo.png" width="160" height="40"></a>
+              <a href="https://emcomp.com.br/"><img src="https://emcomp.com.br/cardapio/dashboard/Assets/logo.png" height="40"></a>
             </div>
             <div class="col-sm-12 col-md-4">
-              <a href="https://universodiscreto.com/dacc/"><img src="/assets/images/dacc.jpg" width="160" height="38"></a>
+              <a href="https://universodiscreto.com/dacc/"><img src="/assets/images/dacc.jpg" height="38"></a>
             </div>
             <div class="col-sm-12 col-md-4">
-              <a href="https://www.ifsudestemg.edu.br/riopomba"><img src="https://sistemas.riopomba.ifsudestemg.edu.br/dacg/atividades/professores/images/IF-10.png" width="160" height="38"></a>
+              <a href="https://www.ifsudestemg.edu.br/riopomba"><img src="https://sistemas.riopomba.ifsudestemg.edu.br/dacg/atividades/professores/images/IF-10.png" height="38"></a>
             </div>
-            <!--<div class="col-sm-12 col-md-3">
-                                <img src="/assets/images/logo.png" width="160" height="40">
-                            </div>-->
           </div>
         </div>
         <div class="animated bounceInUp slow" style="margin: 20px;" id="informacao-caso">
           <div class="text-muted text-justify" style="font-size: 14px;">
             <?php
             if (isset($legenda)) {
-              echo "*" . $legenda['conteudoLegenda'];
+              echo "* " . $legenda['conteudoLegenda'];
             } else {
-              echo "*Não há dados de legendas para o local selecionado";
+              echo "* Não há dados de legendas para o local selecionado";
             }
             ?>
           </div>

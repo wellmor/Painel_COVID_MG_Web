@@ -130,6 +130,17 @@ p {
     background: #f1f7ff;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+#map {
+    min-height: 300px;
+    max-height: 400px;
+}
+
+=======
+>>>>>>> 37852fdf4e95dfc1b3b4d97846a42a3a9f5d238f
+>>>>>>> 6d58bc70ca8e484127ad2434a781f1ad9c02d67e
 a.disable-links {
     pointer-events: none;
 }

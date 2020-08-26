@@ -130,11 +130,6 @@ p {
     background: #f1f7ff;
 }
 
-#map {
-    min-height: 300px;
-    max-height: 400px
-}
-
 a.disable-links {
     pointer-events: none;
 }

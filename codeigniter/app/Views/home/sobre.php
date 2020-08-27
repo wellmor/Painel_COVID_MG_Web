@@ -84,11 +84,11 @@
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <img style="border-radius:50px;" src="/assets/images/wellington.png" height="90">
               <h5 class="subtext mt-2">Wellington Moreira de Oliveira</h5>
               <div class="subtext mt-2">Coordenador</div>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+              <a href="https://www.facebook.com/wmoliveira1"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="http://lattes.cnpq.br/4697588754974290"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
@@ -99,36 +99,36 @@
               <h5 class="subtext mt-2">Gustavo Miranda Teixeira</h5>
               <div class="subtext mt-2">Coordenador Adjunto</div>
               <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+              <a href="http://lattes.cnpq.br/7467134188220384"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <img style="border-radius:50px;" src="/assets/images/lucas.png" height="90">
               <h5 class="subtext mt-2">Lucas Grassano Lattari </h5>
               <div class="subtext mt-2">Coordenador Adjunto</div>
               <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+              <a href="http://lattes.cnpq.br/2942847568811744"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <img style="border-radius:50px;" src="/assets/images/flavio.png" height="90">
               <h5 class="subtext mt-2">Flavio Augusto de Freitas</h5>
               <div class="subtext mt-2">Coordenador Adjunto</div>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+              <a href="https://www.facebook.com/flaviofreitas"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="http://lattes.cnpq.br/3420582970879660"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
-              <img style="border-radius:50px;" src="https://arielgranato.com.br/img/ariel-granato.jpg" height="90">
+              <img style="border-radius:50px;" src="/assets/images/ariel.png" height="90">
               <h5 class="subtext mt-2">Ariel Granato Bento</h5>
               <div class="subtext mt-2">Aluno Bolsista</div>
               <a href="https://www.facebook.com/arielgranatob"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>

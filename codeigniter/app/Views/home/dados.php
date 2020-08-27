@@ -383,7 +383,7 @@
                   <div class="card-body text-center">
                     <div class="row">
                       <div class="col-md-6">
-                        <img src="/assets/images/business%20(1).png" width="70px" height="70">
+                        <img src="/assets/images/business.png" width="70px" height="70">
                         <h5 class="subtext mt-2">Projetos</h5>
                       </div>
                       <div class="col-md-6">

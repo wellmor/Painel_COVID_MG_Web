@@ -93,7 +93,6 @@
       // $.each(names, function(i, el) {
       //   if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
       // });
-
       function filterOutliers(someArray) {
 
         // Copy the values, rather than operating on references to existing values
@@ -116,16 +115,23 @@
         // Then find min and max values
         var maxValue = q3 + iqr * 1.5;
         var minValue = q1 - iqr * 1.5;
-
+        var i = 0;
         // Then filter anything beyond or beneath these values.
-        var filteredValues = values.filter(function(x) {
-          return (x <= maxValue) && (x >= minValue);
+        var filteredValues = values.filter(function(x, index, array) {
+          console.log(index, array[index]);
+          console.log((x <= maxValue) && (x >= minValue));
+          if((x <= maxValue) && (x >= minValue))
+            return true;
+          else 
+            
         });
 
         // Then return
         return filteredValues;
       }
-
+      //dados errados, por exemplo, tem 322, 308, 315 - ele vai ordenar isso, mas
+      //como visto, o 308 é dia 22, o 322 dia 7, não vai funcionar na pratica, lets try
+      //ordenar datas no plugin de data depois(MAIS ERRO)
 
       let dataCaso = [];
       let confirmados = [];

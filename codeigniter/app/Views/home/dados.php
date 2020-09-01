@@ -353,10 +353,14 @@
               <div class="card-body">
                 <h5 class="subtext">Notícias</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Atualize-se com informações oficiais</h6>
-                <!-- alterar as referencias da div pro campo da tabela municipio que contem o identificador da pagina -->
-                <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
-                  <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
-                </div>
+                <?php if ($casos['facebookMunicipio']) { ?>
+                  <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                    <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
+                  </div>
+                <?php } else { ?>
+                  <!-- personalizar -->
+                  <a class="twitter-timeline" data-width="500" data-height="300" href="https://twitter.com/jairbolsonaro?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                <?php } ?>
               </div>
             </div>
           </div>
@@ -540,7 +544,12 @@
             Highcharts.stockChart('container', {
                 legend: {
                   enabled: true,
-                  borderWidth: 2
+                  borderWidth: 2,
+                  itemCheckboxStyle: {
+                    position: "absolute"
+                  },
+
+                  itemDistance: 2,
                 },
                 mapNavigation: {
                   enableMouseWheelZoom: true
@@ -611,6 +620,7 @@
                 ],
               },
               function(chart) {
+
                 Highcharts.each(chart.legend.allItems, function(p, i) {
                   $(p.checkbox).change(
                     function() {
@@ -623,7 +633,8 @@
                 });
               });
 
-          }
+          },
+
         });
       });
 

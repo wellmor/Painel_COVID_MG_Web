@@ -14,6 +14,7 @@
   <link href="/assets/css/bootstrap.css" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   <script src="/assets/dist/jquery-3.5.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.20/lodash.min.js"></script>
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -78,6 +79,7 @@
 
 
   <script src="/assets/dist/bootstrap.bundle.js"></script>
+  <script src="/assets/dist/lodash.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
   <script src="/assets/dist/dashboard.js"></script>
   <script src="https://code.highcharts.com/stock/highstock.js"></script>
@@ -85,53 +87,50 @@
   <script type="text/javascript" src="https://www.highcharts.com/samples/data/three-series-1000-points.js"></script>
   <script>
     $(document).ready(function() {
-      var outlineIndexesGlobal = [];
 
-      // remove duuplicates from the glboal array
-      // var names = ["Mike", "Matt", "Nancy", "Adam", "Jenny", "Nancy", "Carl"];
-      // var uniqueNames = [];
-      // $.each(names, function(i, el) {
-      //   if ($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
-      // });
       function filterOutliers(someArray) {
+        var indexesToFilter = [];
+        // sort and cast
+        var values = _.sortBy(someArray, o => parseInt(o.confirmados)); //array com indices preservados
+        var pieceConfirmados = _.map(values, 'confirmados'); //array com apenas os confirmados(pra verificar quais indices saem)
+        var pieceConfirmadosCasted = _.map(pieceConfirmados, _.parseInt);
 
-        // Copy the values, rather than operating on references to existing values
-        var values = someArray.concat();
+         //PROBLEMA DE REPETIÇÃO DE VALORES INTERFERINDO NO VALOR DE Q1 E Q3
+        var q1 = pieceConfirmadosCasted[Math.floor((pieceConfirmadosCasted.length / 4))]; //less than or equal to a given number.
+        var q3 = pieceConfirmadosCasted[Math.ceil((pieceConfirmadosCasted.length * (3 / 4)))]; //up to the next largest integer.
 
-        // Then sort
-        values.sort(function(a, b) {
-          return a - b;
-        });
-
-        /* Then find a generous IQR. This is generous because if (values.length / 4) 
-         * is not an int, then really you should average the two elements on either 
-         * side to find q1.
-         */
-        var q1 = values[Math.floor((values.length / 4))];
-        // Likewise for q3. 
-        var q3 = values[Math.ceil((values.length * (3 / 4)))];
         var iqr = q3 - q1;
 
-        // Then find min and max values
+        // // Then find min and max values
         var maxValue = q3 + iqr * 1.5;
-        var minValue = q1 - iqr * 1.5;
-        var i = 0;
-        // Then filter anything beyond or beneath these values.
-        var filteredValues = values.filter(function(x, index, array) {
-          console.log(index, array[index]);
-          console.log((x <= maxValue) && (x >= minValue));
-          if((x <= maxValue) && (x >= minValue))
-            return true;
-          else 
-            
-        });
+        console.log(maxValue, "valor max");
 
-        // Then return
-        return filteredValues;
+        var minValue = q1 - iqr * 1.5;
+        console.log(minValue, "valor min");
+
+
+        // // Then filter anything beyond or beneath these values.
+        const filteredValuesNew = pieceConfirmadosCasted.filter((x, index, arr) => {
+          if ((x <= maxValue) && (x >= minValue)) {
+            return true;
+          } else {
+            indexesToFilter.push(index);
+            return false;
+          }
+        })
+
+        //remover os indices outliers
+        for (var i = indexesToFilter.length - 1; i >= 0; i--)
+          values.splice(indexesToFilter[i], 1);
+
+        console.log(values, "array filtrado");
+
+        //reordenar baseado em data
+        var values = _.sortBy(values, o => o.dataCaso); //array com indices preservados
+        console.log(values, "array reordenado");
+
+        return values;
       }
-      //dados errados, por exemplo, tem 322, 308, 315 - ele vai ordenar isso, mas
-      //como visto, o 308 é dia 22, o 322 dia 7, não vai funcionar na pratica, lets try
-      //ordenar datas no plugin de data depois(MAIS ERRO)
 
       let dataCaso = [];
       let confirmados = [];
@@ -148,29 +147,21 @@
         method: "GET",
         dataType: 'JSON',
         success: function(data) {
-          for (var key in data) {
-            var dataCaso = new Date(data[key].dataCaso);
+
+          var filteredAndOrderedArray = filterOutliers(data);
+
+          for (var key in filteredAndOrderedArray) {
+
+            var dataCaso = new Date(filteredAndOrderedArray[key].dataCaso);
             var dataUNIX = dataCaso.getTime();
+
             if (!isNaN(dataUNIX)) {
-              let confirmadosLocal = [dataUNIX, parseInt(data[key].confirmados)];
+              let confirmadosLocal = [dataUNIX, parseInt(filteredAndOrderedArray[key].confirmados)];
               confirmados.push(confirmadosLocal);
-              confirmadosTest.push(parseInt(data[key].confirmados));
 
-              let recuperadosLocal = [dataUNIX, parseInt(data[key].recuperados)];
-              recuperados.push(recuperadosLocal);
-              recuperadosTest.push(parseInt(data[key].recuperados));
-
-              let obitosLocal = [dataUNIX, parseInt(data[key].obitos)];
-              obitos.push(obitosLocal);
-              confirmados.push(confirmadosLocal);
-              recuperados.push(recuperadosLocal)
-              obitos.push(obitosLocal)
             }
           }
 
-          console.log(recuperadosTest);
-          var filtered = filterOutliers(recuperadosTest);
-          console.log(filtered);
 
           Highcharts.stockChart('container-uba', {
             legend: {
@@ -220,21 +211,23 @@
                 name: 'Confirmados',
                 color: 'orange',
                 data: confirmados
-              }, {
-                name: 'Recuperados',
-                color: 'green',
-                data: recuperados
               },
-              {
-                name: 'Óbitos',
-                color: 'red',
-                data: obitos
-              },
+              // {
+              //   name: 'Recuperados',
+              //   color: 'green',
+              //   data: recuperados
+              // },
+              // {
+              //   name: 'Óbitos',
+              //   color: 'red',
+              //   data: obitos
+              // },
             ],
           });
 
         }
       });
+
     });
 
     $(document).ready(function() {

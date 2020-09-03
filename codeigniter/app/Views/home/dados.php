@@ -61,6 +61,13 @@
   </style>
   <script>
     $(document).ready(function() {
+   
+
+      $('.typeahead__list').on('click', 'li', function() {
+        console.log('Hello');
+      });
+
+
       $("#pesquisar").click(function() {
         $("html, body").animate({
           scrollTop: $("#back-scroll").offset().top
@@ -359,7 +366,8 @@
                   </div>
                 <?php } else { ?>
                   <!-- personalizar -->
-                  <a class="twitter-timeline" data-width="500" data-height="300" href="https://twitter.com/jairbolsonaro?ref_src=twsrc%5Etfw"></a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                  <a class="twitter-timeline" data-width="500" data-height="300" href="https://twitter.com/jairbolsonaro?ref_src=twsrc%5Etfw"></a>
+                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 <?php } ?>
               </div>
             </div>
@@ -694,10 +702,12 @@
               emptyTemplate: "sem resultados para {{query}}",
               source: {
                 "Região de Ubá": {
-                  data: data.uba
+                  data: data.uba,
+                  id: 12
                 },
                 "Região de Juiz de Fora": {
-                  data: data.jf
+                  data: data.jf,
+
                 },
                 "Entornos": {
                   data: data.entornos

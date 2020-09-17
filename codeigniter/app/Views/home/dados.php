@@ -61,7 +61,7 @@
   </style>
   <script>
     $(document).ready(function() {
-   
+
 
       $('.typeahead__list').on('click', 'li', function() {
         console.log('Hello');
@@ -295,35 +295,46 @@
             <div class="card animated bounceInUp slow">
               <div class="card-body" style="margin: 3px;">
                 <div class="row">
-                  <div class="col text-left">
+                  <div class="col-md-6 text-center">
                     <form id="formAlerta" method="post">
-                      <p class="subtext">Seja alertado</p>
+                      <p class="subtext">Receba um alerta</p>
                       <input type="hidden" class="form-control" name="idMunicipio" id="idMunicipio" value="<?= esc($casos['idMunicipio']) ?>">
-                      <button type="button" class="btn btn-warning" id="my-notification-button"><img src="/assets/loading.gif" width="20px" height="20px"></button>
+                      <button type="button" class="btn btn-warning" id="my-notification-button">Notificação</button>
                     </form>
                   </div>
-                  <div class="col text-right">
-                    <img class="img" src="https://image.flaticon.com/icons/svg/1157/1157000.svg" width="70px" height="70px">
+                  <div class="col-md-6 text-center">
+                    <p class="subtext">Whatsapp</p>
+                    <a href="" data-target="#modalWpp" data-toggle="modal"><img src="https://imagepng.org/wp-content/uploads/2017/08/WhatsApp-icone.png" height="40px"></a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalWpp" tabindex="-1" role="dialog" aria-labelledby="modalWppLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ops! Página em construção!</h5>
+                <h5 class="modal-title">Receber alerta via Whatsapp</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
+                <form>
+                  <div class="form-row">
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Whatsapp">
+                    </div>
+                  </div>
+                </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
               </div>
             </div>
           </div>
@@ -359,22 +370,30 @@
             <div class="card animated bounceInUp slow">
               <div class="card-body">
                 <h5 class="subtext">Notícias</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Atualize-se com informações oficiais</h6>
-                <?php if ($casos['facebookMunicipio']) { ?>
-                  <div class="fb-page" data-href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" data-tabs="timeline" data-width="500" data-height="300" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
-                    <blockquote cite="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/<?= $casos['facebookMunicipio'] ?>">Município de Rio Pomba - Prefeitura</a></blockquote>
-                  </div>
-                <?php } else { ?>
-                  <!-- personalizar -->
-                  <a class="twitter-timeline" data-width="500" data-height="300" href="https://twitter.com/jairbolsonaro?ref_src=twsrc%5Etfw"></a>
-                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                <?php } ?>
+                <h6 class="card-subtitle mb-2 text-muted">Todas as notícias de <?= $casos['nomeMunicipio'] ?></h6>
+                <?php
+                $url = file_get_contents('http://newsapi.org/v2/everything?q=' . str_replace(' ', '%20', $casos['nomeMunicipio']) . '&language=pt&sortBy=popularity&apiKey=ecc3c4f594974cfba75017225754f9e6');
+                $jsonUrl = json_decode($url);
+                if (count($jsonUrl->articles) != 0) {
+                  echo '<div style="height: 540px; overflow-y: scroll;">';
+                  for ($i = 0; $i < count($jsonUrl->articles); $i++) {
+                    echo '<b>' . $jsonUrl->articles[$i]->title . '</b><br>';
+                    echo '' . $jsonUrl->articles[$i]->description . '<br>';
+                    echo '<center><a target="_blank" href="' . $jsonUrl->articles[$i]->url . '"><img src="' . $jsonUrl->articles[$i]->urlToImage . '" height="210px" style="border-radius:10px; margin:20px"></a></center>';
+                    echo '<b>Fonte:</b> <a target="_blank" href="' . $jsonUrl->articles[$i]->url . '">' . $jsonUrl->articles[$i]->url . '</a><hr style="margin:20px;">';
+                  }
+                  echo '</div>';
+                } else {
+                  echo '<div class="fb-page" data-href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" data-tabs="timeline" data-width="500" data-height="540" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                    <blockquote cite="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '">' . $casos['nomeMunicipio'] . '</a></blockquote></div>';
+                }
+                ?>
               </div>
             </div>
           </div>
           <div class="col-md-6">
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card animated bounceInUp slow" style="margin:5px">
                   <div class="card-body text-center">
                     <div class="row">
@@ -390,7 +409,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card animated bounceInUp slow" style="margin:5px">
                   <div class="card-body text-center">
                     <div class="row">
@@ -408,7 +427,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card animated bounceInUp slow" style="margin:5px">
                   <div class="card-body text-center">
                     <div class="row">
@@ -424,7 +443,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="card animated bounceInUp slow" style="margin:5px">
                   <div class="card-body text-center">
                     <div class="row">
@@ -437,25 +456,6 @@
                         <a href="/home/doacoes" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Em construção</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <img src="/assets/images/paginaEmConstrucao.png" width="100%" height="100%">
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                   </div>
                 </div>
               </div>

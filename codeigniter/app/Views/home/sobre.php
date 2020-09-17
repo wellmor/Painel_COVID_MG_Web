@@ -180,6 +180,17 @@
             </div>
           </div>
         </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/felipe-costa.png" height="90">
+              <h5 class="subtext mt-2">Felipe Costa</h5>
+              <div class="subtext mt-2">Aluno Voluntário</div>
+              <a href="https://m.facebook.com/felipe.ferreiracosta.52"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
       </div>
   </main>
 

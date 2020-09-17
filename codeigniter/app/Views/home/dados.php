@@ -13,6 +13,7 @@
   <link rel="icon" href="/assets/images/virus.png"> <!-- favicon da página -->
   <link rel="stylesheet" href="/assets/css/dados.css"> <!-- estilo específico da página -->
   <script src="/assets/dist/jquery-3.5.1.js"></script> <!-- plugin base -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script> <!-- mascara numero wpp -->
 
   <!-- Push do OneSignal -->
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
@@ -324,16 +325,13 @@
                 <form>
                   <div class="form-row">
                     <div class="col">
-                      <input type="text" class="form-control" placeholder="Nome">
-                    </div>
-                    <div class="col">
-                      <input type="text" class="form-control" placeholder="Whatsapp">
+                      <input type="text" class="form-control numeroWpp" placeholder="Whatsapp" name="numeroWpp" id="numeroWpp">
                     </div>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary" onclick="salvarWpp()">Salvar</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
               </div>
             </div>
@@ -505,6 +503,32 @@
     <script type="text/javascript" src="https://www.highcharts.com/samples/data/three-series-1000-points.js"></script>
 
     <script>
+      jQuery("input.numeroWpp")
+        .mask("(99) 9999-9999?9")
+        .focusout(function(event) {
+          var target, phone, element;
+          target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+          phone = target.value.replace(/\D/g, '');
+          element = $(target);
+          element.unmask();
+          if (phone.length > 10) {
+            element.mask("(99) 99999-999?9");
+          } else {
+            element.mask("(99) 9999-9999?9");
+          }
+        });
+
+      function salvarWpp() {
+        $.ajax({
+          type: "POST",
+          url: "/alerta/salvarWpp/" + $("#idMunicipio").val() + "/" + $("#numeroWpp").val().replace(/\D/gim, ''),
+          success: function(result) {
+            $('#modalWpp').modal('hide');
+            alert("Tudo certo!\nAgora você ficará por dentro de novas atualizações diretamente no seu whatsapp!");
+          }
+        });
+      }
+
       function formatarData(datax) {
         var data = new Date(datax),
           dia = (data.getDate()).toString().padStart(2, '0'),
@@ -512,6 +536,7 @@
           ano = data.getFullYear();
         return " " + dia + "/" + mes + "/" + ano + " ";
       }
+
       $(document).ready(function() {
         let dataCaso = [];
         let confirmados = [];

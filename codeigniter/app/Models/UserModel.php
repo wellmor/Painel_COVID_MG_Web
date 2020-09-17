@@ -10,6 +10,12 @@ class UserModel extends Model
   protected $allowedFields = ['nomeUsuario', 'emailUsuario', 'senhaUsuario', 'updated_at'];
   protected $beforeInsert = ['beforeInsert'];
   protected $beforeUpdate = ['beforeUpdate'];
+  protected $useTimestamps = true;
+  protected $useSoftDeletes = true;
+
+  protected $createdAtField = 'created_at';
+  protected $updatedAtField = 'updated_at';
+  protected $deletedAtField = 'deleted_at';
 
   protected function beforeUpdate(array $data)
   {

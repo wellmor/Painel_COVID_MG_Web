@@ -37,7 +37,7 @@
 
 <body>
   <!-- header -->
-
+    <?php 		echo json_encode($casos); ?>
   <!-- conteudo -->
   <style>
     .vertical-center {
@@ -50,8 +50,7 @@
       align-items: center;
     }
   </style>
-  <div class="jumbotron vertical-center">
-
+  <!-- <div class="jumbotron vertical-center">
     <div class="container">
       <div class="row">
         <div class="col-md-5">
@@ -69,10 +68,10 @@
           <a href="https://drive.google.com/file/d/1lm3MIBP8NsY3AnVGZ7pRZJmkINlJBaTx/view?usp=sharing">Fazer download da base de dados completa em SQL (12/08/2020 19:40)</a>
         </div>
       </div>
-    </div>
+    </div> -->
+<!-- 
 
-
-  </div>
+  </div> -->
 
 
 

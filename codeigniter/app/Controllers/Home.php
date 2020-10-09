@@ -73,7 +73,7 @@ class Home extends BaseController
 
 	//Todo - ligar o id do usuario responsavel com os dados anteriores
 	//Adicionar alguma flag pra identificar que é sumarizado
-	
+
 	public function fillDates()
 	{
 		$model = new CasosModel();
@@ -94,7 +94,7 @@ class Home extends BaseController
 					$model->query("INSERT INTO caso(
 						idMunicipio, idUsuario, dataCaso, confirmadosCaso,
 						 obitosCaso, recuperadosCaso) VALUES(
-						" . $id['id'] . ", 1, '$data', 'a', 'a', 'a')");
+						" . $id['id'] . ", " . $id['idUsuario'] . ", '$data', 'a', 'a', 'a')");
 
 					// INSERIR O ID ANTIGO
 					//está adicionando todas as datas ja. tentar tratar

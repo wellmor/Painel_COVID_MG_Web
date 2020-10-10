@@ -44,6 +44,10 @@ class Home extends BaseController
 		return view('/home/sobre');
 	}
 
+	public function testes()
+	{		
+		return view('/home/testes');
+	}
 	public function pesquisa($id = "")
 	{
 		$model = new CasosModel();
@@ -94,10 +98,7 @@ class Home extends BaseController
 					$model->query("INSERT INTO caso(
 						idMunicipio, idUsuario, dataCaso, confirmadosCaso,
 						 obitosCaso, recuperadosCaso) VALUES(
-						" . $id['id'] . ", " . $id['idUsuario'] . ", '$data', 'a', 'a', 'a')");
-
-					// INSERIR O ID ANTIGO
-					//está adicionando todas as datas ja. tentar tratar
+						'" . $id['id'] . "', 2, '$data', 'a', 'a', 'a')");
 				}
 			}
 		}
@@ -115,7 +116,6 @@ class Home extends BaseController
 			");
 			$casos = $queryCasos->getResult('array');
 			foreach ($casos as $caso) {
-				// echo json_encode($caso);
 				if ($caso["dataCaso"] == '2020-02-01') {
 					if ($caso["confirmadosCaso"] == "a" && $caso["recuperadosCaso"] == "a" && $caso["obitosCaso"] == "a")
 						$model->query("UPDATE CASO set confirmadosCaso = 0, recuperadosCaso = 0, obitosCaso = 0 WHERE idCaso = " . $caso['idCaso'] . "");
@@ -123,25 +123,26 @@ class Home extends BaseController
 			}
 		}
 	}
+	
+	public function fixZeroDates(){
+		$model = new CasosModel();
+		$model->query("DELETE FROM caso WHERE dataCaso = '0000-00-00' ");
+	}
 
 	public function fixValues()
 	{
 		$model = new CasosModel();
 		$queryIds = $model->query("SELECT idMunicipio AS id FROM municipio");
 		$idsMunicipios = $queryIds->getResult('array');
-		// $idsMunicipios = [1];
 		foreach ($idsMunicipios as $id) {
-			$queryCasos	 = $model->query("
-				SELECT  * FROM caso WHERE idMunicipio = {$id['id']} ORDER BY dataCaso ASC");
+			$queryCasos	 = $model->query("SELECT  * FROM caso WHERE idMunicipio = '".$id['id']."' AND deleted_at = '0000-00-00' ORDER BY dataCaso ASC");
 
 			$casos = $queryCasos->getResult('array');
 		
 			$previousConfirmados = null;
 			$previousRecuperados = null;
 			$previousObitos = null;
-			foreach ($casos as $caso) {
-				// echo json_encode($caso);
-				echo $previousConfirmados;
+			foreach ($casos as $key => $caso) {
 				if ($caso["confirmadosCaso"] == "a") {
 					$queryCasos	 = $model->query("UPDATE caso SET confirmadosCaso = '".$previousConfirmados."' WHERE idCaso =  '".$caso['idCaso']."' ");
 				}
@@ -165,9 +166,10 @@ class Home extends BaseController
 
 
 				$previousConfirmados = $caso["confirmadosCaso"] != "a" ? $caso["confirmadosCaso"] : $previousConfirmados;
-				$previousRecuperados = $caso["recuperadosCaso"];
-				$previousObitos = $caso["obitosCaso"];
+				$previousRecuperados = $caso["recuperadosCaso"] != "a" ? $caso["recuperadosCaso"] : $previousRecuperados;
+				$previousObitos = $caso["obitosCaso"] != "a" ? $caso["obitosCaso"] : $previousObitos;
 			}
 		}
 	}
+	
 }

@@ -370,7 +370,7 @@
                 <h5 class="subtext">Notícias</h5>
                 <h6 class="card-subtitle mb-2 text-muted">Todas as notícias de <?= $casos['nomeMunicipio'] ?></h6>
                 <?php
-                $url = file_get_contents('http://newsapi.org/v2/everything?q=' . str_replace(' ', '%20', $casos['nomeMunicipio']) . '&language=pt&sortBy=popularity&apiKey=ecc3c4f594974cfba75017225754f9e6');
+                $url = file_get_contents('http://newsapi.org/v2/everything?q=' . str_replace(' ', '%20', $casos['nomeMunicipio']) . '%20minas%20gerais&language=pt&sortBy=popularity&apiKey=ecc3c4f594974cfba75017225754f9e6');
                 $jsonUrl = json_decode($url);
                 if (count($jsonUrl->articles) != 0) {
                   echo '<div style="height: 540px; overflow-y: scroll;">';

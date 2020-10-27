@@ -5,15 +5,20 @@ namespace App\Controllers;
 use App\Models\AlertasModel;
 use App\Models\MunicipiosModel;
 
-
 class Alerta extends BaseController
 {
+	#http://localhost/alerta/muncipio_wpp
+
 	public function muncipio_wpp()
 	{
-		#http://localhost/alerta/muncipio_wpp
 		$model = new AlertasModel();
-		$query = $model->query("SELECT municipio.nomeMunicipio, alerta.numeroWpp as numeroWhatsapp FROM municipio INNER JOIN alerta ON municipio.idMunicipio = alerta.idMunicipio");
-		die(json_encode($query->getResult('array'), JSON_PRETTY_PRINT));
+		$query = $model->query("SELECT  municipio.nomeMunicipio, alerta.numeroWpp as numeroWhatsapp FROM municipio INNER JOIN alerta ON municipio.idMunicipio = alerta.idMunicipio");
+		$resultQuery = $query->getResult('array');
+		$array = array();
+		foreach ($resultQuery as $key) {
+			array_push($array, array("number" => preg_replace("/[^0-9]/", '', $key["numeroWhatsapp"]), "message" => '' . $key["nomeMunicipio"] . ' possui novos casos de COVID-19, acesse https://covidmg.com e fique por dentro!'));
+		}
+		return json_encode($array, JSON_PRETTY_PRINT);
 	}
 
 	public function salvarWpp($idMunicipio = 57, $numeroWpp)

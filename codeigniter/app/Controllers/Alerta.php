@@ -3,17 +3,24 @@
 namespace App\Controllers;
 
 use App\Models\AlertasModel;
-use App\Models\MunicipiosModel;
-
+use App\Models\CasosModel;
 
 class Alerta extends BaseController
 {
+	#http://localhost/alerta/muncipio_wpp
+
 	public function muncipio_wpp()
 	{
-		#http://localhost/alerta/muncipio_wpp
-		$model = new AlertasModel();
-		$query = $model->query("SELECT municipio.nomeMunicipio, alerta.numeroWpp as numeroWhatsapp FROM municipio INNER JOIN alerta ON municipio.idMunicipio = alerta.idMunicipio");
-		die(json_encode($query->getResult('array'), JSON_PRETTY_PRINT));
+		$alertasModel = new AlertasModel();
+		$casosModel = new CasosModel();
+		$alertasQuery = $alertasModel->query("SELECT municipio.nomeMunicipio, municipio.slugMunicipio, alerta.numeroWpp as numeroWhatsapp FROM municipio INNER JOIN alerta ON municipio.idMunicipio = alerta.idMunicipio WHERE alerta.numeroWpp IS NOT NULL");
+		$resultQuery = $alertasQuery->getResult('array');
+		$array = array();
+		foreach ($resultQuery as $key) {
+			$confirmadosCaso = $casosModel->query("SELECT c.confirmadosCaso FROM caso c, municipio m WHERE m.slugMunicipio = '" . $key["slugMunicipio"] . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1")->getRowArray()['confirmadosCaso'];
+			array_push($array, array("number" => preg_replace("/[^0-9]/", '', $key["numeroWhatsapp"]), "message" => $key["nomeMunicipio"] . ' possui ' . $confirmadosCaso . ' casos confirmados de COVID-19!'));
+		}
+		return json_encode($array, JSON_PRETTY_PRINT);
 	}
 
 	public function salvarWpp($idMunicipio = 57, $numeroWpp)

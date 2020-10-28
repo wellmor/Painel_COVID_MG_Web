@@ -13,7 +13,7 @@ class Alerta extends BaseController
 	{
 		$alertasModel = new AlertasModel();
 		$casosModel = new CasosModel();
-		$alertasQuery = $alertasModel->query("SELECT municipio.nomeMunicipio, municipio.slugMunicipio, alerta.numeroWpp as numeroWhatsapp FROM municipio INNER JOIN alerta ON municipio.idMunicipio = alerta.idMunicipio");
+		$alertasQuery = $alertasModel->query("SELECT municipio.nomeMunicipio, municipio.slugMunicipio, alerta.numeroWpp as numeroWhatsapp FROM municipio INNER JOIN alerta ON municipio.idMunicipio = alerta.idMunicipio WHERE alerta.numeroWpp IS NOT NULL");
 		$resultQuery = $alertasQuery->getResult('array');
 		$array = array();
 		foreach ($resultQuery as $key) {

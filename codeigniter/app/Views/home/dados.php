@@ -82,7 +82,6 @@
   <title>Painel COVID-MG</title>
 </head>
 
-<?php if (isset($casos)) { ?>
 
   <body>
     <div id="fb-root"></div>
@@ -142,23 +141,24 @@
           </div>
         </section>
 
-        <h2 class="jumbotron-heading animated bounceInUp slow"><i class="fas fa-map"></i> <?= esc($casos['nomeMunicipio']) ?></h2>
+        <h2 class="jumbotron-heading animated bounceInUp slow"><i class="fas fa-map"></i> <?= isset($nomeMicro) ? $nomeMicro : $casos['nomeMunicipio'] ?></h2>
         <?php
         $dataCaso = esc($casos['dataCaso']);
         $dataCasoListar  = date("d/m/Y", strtotime(esc($dataCaso)));
-        if (isset($verificacao)) {
+        if(isset($nomeMicro)){
+        }
+        else if (isset($verificacao)) {
           $dataVerificacao = esc($verificacao['dataVerificacao']);
           $dataVerificacaoListar  = date("d/m/Y", strtotime(esc($dataVerificacao)));
-
           if ($dataVerificacao > $dataCaso) { ?>
             <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> e verificado<a href="#informacao-caso">*</a> em <b><?= $dataVerificacaoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
           <?php } else { ?>
             <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
           <?php }
-        } else { ?>
+        } else if(!isset($verificacao)){ ?>
           <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
         <?php } ?>
-        <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"><?= $casos['fonteCaso'] ?></a></p>
+        <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"> <?= isset($idMicro) ? "Dados sumarizados automaticamente" :  $casos['fonteCaso'] ?> </a></p>
 
         <div class="row" style="margin-top:20px; margin-bottom:15px;">
           <div class="col-md-4">
@@ -544,21 +544,28 @@
         let obitos = [];
 
         let id = <?php echo $casos['idMunicipio']; ?>;
-        // alert('o id e ' + id);
+        let idMicro = <?php echo isset($idMicro) ? $idMicro : "null" ?>;
+       
+        var rota = "";
+        if(idMicro != null && idMicro == 58){
+          rota = "/Ajax/Graficos/getDadosSumarizacaoUba/";
+        }else if(idMicro != null && idMicro == 59){
+          rota = "/Ajax/Graficos/getDadosSumarizacaoJf";
+        }
+        else{
+          rota = "/Ajax/Graficos/getDados/" + id;
+        }
+        
         $.ajax({
-          url: "/Ajax/Graficos/getDados/" + id, //filtrar por municipio selecionado
+          url: rota, //filtrar por municipio selecionado
           method: "GET",
           dataType: 'JSON',
           success: function(data) {
             for (var key in data) {
-              // datex = dataE[2] + "/" + dataE[1] + "/" + dataE[0];
               var dataCaso = new Date(data[key].datax);
               var dataUNIX = dataCaso.getTime();
-              // console.log(dataCaso + dataUNIX);
               if (!isNaN(dataUNIX)) {
                 let confirmadosLocal = [dataUNIX, parseInt(data[key].confirmados)];
-                // console.log(confirmadosLocal);
-
                 confirmados.push(confirmadosLocal);
 
                 let recuperadosLocal = [dataUNIX, parseInt(data[key].recuperados)];
@@ -891,10 +898,53 @@
         $(document).ready(function() {
           nome = '<?= $casos['nomeMunicipio'] ?>';
           slug = '<?= $casos['slugMunicipio'] ?>';
+
+          let idMicro = <?php echo isset($idMicro) ? $idMicro : "null" ?>;
+          if(idMicro != null && idMicro == 58)
+            slug = "microrregiao-de-uba";
+          else if(idMicro != null && idMicro == 59)
+            slug = "microrregiao-de-juiz-de-fora";
+
+          console.log("slug atual", slug);
           nome = nome.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
           nome = nome.toLowerCase();
           nome = nome.replace(/ /g, '-')
-          if (slug != 'minas-gerais') {
+          if (slug == 'microrregiao-de-uba') {
+            console.log("entrou em micro uba");
+            link = "https://servicodados.ibge.gov.br/api/v2/malhas/31064?formato=application/vnd.geo+json";
+            $.getJSON(link,
+              function(data) {
+                // console.log(data);
+                geojson = data['features']['0']['geometry'];
+                coordinate = geojson['coordinates'][0][0];
+                generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 8, 0.5);
+              })
+          }
+          else if (slug == 'microrregiao-de-juiz-de-fora') {
+            link = "https://servicodados.ibge.gov.br/api/v2/malhas/31065?formato=application/vnd.geo+json";
+            $.getJSON(link,
+              function(data) {
+                // console.log(data);
+                geojson = data['features']['0']['geometry'];
+                coordinate = geojson['coordinates'][0][0];
+
+                generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 8, 0.5);
+                // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
+              })
+          }
+          else if (slug == 'minas-gerais') {
+            link = "https://servicodados.ibge.gov.br/api/v2/malhas/31?formato=application/vnd.geo+json";
+            $.getJSON(link,
+              function(data) {
+                // console.log(data);
+                geojson = data['features']['0']['geometry'];
+                coordinate = geojson['coordinates'][0][0];
+
+                generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 5);
+                // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
+              })
+          }
+          else{
             $.getJSON(
               'https://servicodados.ibge.gov.br/api/v1/localidades/municipios/' + nome,
               function(data) {
@@ -918,18 +968,8 @@
                   })
               }
             );
-          } else if (slug == 'minas-gerais') {
-            link = "https://servicodados.ibge.gov.br/api/v2/malhas/31?formato=application/vnd.geo+json";
-            $.getJSON(link,
-              function(data) {
-                // console.log(data);
-                geojson = data['features']['0']['geometry'];
-                coordinate = geojson['coordinates'][0][0];
-
-                generateMap(parseFloat(coordinate[1]), parseFloat(coordinate[0]), 5, 5);
-                // console.log(parseFloat(coordinate[0]), parseFloat(coordinate[1]));
-              })
-          }
+          } 
+      
           // setTimeout(function(){ alert("Hello"); }, 3000);
         });
 
@@ -1141,11 +1181,5 @@
     <script type="text/javascript" src="/assets/dist/labs-common.js"></script>
   </body>
 
-<?php } else {
-  echo ('<script LANGUAGE="JavaScript">
-  window.alert("Ainda não existem relatórios de casos para a cidade selecionada.");
-  window.location.href="/home";
-  </script>');
-} ?>
 
 </html>

@@ -10,10 +10,11 @@ class Home extends BaseController
 	public function index($id = "minas-gerais")
 	{
 		$model = new CasosModel();
-		// echo "o id eh ". $id . "<br>";
-
+		
 		$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
 		$data['casos'] = $query->getRowArray();
+	
+	
 
 		$query2 = $model->query("Select * FROM legenda l , municipio m WHERE m.slugMunicipio = '" . $id . "' AND l.deleted_at = '0000-00-00' AND l.idMunicipio = m.idMunicipio ORDER BY idLegenda DESC LIMIT 1");
 		$data['legenda'] = $query2->getRowArray();
@@ -59,9 +60,37 @@ class Home extends BaseController
 		// $casoTest = $queryExistenceMunicipio->getRowArray();
 
 
+
 		if ($municipioTest == null) {
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-		} else {
+		}else if($id == 'microrregiao-de-uba'){
+			$query = $model->query("SELECT c.dataCaso, fonteCaso, suspeitosCaso, descartadosCaso, slugMunicipio, m.nomeMunicipio, m.idMunicipio,
+			SUM(c.confirmadosCaso) as confirmadosCaso,
+			SUM(c.recuperadosCaso) as recuperadosCaso,
+			SUM(c.obitosCaso) as obitosCaso
+			FROM municipio m, caso c    
+			WHERE m.idMunicipio = c.idMunicipio
+			AND m.idMicrorregiao = 1 
+			GROUP BY c.dataCaso DESC LIMIT 1");
+			$data['nomeMicro'] = "Microrregiao de Ubá";
+			$data['idMicro'] = 58;
+			$data['casos'] = $query->getRowArray();
+			return view('/home/dados', $data);
+		}
+		else if($id == 'microrregiao-de-juiz-de-fora'){
+			$query = $model->query("SELECT c.dataCaso, fonteCaso, facebookMunicipio, suspeitosCaso, descartadosCaso, slugMunicipio, m.nomeMunicipio, m.idMunicipio,
+			SUM(c.confirmadosCaso) as confirmadosCaso,
+			SUM(c.recuperadosCaso) as recuperadosCaso,
+			SUM(c.obitosCaso) as obitosCaso
+			FROM municipio m, caso c    
+			WHERE m.idMunicipio = c.idMunicipio
+			AND m.idMicrorregiao = 2 
+			GROUP BY c.dataCaso DESC LIMIT 1");
+			$data['idMicro'] = 59;
+			$data['nomeMicro'] = "Microrregiao de Juiz de Fora";
+			$data['casos'] = $query->getRowArray();
+			return view('/home/dados', $data);
+		}else {
 			$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
 			$data['casos'] = $query->getRowArray();
 
@@ -77,6 +106,13 @@ class Home extends BaseController
 
 	//Todo - ligar o id do usuario responsavel com os dados anteriores
 	//Adicionar alguma flag pra identificar que é sumarizado
+	public function test(){
+		$model = new CasosModel();
+		$queryIdUsuario	 = $model->query("
+			SELECT idUsuario FROM caso WHERE idMunicipio =2 LIMIT 1
+			");
+		$idUsuario = $queryIdUsuario->getResult('array')[0]['idUsuario'];
+	}
 
 	public function fillDates()
 	{
@@ -85,6 +121,16 @@ class Home extends BaseController
 		$idsMunicipios = $queryIds->getResult('array');
 		// var_dump($idsMunicipios);
 		foreach ($idsMunicipios as $id) {
+			//id do responsavel pela cidade
+			$model = new CasosModel();
+			$queryIdUsuario	 = $model->query("SELECT idUsuario FROM caso WHERE idMunicipio = " . $id['id'] . " ORDER BY idCaso DESC LIMIT 1 ");
+			if(isset($queryIdUsuario->getResult('array')[0])){
+				$userId = $queryIdUsuario->getResult('array')[0]['idUsuario'];
+			}
+			else{
+				$userId = 2;
+			}
+
 			$queryCasos	 = $model->query("
 			SELECT  *
 			FROM calendar  LEFT JOIN caso on datefield=dataCaso AND idMunicipio = " . $id['id'] . ".
@@ -97,8 +143,8 @@ class Home extends BaseController
 					$data = $caso["datefield"][0] . $caso["datefield"][1] . $caso["datefield"][2] . $caso["datefield"][3] . $caso["datefield"][4] . $caso["datefield"][5] . $caso["datefield"][6] . $caso["datefield"][7] . $caso["datefield"][8] . $caso["datefield"][9];
 					$model->query("INSERT INTO caso(
 						idMunicipio, idUsuario, dataCaso, confirmadosCaso,
-						 obitosCaso, recuperadosCaso) VALUES(
-						'" . $id['id'] . "', 2, '$data', 'a', 'a', 'a')");
+						 obitosCaso, recuperadosCaso, auto) VALUES(
+						'" . $id['id'] . "', $userId, '$data', 'a', 'a', 'a', 1)");
 				}
 			}
 		}

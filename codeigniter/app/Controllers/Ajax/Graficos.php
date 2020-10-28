@@ -33,36 +33,50 @@ class Graficos extends Controller
     public function getDadosSumarizacaoUba()
     {
         $model = new CasosModel();
-        $query = $model->query("SELECT c.dataCaso, SUM(c.confirmadosCaso) as confirmados,
-        SUM(c.recuperadosCaso) as recuperados,
-        SUM(c.obitosCaso) as obitos
+        $query = $model->query("SELECT c.dataCaso as dat, SUM(c.confirmadosCaso) as conf,
+        SUM(c.recuperadosCaso) as recu,
+        SUM(c.obitosCaso) as ob
         FROM municipio m, caso c    
         WHERE m.idMunicipio = c.idMunicipio
         AND m.idMicrorregiao = 1 
         GROUP BY c.dataCaso
 		");
         $casos = $query->getResult('array');
-        echo json_encode($casos);
+
+        $i = 0;
+        $data = array();
+        foreach ($casos as $caso) {
+            $data[$i]['datax'] = $caso['dat'];
+            $data[$i]['confirmados'] = $caso['conf'];
+            $data[$i]['obitos'] = $caso['ob'];
+            $data[$i]['recuperados'] = $caso['recu'];
+            $i++;
+        }
+        echo json_encode($data);
     }
 
     public function getDadosSumarizacaoJf()
     {
         $model = new CasosModel();
-        $query = $model->query("SELECT c.dataCaso, SUM(c.confirmadosCaso) as confirmados,
-        SUM(c.recuperadosCaso) as recuperados,
-        SUM(c.obitosCaso) as obitos
-
+        $query = $model->query("SELECT c.dataCaso as dat, SUM(c.confirmadosCaso) as conf,
+        SUM(c.recuperadosCaso) as recu,
+        SUM(c.obitosCaso) as ob
         FROM municipio m, caso c    
         WHERE m.idMunicipio = c.idMunicipio
         AND m.idMicrorregiao = 2 
         GROUP BY c.dataCaso
 		");
         $casos = $query->getResult('array');
-        echo json_encode($casos);
+
+        $i = 0;
+        $data = array();
+        foreach ($casos as $caso) {
+            $data[$i]['datax'] = $caso['dat'];
+            $data[$i]['confirmados'] = $caso['conf'];
+            $data[$i]['obitos'] = $caso['ob'];
+            $data[$i]['recuperados'] = $caso['recu'];
+            $i++;
+        }
+        echo json_encode($data);
     }
-
-
-
-    //get dados 
-
 }

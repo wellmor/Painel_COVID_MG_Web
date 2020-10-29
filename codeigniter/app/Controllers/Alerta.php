@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Models\AlertasModel;
 use App\Models\CasosModel;
 
+include_once('OneSignalKey.php');
+
 class Alerta extends BaseController
 {
 	#http://localhost/alerta/muncipio_wpp
@@ -47,6 +49,8 @@ class Alerta extends BaseController
 
 	public function enviar($idMunicipio = null)
 	{
+		$keyOneSignal = getOneSignalKey();
+
 		$model = new AlertasModel();
 		$idMunicipio = $this->request->getVar('idMunicipio');
 		$query = $model->query('SELECT a.idOnesignal, m.nomeMunicipio FROM alerta AS a INNER JOIN municipio as m WHERE a.idMunicipio=m.idMunicipio AND a.idMunicipio = ' . $idMunicipio);
@@ -70,7 +74,7 @@ class Alerta extends BaseController
 		curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			'Content-Type: application/json; charset=utf-8',
-			'Authorization: Basic MDc4N2I5ZjktNzc1NC00MGYxLWFkMGQtMDZjNTA2Yjg0ZjMz'
+			'Authorization: Basic ' . $keyOneSignal
 		));
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($ch, CURLOPT_HEADER, FALSE);

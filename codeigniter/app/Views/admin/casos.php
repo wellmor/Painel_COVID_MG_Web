@@ -646,7 +646,11 @@
         // $('#iconSumarizado')attr('data-feather="eye"')
         btnToggleSumarizados = !btnToggleSumarizados;
         $('#btnSumarizado').text(btnToggleSumarizados == false ? 'Ver sumarizados' : 'Esconder sumarizados');
-        tableCasos.column(10).search("").draw();
+        if(btnToggleSumarizados)
+            tableCasos.column(10).search("").draw();
+        else
+            tableCasos.column(10).search("0").draw();
+
         tableCasos.column(10).visible(btnToggleSumarizados);
 
     }

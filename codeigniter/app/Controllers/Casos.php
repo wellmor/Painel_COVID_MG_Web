@@ -33,7 +33,8 @@ class Casos extends Controller
             'dataCaso' => date("Y-m-d"),
             'idUsuario' => session()->get('idUsuario'),
             'dataCaso' => $this->request->getVar('data-caso'),
-            'fonteCaso' => $this->request->getVar('fonte')
+            'fonteCaso' => $this->request->getVar('fonte'),
+            'auto' => 0
         ]);
     }
 
@@ -51,6 +52,6 @@ class Casos extends Controller
         return $data['idCaso'];
     }
 
-    
+
 
 }

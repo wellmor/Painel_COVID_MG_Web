@@ -8,7 +8,7 @@ class CasosModel extends Model
 {
     protected $table = "caso";
     protected $primaryKey = "idCaso";
-    protected $allowedFields = ['idCaso', 'idMunicipio', 'idUsuario', 'fonteCaso', 'dataCaso', 'suspeitosCaso', 'confirmadosCaso', 'descartadosCaso', 'obitosCaso', 'recuperadosCaso'];
+    protected $allowedFields = ['idCaso', 'idMunicipio', 'idUsuario', 'fonteCaso', 'dataCaso', 'suspeitosCaso', 'confirmadosCaso', 'descartadosCaso', 'obitosCaso', 'recuperadosCaso', 'auto'];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 

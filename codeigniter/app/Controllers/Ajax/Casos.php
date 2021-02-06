@@ -12,7 +12,7 @@ class Casos extends Controller
     public function getDados()
     {
         $model = new CasosModel();
-        $model->select("caso.dataCaso, caso.fonteCaso, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, caso.created_at, municipio.nomeMunicipio");
+        $model->select("caso.dataCaso, caso.fonteCaso, caso.auto, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, caso.created_at, municipio.nomeMunicipio");
         $model->join('municipio', 'municipio.idMunicipio = caso.idMunicipio');
         $model->where("idUsuario", session()->get('idUsuario'));
         $casos = $model->findAll();
@@ -29,6 +29,8 @@ class Casos extends Controller
             $data[$i]['recuperados'] = $caso['recuperadosCaso'];
             $data[$i]['municipio'] = $caso['nomeMunicipio'];
             $data[$i]['idMunicipio'] = $caso['idMunicipio'];
+            $data[$i]['auto'] = $caso['auto'];
+
             $i++;
         }
         $casos = [

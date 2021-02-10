@@ -15,6 +15,7 @@ class Casos extends Controller
         $model->select("caso.dataCaso, caso.fonteCaso, caso.auto, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, caso.created_at, municipio.nomeMunicipio");
         $model->join('municipio', 'municipio.idMunicipio = caso.idMunicipio');
         $model->where("idUsuario", session()->get('idUsuario'));
+
         $casos = $model->findAll();
         $i = 0;
         $data = array();
@@ -47,6 +48,7 @@ class Casos extends Controller
         $model->join('municipio', 'municipio.idMunicipio = caso.idMunicipio');
         $model->where("idUsuario", session()->get('idUsuario'));
         $model->where("caso.idMunicipio", $idMunicipio);
+        $model->where("auto", 0);
         $model->orderBy('caso.dataCaso', 'DESC');
         $casos = $model->findAll(1);
         $i = 0;

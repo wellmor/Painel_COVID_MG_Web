@@ -10,8 +10,8 @@ class Home extends BaseController
 	public function index($id = "minas-gerais")
 	{
 		$model = new CasosModel();
-		
-		$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
+
+		$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
 		$data['casos'] = $query->getRowArray();
 
 		$query2 = $model->query("Select * FROM legenda l , municipio m WHERE m.slugMunicipio = '" . $id . "' AND l.deleted_at = '0000-00-00' AND l.idMunicipio = m.idMunicipio ORDER BY idLegenda DESC LIMIT 1");
@@ -20,7 +20,15 @@ class Home extends BaseController
 		$query3 = $model->query("Select * FROM verificacao v, municipio m WHERE m.slugMunicipio = '" . $id . "' AND v.deleted_at = '0000-00-00' AND v.idMunicipio = m.idMunicipio ORDER BY v.idVerificacao DESC LIMIT 1");
 		$data['verificacao'] = $query3->getRowArray();
 
+		$query4 = $model->query("Select * FROM leito c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' ORDER BY c.idLeito DESC LIMIT 1");
+		$data['leitos'] = $query4->getRowArray();
+
 		return view('/home/dados', $data);
+	}
+
+	public function leitos()
+	{
+		return view('/home/leitos');
 	}
 
 	public function doacoes()
@@ -44,9 +52,10 @@ class Home extends BaseController
 	}
 
 	public function testes()
-	{		
+	{
 		return view('/home/testes');
 	}
+
 	public function pesquisa($id = "")
 	{
 		$model = new CasosModel();
@@ -59,7 +68,7 @@ class Home extends BaseController
 
 		if ($municipioTest == null) {
 			throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-		}else if($id == 'microrregiao-de-uba'){
+		} else if ($id == 'microrregiao-de-uba') {
 			$query = $model->query("SELECT c.dataCaso, fonteCaso, suspeitosCaso, descartadosCaso, slugMunicipio, m.nomeMunicipio, m.idMunicipio,
 			SUM(c.confirmadosCaso) as confirmadosCaso,
 			SUM(c.recuperadosCaso) as recuperadosCaso,
@@ -72,8 +81,7 @@ class Home extends BaseController
 			$data['idMicro'] = 58;
 			$data['casos'] = $query->getRowArray();
 			return view('/home/dados', $data);
-		}
-		else if($id == 'microrregiao-de-juiz-de-fora'){
+		} else if ($id == 'microrregiao-de-juiz-de-fora') {
 			$query = $model->query("SELECT c.dataCaso, fonteCaso, facebookMunicipio, suspeitosCaso, descartadosCaso, slugMunicipio, m.nomeMunicipio, m.idMunicipio,
 			SUM(c.confirmadosCaso) as confirmadosCaso,
 			SUM(c.recuperadosCaso) as recuperadosCaso,
@@ -86,7 +94,7 @@ class Home extends BaseController
 			$data['nomeMicro'] = "Microrregiao de Juiz de Fora";
 			$data['casos'] = $query->getRowArray();
 			return view('/home/dados', $data);
-		}else {
+		} else {
 			$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
 			$data['casos'] = $query->getRowArray();
 
@@ -96,13 +104,17 @@ class Home extends BaseController
 			$query3 = $model->query("Select * FROM verificacao v, municipio m WHERE m.slugMunicipio = '" . $id . "' AND v.deleted_at = '0000-00-00' AND v.idMunicipio = m.idMunicipio ORDER BY v.idVerificacao DESC LIMIT 1");
 			$data['verificacao'] = $query3->getRowArray();
 
+			$query4 = $model->query("Select * FROM leito c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' ORDER BY c.idLeito DESC LIMIT 1");
+			$data['leitos'] = $query4->getRowArray();
+
 			return view('/home/dados', $data);
 		}
 	}
 
 	//Todo - ligar o id do usuario responsavel com os dados anteriores
 	//Adicionar alguma flag pra identificar que é sumarizado
-	public function test(){
+	public function test()
+	{
 		$model = new CasosModel();
 		$queryIdUsuario	 = $model->query("
 			SELECT idUsuario FROM caso WHERE idMunicipio =2 LIMIT 1
@@ -120,10 +132,9 @@ class Home extends BaseController
 			//id do responsavel pela cidade
 			$model = new CasosModel();
 			$queryIdUsuario	 = $model->query("SELECT idUsuario FROM caso WHERE idMunicipio = " . $id['id'] . " ORDER BY idCaso DESC LIMIT 1 ");
-			if(isset($queryIdUsuario->getResult('array')[0])){
+			if (isset($queryIdUsuario->getResult('array')[0])) {
 				$userId = $queryIdUsuario->getResult('array')[0]['idUsuario'];
-			}
-			else{
+			} else {
 				$userId = 2;
 			}
 
@@ -165,8 +176,9 @@ class Home extends BaseController
 			}
 		}
 	}
-	
-	public function fixZeroDates(){
+
+	public function fixZeroDates()
+	{
 		$model = new CasosModel();
 		$model->query("DELETE FROM caso WHERE dataCaso = '0000-00-00' ");
 	}
@@ -177,33 +189,33 @@ class Home extends BaseController
 		$queryIds = $model->query("SELECT idMunicipio AS id FROM municipio");
 		$idsMunicipios = $queryIds->getResult('array');
 		foreach ($idsMunicipios as $id) {
-			$queryCasos	 = $model->query("SELECT  * FROM caso WHERE idMunicipio = '".$id['id']."' AND deleted_at = '0000-00-00' ORDER BY dataCaso ASC");
+			$queryCasos	 = $model->query("SELECT  * FROM caso WHERE idMunicipio = '" . $id['id'] . "' AND deleted_at = '0000-00-00' ORDER BY dataCaso ASC");
 
 			$casos = $queryCasos->getResult('array');
-		
+
 			$previousConfirmados = null;
 			$previousRecuperados = null;
 			$previousObitos = null;
 			foreach ($casos as $key => $caso) {
 				if ($caso["confirmadosCaso"] == "a") {
-					$queryCasos	 = $model->query("UPDATE caso SET confirmadosCaso = '".$previousConfirmados."' WHERE idCaso =  '".$caso['idCaso']."' ");
+					$queryCasos	 = $model->query("UPDATE caso SET confirmadosCaso = '" . $previousConfirmados . "' WHERE idCaso =  '" . $caso['idCaso'] . "' ");
 				}
 				if ($previousConfirmados > $caso['confirmadosCaso']) {
-					$queryCasos	 = $model->query("DELETE FROM caso WHERE idCaso = '".$caso['idCaso'] ."' ") ;
+					$queryCasos	 = $model->query("DELETE FROM caso WHERE idCaso = '" . $caso['idCaso'] . "' ");
 				}
 
 				if ($caso["recuperadosCaso"] == "a") {
-					$queryCasos	 = $model->query("UPDATE caso SET recuperadosCaso = '".$previousRecuperados."' WHERE idCaso =  '".$caso['idCaso']."' ");
+					$queryCasos	 = $model->query("UPDATE caso SET recuperadosCaso = '" . $previousRecuperados . "' WHERE idCaso =  '" . $caso['idCaso'] . "' ");
 				}
 				if ($previousRecuperados > $caso['recuperadosCaso']) {
-					$queryCasos	 = $model->query("DELETE FROM caso WHERE idCaso = '".$caso['idCaso'] ."' ") ;
+					$queryCasos	 = $model->query("DELETE FROM caso WHERE idCaso = '" . $caso['idCaso'] . "' ");
 				}
 
 				if ($caso["obitosCaso"] == "a") {
-					$queryCasos	 = $model->query("UPDATE caso SET obitosCaso = '".$previousObitos."' WHERE idCaso =  '".$caso['idCaso']."' ");
+					$queryCasos	 = $model->query("UPDATE caso SET obitosCaso = '" . $previousObitos . "' WHERE idCaso =  '" . $caso['idCaso'] . "' ");
 				}
 				if ($previousObitos > $caso['obitosCaso']) {
-					$queryCasos	 = $model->query("DELETE FROM caso WHERE idCaso = '".$caso['idCaso'] ."' ") ;
+					$queryCasos	 = $model->query("DELETE FROM caso WHERE idCaso = '" . $caso['idCaso'] . "' ");
 				}
 
 
@@ -213,5 +225,4 @@ class Home extends BaseController
 			}
 		}
 	}
-	
 }

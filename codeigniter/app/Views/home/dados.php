@@ -160,6 +160,55 @@
       <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"> <?= isset($idMicro) ? "Dados sumarizados automaticamente" :  $casos['fonteCaso'] ?> </a></p>
 
       <div class="row" style="margin-top:20px; margin-bottom:15px;">
+
+        <div class="col-md-6">
+          <div class="card animated bounceInUp slow">
+            <div class="card-body">
+              <div class="row">
+                <div class="col text-left">
+                  <h3 class="cor3">
+                    <?php
+                    if (isset($leitos['qntLeitosDisponiveis'])) {
+                      if ($leitos['qntLeitosDisponiveis'] != "") {
+                        echo $leitos['qntLeitosDisponiveis'];
+                      } else {
+                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
+                      }
+                    } else {
+                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                    }
+                    ?></h3>
+                  <p class="subtext">Total de leitos disponíveis</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card animated bounceInUp slow">
+            <div class="card-body">
+              <div class="row">
+                <div class="col text-left">
+                  <h3 class="cor4">
+                    <?php
+                    if (isset($leitos['qntLeitosOcupados'])) {
+                      if ($leitos['qntLeitosOcupados'] != "") {
+                        echo $leitos['qntLeitosOcupados'];
+                      } else {
+                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
+                      }
+                    } else {
+                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                    }
+                    ?></h3>
+                  <p class="subtext">Total de leitos ocupados</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="col-md-4">
           <div class="card card-borda-azul animated bounceInUp slow">
             <div class="card-body">
@@ -291,6 +340,7 @@
             </div>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="card animated bounceInUp slow">
             <div class="card-body" style="margin: 3px;">
@@ -311,6 +361,7 @@
           </div>
         </div>
       </div>
+
       <div class="modal fade" id="modalWpp" tabindex="-1" role="dialog" aria-labelledby="modalWppLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">

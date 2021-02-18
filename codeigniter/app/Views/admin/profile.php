@@ -7,7 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Jekyll v4.0.1">
-    <link rel="icon" href="/assets/images/virus.png">
+  <link rel="icon" href="/assets/images/virus.png">
 
   <title>Painel COVID</title>
 
@@ -63,12 +63,6 @@
                 Casos
               </a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="/admin/noticias">
-                <span data-feather="book-open"></span>
-                Notícias
-              </a>
-            </li> -->
           </ul>
           <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
             <span>Meus dados</span>

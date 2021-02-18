@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
-use App\Models\CasosModel;
 use CodeIgniter\Controller;
+use App\Models\CasosModel;
 use App\Models\MunicipiosModel;
+use App\Models\LeitosModel;
 
 class Casos extends Controller
 {
@@ -36,6 +37,15 @@ class Casos extends Controller
             'fonteCaso' => $this->request->getVar('fonte'),
             'auto' => 0
         ]);
+
+        $model = new LeitosModel();
+        $model->save([
+            'idLeito' => $this->request->getVar('idLeito'),
+            'idUsuario' => session()->get('idUsuario'),
+            'idMunicipio' => $this->request->getVar('idMunicipio'),
+            'qntLeitosDisponiveis' => $this->request->getVar('qntLeitosDisponiveis'),
+            'qntLeitosOcupados' => $this->request->getVar('qntLeitosOcupados')
+        ]);
     }
 
     public function deleteDt($id = null)
@@ -51,7 +61,4 @@ class Casos extends Controller
         $data = $query->getRowArray();
         return $data['idCaso'];
     }
-
-
-
 }

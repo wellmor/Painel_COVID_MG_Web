@@ -46,8 +46,6 @@ $routes->group('/admin', function ($routes) {
 	$routes->match(['post', 'get'], 'perfil', 'Users::profile', ['filter' => 'auth']);
 
 	$routes->get('casos', 'Casos::deleteDt', ['filter' => 'auth']);
-
-
 });
 
 //Todas as rotas home não exigem autenticação
@@ -58,7 +56,6 @@ $routes->group('/home', function ($routes) {
 	$routes->get('dicas', 'Home::dicas');
 	$routes->get('sobre', 'Home::sobre');
 	$routes->get('download-dados-csv', 'ExportarCSV::index');
-
 });
 
 /**

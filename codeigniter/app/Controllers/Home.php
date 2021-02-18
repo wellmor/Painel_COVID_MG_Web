@@ -95,7 +95,7 @@ class Home extends BaseController
 			$data['casos'] = $query->getRowArray();
 			return view('/home/dados', $data);
 		} else {
-			$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' ORDER BY c.dataCaso DESC LIMIT 1");
+			$query = $model->query("Select * FROM caso c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio  AND c.deleted_at = '0000-00-00' AND c.auto = 0 ORDER BY c.dataCaso DESC LIMIT 1");
 			$data['casos'] = $query->getRowArray();
 
 			$query2 = $model->query("Select * FROM legenda l , municipio m WHERE m.slugMunicipio = '" . $id . "' AND l.deleted_at = '0000-00-00' AND l.idMunicipio = m.idMunicipio ORDER BY idLegenda DESC LIMIT 1");

@@ -40,6 +40,7 @@ class Casos extends Controller
 
         $model = new LeitosModel();
         $model->save([
+            'idCaso' => $this->request->getVar('idCaso'),
             'idLeito' => $this->request->getVar('idLeito'),
             'idUsuario' => session()->get('idUsuario'),
             'idMunicipio' => $this->request->getVar('idMunicipio'),

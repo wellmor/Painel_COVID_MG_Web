@@ -155,6 +155,8 @@
                                 <th>obitos</th>
                                 <th>id municipio</th>
                                 <th>sumarizado</th>
+                                <!-- <th>leitos disponiveis</th>
+                                <th>leitos ocupados</th> -->
                                 <th style="width: 20%">ações</th>
                             </tr>
                         </thead>
@@ -350,7 +352,6 @@
                     },
                     {
                         data: "datax",
-
                     },
                     {
                         data: "fonte",
@@ -387,6 +388,12 @@
                             return '<span style="color: white; border-radius: 20px; padding: 5px; background-color: ' + color + '; font-weight: bold" class="btn-group" role="group">' + datum + ' ' + name + '</span>';
                         }
                     },
+                    /* {
+                        data: "qntLeitosDisponiveis",
+                    },
+                    {
+                        data: "qntLeitosOcupados",
+                    }, */
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
@@ -828,6 +835,8 @@
                         $('#recuperados').val(dados[0].recuperados);
                         $('#obitos').val(dados[0].obitos);
                         $('#fonte').val(dados[0].fonte);
+                        $('#qntLeitosOcupados').val(dados[0].qntLeitosOcupados);
+                        $('#qntLeitosDisponiveis').val(dados[0].qntLeitosDisponiveis);
                         //$('#data').val(formatarData(dados[0].datax));
                         $('#modalCasosAELabel').text('Cadastro de relatorio de casos ' + $('#municipio option:selected').text());
                         $('#modalCasosAELabelInfo').text('Todos os campos foram automaticamente preenchidos com os últimos dados, que foram cadastrados em ' + dados[0].datax + '. Faça as devidas alterações e atualize.');

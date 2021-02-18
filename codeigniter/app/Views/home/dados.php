@@ -161,7 +161,7 @@
 
       <div class="row" style="margin-top:20px; margin-bottom:15px;">
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card animated bounceInUp slow">
             <div class="card-body">
               <div class="row">
@@ -178,14 +178,17 @@
                       echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                     }
                     ?></h3>
-                  <p class="subtext">Total de leitos disponíveis</p>
+                  <p class="subtext">Leitos Disponíveis</p>
+                </div>
+                <div class="col text-right">
+                  <img class="img" src="https://images.vexels.com/media/users/3/199972/isolated/preview/c02d17a990229a2f705d5d7fa672273f-cama-de-hospital-texturizada-by-vexels.png" width="70px" height="70px">
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card animated bounceInUp slow">
             <div class="card-body">
               <div class="row">
@@ -202,7 +205,37 @@
                       echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                     }
                     ?></h3>
-                  <p class="subtext">Total de leitos ocupados</p>
+                  <p class="subtext">Leitos Ocupados</p>
+                </div>
+                <div class="col text-right">
+                  <img class="img" src="https://uploads-ssl.webflow.com/57810c374a3a560c48f027ca/5c0ee1811744313981c00b97_Reinterna.png" width="70px" height="70px">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow">
+            <div class="card-body">
+              <div class="row">
+                <div class="col text-left">
+                  <h3 class="cor4">
+                    <?php
+                    if (isset($leitos['qntLeitosOcupados'])) {
+                      if ($leitos['qntLeitosOcupados'] != "") {
+                        echo ($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100 . '';
+                      } else {
+                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
+                      }
+                    } else {
+                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                    }
+                    ?></h3>
+                  <p class="subtext">Taxa de Ocupacão</p>
+                </div>
+                <div class="col text-right">
+                  <img class="img" src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/percentage-2-icon-14-256.png" width="70px" height="70px">
                 </div>
               </div>
             </div>

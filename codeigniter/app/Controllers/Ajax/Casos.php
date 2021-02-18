@@ -4,7 +4,7 @@ namespace App\Controllers\Ajax;
 
 use App\Models\CasosModel;
 use CodeIgniter\Controller;
-
+use App\Models\LeitosModel;
 
 class Casos extends Controller
 {
@@ -13,8 +13,10 @@ class Casos extends Controller
     {
         $model = new CasosModel();
         $model->select("caso.dataCaso, caso.fonteCaso, caso.auto, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, caso.created_at, municipio.nomeMunicipio");
+        //$model->select("caso.dataCaso, caso.fonteCaso, caso.auto, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, caso.created_at, municipio.nomeMunicipio, leito.idLeito, leito.idMunicipio, leito.qntLeitosDisponiveis, leito.qntLeitosOcupados, leito.idCaso");
         $model->join('municipio', 'municipio.idMunicipio = caso.idMunicipio');
-        $model->where("idUsuario", session()->get('idUsuario'));
+        //$model->join('leito', 'caso.idCaso = leito.idCaso', 'cross');
+        $model->where("caso.idUsuario", session()->get('idUsuario'));
 
         $casos = $model->findAll();
         $i = 0;
@@ -31,7 +33,8 @@ class Casos extends Controller
             $data[$i]['municipio'] = $caso['nomeMunicipio'];
             $data[$i]['idMunicipio'] = $caso['idMunicipio'];
             $data[$i]['auto'] = $caso['auto'];
-
+            //$data[$i]['qntLeitosDisponiveis'] = $caso['qntLeitosDisponiveis'];
+            //$data[$i]['qntLeitosOcupados'] = $caso['qntLeitosOcupados'];
             $i++;
         }
         $casos = [
@@ -64,6 +67,8 @@ class Casos extends Controller
             $data[$i]['recuperados'] = $caso['recuperadosCaso'];
             $data[$i]['municipio'] = $caso['nomeMunicipio'];
             $data[$i]['idMunicipio'] = $caso['idMunicipio'];
+            //$data[$i]['qntLeitosDisponiveis'] = $caso['qntLeitosDisponiveis'];
+            //$data[$i]['qntLeitosOcupados'] = $caso['qntLeitosOcupados'];
             $i++;
         }
 

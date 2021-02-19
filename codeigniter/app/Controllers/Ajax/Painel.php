@@ -24,7 +24,7 @@ class Painel extends Controller
         IF(IFNULL(c.obitosCaso, '') = '', '-', c.obitosCaso) AS obitos
         FROM (
            caso c
-           JOIN municipio m ON c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00')
+           JOIN municipio m ON c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' AND c.auto = 0)
         LEFT JOIN verificacao v ON v.idMunicipio = c.idMunicipio
         GROUP BY c.idMunicipio");
         $dados = $query->getResult('array');

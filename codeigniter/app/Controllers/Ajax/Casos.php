@@ -75,4 +75,35 @@ class Casos extends Controller
 
         echo json_encode($data);
     }
+
+    public function getDadosApp($idMunicipio = null)
+    {
+        $model = new CasosModel();
+        $model->select("caso.dataCaso, caso.fonteCaso, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, municipio.nomeMunicipio");
+        $model->join('municipio', 'municipio.idMunicipio = caso.idMunicipio');
+        $model->where("caso.idMunicipio", $idMunicipio);
+        $model->where("auto", 0);
+        $model->orderBy('caso.dataCaso', 'DESC');
+        $casos = $model->findAll();
+        $i = 0;
+        $data = array();
+        foreach ($casos as $caso) {
+            $data[$i]['id'] = $caso['idCaso'];
+            $data[$i]['datax'] = $caso['dataCaso'];
+            $data[$i]['fonte'] = $caso['fonteCaso'];
+            $data[$i]['confirmados'] = $caso['confirmadosCaso'];
+            $data[$i]['suspeitos'] = $caso['suspeitosCaso'];
+            $data[$i]['obitos'] = $caso['obitosCaso'];
+            $data[$i]['descartados'] = $caso['descartadosCaso'];
+            $data[$i]['recuperados'] = $caso['recuperadosCaso'];
+            $data[$i]['municipio'] = $caso['nomeMunicipio'];
+            $data[$i]['idMunicipio'] = $caso['idMunicipio'];
+            //$data[$i]['qntLeitosDisponiveis'] = $caso['qntLeitosDisponiveis'];
+            //$data[$i]['qntLeitosOcupados'] = $caso['qntLeitosOcupados'];
+            $i++;
+        }
+
+
+        echo json_encode($data);
+    }
 }

@@ -168,7 +168,7 @@
                 <div class="col text-left">
                   <h3 class="cor3">
                     <?php
-                    if (isset($leitos['qntLeitosDisponiveis'])) {
+                    if (isset($leitos['qntLeitosDisponiveis']) && $leitos['qntLeitosDisponiveis'] != 0) {
                       if ($leitos['qntLeitosDisponiveis'] != "") {
                         echo $leitos['qntLeitosDisponiveis'];
                       } else {
@@ -195,7 +195,7 @@
                 <div class="col text-left">
                   <h3 class="cor4">
                     <?php
-                    if (isset($leitos['qntLeitosOcupados'])) {
+                    if (isset($leitos['qntLeitosOcupados']) && $leitos['qntLeitosOcupados'] != 0) {
                       if ($leitos['qntLeitosOcupados'] != "") {
                         echo $leitos['qntLeitosOcupados'];
                       } else {
@@ -225,7 +225,7 @@
                     if (isset($leitos['qntLeitosOcupados'])) {
                       if ($leitos['qntLeitosOcupados'] != "") {
                         try {
-                          echo ($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100 . '';
+                          echo number_format((($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100), 2, '.', '');
                         } catch (Exception $e) {
                           echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Indisponível</div>';
                           //echo 'Exceção capturada: ',  $e->getMessage(), "\n";
@@ -256,11 +256,7 @@
                     <?php
                     if (isset($casos['confirmadosCaso'])) {
                       if ($casos['confirmadosCaso'] != "") {
-                        if ($casos['confirmadosCaso'] != 0) {
-                          echo $casos['confirmadosCaso'];
-                        } else {
-                          echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                        }
+                        echo $casos['confirmadosCaso'];
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
@@ -285,13 +281,9 @@
                 <div class="col text-left">
                   <h3 class="cor5">
                     <?php
-                    if (isset($casos['recuperadosCaso']) || $casos['recuperadosCaso'] != 0) {
+                    if (isset($casos['recuperadosCaso'])) {
                       if ($casos['recuperadosCaso'] != "") {
-                        if ($casos['recuperadosCaso'] != 0) {
-                          echo $casos['recuperadosCaso'];
-                        } else {
-                          echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                        }
+                        echo $casos['recuperadosCaso'];
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }

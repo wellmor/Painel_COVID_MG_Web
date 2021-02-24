@@ -223,8 +223,13 @@
                   <h3 class="cor4">
                     <?php
                     if (isset($leitos['qntLeitosOcupados'])) {
-                      if ($leitos['qntLeitosOcupados'] != "" || $leitos['qntLeitosDisponiveis'] != 0) {
-                        echo ($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100 . '';
+                      if ($leitos['qntLeitosOcupados'] != "") {
+                        try {
+                          echo ($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100 . '';
+                        } catch (Exception $e) {
+                          echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Indisponível</div>';
+                          //echo 'Exceção capturada: ',  $e->getMessage(), "\n";
+                        }
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }

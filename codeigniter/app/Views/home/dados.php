@@ -255,7 +255,7 @@
                   <h3 class="cor1">
                     <?php
                     if (isset($casos['confirmadosCaso'])) {
-                      if ($casos['confirmadosCaso'] != "") {
+                      if ($casos['confirmadosCaso'] != "" || $casos['confirmadosCaso'] != 0) {
                         echo $casos['confirmadosCaso'];
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
@@ -282,7 +282,7 @@
                   <h3 class="cor5">
                     <?php
                     if (isset($casos['recuperadosCaso'])) {
-                      if ($casos['recuperadosCaso'] != "") {
+                      if ($casos['recuperadosCaso'] != "" || $casos['recuperadosCaso'] != 0) {
                         echo $casos['recuperadosCaso'];
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';

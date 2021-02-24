@@ -223,13 +223,13 @@
                   <h3 class="cor4">
                     <?php
                     if (isset($leitos['qntLeitosOcupados'])) {
-                      if ($leitos['qntLeitosOcupados'] != "") {
+                      if ($leitos['qntLeitosOcupados'] != "" || $leitos['qntLeitosOcupados'] != 0) {
                         echo ($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100 . '';
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
                     } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Indisponível</div>';
                     }
                     ?></h3>
                   <p class="subtext">Taxa de Ocupacão</p>

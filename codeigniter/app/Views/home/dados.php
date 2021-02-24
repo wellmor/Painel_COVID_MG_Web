@@ -223,7 +223,7 @@
                   <h3 class="cor4">
                     <?php
                     if (isset($leitos['qntLeitosOcupados'])) {
-                      if ($leitos['qntLeitosOcupados'] != "" || $leitos['qntLeitosOcupados'] != 0) {
+                      if ($leitos['qntLeitosOcupados'] != "" || $leitos['qntLeitosDisponiveis'] != 0) {
                         echo ($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100 . '';
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';

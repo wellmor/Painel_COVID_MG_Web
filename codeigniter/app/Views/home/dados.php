@@ -161,7 +161,7 @@
 
       <div class="row" style="margin-top:20px; margin-bottom:15px;">
 
-        <div class="col-md-4">
+        <!--<div class="col-md-4">
           <div class="card animated bounceInUp slow">
             <div class="card-body">
               <div class="row">
@@ -245,7 +245,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="col-md-4">
           <div class="card card-borda-azul animated bounceInUp slow">

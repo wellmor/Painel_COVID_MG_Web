@@ -77,7 +77,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="/admin/casos">
                                 <span data-feather="bar-chart-2"></span>
-                                Casos
+                                Relatórios
                             </a>
                         </li>
                     </ul>
@@ -219,19 +219,19 @@
                             </div>
                             <div class="col-sm-3">
                                 <label>Disponíveis</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" style="color: green;">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" style="color: green;" disabled>
                             </div>
                             <div class="col-sm-3">
                                 <label>Ocupados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" style="color: red;">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" style="color: red;" disabled>
                             </div>
                             <div class="col-sm-3">
                                 <label>1ª Dose</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" disabled>
                             </div>
                             <div class="col-sm-3">
                                 <label>2ª Dose</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados">
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" disabled>
                             </div>
                         </div>
                         <div class="modal-title text-center" id="modalCasosAELabelInfo" style="color:red"></div>

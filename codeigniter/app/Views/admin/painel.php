@@ -58,7 +58,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/admin/casos">
                 <span data-feather="bar-chart-2"></span>
-                Casos
+                Relatórios
               </a>
             </li>
           </ul>

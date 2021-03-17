@@ -77,7 +77,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" href="/admin/casos">
                                 <span data-feather="bar-chart-2"></span>
-                                Casos
+                                Relatórios
                             </a>
                         </li>
                     </ul>
@@ -104,7 +104,7 @@
             <!-- conteudo -->
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2" style="margin-right: 10px">Casos</h1>
+                    <h1 class="h2" style="margin-right: 20px">Relatório</h1>
                     <!-- <div class="col-sm-3 text-right">
                     Selecione o municipio
                 </div> -->
@@ -112,65 +112,60 @@
                         <select class="form-control" id="municipio"></select>
                     </div>
                     <div class="col-md-6 float-left">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="modalCadCaso()">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" onclick="modalCadCaso()" style="margin: 5px">
                             <span data-feather="plus"></span>
-                            Cadastrar caso
+                            Cadastrar
                         </button>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin: 5px">
                                 <span data-feather="info"></span> Legenda
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#" onclick="modalCadLegenda()"><span data-feather="plus"></span> Cadastrar</a>
-                                <a class="dropdown-item" href="#" id="btnLegendasGer"><span data-feather="eye"></span> Ver
+                                <a class="dropdown-item" href="#" onclick="modalCadLegenda()"><span data-feather="plus" style="margin: 5px"></span> Cadastrar</a>
+                                <a class="dropdown-item" href="#" id="btnLegendasGer"><span data-feather="eye" style="margin: 5px"></span> Ver
                                     todas</a>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-success" data-toggle="modal" onclick="verificarRelatorio()">
+                        <button type="button" class="btn btn-success" data-toggle="modal" onclick="verificarRelatorio()" style="margin: 5px">
                             <span data-feather="check"></span>
                             Verificar município
                         </button>
-                        <button type="button" id="btnSumarizado" class="btn btn-success" data-toggle="modal" onclick="toggleSumarizados()">
+                        <button type="button" id="btnSumarizado" class="btn btn-success" data-toggle="modal" onclick="toggleSumarizados()" style="margin: 5px">
                             <span id="iconSumarizado"></span>
-                            <!--                            quando clica pra ver, ele mostra a coluna de sumarizado, tipo um toggle -->
+                            <!--quando clica pra ver, ele mostra a coluna de sumarizado, tipo um toggle -->
                             Ver sumarizados
                         </button>
                     </div>
-
-
                 </div>
-
                 <div class="table-responsive">
                     <table class="table table-striped table-bordered" style="width: 100%" id="tableCasos">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>data</th>
-                                <th>fonte</th>
-                                <th>munícipio</th>
-                                <th>confirmados</th>
-                                <th>suspeitos</th>
-                                <th>descartados</th>
-                                <th>recuperados</th>
-                                <th>obitos</th>
-                                <th>id municipio</th>
-                                <th>sumarizado</th>
+                                <th>Id</th>
+                                <th>Data</th>
+                                <th>Fonte</th>
+                                <th>Munícipio</th>
+                                <th>Confirmados</th>
+                                <th>Suspeitos</th>
+                                <th>Descartados</th>
+                                <th>Recuperados</th>
+                                <th>Óbitos</th>
+                                <th>Id Município</th>
+                                <th>Sumarizado</th>
                                 <!-- <th>leitos disponiveis</th>
                                 <th>leitos ocupados</th> -->
-                                <th style="width: 20%">ações</th>
+                                <th style="width: 20%">Ações</th>
                             </tr>
                         </thead>
                     </table>
                 </div>
+            </main>
         </div>
-        <br /><br />
-        </main>
     </div>
 
-
     <!-- Modal casos -->
-    <div class="modal fade" id="modalCasosAE" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="modalCasosAELabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade bd-example-modal-lg" id="modalCasosAE" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="modalCasosAELabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalCasosAELabel"></h5>
@@ -180,50 +175,66 @@
                 </div>
                 <div class="modal-body">
                     <form id="formCasos" method="post">
-                        <div class="form-group row">
+                        <div class="form-group row" style="background-color: #F2F2F2; padding: 15px">
                             <input type="hidden" id="idCaso" name="idCaso">
                             <input type="hidden" id="idMunicipio" name="idMunicipio">
-                            <div class="col-sm-6">
-                                <label>Confirmados </label>
+                            <div class="col-sm-12">
+                                <h5>Casos</h5>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Confirmados</label>
                                 <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="confirmados" id="confirmados" placeholder="confirmados">
                             </div>
-                            <div class="col-sm-6">
-                                <label>Suspeitos </label>
+                            <div class="col-sm-3">
+                                <label>Suspeitos</label>
                                 <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="suspeitos" id="suspeitos" placeholder="suspeitos">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <label>Descartados</label>
                                 <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="descartados" id="descartados" placeholder="descartados">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <label>Recuperados</label>
                                 <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-2">
                                 <label>Obitos</label>
                                 <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="obitos" id="obitos" placeholder="obitos">
                             </div>
                             <div class="col-sm-6">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="data-caso" id="data-caso" placeholder="data do relatorio">
+                                <input type="date" class="form-control" name="data-caso" id="data-caso" placeholder="Data do relatório">
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <label>Fonte</label>
-                                <input type="text" class="form-control" name="fonte" id="fonte" placeholder="link da fonte">
+                                <input type="text" class="form-control" name="fonte" id="fonte" placeholder="https://www.google.com.br/">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="background-color: #F2F2F2; padding: 15px">
                             <div class="col-sm-6">
-                                <label>Quantidade de leitos disponíveis</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" style="background-color: green; color: white">
+                                <h5>Leitos</h5>
                             </div>
                             <div class="col-sm-6">
-                                <label>Quantidade de leitos ocupados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" style="background-color: red; color: white">
+                                <h5>Vacinômetro</h5>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Disponíveis</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" style="color: green;" disabled>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Ocupados</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" style="color: red;" disabled>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>1ª Dose</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" disabled>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>2ª Dose</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" disabled>
                             </div>
                         </div>
                         <div class="modal-title text-center" id="modalCasosAELabelInfo" style="color:red"></div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -412,7 +423,7 @@
                 buttons: [{
                         extend: 'print',
                         title: 'Painel Covid 19 - Relatório de Casos - emitido em ' + dataAtualFormatada(),
-                        text: '<i class=""></i> imprimir',
+                        text: '<i class=""></i> Imprimir',
                         exportOptions: {
                             columns: [1, 3, 4, 5, 6, 7, 8]
                         }
@@ -420,7 +431,7 @@
                     {
                         extend: 'pdf',
                         title: 'Painel Covid 19 - Relatório de Casos - emitido em ' + dataAtualFormatada(),
-                        text: '<i class=""></i> pdf',
+                        text: '<i class=""></i> PDF',
                         exportOptions: {
                             columns: [1, 3, 45, 6, 7, 8]
                         }
@@ -428,7 +439,7 @@
                     {
                         extend: 'excel',
                         title: 'Painel Covid 19 - Relatório de Casos - emitido em ' + dataAtualFormatada(),
-                        text: '<i class=""></i> excel',
+                        text: '<i class=""></i> Excel',
                         exportOptions: {
                             columns: [1, 3, 4, 5, 6, 7, 8]
                         }
@@ -838,7 +849,7 @@
                         $('#qntLeitosOcupados').val(dados[0].qntLeitosOcupados);
                         $('#qntLeitosDisponiveis').val(dados[0].qntLeitosDisponiveis);
                         //$('#data').val(formatarData(dados[0].datax));
-                        $('#modalCasosAELabel').text('Cadastro de relatorio de casos ' + $('#municipio option:selected').text());
+                        $('#modalCasosAELabel').text('Cadastro do Relatório de ' + $('#municipio option:selected').text());
                         $('#modalCasosAELabelInfo').text('Todos os campos foram automaticamente preenchidos com os últimos dados, que foram cadastrados em ' + dados[0].datax + '. Faça as devidas alterações e atualize.');
                     }
                 });

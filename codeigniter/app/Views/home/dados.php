@@ -152,13 +152,15 @@
         if ($dataVerificacao > $dataCaso) { ?>
           <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> e verificado<a href="#informacao-caso">*</a> em <b><?= $dataVerificacaoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
         <?php } else { ?>
-          <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
+          <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?> </b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="15px"></a></p>
         <?php }
       } else if (!isset($verificacao)) { ?>
-        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="20px"></a></p>
+        <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="15px"></a></p>
       <?php } ?>
-      <p class="subtext small animated bounceInUp slow"><b>FONTE:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"> <?= isset($idMicro) ? "Dados sumarizados automaticamente" :  $casos['fonteCaso'] ?> </a></p>
-
+      <p class="subtext small animated bounceInUp slow"><b>Fonte:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"> <?= isset($idMicro) ? "Dados sumarizados automaticamente" :  $casos['fonteCaso'] ?> </a></p>
+      
+      <label class="jumbotron-heading animated bounceInUp slow" style="color:red">Quantidade de <i class="fas fa-ambulance"></i> leitos disponíveis e <i class="fas fa-syringe"></i> vacinômetro por município em breve!</label>
+      
       <div class="row" style="margin-top:20px; margin-bottom:15px;">
 
         <!--<div class="col-md-4">

@@ -88,7 +88,7 @@
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
           <div class="container">
-            <h1 class="h2">Perfil</h1>
+            <h1 class="h2">Perfil - Alterar senha</h1>
             <hr>
             <?php if (session()->get('success')) : ?>
               <div class="alert alert-success" role="alert">
@@ -111,13 +111,13 @@
                 </div>
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="senhaUsuario">Senha</label>
+                    <label for="senhaUsuario">Nova senha</label>
                     <input type="password" class="form-control" name="senhaUsuario" id="senhaUsuario" value="">
                   </div>
                 </div>
                 <div class="col-12 col-sm-6">
                   <div class="form-group">
-                    <label for="senhaUsuario_confirm">Repita a senha</label>
+                    <label for="senhaUsuario_confirm">Repita a nova senha</label>
                     <input type="password" class="form-control" name="senhaUsuario_confirm" id="senhaUsuario_confirm" value="">
                   </div>
                 </div>

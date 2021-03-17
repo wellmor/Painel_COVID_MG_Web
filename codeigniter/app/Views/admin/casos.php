@@ -585,8 +585,8 @@
                         data: idMunicipioAlerta,
                         success: function(result) {
                             var result = JSON.parse(result);
-                            if (result.recipients > 0) alert(result.recipients + " pessoas foram notificadas com sucesso!");
-                            else alert("Nenhuma pessoa está cadastrada para receber alerta dessa cidade ainda.");
+                            if (result.recipients > 0) console.log(result.recipients + " pessoas foram notificadas com sucesso!");
+                            else console.log("Nenhuma pessoa está cadastrada para receber alerta dessa cidade ainda.");
                         },
                         error: function() {
                             console.log("Ocorreu um erro ao enviar alertas.");

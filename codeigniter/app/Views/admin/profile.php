@@ -60,7 +60,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/admin/casos">
                 <span data-feather="bar-chart-2"></span>
-                Relatórios
+                Cadastro/Relatórios
               </a>
             </li>
           </ul>

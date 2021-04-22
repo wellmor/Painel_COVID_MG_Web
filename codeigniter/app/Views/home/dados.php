@@ -158,96 +158,10 @@
         <p class="lead text-muted small animated bounceInUp slow"><i class="fas fa-stopwatch"></i> Atualizado em <b><?= $dataCasoListar ?></b> <a href="#informacao-caso"><img src="/assets/images/i.png" height="15px"></a></p>
       <?php } ?>
       <p class="subtext small animated bounceInUp slow"><b>Fonte:</b> <a style="word-break: break-all" target="_blank" href="<?= $casos['fonteCaso'] ?>"> <?= isset($idMicro) ? "Dados sumarizados automaticamente" :  $casos['fonteCaso'] ?> </a></p>
-      
-      <label class="jumbotron-heading animated bounceInUp slow" style="color:red">Quantidade de <i class="fas fa-ambulance"></i> leitos disponíveis e <i class="fas fa-syringe"></i> vacinômetro por município em breve!</label>
-      
+
+      <!--  <label class="jumbotron-heading animated bounceInUp slow" style="color:red">Quantidade de <i class="fas fa-ambulance"></i> leitos disponíveis e <i class="fas fa-syringe"></i> vacinômetro por município em breve!</label> -->
+
       <div class="row" style="margin-top:20px; margin-bottom:15px;">
-
-        <!--<div class="col-md-4">
-          <div class="card animated bounceInUp slow">
-            <div class="card-body">
-              <div class="row">
-                <div class="col text-left">
-                  <h3 class="cor3">
-                    <?php
-                    if (isset($leitos['qntLeitosDisponiveis']) && $leitos['qntLeitosDisponiveis'] != 0) {
-                      if ($leitos['qntLeitosDisponiveis'] != "") {
-                        echo $leitos['qntLeitosDisponiveis'];
-                      } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                      }
-                    } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
-                    }
-                    ?></h3>
-                  <p class="subtext">Leitos Disponíveis</p>
-                </div>
-                <div class="col text-right">
-                  <img class="img" src="https://images.vexels.com/media/users/3/199972/isolated/preview/c02d17a990229a2f705d5d7fa672273f-cama-de-hospital-texturizada-by-vexels.png" width="70px" height="70px">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow">
-            <div class="card-body">
-              <div class="row">
-                <div class="col text-left">
-                  <h3 class="cor4">
-                    <?php
-                    if (isset($leitos['qntLeitosOcupados']) && $leitos['qntLeitosOcupados'] != 0) {
-                      if ($leitos['qntLeitosOcupados'] != "") {
-                        echo $leitos['qntLeitosOcupados'];
-                      } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                      }
-                    } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
-                    }
-                    ?></h3>
-                  <p class="subtext">Leitos Ocupados</p>
-                </div>
-                <div class="col text-right">
-                  <img class="img" src="https://uploads-ssl.webflow.com/57810c374a3a560c48f027ca/5c0ee1811744313981c00b97_Reinterna.png" width="70px" height="70px">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow">
-            <div class="card-body">
-              <div class="row">
-                <div class="col text-left">
-                  <h3 class="cor4">
-                    <?php
-                    if (isset($leitos['qntLeitosOcupados'])) {
-                      if ($leitos['qntLeitosOcupados'] != "") {
-                        try {
-                          echo number_format((($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100), 2, '.', '');
-                        } catch (Exception $e) {
-                          echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Indisponível</div>';
-                          //echo 'Exceção capturada: ',  $e->getMessage(), "\n";
-                        }
-                      } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                      }
-                    } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Indisponível</div>';
-                    }
-                    ?></h3>
-                  <p class="subtext">Taxa de Ocupacão</p>
-                </div>
-                <div class="col text-right">
-                  <img class="img" src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/percentage-2-icon-14-256.png" width="70px" height="70px">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
 
         <div class="col-md-4">
           <div class="card card-borda-azul animated bounceInUp slow">
@@ -258,7 +172,7 @@
                     <?php
                     if (isset($casos['confirmadosCaso'])) {
                       if ($casos['confirmadosCaso'] != "") {
-                        echo $casos['confirmadosCaso'];
+                        echo number_format($casos['confirmadosCaso']);
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
@@ -269,39 +183,13 @@
                   <p class="subtext">Confirmados</p>
                 </div>
                 <div class="col text-right">
-                  <img class="img" src="/assets/images/pesquisa.png" width="70px" height="70px">
+                  <img class="img" src="/assets/images/pesquisa.png" width="70px" height="70px" style="padding:5px;">
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card card-borda-rosa animated bounceInUp slow">
-            <div class="card-body">
-              <div class="row">
-                <div class="col text-left">
-                  <h3 class="cor5">
-                    <?php
-                    if (isset($casos['recuperadosCaso'])) {
-                      if ($casos['recuperadosCaso'] != "") {
-                        echo $casos['recuperadosCaso'];
-                      } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                      }
-                    } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
-                    }
-                    ?></h3>
-                  <p class="subtext">Recuperados</p>
-                </div>
-                <div class="col text-right">
-                  <img class="img" src="/assets/images/resultado.png" width="70px" height="70px">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <div class="col-md-4">
           <div class="card card-borda-vermelho animated bounceInUp slow">
             <div class="card-body">
@@ -311,7 +199,7 @@
                     <?php
                     if (isset($casos['obitosCaso'])) {
                       if ($casos['obitosCaso'] != "") {
-                        echo $casos['obitosCaso'];
+                        echo number_format($casos['obitosCaso']);
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
@@ -322,12 +210,13 @@
                   <p class="subtext">Óbitos</p>
                 </div>
                 <div class="col text-right">
-                  <img class="img" src="/assets/images/certidao-de-obito.png" width="70px" height="70px">
+                  <img class="img" src="/assets/images/certidao-de-obito.png" width="70px" height="70px" style="padding:5px;">
                 </div>
               </div>
             </div>
           </div>
         </div>
+
         <div class="col-md-4">
           <div class="card card-borda-amarelo animated bounceInUp slow">
             <div class="card-body">
@@ -337,7 +226,7 @@
                     <?php
                     if (isset($casos['suspeitosCaso'])) {
                       if ($casos['suspeitosCaso'] != "") {
-                        echo $casos['suspeitosCaso'];
+                        echo number_format($casos['suspeitosCaso']);
                       } else {
                         echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
@@ -348,33 +237,7 @@
                   <p class="subtext">Suspeitos</p>
                 </div>
                 <div class="col text-right">
-                  <img class="img" src="https://image.flaticon.com/icons/svg/2947/2947764.svg" width="70px" height="70px">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card card-borda-verde animated bounceInUp slow">
-            <div class="card-body">
-              <div class="row">
-                <div class="col text-left">
-                  <h3 class="cor3">
-                    <?php
-                    if (isset($casos['descartadosCaso'])) {
-                      if ($casos['descartadosCaso'] != "") {
-                        echo $casos['descartadosCaso'];
-                      } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                      }
-                    } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
-                    }
-                    ?></h3>
-                  <p class="subtext">Descartados</p>
-                </div>
-                <div class="col text-right">
-                  <img class="img" src="/assets/images/cancelar.png" width="70px" height="70px">
+                  <img class="img" src="/assets/images/resultado.png" width="70px" height="70px" style="padding:5px;">
                 </div>
               </div>
             </div>
@@ -382,17 +245,51 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card animated bounceInUp slow">
-            <div class="card-body" style="margin: 3px;">
+          <div class="card card-borda-azul animated bounceInUp slow">
+            <div class="card-body">
+              <div class="row">
+                <div class="col text-left">
+                  <p class="cor1" style="font-size: 20px; margin-bottom:5px; margin-top:5px;"><b>Vacinômetro</b></p>
+                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">189,235</b> 1ª Dose</p>
+                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">113,539</b> 2ª Dose</p>
+                </div>
+                <div class="col text-right">
+                  <img class="img" src="http://vacina.corumba.ms.gov.br/vacinometro/img/vc2.png" width="70px" height="70px" style="padding:5px;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-borda-vermelho animated bounceInUp slow">
+            <div class="card-body">
+              <div class="row">
+                <div class="col text-left">
+                  <p class="cor4" style="font-size: 15px; margin-bottom:8px; margin-top:7px;"><b>Ocupação de Leitos</b></p>
+                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">81%</b> UTI</p>
+                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">93%</b> Clínico</p>
+                </div>
+                <div class="col text-right">
+                  <img class="img" src="https://uploads-ssl.webflow.com/57810c374a3a560c48f027ca/5c0ee1811744313981c00b97_Reinterna.png" width="70px" height="70px" style="padding:5px;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card card-borda-amarelo animated bounceInUp slow">
+            <div class="card-body" style="margin: 5px;">
               <div class="row">
                 <div class="col-md-6 text-center">
-                  <p class="subtext">Pelo <b>navegador</b></p>
+                  <p class="subtext" style="margin-bottom:30px">Pelo <b>navegador</b></p>
                   <p class="subtext">Via <b>Whatsapp</b></p>
                 </div>
                 <div class="col-md-6 text-center">
                   <form id="formAlerta" method="post">
                     <input type="hidden" class="form-control" name="idMunicipio" id="idMunicipio" value="<?= esc($casos['idMunicipio']) ?>">
-                    <button style="margin-bottom:10px" type="button" class="btn btn-warning" id="my-notification-button">Notificação</button>
+                    <button style="margin-bottom:19px" type="button" class="btn btn-warning" id="my-notification-button"><b>Notificação</b></button>
                   </form>
                   <a href="#" data-target="#modalWpp" data-toggle="modal"><img src="/assets/images/wpp.png" height="33px"></a>
                 </div>

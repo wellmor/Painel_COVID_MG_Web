@@ -166,7 +166,7 @@
         <div class="col-md-4">
           <div class="card card-borda-azul animated bounceInUp slow">
             <div class="card-body">
-              <div class="row">
+              <div class="row" style="padding:10px">
                 <div class="col text-left">
                   <h3 class="cor1">
                     <?php
@@ -174,10 +174,10 @@
                       if ($casos['confirmadosCaso'] != "") {
                         echo number_format($casos['confirmadosCaso']);
                       } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
+                        echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
                     } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                      echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                     }
                     ?></h3>
                   <p class="subtext">Confirmados</p>
@@ -193,7 +193,7 @@
         <div class="col-md-4">
           <div class="card card-borda-vermelho animated bounceInUp slow">
             <div class="card-body">
-              <div class="row">
+              <div class="row" style="padding:10px">
                 <div class="col text-left">
                   <h3 class="cor4">
                     <?php
@@ -201,10 +201,10 @@
                       if ($casos['obitosCaso'] != "") {
                         echo number_format($casos['obitosCaso']);
                       } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
+                        echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
                     } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                      echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                     }
                     ?></h3>
                   <p class="subtext">Óbitos</p>
@@ -220,7 +220,8 @@
         <div class="col-md-4">
           <div class="card card-borda-amarelo animated bounceInUp slow">
             <div class="card-body">
-              <div class="row">
+              <div class="row" style="padding:10px">
+
                 <div class="col text-left">
                   <h3 class="cor2">
                     <?php
@@ -228,12 +229,13 @@
                       if ($casos['suspeitosCaso'] != "") {
                         echo number_format($casos['suspeitosCaso']);
                       } else {
-                        echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
+                        echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
                     } else {
-                      echo '<div style="font-size: 19px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
+                      echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não cadastrado</div>';
                     }
-                    ?></h3>
+                    ?>
+                  </h3>
                   <p class="subtext">Suspeitos</p>
                 </div>
                 <div class="col text-right">
@@ -247,11 +249,27 @@
         <div class="col-md-4">
           <div class="card card-borda-azul animated bounceInUp slow">
             <div class="card-body">
-              <div class="row">
+              <div class="row" style="padding:1px">
                 <div class="col text-left">
                   <p class="cor1" style="font-size: 20px; margin-bottom:5px; margin-top:5px;"><b>Vacinômetro</b></p>
-                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">189,235</b> 1ª Dose</p>
-                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">113,539</b> 2ª Dose</p>
+                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">
+                      <?php
+                      if (isset($vacinometro['qnt1Dose']) && $vacinometro['qnt1Dose'] != "") {
+                        echo number_format($vacinometro['qnt1Dose']);
+                      } else {
+                        echo '-';
+                      }
+                      ?>
+                    </b> 1ª Dose</p>
+                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">
+                      <?php
+                      if (isset($vacinometro['qnt2Dose']) && $vacinometro['qnt2Dose'] != "") {
+                        echo number_format($vacinometro['qnt2Dose']);
+                      } else {
+                        echo '-';
+                      }
+                      ?>
+                    </b> 2ª Dose</p>
                 </div>
                 <div class="col text-right">
                   <img class="img" src="http://vacina.corumba.ms.gov.br/vacinometro/img/vc2.png" width="70px" height="70px" style="padding:5px;">
@@ -264,11 +282,18 @@
         <div class="col-md-4">
           <div class="card card-borda-vermelho animated bounceInUp slow">
             <div class="card-body">
-              <div class="row">
+              <div class="row" style="padding:1px">
                 <div class="col text-left">
-                  <p class="cor4" style="font-size: 15px; margin-bottom:8px; margin-top:7px;"><b>Ocupação de Leitos</b></p>
-                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">81%</b> UTI</p>
-                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">93%</b> Clínico</p>
+                  <p class="cor4" style="font-size: 20px; margin-bottom:8px; margin-top:7px;"><b>Leitos de UTI do SUS</b></p>
+                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">
+                      <?php
+                      if (isset($leitos['qntLeitosDisponiveis']) && isset($leitos['qntLeitosOcupados']) && $leitos['qntLeitosDisponiveis'] != "" && $leitos['qntLeitosOcupados'] != "") {
+                        echo number_format(($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100) . "%";
+                      } else {
+                        echo '-';
+                      }
+                      ?>
+                    </b> de ocupação</p>
                 </div>
                 <div class="col text-right">
                   <img class="img" src="https://uploads-ssl.webflow.com/57810c374a3a560c48f027ca/5c0ee1811744313981c00b97_Reinterna.png" width="70px" height="70px" style="padding:5px;">
@@ -281,7 +306,7 @@
         <div class="col-md-4">
           <div class="card card-borda-amarelo animated bounceInUp slow">
             <div class="card-body" style="margin: 5px;">
-              <div class="row">
+              <div class="row" style="padding:1px">
                 <div class="col-md-6 text-center">
                   <p class="subtext" style="margin-bottom:30px">Pelo <b>navegador</b></p>
                   <p class="subtext">Via <b>Whatsapp</b></p>

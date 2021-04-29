@@ -219,19 +219,19 @@
                             </div>
                             <div class="col-sm-3">
                                 <label>Disponíveis</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" style="color: green;" disabled>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" style="color: green;">
                             </div>
                             <div class="col-sm-3">
                                 <label>Ocupados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" style="color: red;" disabled>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" style="color: red;">
                             </div>
                             <div class="col-sm-3">
                                 <label>1ª Dose</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" disabled>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qnt1Dose" id="qnt1Dose">
                             </div>
                             <div class="col-sm-3">
                                 <label>2ª Dose</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" disabled>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qnt2Dose" id="qnt2Dose">
                             </div>
                         </div>
                         <div class="modal-title text-center" id="modalCasosAELabelInfo" style="color:red"></div>
@@ -846,11 +846,26 @@
                         $('#recuperados').val(dados[0].recuperados);
                         $('#obitos').val(dados[0].obitos);
                         $('#fonte').val(dados[0].fonte);
-                        $('#qntLeitosOcupados').val(dados[0].qntLeitosOcupados);
-                        $('#qntLeitosDisponiveis').val(dados[0].qntLeitosDisponiveis);
-                        //$('#data').val(formatarData(dados[0].datax));
                         $('#modalCasosAELabel').text('Cadastro do Relatório de ' + $('#municipio option:selected').text());
                         $('#modalCasosAELabelInfo').text('Todos os campos foram automaticamente preenchidos com os últimos dados, que foram cadastrados em ' + dados[0].datax + '. Faça as devidas alterações e atualize.');
+                    }
+                });
+
+                $.ajax({
+                    url: '../ajax/casos/getLastDadosVacinometro/' + $('#municipio option:selected').val(),
+                    success: function(data) {
+                        dados = JSON.parse(data);
+                        $('#qnt1Dose').val(dados[0].qnt1Dose);
+                        $('#qnt2Dose').val(dados[0].qnt2Dose);
+                    }
+                });
+
+                $.ajax({
+                    url: '../ajax/casos/getLastDadosLeitos/' + $('#municipio option:selected').val(),
+                    success: function(data) {
+                        dados = JSON.parse(data);
+                        $('#qntLeitosDisponiveis').val(dados[0].qntLeitosDisponiveis);
+                        $('#qntLeitosOcupados').val(dados[0].qntLeitosOcupados);
                     }
                 });
 

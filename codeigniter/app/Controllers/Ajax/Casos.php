@@ -5,6 +5,7 @@ namespace App\Controllers\Ajax;
 use App\Models\CasosModel;
 use CodeIgniter\Controller;
 use App\Models\LeitosModel;
+use App\Models\VacinometroModel;
 
 class Casos extends Controller
 {
@@ -68,11 +69,48 @@ class Casos extends Controller
             $data[$i]['recuperados'] = $caso['recuperadosCaso'];
             $data[$i]['municipio'] = $caso['nomeMunicipio'];
             $data[$i]['idMunicipio'] = $caso['idMunicipio'];
-            //$data[$i]['qntLeitosDisponiveis'] = $caso['qntLeitosDisponiveis'];
-            //$data[$i]['qntLeitosOcupados'] = $caso['qntLeitosOcupados'];
             $i++;
         }
 
+        echo json_encode($data);
+    }
+
+    public function getLastDadosLeitos($idMunicipio = null)
+    {
+        $model = new LeitosModel();
+        $model->select("*");
+        $model->join('municipio', 'municipio.idMunicipio = leito.idMunicipio');
+        $model->where("idUsuario", session()->get('idUsuario'));
+        $model->where("leito.idMunicipio", $idMunicipio);
+        $model->orderBy('leito.dataLeitos', 'DESC');
+        $leitos = $model->findAll(1);
+        $i = 0;
+        $data = array();
+        foreach ($leitos as $leito) {
+            $data[$i]['qntLeitosOcupados'] = $leito['qntLeitosOcupados'];
+            $data[$i]['qntLeitosDisponiveis'] = $leito['qntLeitosDisponiveis'];
+            $i++;
+        }
+
+        echo json_encode($data);
+    }
+
+    public function getLastDadosVacinometro($idMunicipio = null)
+    {
+        $model = new VacinometroModel();
+        $model->select("*");
+        $model->join('municipio', 'municipio.idMunicipio = vacinometro.idMunicipio');
+        $model->where("idUsuario", session()->get('idUsuario'));
+        $model->where("vacinometro.idMunicipio", $idMunicipio);
+        $model->orderBy('vacinometro.dataVacinometro', 'DESC');
+        $vacinometros = $model->findAll(1);
+        $i = 0;
+        $data = array();
+        foreach ($vacinometros as $vacinometro) {
+            $data[$i]['qnt1Dose'] = $vacinometro['qnt1Dose'];
+            $data[$i]['qnt2Dose'] = $vacinometro['qnt2Dose'];
+            $i++;
+        }
 
         echo json_encode($data);
     }

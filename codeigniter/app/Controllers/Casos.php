@@ -6,6 +6,8 @@ use CodeIgniter\Controller;
 use App\Models\CasosModel;
 use App\Models\MunicipiosModel;
 use App\Models\LeitosModel;
+use App\Models\VacinometroModel;
+
 
 class Casos extends Controller
 {
@@ -31,22 +33,33 @@ class Casos extends Controller
             'descartadosCaso' => $this->request->getVar('descartados'),
             'obitosCaso' => $this->request->getVar('obitos'),
             'recuperadosCaso' => $this->request->getVar('recuperados'),
-            'dataCaso' => date("Y-m-d"),
             'idUsuario' => session()->get('idUsuario'),
             'dataCaso' => $this->request->getVar('data-caso'),
             'fonteCaso' => $this->request->getVar('fonte'),
             'auto' => 0
         ]);
 
-        $model = new LeitosModel();
-        $model->save([
-            'idCaso' => $this->request->getVar('idCaso'),
-            'idLeito' => $this->request->getVar('idLeito'),
-            'idUsuario' => session()->get('idUsuario'),
-            'idMunicipio' => $this->request->getVar('idMunicipio'),
-            'qntLeitosDisponiveis' => $this->request->getVar('qntLeitosDisponiveis'),
-            'qntLeitosOcupados' => $this->request->getVar('qntLeitosOcupados')
-        ]);
+        if (!empty($this->request->getVar('qntLeitosDisponiveis')) && !empty($this->request->getVar('qntLeitosOcupados'))) {
+            $model = new LeitosModel();
+            $model->save([
+                'idUsuario' => session()->get('idUsuario'),
+                'idMunicipio' => $this->request->getVar('idMunicipio'),
+                'dataLeitos' => $this->request->getVar('data-caso'),
+                'qntLeitosDisponiveis' => $this->request->getVar('qntLeitosDisponiveis'),
+                'qntLeitosOcupados' => $this->request->getVar('qntLeitosOcupados')
+            ]);
+        }
+
+        if (!empty($this->request->getVar('qnt1Dose')) && !empty($this->request->getVar('qnt2Dose'))) {
+            $model = new VacinometroModel();
+            $model->save([
+                'idUsuario' => session()->get('idUsuario'),
+                'idMunicipio' => $this->request->getVar('idMunicipio'),
+                'dataVacinometro' => $this->request->getVar('data-caso'),
+                'qnt1Dose' => $this->request->getVar('qnt1Dose'),
+                'qnt2Dose' => $this->request->getVar('qnt2Dose')
+            ]);
+        }
     }
 
     public function deleteDt($id = null)

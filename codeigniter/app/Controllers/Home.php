@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Models\CasosModel;
-use CodeIgniter\Controller;
 
 class Home extends BaseController
 {
@@ -20,8 +19,11 @@ class Home extends BaseController
 		$query3 = $model->query("Select * FROM verificacao v, municipio m WHERE m.slugMunicipio = '" . $id . "' AND v.deleted_at = '0000-00-00' AND v.idMunicipio = m.idMunicipio ORDER BY v.idVerificacao DESC LIMIT 1");
 		$data['verificacao'] = $query3->getRowArray();
 
-		$query4 = $model->query("Select * FROM leito c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' ORDER BY c.idLeito DESC LIMIT 1");
+		$query4 = $model->query("Select * FROM leito c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' ORDER BY c.dataLeitos DESC LIMIT 1");
 		$data['leitos'] = $query4->getRowArray();
+
+		$query5 = $model->query("Select * FROM vacinometro v, municipio m WHERE m.slugMunicipio = '" . $id . "' AND v.idMunicipio = m.idMunicipio AND v.deleted_at = '0000-00-00' ORDER BY v.dataVacinometro DESC LIMIT 1");
+		$data['vacinometro'] = $query5->getRowArray();
 
 		return view('/home/dados', $data);
 	}
@@ -104,8 +106,11 @@ class Home extends BaseController
 			$query3 = $model->query("Select * FROM verificacao v, municipio m WHERE m.slugMunicipio = '" . $id . "' AND v.deleted_at = '0000-00-00' AND v.idMunicipio = m.idMunicipio ORDER BY v.idVerificacao DESC LIMIT 1");
 			$data['verificacao'] = $query3->getRowArray();
 
-			$query4 = $model->query("Select * FROM leito c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' ORDER BY c.idLeito DESC LIMIT 1");
+			$query4 = $model->query("Select * FROM leito c, municipio m WHERE m.slugMunicipio = '" . $id . "' AND c.idMunicipio = m.idMunicipio AND c.deleted_at = '0000-00-00' ORDER BY c.dataLeitos DESC LIMIT 1");
 			$data['leitos'] = $query4->getRowArray();
+
+			$query5 = $model->query("Select * FROM vacinometro v, municipio m WHERE m.slugMunicipio = '" . $id . "' AND v.idMunicipio = m.idMunicipio AND v.deleted_at = '0000-00-00' ORDER BY v.dataVacinometro DESC LIMIT 1");
+			$data['vacinometro'] = $query5->getRowArray();
 
 			return view('/home/dados', $data);
 		}

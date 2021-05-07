@@ -108,6 +108,10 @@
                     <!-- <div class="col-sm-3 text-right">
                     Selecione o municipio
                 </div> -->
+
+
+
+
                     <div class="col-md-5 float-right" style="margin:0px; padding:0px">
                         <select class="form-control" id="municipio"></select>
                     </div>
@@ -137,28 +141,82 @@
                         </button>
                     </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered" style="width: 100%" id="tableCasos">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Data</th>
-                                <th>Fonte</th>
-                                <th>Munícipio</th>
-                                <th>Confirmados</th>
-                                <th>Suspeitos</th>
-                                <th>Descartados</th>
-                                <th>Recuperados</th>
-                                <th>Óbitos</th>
-                                <th>Id Município</th>
-                                <th>Sumarizado</th>
-                                <!-- <th>leitos disponiveis</th>
+
+
+                <ul class="nav nav-tabs justify-content-end" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="casos-tab" data-toggle="tab" href="#casos" role="tab" aria-controls="home" aria-selected="true">Casos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#leitos" role="tab" aria-controls="profile" aria-selected="false">Leitos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#vacinas" role="tab" aria-controls="contact" aria-selected="false">Vacinas</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="casos" role="tabpanel" aria-labelledby="casos-tab">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" style="width: 100%" id="tableCasos">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Data</th>
+                                        <th>Fonte</th>
+                                        <th>Munícipio</th>
+                                        <th>Confirmados</th>
+                                        <th>Suspeitos</th>
+                                        <th>Descartados</th>
+                                        <th>Recuperados</th>
+                                        <th>Óbitos</th>
+                                        <th>Id Município</th>
+                                        <th>Sumarizado</th>
+                                        <!-- <th>leitos disponiveis</th>
                                 <th>leitos ocupados</th> -->
-                                <th style="width: 20%">Ações</th>
-                            </tr>
-                        </thead>
-                    </table>
+                                        <th style="width: 20%">Ações</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="leitos" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" style="width: 100%" id="tableLeitos">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Data</th>
+                                        <th>Munícipio</th>
+                                        <th>Disponíveis</th>
+                                        <th>Ocupados</th>
+                                        <th>Id Município</th>
+                                        <th style="width: 20%">Ações</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="vacinas" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" style="width: 100%" id="tableVacinas">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Data</th>
+                                        <th>Munícipio</th>
+                                        <th>1 Dose</th>
+                                        <th>2 Dose</th>
+                                        <th>Id Município</th>
+                                        <th style="width: 20%">Ações</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    
                 </div>
+
             </main>
         </div>
     </div>
@@ -347,7 +405,9 @@
         });
 
         var tableCasos;
-        var tableLegendas
+        var tableLegendas;
+        var tableVacinas;
+        var tableLeitos;
         var btnToggleSumarizados = false;
 
         $(document).ready(function() {
@@ -466,9 +526,122 @@
             });
             tableCasos.column(10).search("0").draw();
             tableCasos.column(10).visible(false);
-
-
         });
+
+        $(document).ready(function() {
+            tableLeitos = $('#tableLeitos').DataTable({
+                "ajax": "../Ajax/Leitos/getDados",
+                "processing": true,
+                "order": [
+                    [1, "desc"]
+                ],
+                columns: [{
+                        data: "idLeito",
+                        visible: false
+                    },
+                    {
+                        data: "datax",
+                    },
+                    {
+                        data: "municipio"
+                    },
+                    {
+                        data: "qntLeitosDisponiveis"
+                    },
+                    {
+                        data: "qntLeitosOcupados",
+                    },
+                    {
+                        data: "idMunicipio",
+                        visible: false
+                    }, 
+                    {
+                        "mData": null,
+                        "mRender": function(data, type, row) {
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarCaso(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletarCaso(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
+                        },
+                    }
+                ],
+                dom: 'Bfrtip',
+                responsive: true,
+                "oLanguage": {
+                    "sSearch": "Pesquisa"
+                },
+                "language": {
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima"
+                    },
+                    "processing": "Carregando...",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Desculpe, nada encontrado",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sem registros disponíveis",
+                    "infoFiltered": "(filtrado de _MAX_ total registros)"
+                }
+
+
+            });
+        });
+
+        $(document).ready(function() {
+            tableVacinas = $('#tableVacinas').DataTable({
+                "ajax": "../Ajax/Vacinas/getDados",
+                "processing": true,
+                "order": [
+                    [1, "desc"]
+                ],
+                columns: [{
+                        data: "idVacinometro",
+                        visible: false
+                    },
+                    {
+                        data: "datax",
+                    },
+                    {
+                        data: "municipio"
+                    },
+                    {
+                        data: "qnt1Dose"
+                    },
+                    {
+                        data: "qnt2Dose",
+                    },
+                    {
+                        data: "idMunicipio",
+                        visible: false
+                    }, 
+                    {
+                        "mData": null,
+                        "mRender": function(data, type, row) {
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarCaso(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletarCaso(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
+                        },
+                    }
+                ],
+                dom: 'Bfrtip',
+                responsive: true,
+                "oLanguage": {
+                    "sSearch": "Pesquisa"
+                },
+                "language": {
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Próxima"
+                    },
+                    "processing": "Carregando...",
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "Desculpe, nada encontrado",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sem registros disponíveis",
+                    "infoFiltered": "(filtrado de _MAX_ total registros)"
+                }
+
+
+            });
+        });
+
 
         $(document).ready(function() {
             tableLegendas = $('#tableLegendas').DataTable({

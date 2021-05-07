@@ -8,7 +8,7 @@ class LeitosModel extends Model
 {
     protected $table = "leito";
     protected $primaryKey = "idLeito";
-    protected $allowedFields = ['idLeito', 'idMunicipio', 'idUsuario', 'qntLeitosDisponiveis', 'qntLeitosOcupados'];
+    protected $allowedFields = ['idLeito', 'idMunicipio', 'dataLeitos', 'idUsuario', 'qntLeitosDisponiveis', 'qntLeitosOcupados'];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 

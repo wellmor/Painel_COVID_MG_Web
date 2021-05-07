@@ -11,7 +11,7 @@ class Leitos extends Controller
     public function getDados()
     {
         $model = new LeitosModel();
-        $model->select("leito.idLeito, leito.idMunicipio, leito.qntLeitosDisponiveis, leito.qntLeitosOcupados");
+        $model->select("leito.idLeito, municipio.nomeMunicipio, leito.idMunicipio, leito.qntLeitosDisponiveis, leito.qntLeitosOcupados, leito.dataLeitos");
         $model->join('municipio', 'municipio.idMunicipio = leito.idMunicipio');
         $model->where("idUsuario", session()->get('idUsuario'));
         $leitos = $model->findAll();
@@ -22,6 +22,8 @@ class Leitos extends Controller
             $data[$i]['qntLeitosDisponiveis'] = $leito['qntLeitosDisponiveis'];
             $data[$i]['qntLeitosOcupados'] = $leito['qntLeitosOcupados'];
             $data[$i]['idMunicipio'] = $leito['idMunicipio'];
+            $data[$i]['datax'] = $leito['dataLeitos'];
+            $data[$i]['municipio'] = $leito['nomeMunicipio'];
             $i++;
         }
         $leitos = [

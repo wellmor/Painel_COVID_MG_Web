@@ -110,8 +110,6 @@
                 </div> -->
 
 
-
-
                     <div class="col-md-5 float-right" style="margin:0px; padding:0px">
                         <select class="form-control" id="municipio"></select>
                     </div>
@@ -214,7 +212,7 @@
                             </table>
                         </div>
                     </div>
-                    
+
                 </div>
 
             </main>
@@ -304,6 +302,96 @@
     </div>
 
 
+
+
+
+    <div class="modal fade bd-example-modal-lg" id="modalLeitosAE" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="modalLeitosAELabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLeitosAELabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="formLeitos" method="post">
+                        <div class="form-group row" style="background-color: #F2F2F2; padding: 15px">
+                            <input type="hidden" id="idLeito" name="idLeito">
+                            <input type="hidden" id="idMunicipio2" name="idMunicipio2">
+                            <div class="col-sm-12">
+                                <h5>Leitos</h5>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Disponíveis</label>
+                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="disponiveis" id="disponiveis" placeholder="disponiveis">
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Ocupados</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="ocupados" id="ocupados" placeholder="ocupados">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Data</label>
+                                <input type="date" class="form-control" name="data-leito" id="data-leito" placeholder="Data do relatório">
+                            </div>
+                            <div class="modal-title text-center" id="modalLeitosAELabelInfo" style="color:red"></div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnSalvarLeito">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade bd-example-modal-lg" id="modalVacinasAE" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="modalVacinasAELabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalVacinasAELabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form id="formVacinas" method="post">
+                        <div class="form-group row" style="background-color: #F2F2F2; padding: 15px">
+                            <input type="hidden" id="idVacina" name="idVacina">
+                            <input type="hidden" id="idMunicipio3" name="idMunicipio3">
+                            <div class="col-sm-12">
+                                <h5>Vacinas</h5>
+                            </div>
+                            <div class="col-sm-3">
+                                <label>1 a dose</label>
+                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="2adose" id="2adose" placeholder="2adose">
+                            </div>
+                            <div class="col-sm-3">
+                                <label>2a dose</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="1adose" id="1adose" placeholder="1adose">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Data</label>
+                                <input type="date" class="form-control" name="data-vacina" id="data-vacina" placeholder="Data do relatório">
+                            </div>
+                            <div class="modal-title text-center" id="modalVacinasAELabelInfo" style="color:red"></div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnSalvarVacina">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modal cadastro/edição de legendas -->
     <div class="modal fade" id="modalLegendasAE" tabindex="-1" role="dialog" aria-labelledby="modalLegendasAELabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -333,7 +421,6 @@
     </div>
 
     <!-- Modal legenda datatable -->
-
     <div class="modal fade" id="modalLegendas" tabindex="-1" role="dialog" aria-labelledby="modalLegendasLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -378,7 +465,6 @@
     <script>
         //legenda cadastro e edição
         $(document).ready(function() {
-
             $('#modalLegendasAE').on('hidden.bs.modal', function(e) {
                 $('#modalLegendas').modal('show');
 
@@ -554,16 +640,16 @@
                     {
                         data: "idMunicipio",
                         visible: false
-                    }, 
+                    },
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarCaso(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
-                                ' <a href="" class="btn btn-outline-danger" onClick="deletarCaso(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLeito(\'' + encodeURIComponent(row.idLeito) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveis) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupados) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletarLeito(' + encodeURIComponent(row.idLeito) + ');return false;">Excluir</a></div>';
                         },
                     }
                 ],
-                dom: 'Bfrtip',
+
                 responsive: true,
                 "oLanguage": {
                     "sSearch": "Pesquisa"
@@ -611,16 +697,15 @@
                     {
                         data: "idMunicipio",
                         visible: false
-                    }, 
+                    },
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarCaso(\'' + encodeURIComponent(row.id) + '\' , \'' + encodeURIComponent(row.confirmados) + '\' , \'' + encodeURIComponent(row.suspeitos) + '\', \'' + encodeURIComponent(row.descartados) + '\' , \'' + encodeURIComponent(row.obitos) + '\' , \'' + encodeURIComponent(row.recuperados) + '\' , \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + row.idMunicipio + '\', \'' + encodeURIComponent(row.fonte) + '\');return false;">Editar</a>' +
-                                ' <a href="" class="btn btn-outline-danger" onClick="deletarCaso(' + encodeURIComponent(row.id) + ');return false;">Excluir</a></div>';
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarVacina(\'' + encodeURIComponent(row.idVacinometro) + '\', \'' + encodeURIComponent(row.qnt1Dose) + '\' , \'' + encodeURIComponent(row.qnt2Dose) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
+                                ' <a href="" class="btn btn-outline-danger" onClick="deletarVacina(' + encodeURIComponent(row.idVacinometro) + ');return false;">Excluir</a></div>';
                         },
                     }
                 ],
-                dom: 'Bfrtip',
                 responsive: true,
                 "oLanguage": {
                     "sSearch": "Pesquisa"
@@ -702,6 +787,26 @@
                 .end();
         });
 
+        $('#modalLeitosAE').on('hidden.bs.modal', function(e) {
+            $(this)
+                .find("input,textarea,select")
+                .val('')
+                .end()
+                .find("input[type=checkbox], input[type=radio]")
+                .prop("checked", "")
+                .end();
+        });
+
+        $('#modalVacinasAE').on('hidden.bs.modal', function(e) {
+            $(this)
+                .find("input,textarea,select")
+                .val('')
+                .end()
+                .find("input[type=checkbox], input[type=radio]")
+                .prop("checked", "")
+                .end();
+        });
+
         $('#modalLegendasAE').on('hidden.bs.modal', function(e) {
             $(this)
                 .find("input,textarea,select")
@@ -717,8 +822,13 @@
             //filter by selected value on second column
             if ($('#municipio option:selected').text() == 'Selecione o município...') {
                 tableCasos.column(3).search("").draw();
+                tableLeitos.column(2).search("").draw();
+                tableVacinas.column(2).search("").draw();
             } else {
                 tableCasos.column(3).search($('#municipio option:selected').text()).draw();
+                tableLeitos.column(2).search($('#municipio option:selected').text()).draw();
+                tableCasos.column(2).search($('#municipio option:selected').text()).draw();
+
             }
         });
 
@@ -771,6 +881,69 @@
         });
 
 
+        //cadastro e edição de leitos
+        $(document).ready(function() {
+            $('#btnSalvarLeito').click(function() {
+                var dados = $('#formLeitos').serializeArray();
+                if (dados[4].value == "") {
+                    alert("Por favor, preencha a data corretamente")
+                } else {
+                    $('#modalLeitosAE').modal('hide');
+                    $body = $("body");
+                    $body.addClass("loading");
+                    $.ajax({
+                        type: "POST",
+                        url: "/leitos/storeDt",
+                        data: dados,
+                        success: function(result) {
+                            $('#formLeitos').trigger("reset");
+                            tableLeitos.ajax.reload();
+                            $('#id').val("");
+                            $body.removeClass("loading");
+                            toast("Informações de leitos salvas com sucesso!", "success");
+                        },
+                        error: function() {
+                            $body.removeClass("loading");
+                            toast("Erro ao salvar relatório!", "error");
+                        }
+                    });
+                    return false;
+                }
+            });
+        });
+
+        //cadastro e edição de vacinas
+        $(document).ready(function() {
+            $('#btnSalvarVacina').click(function() {
+                var dados = $('#formVacinas').serializeArray();
+                if (dados[4].value == "") {
+                    alert("Por favor, preencha a data corretamente")
+                } else {
+                    $('#modalVacinasAE').modal('hide');
+                    $body = $("body");
+                    $body.addClass("loading");
+                    $.ajax({
+                        type: "POST",
+                        url: "/vacinas/storeDt",
+                        data: dados,
+                        success: function(result) {
+                            $('#formVacinas').trigger("reset");
+                            tableVacinas.ajax.reload();
+                            $('#id').val("");
+                            $body.removeClass("loading");
+                            toast("Informações de vacinas salvas com sucesso!", "success");
+                        },
+                        error: function() {
+                            $body.removeClass("loading");
+                            toast("Erro ao salvar relatório!", "error");
+                        }
+                    });
+                    return false;
+                }
+            });
+        });
+
+
         //modal de edição
         function editarCaso(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {
             $('#idCaso').val(decodeURIComponent(id));
@@ -783,6 +956,24 @@
             $('#data-caso').val(decodeURIComponent(datax));
             $('#fonte').val(decodeURIComponent(fonte));
             modalEdCaso(decodeURIComponent(municipio), decodeURIComponent(datax));
+        }
+
+        function editarLeito(id, disponiveis, ocupados, municipio, datax, idMunicipio) {
+            $('#idLeito').val(decodeURIComponent(id));
+            $('#idMunicipio2').val(decodeURIComponent(idMunicipio));
+            $('#disponiveis').val(decodeURIComponent(disponiveis));
+            $('#ocupados').val(decodeURIComponent(ocupados));
+            $('#data-leito').val(decodeURIComponent(datax));
+            modalEdLeito(decodeURIComponent(municipio), decodeURIComponent(datax));
+        }
+
+        function editarVacina(id, qnt1Dose, qnt2Dose, municipio, datax, idMunicipio) {
+            $('#idVacina').val(decodeURIComponent(id));
+            $('#idMunicipio3').val(decodeURIComponent(idMunicipio));
+            $('#1adose').val(decodeURIComponent(qnt1Dose));
+            $('#2adose').val(decodeURIComponent(qnt2Dose));
+            $('#data-vacina').val(decodeURIComponent(datax));
+            modalEdVacina(decodeURIComponent(municipio), decodeURIComponent(datax));
         }
 
         function editarLegenda(id, conteudo, municipio, idMunicipio) {
@@ -815,6 +1006,68 @@
                             // alert("Relatório de casos excluído com sucesso");
                             $body.removeClass("loading");
                             toast("Relatório de casos excluído com sucesso", "success");
+                        },
+                        error: function() {
+                            $body.removeClass("loading");
+                            toast("Erro ao excluir relatório de casos", "error");
+                        }
+                    });
+                }
+            });
+        }
+
+        //deleção de leito
+        function deletarLeito(id) {
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: "Você não poderá desfazer isso!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, excluir!'
+            }).then((result) => {
+                if (result.value) {
+                    $body = $("body");
+                    $body.addClass("loading");
+                    $.ajax({
+                        type: "DELETE",
+                        url: "../leitos/deleteDt/" + decodeURIComponent(id),
+                        success: function(result) {
+                            tableLeitos.ajax.reload();
+                            $body.removeClass("loading");
+                            toast("Relatório de casos excluído com sucesso", "success");
+                        },
+                        error: function() {
+                            $body.removeClass("loading");
+                            toast("Erro ao excluir relatório de casos", "error");
+                        }
+                    });
+                }
+            });
+        }
+
+        //deleção de vacina
+        function deletarVacina(id) {
+            Swal.fire({
+                title: 'Tem certeza?',
+                text: "Você não poderá desfazer isso!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim, excluir!'
+            }).then((result) => {
+                if (result.value) {
+                    $body = $("body");
+                    $body.addClass("loading");
+                    $.ajax({
+                        type: "DELETE",
+                        url: "../vacinas/deleteDt/" + decodeURIComponent(id),
+                        success: function(result) {
+                            tableVacinas.ajax.reload();
+                            $body.removeClass("loading");
+                            toast("Relatório de vacinas excluído com sucesso", "success");
                         },
                         error: function() {
                             $body.removeClass("loading");
@@ -997,6 +1250,16 @@
 
             $('#modalCasosAELabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatDate(data));
             $('#modalCasosAE').modal('show')
+        }
+
+        function modalEdLeito(municipio, data) {
+            $('#modalLeitosAELabel').text('Editar relatório de leitos de ' + municipio + ' - ' + formatDate(data));
+            $('#modalLeitosAE').modal('show')
+        }
+
+        function modalEdVacina(municipio, data) {
+            $('#modalVacinasAELabel').text('Editar relatório de vacinas de ' + municipio + ' - ' + formatDate(data));
+            $('#modalVacinasAE').modal('show')
         }
 
         function modalEdLegenda(municipio) {

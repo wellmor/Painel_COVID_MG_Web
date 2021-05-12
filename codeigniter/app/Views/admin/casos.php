@@ -851,6 +851,8 @@
                         success: function(result) {
                             $('#formCasos').trigger("reset");
                             tableCasos.ajax.reload();
+                            tableVacinas.ajax.reload();
+                            tableLeitos.ajax.reload();
                             $('#id').val("");
                             $body.removeClass("loading");
                             toast("Relatório salvo com sucesso!", "success");

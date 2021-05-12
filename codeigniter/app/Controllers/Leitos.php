@@ -26,7 +26,9 @@ class Leitos extends Controller
             'idUsuario' => session()->get('idUsuario'),
             'idMunicipio' => $this->request->getVar('idMunicipio2'),
             'qntLeitosDisponiveis' => $this->request->getVar('disponiveis'),
-            'qntLeitosOcupados' => $this->request->getVar('ocupados')
+            'qntLeitosOcupados' => $this->request->getVar('ocupados'),
+            'dataLeitos' => $this->request->getVar('data-leito')
+
         ]);
     }
 

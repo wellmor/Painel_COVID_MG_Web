@@ -272,7 +272,7 @@
                     </b> 2ª Dose</p>
                 </div>
                 <div class="col text-right">
-                  <img class="img" src="http://vacina.corumba.ms.gov.br/vacinometro/img/vc2.png" width="70px" height="70px" style="padding:5px;">
+                  <img class="img" src="/assets/images/vacinometro.png" width="70px" height="70px" style="padding:5px;">
                 </div>
               </div>
             </div>

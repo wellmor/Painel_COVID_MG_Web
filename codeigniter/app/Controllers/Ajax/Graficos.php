@@ -12,7 +12,7 @@ class Graficos extends Controller
     public function getDados($id = null)
     {
         $model = new CasosModel();
-        $query = $model->query("SELECT c.idCaso as id, c.dataCaso as dat, c.confirmadosCaso as conf, c.suspeitosCaso as susp, c.obitosCaso as ob, c.descartadosCaso as desca, c.recuperadosCaso as recu, m.nomeMunicipio as nome FROM caso c, municipio m WHERE m.idMunicipio = c.idMunicipio AND c.idMunicipio = " . $id . "  AND c.deleted_at = '0000-00-00' AND auto = 0 ORDER BY dataCaso ASC");
+        $query = $model->query("SELECT c.idCaso as id, c.dataCaso as dat, c.confirmadosCaso as conf, c.suspeitosCaso as susp, c.obitosCaso as ob, c.descartadosCaso as desca, c.recuperadosCaso as recu, m.nomeMunicipio as nome FROM caso c, municipio m WHERE m.idMunicipio = c.idMunicipio AND c.idMunicipio = " . $id . "  AND c.deleted_at = '0000-00-00 00:00:00' AND auto = 0 ORDER BY dataCaso ASC");
         $casos = $query->getResult('array');
 
         $i = 0;
@@ -36,8 +36,8 @@ class Graficos extends Controller
         $query = $model->query("SELECT c.dataCaso as dat, SUM(c.confirmadosCaso) as conf,
         SUM(c.recuperadosCaso) as recu,
         SUM(c.obitosCaso) as ob
-        FROM municipio m, caso c    
-        WHERE m.idMunicipio = c.idMunicipio
+        FROM municipio m, casos_copy c    
+        WHERE m.idMunicipio = c.idMunicipio AND c.deleted_at = '0000-00-00 00:00:00'
         AND m.idMicrorregiao = 1 
         GROUP BY c.dataCaso
 		");
@@ -61,8 +61,8 @@ class Graficos extends Controller
         $query = $model->query("SELECT c.dataCaso as dat, SUM(c.confirmadosCaso) as conf,
         SUM(c.recuperadosCaso) as recu,
         SUM(c.obitosCaso) as ob
-        FROM municipio m, caso c    
-        WHERE m.idMunicipio = c.idMunicipio
+        FROM municipio m, casos_copy c    
+        WHERE m.idMunicipio = c.idMunicipio AND c.deleted_at = '0000-00-00 00:00:00' 
         AND m.idMicrorregiao = 2 
         GROUP BY c.dataCaso
 		");

@@ -827,7 +827,7 @@
             } else {
                 tableCasos.column(3).search($('#municipio option:selected').text()).draw();
                 tableLeitos.column(2).search($('#municipio option:selected').text()).draw();
-                tableCasos.column(2).search($('#municipio option:selected').text()).draw();
+                tableVacinas.column(2).search($('#municipio option:selected').text()).draw();
 
             }
         });

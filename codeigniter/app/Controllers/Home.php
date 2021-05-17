@@ -75,7 +75,7 @@ class Home extends BaseController
 			SUM(c.confirmadosCaso) as confirmadosCaso,
 			SUM(c.recuperadosCaso) as recuperadosCaso,
 			SUM(c.obitosCaso) as obitosCaso
-			FROM municipio m, caso c    
+			FROM municipio m, casos_copy c    
 			WHERE m.idMunicipio = c.idMunicipio
 			AND m.idMicrorregiao = 1 
 			GROUP BY c.dataCaso DESC LIMIT 1");
@@ -88,7 +88,7 @@ class Home extends BaseController
 			SUM(c.confirmadosCaso) as confirmadosCaso,
 			SUM(c.recuperadosCaso) as recuperadosCaso,
 			SUM(c.obitosCaso) as obitosCaso
-			FROM municipio m, caso c    
+			FROM municipio m, casos_copy c    
 			WHERE m.idMunicipio = c.idMunicipio
 			AND m.idMicrorregiao = 2 
 			GROUP BY c.dataCaso DESC LIMIT 1");

@@ -11,7 +11,7 @@ class Leitos extends Controller
     public function getDados()
     {
         $model = new LeitosModel();
-        $model->select("leito.idLeito, municipio.nomeMunicipio, leito.idMunicipio, leito.qntLeitosDisponiveis, leito.qntLeitosOcupados, leito.dataLeitos");
+        $model->select("leito.idLeito, municipio.nomeMunicipio, leito.idMunicipio, leito.qntLeitosDisponiveisUTI, leito.qntLeitosOcupadosUTI, leito.qntLeitosDisponiveisClinico, leito.qntLeitosOcupadosClinico, leito.dataLeitos");
         $model->join('municipio', 'municipio.idMunicipio = leito.idMunicipio');
         $model->where("idUsuario", session()->get('idUsuario'));
         $leitos = $model->findAll();
@@ -19,8 +19,10 @@ class Leitos extends Controller
         $data = array();
         foreach ($leitos as $leito) {
             $data[$i]['idLeito'] = $leito['idLeito'];
-            $data[$i]['qntLeitosDisponiveis'] = $leito['qntLeitosDisponiveis'];
-            $data[$i]['qntLeitosOcupados'] = $leito['qntLeitosOcupados'];
+            $data[$i]['qntLeitosDisponiveisClinico'] = $leito['qntLeitosDisponiveisClinico'];
+            $data[$i]['qntLeitosOcupadosClinico'] = $leito['qntLeitosOcupadosClinico'];
+            $data[$i]['qntLeitosDisponiveisUTI'] = $leito['qntLeitosDisponiveisUTI'];
+            $data[$i]['qntLeitosOcupadosUTI'] = $leito['qntLeitosOcupadosUTI'];
             $data[$i]['idMunicipio'] = $leito['idMunicipio'];
             $data[$i]['datax'] = $leito['dataLeitos'];
             $data[$i]['municipio'] = $leito['nomeMunicipio'];
@@ -44,8 +46,10 @@ class Leitos extends Controller
         $data = array();
         foreach ($leitos as $leito) {
             $data[$i]['idLeito'] = $leito['idLeito'];
-            $data[$i]['qntLeitosDisponiveis'] = $leito['qntLeitosDisponiveis'];
-            $data[$i]['qntLeitosOcupados'] = $leito['qntLeitosOcupados'];
+            $data[$i]['qntLeitosDisponiveisClinico'] = $leito['qntLeitosDisponiveisClinico'];
+            $data[$i]['qntLeitosOcupadosClinico'] = $leito['qntLeitosOcupadosClinico'];
+            $data[$i]['qntLeitosDisponiveisUTI'] = $leito['qntLeitosDisponiveisUTI'];
+            $data[$i]['qntLeitosOcupadosUTI'] = $leito['qntLeitosOcupadosUTI'];
             $data[$i]['idMunicipio'] = $leito['idMunicipio'];
             $i++;
         }

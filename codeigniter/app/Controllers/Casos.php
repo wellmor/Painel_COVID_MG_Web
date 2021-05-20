@@ -39,14 +39,16 @@ class Casos extends Controller
             'auto' => 0
         ]);
 
-        if (!empty($this->request->getVar('qntLeitosDisponiveis')) && !empty($this->request->getVar('qntLeitosOcupados'))) {
+        if (!empty($this->request->getVar('qntLeitosDisponiveisUTI')) && !empty($this->request->getVar('qntLeitosOcupadosUTI')) && !empty($this->request->getVar('qntLeitosDisponiveisClinico')) && !empty($this->request->getVar('qntLeitosOcupadosClinico'))) {
             $model = new LeitosModel();
             $model->save([
                 'idUsuario' => session()->get('idUsuario'),
                 'idMunicipio' => $this->request->getVar('idMunicipio'),
                 'dataLeitos' => $this->request->getVar('data-caso'),
-                'qntLeitosDisponiveis' => $this->request->getVar('qntLeitosDisponiveis'),
-                'qntLeitosOcupados' => $this->request->getVar('qntLeitosOcupados')
+                'qntLeitosDisponiveisClinico' => $this->request->getVar('qntLeitosDisponiveisClinico'),
+                'qntLeitosOcupadosClinico' => $this->request->getVar('qntLeitosOcupadosClinico'),
+                'qntLeitosDisponiveisUTI' => $this->request->getVar('qntLeitosDisponiveisUTI'),
+                'qntLeitosOcupadosUTI' => $this->request->getVar('qntLeitosOcupadosUTI')
             ]);
         }
 

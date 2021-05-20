@@ -218,16 +218,16 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card card-borda-amarelo animated bounceInUp slow">
+          <div class="card card-borda-verde animated bounceInUp slow">
             <div class="card-body">
               <div class="row" style="padding:10px">
 
                 <div class="col text-left">
-                  <h3 class="cor2">
+                  <h3 class="cor3">
                     <?php
-                    if (isset($casos['suspeitosCaso'])) {
-                      if ($casos['suspeitosCaso'] != "") {
-                        echo number_format($casos['suspeitosCaso']);
+                    if (isset($casos['recuperadosCaso'])) {
+                      if ($casos['recuperadosCaso'] != "") {
+                        echo number_format($casos['recuperadosCaso']);
                       } else {
                         echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
@@ -236,7 +236,7 @@
                     }
                     ?>
                   </h3>
-                  <p class="subtext">Suspeitos</p>
+                  <p class="subtext">Recuperados</p>
                 </div>
                 <div class="col text-right">
                   <img class="img" src="/assets/images/resultado.png" width="70px" height="70px" style="padding:5px;">
@@ -284,16 +284,25 @@
             <div class="card-body">
               <div class="row" style="padding:1px">
                 <div class="col text-left">
-                  <p class="cor4" style="font-size: 20px; margin-bottom:8px; margin-top:7px;"><b>Leitos de UTI do SUS</b></p>
+                  <p class="cor4" style="font-size: 17px; margin-bottom:8px; margin-top:7px;"><b>Ocupação Leitos</b></p>
                   <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">
                       <?php
-                      if (isset($leitos['qntLeitosDisponiveis']) && isset($leitos['qntLeitosOcupados']) && $leitos['qntLeitosDisponiveis'] != "" && $leitos['qntLeitosOcupados'] != "") {
-                        echo number_format(($leitos['qntLeitosOcupados'] / $leitos['qntLeitosDisponiveis']) * 100) . "%";
+                      if (isset($leitos['qntLeitosDisponiveisUTI']) && isset($leitos['qntLeitosOcupadosUTI']) && $leitos['qntLeitosDisponiveisUTI'] != "" && $leitos['qntLeitosOcupadosUTI'] != "") {
+                        echo number_format(($leitos['qntLeitosOcupadosUTI'] / $leitos['qntLeitosDisponiveisUTI']) * 100) . "%";
                       } else {
                         echo '-';
                       }
                       ?>
-                    </b> de ocupação</p>
+                    </b> UTI</p>
+                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">
+                      <?php
+                      if (isset($leitos['qntLeitosDisponiveisClinico']) && isset($leitos['qntLeitosOcupadosClinico']) && $leitos['qntLeitosDisponiveisClinico'] != "" && $leitos['qntLeitosOcupadosClinico'] != "") {
+                        echo number_format(($leitos['qntLeitosOcupadosClinico'] / $leitos['qntLeitosDisponiveisClinico']) * 100) . "%";
+                      } else {
+                        echo '-';
+                      }
+                      ?>
+                    </b> Clínico</p>
                 </div>
                 <div class="col text-right">
                   <img class="img" src="https://uploads-ssl.webflow.com/57810c374a3a560c48f027ca/5c0ee1811744313981c00b97_Reinterna.png" width="70px" height="70px" style="padding:5px;">
@@ -304,7 +313,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="card card-borda-amarelo animated bounceInUp slow">
+          <div class="card card-borda-verde animated bounceInUp slow">
             <div class="card-body" style="margin: 5px;">
               <div class="row" style="padding:1px">
                 <div class="col-md-6 text-center">

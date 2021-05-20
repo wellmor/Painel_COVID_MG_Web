@@ -25,8 +25,10 @@ class Leitos extends Controller
             'idLeito' => $this->request->getVar('idLeito'),
             'idUsuario' => session()->get('idUsuario'),
             'idMunicipio' => $this->request->getVar('idMunicipio2'),
-            'qntLeitosDisponiveis' => $this->request->getVar('disponiveis'),
-            'qntLeitosOcupados' => $this->request->getVar('ocupados'),
+            'qntLeitosDisponiveisClinico' => $this->request->getVar('disponiveisClinico'),
+            'qntLeitosOcupadosClinico' => $this->request->getVar('ocupadosClinico'),
+            'qntLeitosDisponiveisUTI' => $this->request->getVar('disponiveisUTI'),
+            'qntLeitosOcupadosUTI' => $this->request->getVar('ocupadosUTI'),
             'dataLeitos' => $this->request->getVar('data-leito')
 
         ]);

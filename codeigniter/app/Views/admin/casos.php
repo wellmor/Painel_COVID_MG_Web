@@ -169,8 +169,6 @@
                                         <th>Óbitos</th>
                                         <th>Id Município</th>
                                         <th>Sumarizado</th>
-                                        <!-- <th>leitos disponiveis</th>
-                                <th>leitos ocupados</th> -->
                                         <th style="width: 20%">Ações</th>
                                     </tr>
                                 </thead>
@@ -185,8 +183,10 @@
                                         <th>Id</th>
                                         <th>Data</th>
                                         <th>Munícipio</th>
-                                        <th>Disponíveis</th>
-                                        <th>Ocupados</th>
+                                        <th>Disponíveis UTI</th>
+                                        <th>Ocupados UTI</th>
+                                        <th>Disponíveis Clínico</th>
+                                        <th>Ocupados Clínico</th>
                                         <th>Id Município</th>
                                         <th style="width: 20%">Ações</th>
                                     </tr>
@@ -267,25 +267,33 @@
                             </div>
                         </div>
                         <div class="form-group row" style="background-color: #F2F2F2; padding: 15px">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <h5>Leitos</h5>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-3">
+                                <label>Disponíveis UTI</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveisUTI" id="qntLeitosDisponiveisUTI" style="color: green;">
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Ocupados UTI</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupadosUTI" id="qntLeitosOcupadosUTI" style="color: red;">
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Disponíveis Clínico</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveisClinico" id="qntLeitosDisponiveisClinico" style="color: green;">
+                            </div>
+                            <div class="col-sm-3">
+                                <label>Ocupados Clínico</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupadosClinico" id="qntLeitosOcupadosClinico" style="color: red;">
+                            </div>
+                            <div class="col-sm-12">
                                 <h5>Vacinômetro</h5>
                             </div>
-                            <div class="col-sm-3">
-                                <label>Disponíveis</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveis" id="qntLeitosDisponiveis" style="color: green;">
-                            </div>
-                            <div class="col-sm-3">
-                                <label>Ocupados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupados" id="qntLeitosOcupados" style="color: red;">
-                            </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <label>1ª Dose</label>
                                 <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qnt1Dose" id="qnt1Dose">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <label>2ª Dose</label>
                                 <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qnt2Dose" id="qnt2Dose">
                             </div>
@@ -323,15 +331,23 @@
                             <div class="col-sm-12">
                                 <h5>Leitos</h5>
                             </div>
-                            <div class="col-sm-3">
-                                <label>Disponíveis</label>
-                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="disponiveis" id="disponiveis" placeholder="disponiveis">
-                            </div>
-                            <div class="col-sm-3">
-                                <label>Ocupados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="ocupados" id="ocupados" placeholder="ocupados">
+                            <div class="col-sm-6">
+                                <label>Disponíveis UTI</label>
+                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="disponiveisUTI" id="disponiveisUTI" placeholder="Disponíveis UTI">
                             </div>
                             <div class="col-sm-6">
+                                <label>Ocupados UTI</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="ocupadosUTI" id="ocupadosUTI" placeholder="Ocupados UTI">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Disponíveis Clínico</label>
+                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="disponiveisClinico" id="disponiveisClinico" placeholder="Disponiveis Clínico">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Ocupados Clínico</label>
+                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="ocupadosClinico" id="ocupadosClinico" placeholder="Ocupados Clínico">
+                            </div>
+                            <div class="col-sm-12">
                                 <label>Data</label>
                                 <input type="date" class="form-control" name="data-leito" id="data-leito" placeholder="Data do relatório">
                             </div>
@@ -368,11 +384,11 @@
                                 <h5>Vacinas</h5>
                             </div>
                             <div class="col-sm-3">
-                                <label>1 a dose</label>
+                                <label>1ª dose</label>
                                 <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="2adose" id="2adose" placeholder="2adose">
                             </div>
                             <div class="col-sm-3">
-                                <label>2a dose</label>
+                                <label>2ª dose</label>
                                 <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="1adose" id="1adose" placeholder="1adose">
                             </div>
                             <div class="col-sm-6">
@@ -545,12 +561,6 @@
                             return '<span style="color: white; border-radius: 20px; padding: 5px; background-color: ' + color + '; font-weight: bold" class="btn-group" role="group">' + datum + ' ' + name + '</span>';
                         }
                     },
-                    /* {
-                        data: "qntLeitosDisponiveis",
-                    },
-                    {
-                        data: "qntLeitosOcupados",
-                    }, */
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
@@ -632,10 +642,16 @@
                         data: "municipio"
                     },
                     {
-                        data: "qntLeitosDisponiveis"
+                        data: "qntLeitosDisponiveisUTI"
                     },
                     {
-                        data: "qntLeitosOcupados",
+                        data: "qntLeitosOcupadosUTI",
+                    },
+                    {
+                        data: "qntLeitosDisponiveisClinico"
+                    },
+                    {
+                        data: "qntLeitosOcupadosClinico",
                     },
                     {
                         data: "idMunicipio",
@@ -644,7 +660,7 @@
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLeito(\'' + encodeURIComponent(row.idLeito) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveis) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupados) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLeito(\'' + encodeURIComponent(row.idLeito) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveisUTI) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupadosUTI) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveisClinico) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupadosClinico) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
                                 ' <a href="" class="btn btn-outline-danger" onClick="deletarLeito(' + encodeURIComponent(row.idLeito) + ');return false;">Excluir</a></div>';
                         },
                     }
@@ -960,11 +976,13 @@
             modalEdCaso(decodeURIComponent(municipio), decodeURIComponent(datax));
         }
 
-        function editarLeito(id, disponiveis, ocupados, municipio, datax, idMunicipio) {
+        function editarLeito(id, disponiveisUTI, ocupadosUTI, disponiveisClinico, ocupadosClinico, municipio, datax, idMunicipio) {
             $('#idLeito').val(decodeURIComponent(id));
             $('#idMunicipio2').val(decodeURIComponent(idMunicipio));
-            $('#disponiveis').val(decodeURIComponent(disponiveis));
-            $('#ocupados').val(decodeURIComponent(ocupados));
+            $('#disponiveisClinico').val(decodeURIComponent(disponiveisClinico));
+            $('#ocupadosClinico').val(decodeURIComponent(ocupadosClinico));
+            $('#disponiveisUTI').val(decodeURIComponent(disponiveisUTI));
+            $('#ocupadosUTI').val(decodeURIComponent(ocupadosUTI));
             $('#data-leito').val(decodeURIComponent(datax));
             modalEdLeito(decodeURIComponent(municipio), decodeURIComponent(datax));
         }
@@ -1302,8 +1320,10 @@
                     url: '../ajax/casos/getLastDadosLeitos/' + $('#municipio option:selected').val(),
                     success: function(data) {
                         dados = JSON.parse(data);
-                        $('#qntLeitosDisponiveis').val(dados[0].qntLeitosDisponiveis);
-                        $('#qntLeitosOcupados').val(dados[0].qntLeitosOcupados);
+                        $('#qntLeitosDisponiveisUTI').val(dados[0].qntLeitosDisponiveisUTI);
+                        $('#qntLeitosOcupadosUTI').val(dados[0].qntLeitosOcupadosUTI);
+                        $('#qntLeitosDisponiveisClinico').val(dados[0].qntLeitosDisponiveisClinico);
+                        $('#qntLeitosOcupadosClinico').val(dados[0].qntLeitosOcupadosClinico);
                     }
                 });
 

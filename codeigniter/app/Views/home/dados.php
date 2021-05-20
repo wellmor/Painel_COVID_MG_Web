@@ -283,8 +283,8 @@
           <div class="card card-borda-vermelho animated bounceInUp slow">
             <div class="card-body">
               <div class="row" style="padding:1px">
-                <div class="col text-left">
-                  <p class="cor4" style="font-size: 17px; margin-bottom:8px; margin-top:7px;"><b>Ocupação Leitos</b></p>
+                <div class="text-left" style="margin-left: 15px;">
+                  <p class="cor4" style="font-size: 20px; margin-bottom:5px; margin-top:7px;"><b>Ocupação de Leitos</b></p>
                   <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">
                       <?php
                       if (isset($leitos['qntLeitosDisponiveisUTI']) && isset($leitos['qntLeitosOcupadosUTI']) && $leitos['qntLeitosDisponiveisUTI'] != "" && $leitos['qntLeitosOcupadosUTI'] != "") {

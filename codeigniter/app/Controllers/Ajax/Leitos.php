@@ -11,7 +11,7 @@ class Leitos extends Controller
     public function getDados()
     {
         $model = new LeitosModel();
-        $model->select("leito.idLeito, municipio.nomeMunicipio, leito.idMunicipio, leito.qntLeitosDisponiveisUTI, leito.qntLeitosOcupadosUTI, leito.qntLeitosDisponiveisClinico, leito.qntLeitosOcupadosClinico, leito.dataLeitos");
+        $model->select("leito.idLeito, municipio.nomeMunicipio, leito.idMunicipio, leito.qntLeitosDisponiveisUTI, leito.qntLeitosOcupadosUTI, leito.qntLeitosDisponiveisClinico, leito.qntLeitosOcupadosClinico, leito.dataLeitos, leito.fonteLeitos");
         $model->join('municipio', 'municipio.idMunicipio = leito.idMunicipio');
         $model->where("idUsuario", session()->get('idUsuario'));
         $leitos = $model->findAll();
@@ -24,8 +24,9 @@ class Leitos extends Controller
             $data[$i]['qntLeitosDisponiveisUTI'] = $leito['qntLeitosDisponiveisUTI'];
             $data[$i]['qntLeitosOcupadosUTI'] = $leito['qntLeitosOcupadosUTI'];
             $data[$i]['idMunicipio'] = $leito['idMunicipio'];
-            $data[$i]['datax'] = $leito['dataLeitos'];
+            $data[$i]['dataLeitos'] = $leito['dataLeitos'];
             $data[$i]['municipio'] = $leito['nomeMunicipio'];
+            $data[$i]['fonteLeitos'] = $leito['fonteLeitos'];
             $i++;
         }
         $leitos = [
@@ -51,6 +52,9 @@ class Leitos extends Controller
             $data[$i]['qntLeitosDisponiveisUTI'] = $leito['qntLeitosDisponiveisUTI'];
             $data[$i]['qntLeitosOcupadosUTI'] = $leito['qntLeitosOcupadosUTI'];
             $data[$i]['idMunicipio'] = $leito['idMunicipio'];
+            $data[$i]['dataLeitos'] = $leito['dataLeitos'];
+            $data[$i]['municipio'] = $leito['nomeMunicipio'];
+            $data[$i]['fonteLeitos'] = $leito['fonteLeitos'];
             $i++;
         }
         echo json_encode($data);

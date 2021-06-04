@@ -188,6 +188,7 @@
                                         <th>Disponíveis Clínico</th>
                                         <th>Ocupados Clínico</th>
                                         <th>Id Município</th>
+                                        <th>Fonte</th>
                                         <th style="width: 20%">Ações</th>
                                     </tr>
                                 </thead>
@@ -231,71 +232,112 @@
                 </div>
                 <div class="modal-body">
                     <form id="formCasos" method="post">
-                        <div class="form-group row" style="background-color: #F2F2F2; padding: 15px">
+                        <div class="form-group row" style="background-color: #F2F2F2; border-radius:10px; margin: 5px; padding:5px;">
                             <input type="hidden" id="idCaso" name="idCaso">
                             <input type="hidden" id="idMunicipio" name="idMunicipio">
                             <div class="col-sm-12">
                                 <h5>Casos</h5>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-10" id="divDesativarCasos">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="desativarCasos">
+                                    <label class="form-check-label" for="desativarCasos">
+                                        Não informar
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 formCasos">
                                 <label>Confirmados</label>
-                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="confirmados" id="confirmados" placeholder="confirmados">
+                                <input type="number" min="0" class="form-control" name="confirmados" id="confirmados" placeholder="confirmados">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 formCasos">
                                 <label>Suspeitos</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="suspeitos" id="suspeitos" placeholder="suspeitos">
+                                <input type="number" min="0" class="form-control" name="suspeitos" id="suspeitos" placeholder="suspeitos">
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 formCasos">
                                 <label>Descartados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="descartados" id="descartados" placeholder="descartados">
+                                <input type="number" min="0" class="form-control" name="descartados" id="descartados" placeholder="descartados">
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 formCasos">
                                 <label>Recuperados</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
+                                <input type="number" min="0" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-2 formCasos">
                                 <label>Obitos</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="obitos" id="obitos" placeholder="obitos">
+                                <input type="number" min="0" class="form-control" name="obitos" id="obitos" placeholder="obitos">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 formCasos">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="data-caso" id="data-caso" placeholder="Data do relatório">
+                                <input type="date" class="form-control" name="data-caso" id="data-caso">
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 formCasos">
                                 <label>Fonte</label>
                                 <input type="text" class="form-control" name="fonte" id="fonte" placeholder="https://www.google.com.br/">
                             </div>
                         </div>
-                        <div class="form-group row" style="background-color: #F2F2F2; padding: 15px">
+                        <div class="form-group row" style="background-color: #F2F2F2; border-radius:10px; margin: 5px; padding:5px;" id="leitosEvacinometro">
                             <div class="col-sm-12">
                                 <h5>Leitos</h5>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="desativarLeitos" checked>
+                                    <label class="form-check-label" for="desativarLeitos">
+                                        Não informar
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 formLeitos">
                                 <label>Disponíveis UTI</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveisUTI" id="qntLeitosDisponiveisUTI" style="color: green;">
+                                <input type="number" min="0" class="form-control" name="qntLeitosDisponiveisUTI" id="qntLeitosDisponiveisUTI" style="color: green;">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 formLeitos">
                                 <label>Ocupados UTI</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupadosUTI" id="qntLeitosOcupadosUTI" style="color: red;">
+                                <input type="number" min="0" class="form-control" name="qntLeitosOcupadosUTI" id="qntLeitosOcupadosUTI" style="color: red;">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 formLeitos">
                                 <label>Disponíveis Clínico</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosDisponiveisClinico" id="qntLeitosDisponiveisClinico" style="color: green;">
+                                <input type="number" min="0" class="form-control" name="qntLeitosDisponiveisClinico" id="qntLeitosDisponiveisClinico" style="color: green;">
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-3 formLeitos">
                                 <label>Ocupados Clínico</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qntLeitosOcupadosClinico" id="qntLeitosOcupadosClinico" style="color: red;">
+                                <input type="number" min="0" class="form-control" name="qntLeitosOcupadosClinico" id="qntLeitosOcupadosClinico" style="color: red;">
                             </div>
-                            <div class="col-sm-12">
+
+                            <div class="col-sm-6 formLeitos">
+                                <label>Data</label>
+                                <input type="date" class="form-control" name="dataLeitos" id="dataLeitos" required>
+                            </div>
+                            <div class="col-sm-6 formLeitos">
+                                <label>Fonte</label>
+                                <input type="text" class="form-control" name="fonteLeitos" id="fonteLeitos" placeholder="https://www.google.com.br/">
+                            </div>
+                            <div class="col-sm-12" style="padding-top: 15px">
                                 <h5>Vacinômetro</h5>
                             </div>
-                            <div class="col-sm-6">
-                                <label>1ª Dose</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qnt1Dose" id="qnt1Dose">
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="desativarVacinometro" name="desativarVacinometro" checked>
+                                    <label class="form-check-label" for="desativarVacinometro">
+                                        Não informar
+                                    </label>
+                                </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 formVacinometro">
+                                <label>1ª Dose</label>
+                                <input type="number" min="0" class="form-control" name="qnt1Dose" id="qnt1Dose">
+                            </div>
+                            <div class="col-sm-6 formVacinometro">
                                 <label>2ª Dose</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="qnt2Dose" id="qnt2Dose">
+                                <input type="number" min="0" class="form-control" name="qnt2Dose" id="qnt2Dose">
+                            </div>
+                            <div class="col-sm-6 formVacinometro">
+                                <label>Data</label>
+                                <input type="date" class="form-control" name="data-vacinometro" id="data-vacinometro">
+                            </div>
+                            <div class="col-sm-6 formVacinometro">
+                                <label>Fonte</label>
+                                <input type="text" class="form-control" name="fonte-vacinometro" id="fonte-vacinometro" placeholder="https://www.google.com.br/">
                             </div>
                         </div>
                         <div class="modal-title text-center" id="modalCasosAELabelInfo" style="color:red"></div>
@@ -308,10 +350,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <div class="modal fade bd-example-modal-lg" id="modalLeitosAE" tabindex="-1" data-backdrop="true" role="dialog" aria-labelledby="modalLeitosAELabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -333,23 +371,27 @@
                             </div>
                             <div class="col-sm-6">
                                 <label>Disponíveis UTI</label>
-                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="disponiveisUTI" id="disponiveisUTI" placeholder="Disponíveis UTI">
+                                <input type="number" min="0" class="form-control" name="disponiveisUTI" id="disponiveisUTI" placeholder="Disponíveis UTI">
                             </div>
                             <div class="col-sm-6">
                                 <label>Ocupados UTI</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="ocupadosUTI" id="ocupadosUTI" placeholder="Ocupados UTI">
+                                <input type="number" min="0" class="form-control" name="ocupadosUTI" id="ocupadosUTI" placeholder="Ocupados UTI">
                             </div>
                             <div class="col-sm-6">
                                 <label>Disponíveis Clínico</label>
-                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="disponiveisClinico" id="disponiveisClinico" placeholder="Disponiveis Clínico">
+                                <input type="number" min="0" class="form-control" name="disponiveisClinico" id="disponiveisClinico" placeholder="Disponiveis Clínico">
                             </div>
                             <div class="col-sm-6">
                                 <label>Ocupados Clínico</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="ocupadosClinico" id="ocupadosClinico" placeholder="Ocupados Clínico">
+                                <input type="number" min="0" class="form-control" name="ocupadosClinico" id="ocupadosClinico" placeholder="Ocupados Clínico">
                             </div>
                             <div class="col-sm-12">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="data-leito" id="data-leito" placeholder="Data do relatório">
+                                <input type="date" class="form-control" name="dataLeitos2" id="dataLeitos2">
+                            </div>
+                            <div class="col-sm-12">
+                                <label>Fonte</label>
+                                <input type="text" class="form-control" name="fonteLeitos2" id="fonteLeitos2" placeholder="https://www.google.com.br/">
                             </div>
                             <div class="modal-title text-center" id="modalLeitosAELabelInfo" style="color:red"></div>
                         </div>
@@ -384,16 +426,16 @@
                                 <h5>Vacinas</h5>
                             </div>
                             <div class="col-sm-3">
-                                <label>1ª dose</label>
-                                <input type="number" value="" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="2adose" id="2adose" placeholder="2adose">
+                                <label>1ª Dose</label>
+                                <input type="number" min="0" class="form-control" name="1adose" id="1adose" placeholder="2adose">
                             </div>
                             <div class="col-sm-3">
-                                <label>2ª dose</label>
-                                <input type="number" oninput="this.value = Math.abs(this.value)" min="0" class="form-control" name="1adose" id="1adose" placeholder="1adose">
+                                <label>2ª Dose</label>
+                                <input type="number" min="0" class="form-control" name="2adose" id="2adose" placeholder="1adose">
                             </div>
                             <div class="col-sm-6">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="data-vacina" id="data-vacina" placeholder="Data do relatório">
+                                <input type="date" class="form-control" name="data-vacina" id="data-vacina">
                             </div>
                             <div class="modal-title text-center" id="modalVacinasAELabelInfo" style="color:red"></div>
                         </div>
@@ -481,6 +523,46 @@
     <script>
         //legenda cadastro e edição
         $(document).ready(function() {
+
+            $("input[id=desativarVacinometro]").prop('checked', true);
+            $("input[id=desativarLeitos]").prop('checked', true);
+
+            $(".formLeitos").hide();
+            $(".formVacinometro").hide();
+
+            $("#desativarCasos").on("click", function() {
+                if ($("#desativarCasos").is(':checked')) {
+                    $("#confirmados").val("");
+                    $("#suspeitos").val("");
+                    $("#descartados").val("");
+                    $("#recuperados").val("");
+                    $("#obitos").val("");
+                    $(".formCasos").hide();
+                } else {
+                    $(".formCasos").show();
+                }
+            });
+
+            $("#desativarLeitos").on("click", function() {
+                if ($("#desativarLeitos").is(':checked')) {
+                    $("#qntLeitosDisponiveisUTI").val("");
+                    $("#qntLeitosOcupadosUTI").val("");
+                    $("#qntLeitosDisponiveisClinico").val("");
+                    $("#qntLeitosOcupadosClinico").val("");
+                    $(".formLeitos").hide();
+                } else {
+                    $(".formLeitos").show();
+                }
+            });
+
+            $("#desativarVacinometro").on("click", function() {
+                if ($("#desativarVacinometro").is(':checked')) {
+                    $(".formVacinometro").show();
+                } else {
+                    $(".formVacinometro").hide();
+                }
+            });
+
             $('#modalLegendasAE').on('hidden.bs.modal', function(e) {
                 $('#modalLegendas').modal('show');
 
@@ -636,7 +718,7 @@
                         visible: false
                     },
                     {
-                        data: "datax",
+                        data: "dataLeitos",
                     },
                     {
                         data: "municipio"
@@ -654,13 +736,17 @@
                         data: "qntLeitosOcupadosClinico",
                     },
                     {
+                        data: "fonteLeitos",
+                        visible: false
+                    },
+                    {
                         data: "idMunicipio",
                         visible: false
                     },
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLeito(\'' + encodeURIComponent(row.idLeito) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveisUTI) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupadosUTI) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveisClinico) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupadosClinico) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarLeito(\'' + encodeURIComponent(row.idLeito) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveisUTI) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupadosUTI) + '\', \'' + encodeURIComponent(row.qntLeitosDisponiveisClinico) + '\' , \'' + encodeURIComponent(row.qntLeitosOcupadosClinico) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.dataLeitos) + '\', \'' + encodeURIComponent(row.fonteLeitos) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
                                 ' <a href="" class="btn btn-outline-danger" onClick="deletarLeito(' + encodeURIComponent(row.idLeito) + ');return false;">Excluir</a></div>';
                         },
                     }
@@ -848,14 +934,13 @@
             }
         });
 
-
         //cadastro e edição de casos
         $(document).ready(function() {
             $('#btnSalvarCaso').click(function() {
                 var dados = $('#formCasos').serializeArray();
                 console.log(dados[7].value)
-                if (dados[7].value == "") {
-                    alert("Por favor, preencha a data corretamente")
+                if (dados[7].value == "" && !$("#desativarCasos").is(':checked')) {
+                    alert("Por favor, preencha a data do caso corretamente")
                 } else {
                     $('#modalCasosAE').modal('hide');
                     $body = $("body");
@@ -898,8 +983,6 @@
             });
         });
 
-
-        //cadastro e edição de leitos
         $(document).ready(function() {
             $('#btnSalvarLeito').click(function() {
                 var dados = $('#formLeitos').serializeArray();
@@ -930,7 +1013,6 @@
             });
         });
 
-        //cadastro e edição de vacinas
         $(document).ready(function() {
             $('#btnSalvarVacina').click(function() {
                 var dados = $('#formVacinas').serializeArray();
@@ -961,7 +1043,6 @@
             });
         });
 
-
         //modal de edição
         function editarCaso(id, confirmados, suspeitos, descartados, obitos, recuperados, municipio, datax, idMunicipio, fonte) {
             $('#idCaso').val(decodeURIComponent(id));
@@ -973,18 +1054,21 @@
             $('#descartados').val(decodeURIComponent(descartados));
             $('#data-caso').val(decodeURIComponent(datax));
             $('#fonte').val(decodeURIComponent(fonte));
+            $("#leitosEvacinometro").hide();
+            $("#divDesativarCasos").show();
             modalEdCaso(decodeURIComponent(municipio), decodeURIComponent(datax));
         }
 
-        function editarLeito(id, disponiveisUTI, ocupadosUTI, disponiveisClinico, ocupadosClinico, municipio, datax, idMunicipio) {
+        function editarLeito(id, disponiveisUTI, ocupadosUTI, disponiveisClinico, ocupadosClinico, municipio, dataLeitos, fonteLeitos, idMunicipio) {
             $('#idLeito').val(decodeURIComponent(id));
             $('#idMunicipio2').val(decodeURIComponent(idMunicipio));
             $('#disponiveisClinico').val(decodeURIComponent(disponiveisClinico));
             $('#ocupadosClinico').val(decodeURIComponent(ocupadosClinico));
             $('#disponiveisUTI').val(decodeURIComponent(disponiveisUTI));
             $('#ocupadosUTI').val(decodeURIComponent(ocupadosUTI));
-            $('#data-leito').val(decodeURIComponent(datax));
-            modalEdLeito(decodeURIComponent(municipio), decodeURIComponent(datax));
+            $('#dataLeitos2').val(decodeURIComponent(dataLeitos));
+            $('#fonteLeitos2').val(decodeURIComponent(fonteLeitos));
+            modalEdLeito(decodeURIComponent(municipio), decodeURIComponent(dataLeitos));
         }
 
         function editarVacina(id, qnt1Dose, qnt2Dose, municipio, datax, idMunicipio) {
@@ -1267,7 +1351,6 @@
         }
 
         function modalEdCaso(municipio, data) {
-
             $('#modalCasosAELabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatDate(data));
             $('#modalCasosAE').modal('show')
         }
@@ -1302,6 +1385,18 @@
                         $('#recuperados').val(dados[0].recuperados);
                         $('#obitos').val(dados[0].obitos);
                         $('#fonte').val(dados[0].fonte);
+
+                        if ($("#desativarLeitos").is(':checked')) {
+                            $(".formLeitos").hide();
+                        } else {
+                            $(".formLeitos").show();
+                        }
+
+                        $("#leitosEvacinometro").show();
+                        $("#divDesativarCasos").show();
+                        $(".formCasos").show();
+                        $("input[id=desativarVacinometro]").prop('checked', true);
+                        $("input[id=desativarLeitos]").prop('checked', true);
                         $('#modalCasosAELabel').text('Cadastro do Relatório de ' + $('#municipio option:selected').text());
                         $('#modalCasosAELabelInfo').text('Todos os campos foram automaticamente preenchidos com os últimos dados, que foram cadastrados em ' + dados[0].datax + '. Faça as devidas alterações e atualize.');
                     }
@@ -1324,6 +1419,8 @@
                         $('#qntLeitosOcupadosUTI').val(dados[0].qntLeitosOcupadosUTI);
                         $('#qntLeitosDisponiveisClinico').val(dados[0].qntLeitosDisponiveisClinico);
                         $('#qntLeitosOcupadosClinico').val(dados[0].qntLeitosOcupadosClinico);
+                        $('#dataLeitos').val(dados[0].dataLeitos);
+                        $('#fonteLeitos').val(dados[0].fonteLeitos);
                     }
                 });
 

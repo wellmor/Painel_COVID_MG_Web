@@ -29,8 +29,8 @@ class Leitos extends Controller
             'qntLeitosOcupadosClinico' => $this->request->getVar('ocupadosClinico'),
             'qntLeitosDisponiveisUTI' => $this->request->getVar('disponiveisUTI'),
             'qntLeitosOcupadosUTI' => $this->request->getVar('ocupadosUTI'),
-            'dataLeitos' => $this->request->getVar('data-leito')
-
+            'fonteLeitos' => $this->request->getVar('fonteLeitos2'),
+            'dataLeitos' => $this->request->getVar('dataLeitos2')
         ]);
     }
 
@@ -46,6 +46,5 @@ class Leitos extends Controller
         $query = $model->query("Select * FROM leito c WHERE c.idMunicipio = '" . $id . "'  AND c.deleted_at = '0000-00-00' ORDER BY c.idLeito DESC LIMIT 1");
         $data = $query->getRowArray();
         return $data['idLeito'];
-    }    
-
+    }
 }

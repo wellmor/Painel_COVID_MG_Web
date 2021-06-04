@@ -24,31 +24,34 @@ class Casos extends Controller
 
     public function storeDt()
     {
-        $model = new CasosModel();
-        $model->save([
-            'idCaso' => $this->request->getVar('idCaso'),
-            'idMunicipio' => $this->request->getVar('idMunicipio'),
-            'confirmadosCaso' => $this->request->getVar('confirmados'),
-            'suspeitosCaso' => $this->request->getVar('suspeitos'),
-            'descartadosCaso' => $this->request->getVar('descartados'),
-            'obitosCaso' => $this->request->getVar('obitos'),
-            'recuperadosCaso' => $this->request->getVar('recuperados'),
-            'idUsuario' => session()->get('idUsuario'),
-            'dataCaso' => $this->request->getVar('data-caso'),
-            'fonteCaso' => $this->request->getVar('fonte'),
-            'auto' => 0
-        ]);
+        if (!empty($this->request->getVar('confirmadosCaso')) && !empty($this->request->getVar('data-caso'))) {
+            $model = new CasosModel();
+            $model->save([
+                'idCaso' => $this->request->getVar('idCaso'),
+                'idMunicipio' => $this->request->getVar('idMunicipio'),
+                'confirmadosCaso' => $this->request->getVar('confirmados'),
+                'suspeitosCaso' => $this->request->getVar('suspeitos'),
+                'descartadosCaso' => $this->request->getVar('descartados'),
+                'obitosCaso' => $this->request->getVar('obitos'),
+                'recuperadosCaso' => $this->request->getVar('recuperados'),
+                'idUsuario' => session()->get('idUsuario'),
+                'dataCaso' => $this->request->getVar('data-caso'),
+                'fonteCaso' => $this->request->getVar('fonte'),
+                'auto' => 0
+            ]);
+        }
 
-        if (!empty($this->request->getVar('qntLeitosDisponiveisUTI')) && !empty($this->request->getVar('qntLeitosOcupadosUTI')) && !empty($this->request->getVar('qntLeitosDisponiveisClinico')) && !empty($this->request->getVar('qntLeitosOcupadosClinico'))) {
+        if (((!empty($this->request->getVar('qntLeitosDisponiveisUTI')) && !empty($this->request->getVar('qntLeitosOcupadosUTI'))) || (!empty($this->request->getVar('qntLeitosDisponiveisClinico')) && !empty($this->request->getVar('qntLeitosOcupadosClinico')))) && !empty($this->request->getVar('dataLeitos'))) {
             $model = new LeitosModel();
             $model->save([
                 'idUsuario' => session()->get('idUsuario'),
                 'idMunicipio' => $this->request->getVar('idMunicipio'),
-                'dataLeitos' => $this->request->getVar('data-caso'),
+                'dataLeitos' => $this->request->getVar('dataLeitos'),
                 'qntLeitosDisponiveisClinico' => $this->request->getVar('qntLeitosDisponiveisClinico'),
                 'qntLeitosOcupadosClinico' => $this->request->getVar('qntLeitosOcupadosClinico'),
                 'qntLeitosDisponiveisUTI' => $this->request->getVar('qntLeitosDisponiveisUTI'),
-                'qntLeitosOcupadosUTI' => $this->request->getVar('qntLeitosOcupadosUTI')
+                'qntLeitosOcupadosUTI' => $this->request->getVar('qntLeitosOcupadosUTI'),
+                'fonteLeitos' => $this->request->getVar('fonteLeitos')
             ]);
         }
 

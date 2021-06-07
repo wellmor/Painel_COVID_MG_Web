@@ -183,9 +183,9 @@
                                         <th>Id</th>
                                         <th>Data</th>
                                         <th>Munícipio</th>
-                                        <th>Disponíveis UTI</th>
+                                        <th>Totais UTI</th>
                                         <th>Ocupados UTI</th>
-                                        <th>Disponíveis Clínico</th>
+                                        <th>Totais Clínico</th>
                                         <th>Ocupados Clínico</th>
                                         <th>Id Município</th>
                                         <th>Fonte</th>
@@ -288,7 +288,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-3 formLeitos">
-                                <label>Disponíveis UTI</label>
+                                <label>Totais UTI</label>
                                 <input type="number" min="0" class="form-control" name="qntLeitosDisponiveisUTI" id="qntLeitosDisponiveisUTI" style="color: green;">
                             </div>
                             <div class="col-sm-3 formLeitos">
@@ -296,7 +296,7 @@
                                 <input type="number" min="0" class="form-control" name="qntLeitosOcupadosUTI" id="qntLeitosOcupadosUTI" style="color: red;">
                             </div>
                             <div class="col-sm-3 formLeitos">
-                                <label>Disponíveis Clínico</label>
+                                <label>Totais Clínico</label>
                                 <input type="number" min="0" class="form-control" name="qntLeitosDisponiveisClinico" id="qntLeitosDisponiveisClinico" style="color: green;">
                             </div>
                             <div class="col-sm-3 formLeitos">
@@ -370,15 +370,15 @@
                                 <h5>Leitos</h5>
                             </div>
                             <div class="col-sm-6">
-                                <label>Disponíveis UTI</label>
-                                <input type="number" min="0" class="form-control" name="disponiveisUTI" id="disponiveisUTI" placeholder="Disponíveis UTI">
+                                <label>Totais UTI</label>
+                                <input type="number" min="0" class="form-control" name="disponiveisUTI" id="disponiveisUTI" placeholder="Totais UTI">
                             </div>
                             <div class="col-sm-6">
                                 <label>Ocupados UTI</label>
                                 <input type="number" min="0" class="form-control" name="ocupadosUTI" id="ocupadosUTI" placeholder="Ocupados UTI">
                             </div>
                             <div class="col-sm-6">
-                                <label>Disponíveis Clínico</label>
+                                <label>Totais Clínico</label>
                                 <input type="number" min="0" class="form-control" name="disponiveisClinico" id="disponiveisClinico" placeholder="Disponiveis Clínico">
                             </div>
                             <div class="col-sm-6">
@@ -523,9 +523,6 @@
     <script>
         //legenda cadastro e edição
         $(document).ready(function() {
-
-            $("input[id=desativarVacinometro]").prop('checked', true);
-            $("input[id=desativarLeitos]").prop('checked', true);
 
             $(".formLeitos").hide();
             $(".formVacinometro").hide();
@@ -885,7 +882,6 @@
                 .val('')
                 .end()
                 .find("input[type=checkbox], input[type=radio]")
-                .prop("checked", "")
                 .end();
         });
 
@@ -895,7 +891,6 @@
                 .val('')
                 .end()
                 .find("input[type=checkbox], input[type=radio]")
-                .prop("checked", "")
                 .end();
         });
 
@@ -905,7 +900,6 @@
                 .val('')
                 .end()
                 .find("input[type=checkbox], input[type=radio]")
-                .prop("checked", "")
                 .end();
         });
 
@@ -915,7 +909,6 @@
                 .val('')
                 .end()
                 .find("input[type=checkbox], input[type=radio]")
-                .prop("checked", "")
                 .end();
         });
 
@@ -1385,6 +1378,8 @@
                         $('#recuperados').val(dados[0].recuperados);
                         $('#obitos').val(dados[0].obitos);
                         $('#fonte').val(dados[0].fonte);
+                        $("input[id=desativarVacinometro]").prop('checked', true);
+                        $("input[id=desativarLeitos]").prop('checked', true);
 
                         if ($("#desativarLeitos").is(':checked')) {
                             $(".formLeitos").hide();
@@ -1395,8 +1390,7 @@
                         $("#leitosEvacinometro").show();
                         $("#divDesativarCasos").show();
                         $(".formCasos").show();
-                        $("input[id=desativarVacinometro]").prop('checked', true);
-                        $("input[id=desativarLeitos]").prop('checked', true);
+
                         $('#modalCasosAELabel').text('Cadastro do Relatório de ' + $('#municipio option:selected').text());
                         $('#modalCasosAELabelInfo').text('Todos os campos foram automaticamente preenchidos com os últimos dados, que foram cadastrados em ' + dados[0].datax + '. Faça as devidas alterações e atualize.');
                     }

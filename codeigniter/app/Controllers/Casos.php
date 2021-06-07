@@ -24,7 +24,7 @@ class Casos extends Controller
 
     public function storeDt()
     {
-        if (!empty($this->request->getVar('confirmadosCaso')) && !empty($this->request->getVar('data-caso'))) {
+        if (!empty($this->request->getVar('confirmados')) && !empty($this->request->getVar('data-caso'))) {
             $model = new CasosModel();
             $model->save([
                 'idCaso' => $this->request->getVar('idCaso'),

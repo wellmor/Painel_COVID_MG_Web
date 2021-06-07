@@ -333,11 +333,11 @@
                             </div>
                             <div class="col-sm-6 formVacinometro">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="data-vacinometro" id="data-vacinometro">
+                                <input type="date" class="form-control" name="dataVacinometro" id="dataVacinometro">
                             </div>
                             <div class="col-sm-6 formVacinometro">
                                 <label>Fonte</label>
-                                <input type="text" class="form-control" name="fonte-vacinometro" id="fonte-vacinometro" placeholder="https://www.google.com.br/">
+                                <input type="text" class="form-control" name="fonteVacinometro" id="fonteVacinometro" placeholder="https://www.google.com.br/">
                             </div>
                         </div>
                         <div class="modal-title text-center" id="modalCasosAELabelInfo" style="color:red"></div>
@@ -425,17 +425,21 @@
                             <div class="col-sm-12">
                                 <h5>Vacinas</h5>
                             </div>
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <label>1ª Dose</label>
-                                <input type="number" min="0" class="form-control" name="1adose" id="1adose" placeholder="2adose">
-                            </div>
-                            <div class="col-sm-3">
-                                <label>2ª Dose</label>
-                                <input type="number" min="0" class="form-control" name="2adose" id="2adose" placeholder="1adose">
+                                <input type="number" min="0" class="form-control" name="1adose" id="1adose">
                             </div>
                             <div class="col-sm-6">
+                                <label>2ª Dose</label>
+                                <input type="number" min="0" class="form-control" name="2adose" id="2adose">
+                            </div>
+                            <div class="col-sm-12">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="data-vacina" id="data-vacina">
+                                <input type="date" class="form-control" name="dataVacinometro2" id="dataVacinometro2">
+                            </div>
+                            <div class="col-sm-12">
+                                <label>Fonte</label>
+                                <input type="text" class="form-control" name="fonteVacinometro2" id="fonteVacinometro2" placeholder="https://www.google.com.br/">
                             </div>
                             <div class="modal-title text-center" id="modalVacinasAELabelInfo" style="color:red"></div>
                         </div>
@@ -521,7 +525,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
     <script>
-        //legenda cadastro e edição
         $(document).ready(function() {
 
             $(".formLeitos").hide();
@@ -554,9 +557,11 @@
 
             $("#desativarVacinometro").on("click", function() {
                 if ($("#desativarVacinometro").is(':checked')) {
-                    $(".formVacinometro").show();
-                } else {
+                    $("#qnt1Dose").val("");
+                    $("#qnt2Dose").val("");
                     $(".formVacinometro").hide();
+                } else {
+                    $(".formVacinometro").show();
                 }
             });
 
@@ -782,7 +787,7 @@
                         visible: false
                     },
                     {
-                        data: "datax",
+                        data: "dataVacinometro",
                     },
                     {
                         data: "municipio"
@@ -800,7 +805,7 @@
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarVacina(\'' + encodeURIComponent(row.idVacinometro) + '\', \'' + encodeURIComponent(row.qnt1Dose) + '\' , \'' + encodeURIComponent(row.qnt2Dose) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.datax) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\');return false;">Editar</a>' +
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarVacina(\'' + encodeURIComponent(row.idVacinometro) + '\', \'' + encodeURIComponent(row.qnt1Dose) + '\' , \'' + encodeURIComponent(row.qnt2Dose) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.dataVacinometro) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\', \'' + encodeURIComponent(row.fonteVacinometro) + '\');return false;">Editar</a>' +
                                 ' <a href="" class="btn btn-outline-danger" onClick="deletarVacina(' + encodeURIComponent(row.idVacinometro) + ');return false;">Excluir</a></div>';
                         },
                     }
@@ -1064,13 +1069,14 @@
             modalEdLeito(decodeURIComponent(municipio), decodeURIComponent(dataLeitos));
         }
 
-        function editarVacina(id, qnt1Dose, qnt2Dose, municipio, datax, idMunicipio) {
+        function editarVacina(id, qnt1Dose, qnt2Dose, municipio, dataVacinometro, idMunicipio, fonteVacinometro) {
             $('#idVacina').val(decodeURIComponent(id));
             $('#idMunicipio3').val(decodeURIComponent(idMunicipio));
             $('#1adose').val(decodeURIComponent(qnt1Dose));
             $('#2adose').val(decodeURIComponent(qnt2Dose));
-            $('#data-vacina').val(decodeURIComponent(datax));
-            modalEdVacina(decodeURIComponent(municipio), decodeURIComponent(datax));
+            $('#dataVacinometro2').val(decodeURIComponent(dataVacinometro));
+            $('#fonteVacinometro2').val(decodeURIComponent(fonteVacinometro));
+            modalEdVacina(decodeURIComponent(municipio), decodeURIComponent(dataVacinometro));
         }
 
         function editarLegenda(id, conteudo, municipio, idMunicipio) {
@@ -1344,6 +1350,7 @@
         }
 
         function modalEdCaso(municipio, data) {
+            $("#divDesativarCasos").hide();
             $('#modalCasosAELabel').text('Editar relatório de casos de ' + municipio + ' - ' + formatDate(data));
             $('#modalCasosAE').modal('show')
         }

@@ -11,7 +11,7 @@ class Vacinas extends Controller
     public function getDados()
     {
         $model = new VacinometroModel();
-        $model->select("municipio.nomeMunicipio, vacinometro.idVacinometro, vacinometro.idMunicipio, vacinometro.dataVacinometro, vacinometro.qnt1Dose, vacinometro.qnt2Dose");
+        $model->select("municipio.nomeMunicipio, vacinometro.idVacinometro, vacinometro.idMunicipio, vacinometro.dataVacinometro, vacinometro.qnt1Dose, vacinometro.qnt2Dose, vacinometro.fonteVacinometro");
         $model->join('municipio', 'municipio.idMunicipio = vacinometro.idMunicipio');
         $model->where("idUsuario", session()->get('idUsuario'));
         $vacinometros = $model->findAll();
@@ -22,9 +22,9 @@ class Vacinas extends Controller
             $data[$i]['qnt1Dose'] = $vacinometro['qnt1Dose'];
             $data[$i]['qnt2Dose'] = $vacinometro['qnt2Dose'];
             $data[$i]['idMunicipio'] = $vacinometro['idMunicipio'];
-            $data[$i]['datax'] = $vacinometro['dataVacinometro'];
+            $data[$i]['dataVacinometro'] = $vacinometro['dataVacinometro'];
+            $data[$i]['fonteVacinometro'] = $vacinometro['fonteVacinometro'];
             $data[$i]['municipio'] = $vacinometro['nomeMunicipio'];
-
             $i++;
         }
         $vacinometros = [
@@ -33,6 +33,4 @@ class Vacinas extends Controller
 
         echo json_encode($vacinometros);
     }
-
-
 }

@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\VacinometroModel;
 use CodeIgniter\Controller;
-use App\Models\MunicipiosModel;
 
 class Vacinas extends Controller
 {
@@ -18,7 +17,8 @@ class Vacinas extends Controller
             'idMunicipio' => $this->request->getVar('idMunicipio3'),
             'qnt1Dose' => $this->request->getVar('1adose'),
             'qnt2Dose' => $this->request->getVar('2adose'),
-            'dataVacinometro' => $this->request->getVar('data-vacina')
+            'fonteVacinometro' => $this->request->getVar('fonteVacinometro2'),
+            'dataVacinometro' => $this->request->getVar('dataVacinometro2')
         ]);
     }
 
@@ -27,6 +27,4 @@ class Vacinas extends Controller
         $model = new VacinometroModel();
         $model->delete($id);
     }
-
-    
 }

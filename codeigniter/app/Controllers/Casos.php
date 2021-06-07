@@ -55,12 +55,13 @@ class Casos extends Controller
             ]);
         }
 
-        if (!empty($this->request->getVar('qnt1Dose')) && !empty($this->request->getVar('qnt2Dose'))) {
+        if (!empty($this->request->getVar('qnt1Dose')) && !empty($this->request->getVar('qnt2Dose')) && !empty($this->request->getVar('dataVacinometro'))) {
             $model = new VacinometroModel();
             $model->save([
                 'idUsuario' => session()->get('idUsuario'),
                 'idMunicipio' => $this->request->getVar('idMunicipio'),
-                'dataVacinometro' => $this->request->getVar('data-caso'),
+                'dataVacinometro' => $this->request->getVar('dataVacinometro'),
+                'fonteVacinometro' => $this->request->getVar('fonteVacinometro'),
                 'qnt1Dose' => $this->request->getVar('qnt1Dose'),
                 'qnt2Dose' => $this->request->getVar('qnt2Dose')
             ]);

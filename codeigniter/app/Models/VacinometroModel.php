@@ -8,7 +8,7 @@ class VacinometroModel extends Model
 {
     protected $table = "vacinometro";
     protected $primaryKey = "idVacinometro";
-    protected $allowedFields = ['idVacinometro', 'idMunicipio', 'dataVacinometro', 'idUsuario', 'qnt1Dose', 'qnt2Dose'];
+    protected $allowedFields = ['idVacinometro', 'idMunicipio', 'dataVacinometro', 'fonteVacinometro', 'idUsuario', 'qnt1Dose', 'qnt2Dose'];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 

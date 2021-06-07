@@ -251,25 +251,29 @@
             <div class="card-body">
               <div class="row" style="padding:1px">
                 <div class="col text-left">
-                  <p class="cor1" style="font-size: 20px; margin-bottom:5px; margin-top:5px;"><b>Vacinômetro</b></p>
-                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">
-                      <?php
-                      if (isset($vacinometro['qnt1Dose']) && $vacinometro['qnt1Dose'] != "") {
-                        echo number_format($vacinometro['qnt1Dose']);
-                      } else {
-                        echo '-';
-                      }
-                      ?>
-                    </b> 1ª Dose</p>
-                  <p style="font-size: 16px; margin-bottom:5px; margin-top:5px;"><b class="cor1" style="font-size: 19px;">
-                      <?php
-                      if (isset($vacinometro['qnt2Dose']) && $vacinometro['qnt2Dose'] != "") {
-                        echo number_format($vacinometro['qnt2Dose']);
-                      } else {
-                        echo '-';
-                      }
-                      ?>
-                    </b> 2ª Dose</p>
+                  <p class="cor1" style="font-size: 20px; margin-bottom:9px; margin-top:9px;">
+                    <b>Vacinômetro</b>
+                  </p>
+                  1ª Dose
+                  <b class="cor1" style="font-size: 16px;">
+                    <?php
+                    if (isset($vacinometro['qnt1Dose']) && $vacinometro['qnt1Dose'] != "") {
+                      echo number_format($vacinometro['qnt1Dose']);
+                    } else {
+                      echo '-';
+                    }
+                    ?>
+                  </b><br>
+                  2ª Dose
+                  <b class="cor1" style="font-size: 16px;">
+                    <?php
+                    if (isset($vacinometro['qnt2Dose']) && $vacinometro['qnt2Dose'] != "") {
+                      echo number_format($vacinometro['qnt2Dose']);
+                    } else {
+                      echo '-';
+                    }
+                    ?>
+                  </b>
                 </div>
                 <div class="col text-right">
                   <img class="img" src="/assets/images/vacinometro.png" width="70px" height="70px" style="padding:5px;">
@@ -284,8 +288,11 @@
             <div class="card-body">
               <div class="row" style="padding:1px">
                 <div class="text-left" style="margin-left: 15px;">
-                  <p class="cor4" style="font-size: 20px; margin-bottom:5px; margin-top:7px;"><b>Ocupação de Leitos</b></p>
-                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">
+                  <p class="cor4" style="font-size: 20px; margin-bottom:5px; margin-top:5px;">
+                    <b>Ocupação de Leitos</b>
+                  </p>
+                  <p style="font-size: 15px; margin-bottom:0px; margin-top:0px;">
+                    <b class="cor4" style="font-size: 19px;">
                       <?php
                       if (isset($leitos['qntLeitosDisponiveisUTI']) && isset($leitos['qntLeitosOcupadosUTI']) && $leitos['qntLeitosDisponiveisUTI'] != "" && $leitos['qntLeitosOcupadosUTI'] != "") {
                         echo number_format(($leitos['qntLeitosOcupadosUTI'] / $leitos['qntLeitosDisponiveisUTI']) * 100) . "%";
@@ -293,8 +300,9 @@
                         echo '-';
                       }
                       ?>
-                    </b> UTI</p>
-                  <p style="font-size: 15px; margin-bottom:5px; margin-top:5px;"><b class="cor4" style="font-size: 19px;">
+                    </b> UTI
+                  </p>
+                  <p style="font-size: 15px; margin-bottom:0px; margin-top:0px;"><b class="cor4" style="font-size: 19px;">
                       <?php
                       if (isset($leitos['qntLeitosDisponiveisClinico']) && isset($leitos['qntLeitosOcupadosClinico']) && $leitos['qntLeitosDisponiveisClinico'] != "" && $leitos['qntLeitosOcupadosClinico'] != "") {
                         echo number_format(($leitos['qntLeitosOcupadosClinico'] / $leitos['qntLeitosDisponiveisClinico']) * 100) . "%";
@@ -314,7 +322,7 @@
 
         <div class="col-md-4">
           <div class="card card-borda-verde animated bounceInUp slow">
-            <div class="card-body" style="margin: 5px;">
+            <div class="card-body" style="margin: 2px;">
               <div class="row" style="padding:1px">
                 <div class="col-md-6 text-center">
                   <p class="subtext" style="margin-bottom:30px">Pelo <b>navegador</b></p>

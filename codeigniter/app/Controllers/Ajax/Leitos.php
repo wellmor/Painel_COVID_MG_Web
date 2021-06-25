@@ -13,7 +13,8 @@ class Leitos extends Controller
         $model = new LeitosModel();
         $model->select("leito.idLeito, municipio.nomeMunicipio, leito.idMunicipio, leito.qntLeitosDisponiveisUTI, leito.qntLeitosOcupadosUTI, leito.qntLeitosDisponiveisClinico, leito.qntLeitosOcupadosClinico, leito.dataLeitos, leito.fonteLeitos");
         $model->join('municipio', 'municipio.idMunicipio = leito.idMunicipio');
-        $model->where("idUsuario", session()->get('idUsuario'));
+        $model->join('usuario_municipio', 'usuario_municipio.idMunicipio = municipio.idMunicipio');
+        $model->where("usuario_municipio.idUsuario", session()->get('idUsuario'));
         $leitos = $model->findAll();
         $i = 0;
         $data = array();

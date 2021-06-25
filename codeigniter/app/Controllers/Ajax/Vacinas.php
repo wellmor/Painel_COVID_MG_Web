@@ -13,7 +13,8 @@ class Vacinas extends Controller
         $model = new VacinometroModel();
         $model->select("municipio.nomeMunicipio, vacinometro.idVacinometro, vacinometro.idMunicipio, vacinometro.dataVacinometro, vacinometro.qnt1Dose, vacinometro.qnt2Dose, vacinometro.fonteVacinometro");
         $model->join('municipio', 'municipio.idMunicipio = vacinometro.idMunicipio');
-        $model->where("idUsuario", session()->get('idUsuario'));
+        $model->join('usuario_municipio', 'usuario_municipio.idMunicipio = municipio.idMunicipio');
+        $model->where("usuario_municipio.idUsuario", session()->get('idUsuario'));
         $vacinometros = $model->findAll();
         $i = 0;
         $data = array();

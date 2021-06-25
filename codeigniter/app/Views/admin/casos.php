@@ -268,7 +268,7 @@
                             </div>
                             <div class="col-sm-6 formCasos">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="data-caso" id="data-caso">
+                                <input type="date" class="form-control" name="data-caso" id="data-caso" style="background-color:#ff6a6a; color: #000">
                             </div>
                             <div class="col-sm-6 formCasos">
                                 <label>Fonte</label>
@@ -306,7 +306,7 @@
 
                             <div class="col-sm-6 formLeitos">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="dataLeitos" id="dataLeitos" required>
+                                <input type="date" class="form-control" name="dataLeitos" id="dataLeitos" style="background-color:#ff6a6a; color: #000">
                             </div>
                             <div class="col-sm-6 formLeitos">
                                 <label>Fonte</label>
@@ -333,7 +333,7 @@
                             </div>
                             <div class="col-sm-6 formVacinometro">
                                 <label>Data</label>
-                                <input type="date" class="form-control" name="dataVacinometro" id="dataVacinometro">
+                                <input type="date" class="form-control" name="dataVacinometro" id="dataVacinometro" style="background-color:#ff6a6a; color: #000">
                             </div>
                             <div class="col-sm-6 formVacinometro">
                                 <label>Fonte</label>
@@ -984,60 +984,52 @@
         $(document).ready(function() {
             $('#btnSalvarLeito').click(function() {
                 var dados = $('#formLeitos').serializeArray();
-                if (dados[4].value == "") {
-                    alert("Por favor, preencha a data corretamente")
-                } else {
-                    $('#modalLeitosAE').modal('hide');
-                    $body = $("body");
-                    $body.addClass("loading");
-                    $.ajax({
-                        type: "POST",
-                        url: "/leitos/storeDt",
-                        data: dados,
-                        success: function(result) {
-                            $('#formLeitos').trigger("reset");
-                            tableLeitos.ajax.reload();
-                            $('#id').val("");
-                            $body.removeClass("loading");
-                            toast("Informações de leitos salvas com sucesso!", "success");
-                        },
-                        error: function() {
-                            $body.removeClass("loading");
-                            toast("Erro ao salvar relatório!", "error");
-                        }
-                    });
-                    return false;
-                }
+                $('#modalLeitosAE').modal('hide');
+                $body = $("body");
+                $body.addClass("loading");
+                $.ajax({
+                    type: "POST",
+                    url: "/leitos/storeDt",
+                    data: dados,
+                    success: function(result) {
+                        $('#formLeitos').trigger("reset");
+                        tableLeitos.ajax.reload();
+                        $('#id').val("");
+                        $body.removeClass("loading");
+                        toast("Informações de leitos salvas com sucesso!", "success");
+                    },
+                    error: function() {
+                        $body.removeClass("loading");
+                        toast("Erro ao salvar relatório!", "error");
+                    }
+                });
+                return false;
             });
         });
 
         $(document).ready(function() {
             $('#btnSalvarVacina').click(function() {
                 var dados = $('#formVacinas').serializeArray();
-                if (dados[4].value == "") {
-                    alert("Por favor, preencha a data corretamente")
-                } else {
-                    $('#modalVacinasAE').modal('hide');
-                    $body = $("body");
-                    $body.addClass("loading");
-                    $.ajax({
-                        type: "POST",
-                        url: "/vacinas/storeDt",
-                        data: dados,
-                        success: function(result) {
-                            $('#formVacinas').trigger("reset");
-                            tableVacinas.ajax.reload();
-                            $('#id').val("");
-                            $body.removeClass("loading");
-                            toast("Informações de vacinas salvas com sucesso!", "success");
-                        },
-                        error: function() {
-                            $body.removeClass("loading");
-                            toast("Erro ao salvar relatório!", "error");
-                        }
-                    });
-                    return false;
-                }
+                $('#modalVacinasAE').modal('hide');
+                $body = $("body");
+                $body.addClass("loading");
+                $.ajax({
+                    type: "POST",
+                    url: "/vacinas/storeDt",
+                    data: dados,
+                    success: function(result) {
+                        $('#formVacinas').trigger("reset");
+                        tableVacinas.ajax.reload();
+                        $('#id').val("");
+                        $body.removeClass("loading");
+                        toast("Informações de vacinas salvas com sucesso!", "success");
+                    },
+                    error: function() {
+                        $body.removeClass("loading");
+                        toast("Erro ao salvar relatório!", "error");
+                    }
+                });
+                return false;
             });
         });
 

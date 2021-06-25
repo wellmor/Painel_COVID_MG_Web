@@ -41,7 +41,7 @@ class Casos extends Controller
             ]);
         }
 
-        if (((!empty($this->request->getVar('qntLeitosDisponiveisUTI')) && !empty($this->request->getVar('qntLeitosOcupadosUTI'))) || (!empty($this->request->getVar('qntLeitosDisponiveisClinico')) && !empty($this->request->getVar('qntLeitosOcupadosClinico')))) && !empty($this->request->getVar('dataLeitos'))) {
+        if ((!empty($this->request->getVar('qntLeitosDisponiveisUTI')) || !empty($this->request->getVar('qntLeitosDisponiveisClinico'))) && !empty($this->request->getVar('dataLeitos'))) {
             $model = new LeitosModel();
             $model->save([
                 'idUsuario' => session()->get('idUsuario'),

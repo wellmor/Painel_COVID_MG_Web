@@ -172,7 +172,7 @@
                     <?php
                     if (isset($casos['confirmadosCaso'])) {
                       if ($casos['confirmadosCaso'] != "") {
-                        echo number_format($casos['confirmadosCaso']);
+                        echo number_format($casos['confirmadosCaso'], '0', '', '.');
                       } else {
                         echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
@@ -199,7 +199,7 @@
                     <?php
                     if (isset($casos['obitosCaso'])) {
                       if ($casos['obitosCaso'] != "") {
-                        echo number_format($casos['obitosCaso']);
+                        echo number_format($casos['obitosCaso'], '0', '', '.');
                       } else {
                         echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }
@@ -227,7 +227,7 @@
                     <?php
                     if (isset($casos['recuperadosCaso'])) {
                       if ($casos['recuperadosCaso'] != "") {
-                        echo number_format($casos['recuperadosCaso']);
+                        echo number_format($casos['recuperadosCaso'], '0', '', '.');
                       } else {
                         echo '<div style="font-size: 18px; margin-bottom:10px; margin-top:10px;">Não informado</div>';
                       }

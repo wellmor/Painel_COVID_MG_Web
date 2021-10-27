@@ -8,7 +8,7 @@ class MunicipiosModel extends Model
 {
     protected $table = "municipio";
     protected $primaryKey = "idMunicipio";
-    protected $allowedFields = ['idMunicipio', 'nomeMunicipio', 'facebookMunicipio'];
+    protected $allowedFields = ['idMunicipio', 'nomeMunicipio','populacaoMunicipio','facebookMunicipio'];
     protected $useTimestamps = true;
     protected $useSoftDeletes = true;
 

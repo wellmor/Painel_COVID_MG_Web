@@ -3,6 +3,7 @@
 namespace App\Controllers\Ajax;
 
 use App\Models\CasosModel;
+use App\Models\VacinometroModel;
 use CodeIgniter\Controller;
 
 
@@ -79,4 +80,28 @@ class Graficos extends Controller
         }
         echo json_encode($data);
     }
+
+    public function getDadosVacinometro($id = null){
+        $model = new VacinometroModel();
+        $model -> select("*");
+        $model -> join('municipio', 'municipio.idMunicipio = vacinometro.idMunicipio');
+        $model -> where("vacinometro.idMunicipio", $id);
+        $model -> orderBy('vacinometro.dataVacinometro', 'DESC');
+        //$query = $model->query("SELECT v.idVacinometro as id,v.dataVacinometro as dat,v.qnt1Dose as d1, v.qnt2Dose as d2, v.qnt3Dose as d3, v.fonteVacinometro as fonte,m.nomeMunicipio as nome, m.populacaoMunicipio as populacao FROM vacinometro v, municipio m WHERE m.idMunicipio = v.idMunicipio AND v.idMunicipio = " . $id . " AND v.deleted_at = '0000-00-00 00:00:00' ORDER BY dataVacinometro DESC");
+        $vacinometros = $model->findAll(1);
+        $i = 0;
+        $data = array();
+        foreach($vacinometros as $vacinometro){
+            $data[$i]['qnt1Dose'] = $vacinometro['qnt1Dose'];
+            $data[$i]['qnt2Dose'] = $vacinometro['qnt2Dose'];
+            $data[$i]['qnt3Dose'] = $vacinometro['qnt3Dose'];
+            $data[$i]['dataVacinometro'] = $vacinometro['dataVacinometro'];
+            $data[$i]['fonteVacinometro'] = $vacinometro['fonteVacinometro'];
+            $data[$i]['populacaoMunicipio'] = $vacinometro['populacaoMunicipio'];
+            $i++;
+    }
+    echo json_encode($data);
 }
+    //public function getDados
+}
+

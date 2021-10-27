@@ -17,6 +17,7 @@ class Vacinas extends Controller
             'idMunicipio' => $this->request->getVar('idMunicipio3'),
             'qnt1Dose' => $this->request->getVar('1adose'),
             'qnt2Dose' => $this->request->getVar('2adose'),
+            'qnt3Dose' => $this->request->getVar('3adose'),
             'fonteVacinometro' => $this->request->getVar('fonteVacinometro2'),
             'dataVacinometro' => $this->request->getVar('dataVacinometro2')
         ]);

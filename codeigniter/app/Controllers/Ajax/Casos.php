@@ -47,7 +47,7 @@ class Casos extends Controller
         $model = new CasosModel();
         $model->select("caso.dataCaso, caso.fonteCaso, caso.idCaso, caso.idMunicipio, caso.confirmadosCaso, caso.suspeitosCaso, caso.obitosCaso, caso.descartadosCaso, caso.recuperadosCaso, municipio.nomeMunicipio");
         $model->join('municipio', 'municipio.idMunicipio = caso.idMunicipio');
-        $model->where("idUsuario", session()->get('idUsuario'));
+        //$model->where("idUsuario", session()->get('idUsuario'));
         $model->where("caso.idMunicipio", $idMunicipio);
         $model->where("auto", 0);
         $model->orderBy('caso.dataCaso', 'DESC');
@@ -107,6 +107,7 @@ class Casos extends Controller
         foreach ($vacinometros as $vacinometro) {
             $data[$i]['qnt1Dose'] = $vacinometro['qnt1Dose'];
             $data[$i]['qnt2Dose'] = $vacinometro['qnt2Dose'];
+            $data[$i]['qnt3Dose'] = $vacinometro['qnt3Dose'];
             $i++;
         }
 

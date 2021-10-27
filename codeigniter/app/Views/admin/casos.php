@@ -206,6 +206,7 @@
                                         <th>Munícipio</th>
                                         <th>1 Dose</th>
                                         <th>2 Dose</th>
+                                        <th>3 Dose</th>
                                         <th>Id Município</th>
                                         <th style="width: 20%">Ações</th>
                                     </tr>
@@ -254,11 +255,11 @@
                                 <label>Suspeitos</label>
                                 <input type="number" min="0" class="form-control" name="suspeitos" id="suspeitos" placeholder="suspeitos">
                             </div>
-                            <div class="col-sm-2 formCasos">
+                            <div class="col-sm-3 formCasos">
                                 <label>Descartados</label>
                                 <input type="number" min="0" class="form-control" name="descartados" id="descartados" placeholder="descartados">
                             </div>
-                            <div class="col-sm-2 formCasos">
+                            <div class="col-sm-3 formCasos">
                                 <label>Recuperados</label>
                                 <input type="number" min="0" class="form-control" name="recuperados" id="recuperados" placeholder="recuperados">
                             </div>
@@ -330,6 +331,10 @@
                             <div class="col-sm-6 formVacinometro">
                                 <label>2ª Dose</label>
                                 <input type="number" min="0" class="form-control" name="qnt2Dose" id="qnt2Dose">
+                            </div>
+                            <div class="col-sm-6 formVacinometro">
+                                <label>3ª Dose</label>
+                                <input type="number" min="0" class="form-control" name="qnt3Dose" id="qnt3Dose">
                             </div>
                             <div class="col-sm-6 formVacinometro">
                                 <label>Data</label>
@@ -432,6 +437,10 @@
                             <div class="col-sm-6">
                                 <label>2ª Dose</label>
                                 <input type="number" min="0" class="form-control" name="2adose" id="2adose">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>3ª Dose</label>
+                                <input type="number" min="0" class="form-control" name="3adose" id="3adose">
                             </div>
                             <div class="col-sm-12">
                                 <label>Data</label>
@@ -559,6 +568,7 @@
                 if ($("#desativarVacinometro").is(':checked')) {
                     $("#qnt1Dose").val("");
                     $("#qnt2Dose").val("");
+                    $("#qnt3Dose").val("");
                     $(".formVacinometro").hide();
                 } else {
                     $(".formVacinometro").show();
@@ -796,7 +806,10 @@
                         data: "qnt1Dose"
                     },
                     {
-                        data: "qnt2Dose",
+                        data: "qnt2Dose"
+                    },
+                    {
+                        data: "qnt3Dose",
                     },
                     {
                         data: "idMunicipio",
@@ -805,7 +818,7 @@
                     {
                         "mData": null,
                         "mRender": function(data, type, row) {
-                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarVacina(\'' + encodeURIComponent(row.idVacinometro) + '\', \'' + encodeURIComponent(row.qnt1Dose) + '\' , \'' + encodeURIComponent(row.qnt2Dose) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.dataVacinometro) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\', \'' + encodeURIComponent(row.fonteVacinometro) + '\');return false;">Editar</a>' +
+                            return '<div class="btn-group" role="group" aria-label="Basic example"><a href="" class="btn btn btn-outline-dark" onClick="editarVacina(\'' + encodeURIComponent(row.idVacinometro) + '\', \'' + encodeURIComponent(row.qnt1Dose) + '\' , \'' + encodeURIComponent(row.qnt2Dose) + '\', \'' + encodeURIComponent(row.qnt3Dose) + '\', \'' + encodeURIComponent(row.municipio) + '\', \'' + encodeURIComponent(row.dataVacinometro) + '\', \'' + encodeURIComponent(row.idMunicipio) + '\', \'' + encodeURIComponent(row.fonteVacinometro) + '\');return false;">Editar</a>' +
                                 ' <a href="" class="btn btn-outline-danger" onClick="deletarVacina(' + encodeURIComponent(row.idVacinometro) + ');return false;">Excluir</a></div>';
                         },
                     }
@@ -1061,11 +1074,12 @@
             modalEdLeito(decodeURIComponent(municipio), decodeURIComponent(dataLeitos));
         }
 
-        function editarVacina(id, qnt1Dose, qnt2Dose, municipio, dataVacinometro, idMunicipio, fonteVacinometro) {
+        function editarVacina(id, qnt1Dose, qnt2Dose,qnt3Dose, municipio, dataVacinometro, idMunicipio, fonteVacinometro) {
             $('#idVacina').val(decodeURIComponent(id));
             $('#idMunicipio3').val(decodeURIComponent(idMunicipio));
             $('#1adose').val(decodeURIComponent(qnt1Dose));
             $('#2adose').val(decodeURIComponent(qnt2Dose));
+            $('#3adose').val(decodeURIComponent(qnt3Dose));
             $('#dataVacinometro2').val(decodeURIComponent(dataVacinometro));
             $('#fonteVacinometro2').val(decodeURIComponent(fonteVacinometro));
             modalEdVacina(decodeURIComponent(municipio), decodeURIComponent(dataVacinometro));
@@ -1365,7 +1379,7 @@
         function modalCadCaso() {
             if ($('#municipio option:selected').val() == "") {
                 alert("Por favor, antes de cadastrar um relatório de casos, selecione um município.");
-            } else {
+            } else { 
                 var dados;
                 $.ajax({
                     url: '../ajax/casos/getLastDados/' + $('#municipio option:selected').val(),
@@ -1401,6 +1415,7 @@
                         dados = JSON.parse(data);
                         $('#qnt1Dose').val(dados[0].qnt1Dose);
                         $('#qnt2Dose').val(dados[0].qnt2Dose);
+                        $('#qnt3Dose').val(dados[0].qnt3Dose);
                     }
                 });
 

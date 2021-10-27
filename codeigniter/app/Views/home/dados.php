@@ -273,6 +273,16 @@
                       echo '-';
                     }
                     ?>
+                  </b><br>
+                  3ª Dose
+                  <b class="cor1" style="font-size: 16px;">
+                  <?php
+                  if(isset($vacinometro['qnt3Dose']) && $vacinometro['qnt3Dose'] != ""){
+                    echo number_format($vacinometro['qnt3Dose']);
+                  }else{
+                    echo 'Não informado';
+                  }
+                  ?>
                   </b>
                 </div>
                 <div class="col text-right">
@@ -407,13 +417,13 @@
               }
               echo '<h6 class="card-subtitle mb-2 text-muted">Todas as notícias de ' . $casos["nomeMunicipio"] . '</h6>';
               if ($casos['fonteNoticia'] == 'facebook') {
-                echo '<div class="fb-page" data-href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" data-tabs="timeline" data-width="500" data-height="540" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                echo '<div class="fb-page" data-href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" data-tabs="timeline" data-width="500" data-height="420" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
                     <blockquote cite="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '">' . $casos['nomeMunicipio'] . '</a></blockquote></div>';
               } else {
                 $url = file_get_contents('http://newsapi.org/v2/everything?q=' . str_replace(' ', '%20', $casos['nomeMunicipio']) . '%20mg&language=pt&sortBy=popularity&apiKey=ecc3c4f594974cfba75017225754f9e6');
                 $jsonUrl = json_decode($url);
                 if (count($jsonUrl->articles) != 0) {
-                  echo '<div style="height: 540px; overflow-y: scroll;">';
+                  echo '<div style="height: 420px; overflow-y: scroll;">';
                   for ($i = 0; $i < count($jsonUrl->articles); $i++) {
                     echo '<b>' . $jsonUrl->articles[$i]->title . '</b><br>';
                     echo '' . $jsonUrl->articles[$i]->description . '<br>';
@@ -429,6 +439,18 @@
             </div>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="card animated bounceInUp slow">
+            <div class="card-body" style="height: auto;">
+              <h5 class="subtext">Vacinômetro</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Acompanhe a vacinação em seu município</h6>
+              <div id="container1" style="height: 100%;"></div>
+              <div class="float-right">
+                <div id=container1 class="highcharts-figure" style="height: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
         <div class="col-md-6">
           <div class="row">
             <div class="col-md-12">
@@ -464,9 +486,10 @@
               </div>
             </div>
           </div>
-          <div class="row">
+            <!-- vai pra direita -->
+            <div class="row">
             <div class="col-md-12">
-              <div class="card animated bounceInUp slow" style="margin:5px">
+              <div class="card animated bounceInUp" style="margin:5px">
                 <div class="card-body text-center">
                   <div class="row">
                     <div class="col-md-6">
@@ -541,6 +564,10 @@
   <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/maps/modules/map.js"></script>
   <script type="text/javascript" src="https://www.highcharts.com/samples/data/three-series-1000-points.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
   <script>
     jQuery("input.numeroWpp")
@@ -580,6 +607,107 @@
       return " " + dia + "/" + mes + "/" + ano + " ";
     }
 
+    $(document).ready(function(){
+      let primeiraDose = 0;
+      let segundaDose = 0;
+      let terceiraDose = 0;
+      let populacaoTotal = 0;
+
+      let id = <?php echo $casos['idMunicipio']; ?>;
+      let idMicro = <?php echo isset($idMicro) ? $idMicro: "null" ?>;
+
+      var rota = "";
+      if(idMicro != null && idMicro == 58){
+        rota = "/Ajax/Graficos/getDadosSumarizacaoUbaVacinometro/";
+      }else if(idMicro != null && idMicro == 59){
+        rota = "/Ajax/Graficos/getDadosSumarizacaoJFVacinometro/";
+      }else {
+        rota = "/Ajax/Graficos/getDadosVacinometro/" + id;
+      }
+
+      $.ajax({
+        url: rota,
+        method: "GET",
+        dataType: 'JSON',
+        success: function(data){
+          let primeiraDoseLocal = parseInt(data[0].qnt1Dose);
+          primeiraDose = primeiraDoseLocal;
+          let segundaDoseLocal = parseInt(data[0].qnt2Dose);
+          segundaDose = segundaDoseLocal;
+          let terceiraDoseLocal = parseInt(data[0].qnt3Dose);
+          terceiraDose = terceiraDoseLocal;
+          let populacaoTotalLocal = parseInt(data[0].populacaoMunicipio);
+          populacaoTotal = populacaoTotalLocal;
+          let fonteVacina = parseInt(data[0].fonteVacinometro);
+          let categoria = [];
+          let serie = [];
+        if(terceiraDose > 0){
+          categoria = ['1ª Dose' , '2ª Dose' , '3ª Dose' , 'Não vacinados'];
+          serie = [primeiraDose,segundaDose,terceiraDose,(populacaoTotal - primeiraDose - segundaDose - terceiraDose)];
+          
+        }else{
+          categoria = ['1ª Dose' , '2ª Dose' , 'Não vacinados'];
+          serie = [primeiraDose,segundaDose,(populacaoTotal - primeiraDose - segundaDose)];
+        }
+        Highcharts.chart('container1', {
+    chart: {
+        type: 'bar'
+    },
+    title: {
+        text: ''
+    },
+    xAxis: {
+        categories: categoria,
+        title: {
+            text: null
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'População',
+            align: 'high'
+        },
+        labels: {
+            overflow: 'justify'
+        }
+    },
+    
+    tooltip: {
+        valueSuffix: ' pessoas'
+    },
+    plotOptions: {
+        bar: {
+            dataLabels: {
+                enabled: true
+            }
+        }
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: -40,
+        y: 80,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        shadow: true
+    },
+    credits: {
+        enabled: false
+    },
+    series:[{name: '',data:serie}]});
+        //codigo grafico
+        },
+      })
+    });
+
+    
+    
+     
+
     $(document).ready(function() {
       let dataCaso = [];
       let confirmados = [];
@@ -593,7 +721,7 @@
       if (idMicro != null && idMicro == 58) {
         rota = "/Ajax/Graficos/getDadosSumarizacaoUba/";
       } else if (idMicro != null && idMicro == 59) {
-        rota = "/Ajax/Graficos/getDadosSumarizacaoJf";
+        rota = "/Ajax/Graficos/getDadosSumarizacaoJf/";
       } else {
         rota = "/Ajax/Graficos/getDados/" + id;
       }
@@ -701,6 +829,7 @@
                 },
               ],
             },
+            
             function(chart) {
 
               Highcharts.each(chart.legend.allItems, function(p, i) {
@@ -716,6 +845,7 @@
             });
 
         },
+        
 
       });
     });

@@ -87,7 +87,6 @@ class Graficos extends Controller
         $model -> join('municipio', 'municipio.idMunicipio = vacinometro.idMunicipio');
         $model -> where("vacinometro.idMunicipio", $id);
         $model -> orderBy('vacinometro.dataVacinometro', 'DESC');
-        //$query = $model->query("SELECT v.idVacinometro as id,v.dataVacinometro as dat,v.qnt1Dose as d1, v.qnt2Dose as d2, v.qnt3Dose as d3, v.fonteVacinometro as fonte,m.nomeMunicipio as nome, m.populacaoMunicipio as populacao FROM vacinometro v, municipio m WHERE m.idMunicipio = v.idMunicipio AND v.idMunicipio = " . $id . " AND v.deleted_at = '0000-00-00 00:00:00' ORDER BY dataVacinometro DESC");
         $vacinometros = $model->findAll(1);
         $i = 0;
         $data = array();
@@ -102,6 +101,50 @@ class Graficos extends Controller
     }
     echo json_encode($data);
 }
-    //public function getDados
+    public function getDadosSumarizacaoUbaVacinometro(){
+        $model = new VacinometroModel();
+        $query = $model->query("SELECT SUM(v.qnt1Dose) as primeraDose,
+        SUM(v.qnt2Dose) as segundaDose, 
+        SUM(v.qnt3Dose) as terceiraDose, 
+        SUM(m.populacaoMunicipio) as populacao
+        FROM vacinometro v,municipio m 
+        WHERE m.idMunicipio = v.idMunicipio AND m.deleted_at = '0000-00-00 00:00:00' AND m.idMicrorregiao = 1
+		");
+        $casos = $query->getResult('array');
+
+        $i = 0;
+        $data = array();
+        foreach ($casos as $caso) {
+            $data[$i]['qnt1Dose'] = $caso['primeiraDose'];
+            $data[$i]['qnt2Dose'] = $caso['segundaDose'];
+            $data[$i]['qnt3Dose'] = $caso['terceiraDose'];
+            $data[$i]['populacaoMunicipio'] = $caso['populacao'];
+            $i++;
+        }
+        echo json_encode($data);
+    }
+    public function getDadosSumarizacaoJFVacinometro(){
+        $model = new VacinometroModel();
+        $query = $model->query("SELECT SUM(v.qnt1Dose) as primeraDose,
+        SUM(v.qnt2Dose) as segundaDose, 
+        SUM(v.qnt3Dose) as terceiraDose, 
+        SUM(m.populacaoMunicipio) as populacao
+        FROM vacinometro v,municipio m 
+        WHERE m.idMunicipio = v.idMunicipio AND m.deleted_at = '0000-00-00 00:00:00' AND m.idMicrorregiao = 2
+		");
+        $casos = $query->getResult('array');
+
+        $i = 0;
+        $data = array();
+        foreach ($casos as $caso) {
+            $data[$i]['qnt1Dose'] = $caso['primeiraDose'];
+            $data[$i]['qnt2Dose'] = $caso['segundaDose'];
+            $data[$i]['qnt3Dose'] = $caso['terceiraDose'];
+            $data[$i]['populacaoMunicipio'] = $caso['populacao'];
+            $i++;
+        }
+        echo json_encode($data);
+
+    }
 }
 

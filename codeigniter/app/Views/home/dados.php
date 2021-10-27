@@ -251,11 +251,11 @@
             <div class="card-body">
               <div class="row" style="padding:1px">
                 <div class="col text-left">
-                  <p class="cor1" style="font-size: 20px; margin-bottom:9px; margin-top:9px;">
+                  <p class="cor1" style="font-size: 19px; margin-bottom:0px; margin-top:0px;">
                     <b>Vacinômetro</b>
                   </p>
-                  1ª Dose
-                  <b class="cor1" style="font-size: 16px;">
+                  <c style="font-size: 14px;">1ª Dose</c>
+                  <b class="cor1" style="font-size: 15px;">
                     <?php
                     if (isset($vacinometro['qnt1Dose']) && $vacinometro['qnt1Dose'] != "") {
                       echo number_format($vacinometro['qnt1Dose']);
@@ -264,8 +264,8 @@
                     }
                     ?>
                   </b><br>
-                  2ª Dose
-                  <b class="cor1" style="font-size: 16px;">
+                  <c style="font-size: 14px;">2ª Dose</c>
+                  <b class="cor1" style="font-size: 15px;">
                     <?php
                     if (isset($vacinometro['qnt2Dose']) && $vacinometro['qnt2Dose'] != "") {
                       echo number_format($vacinometro['qnt2Dose']);
@@ -274,13 +274,13 @@
                     }
                     ?>
                   </b><br>
-                  3ª Dose
-                  <b class="cor1" style="font-size: 16px;">
+                  <c style="font-size: 14px;">3ª Dose</c>
+                  <b class="cor1" style="font-size: 15px;">
                   <?php
-                  if(isset($vacinometro['qnt3Dose']) && $vacinometro['qnt3Dose'] != ""){
+                  if(isset($vacinometro['qnt3Dose']) && $vacinometro['qnt3Dose'] != "" && $vacinometro['qnt3Dose'] != 0){
                     echo number_format($vacinometro['qnt3Dose']);
                   }else{
-                    echo 'Não informado';
+                    echo '-';
                   }
                   ?>
                   </b>
@@ -643,11 +643,11 @@
           let serie = [];
         if(terceiraDose > 0){
           categoria = ['1ª Dose' , '2ª Dose' , '3ª Dose' , 'Não vacinados'];
-          serie = [primeiraDose,segundaDose,terceiraDose,(populacaoTotal - primeiraDose - segundaDose - terceiraDose)];
+          serie = [primeiraDose,segundaDose,terceiraDose,(populacaoTotal - primeiraDose)];
           
         }else{
           categoria = ['1ª Dose' , '2ª Dose' , 'Não vacinados'];
-          serie = [primeiraDose,segundaDose,(populacaoTotal - primeiraDose - segundaDose)];
+          serie = [primeiraDose,segundaDose,(populacaoTotal - primeiraDose)];
         }
         Highcharts.chart('container1', {
     chart: {

@@ -47,21 +47,21 @@ class Email extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $SMTPHost = 'ssl://smtp.gmail.com';
+	public $SMTPHost = 'mail.covidmg.com';
 
 	/**
 	 * SMTP Username
 	 *
 	 * @var string
 	 */
-	public $SMTPUser = 'mateusgregorio178@gmail.com';
+	public $SMTPUser = 'alerta@covidmg.com';
 
 	/**
 	 * SMTP Password
 	 *
 	 * @var string
 	 */
-	public $SMTPPass = '';
+	public $SMTPPass = '84131391mA';
 
 	/**
 	 * SMTP Port

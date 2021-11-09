@@ -100,7 +100,7 @@
             <li><a href="/home/sobre" class="text-white">Sobre</a></li>
             <li><a href="/home/projetos" class="text-white">Projetos</a></li>
             <li><a href="/home/dicas" class="text-white">Dicas</a></li>
-            <li><a href="/home/doacoes" class="text-white">Doação</a></li>
+            <!--<li><a href="/home/doacoes" class="text-white">Doação</a></li> -->
             <li><a href="/admin" class="text-white">Login</a></li>
           </ul>
         </div>
@@ -504,7 +504,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-12">
+            <!--<div class="col-md-12">
               <div class="card animated bounceInUp slow" style="margin:5px">
                 <div class="card-body text-center">
                   <div class="row">
@@ -519,7 +519,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -530,7 +530,7 @@
             <a href="https://emcomp.com.br/"><img src="https://emcomp.com.br/cardapio/dashboard/Assets/logo.png" height="40"></a>
           </div>
           <div class="col-sm-12 col-md-4">
-            <a href="https://universodiscreto.com/dacc/"><img src="/assets/images/dacc.jpg" height="38"></a>
+            <a href="https://sistemas.riopomba.ifsudestemg.edu.br/dacc/"><img src="/assets/images/dacc.jpg" height="38"></a>
           </div>
           <div class="col-sm-12 col-md-4">
             <a href="https://www.ifsudestemg.edu.br/riopomba"><img src="https://sistemas.riopomba.ifsudestemg.edu.br/dacg/atividades/professores/images/IF-10.png" height="38"></a>
@@ -683,22 +683,22 @@
             }
         }
     },
-    legend: {
-        layout: 'vertical',
-        align: 'right',
-        verticalAlign: 'top',
-        x: -40,
-        y: 80,
-        floating: true,
-        borderWidth: 1,
-        backgroundColor:
-            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-        shadow: true
-    },
+    //legend: {
+        //layout: 'vertical',
+        //align: 'right',
+        //verticalAlign: 'top',
+        //x: -40,
+        //y: 80,
+        //floating: true,
+        //borderWidth: 1,
+        //backgroundColor:
+          //  Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        //shadow: true
+    //},
     credits: {
         enabled: false
     },
-    series:[{name: '',data:serie}]});
+    series:[{name: '',data:serie,}]});
         //codigo grafico
         },
       })

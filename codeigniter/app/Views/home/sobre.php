@@ -25,7 +25,7 @@
             <li><a href="/home/sobre" class="text-white">Sobre</a></li>
             <li><a href="/home/projetos" class="text-white">Projetos</a></li>
             <li><a href="/home/dicas" class="text-white">Dicas</a></li>
-            <li><a href="/home/doacoes" class="text-white">Doação</a></li>
+            <!--<li><a href="/home/doacoes" class="text-white">Doação</a></li> -->
             <li><a href="/admin" class="text-white">Login</a></li>
           </ul>
         </div>
@@ -126,6 +126,145 @@
           </div>
         </div>
         <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Mateus Pereira Gregório</h5>
+              <div class="subtext mt-2">Aluno Bolsista</div>
+              <a href="https://www.facebook.com/mateus.gregorio.908"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="http://lattes.cnpq.br/9529046279277999"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Alice Amaral Silva</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Fabiano Ferreira Couto</h5>
+              <div class="subtext mt-2">Voluntário</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Cristiane Silva Oliveira</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Bruna de Souza Moreira</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Bruna Rafaela Emiliane Lana</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Isabela de Carvalho Rosa</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Giselle Santiago da Silva</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Gabriela Medis Gonçalves</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Vanessa Christina da Silva</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href=""><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Leidilaine Santos</h5>
+              <div class="subtext mt-2">Voluntária</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card animated bounceInUp slow delay-0s">
+            <div class="card-body text-center">
+              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
+              <h5 class="subtext mt-2">Willian</h5>
+              <div class="subtext mt-2">Voluntário</div>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
+              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="jumbotron text-center p-0">
+        <h2 class="jumbotron-heading animated bounceInUp slow delay-0s">Antigos Participantes</h2>
+        <p class="lead text-muted animated bounceInUp slow delay-0s">Confira a seguir os alunos que já colaboraram com o projeto</b></p>
+      </section>
+      <div class="row" style="margin-bottom: 30px;">
+      <div class="col-md-4">
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
               <img style="border-radius:50px;" src="/assets/images/ariel.png" height="90">
@@ -261,17 +400,6 @@
           <div class="card animated bounceInUp slow delay-0s">
             <div class="card-body text-center">
               <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
-              <h5 class="subtext mt-2">Leidilaine Santos</h5>
-              <div class="subtext mt-2">Voluntária</div>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow delay-0s">
-            <div class="card-body text-center">
-              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
               <h5 class="subtext mt-2">Mariana Barboza</h5>
               <div class="subtext mt-2">Voluntária</div>
               <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
@@ -301,17 +429,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card animated bounceInUp slow delay-0s">
-            <div class="card-body text-center">
-              <img style="border-radius:50px;" src="/assets/images/default.png" height="90">
-              <h5 class="subtext mt-2">Willian</h5>
-              <div class="subtext mt-2">Voluntário</div>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/fb.png" height="30" title="Facebook"></a>
-              <a href="#"><img style="border-radius:10px; padding: 3px;" src="/assets/images/lattes.png" height="30" title="Lattes"></a>
-            </div>
-          </div>
-        </div>
+
       </div>
 
   </main>

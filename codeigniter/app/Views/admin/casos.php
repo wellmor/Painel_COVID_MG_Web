@@ -809,7 +809,7 @@
                         data: "qnt2Dose"
                     },
                     {
-                        data: "qnt3Dose",
+                        data: "qnt3Dose"
                     },
                     {
                         data: "idMunicipio",

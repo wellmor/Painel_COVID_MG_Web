@@ -54,8 +54,8 @@ class Database extends \CodeIgniter\Database\Config
 	public $default = [
 		'DSN'      => '',
 		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '',
+		'username' => 'covidmg_dash',
+		'password' => '84068905',
 		'database' => 'covidmg_bd',
 		'DBDriver' => 'MySQLi',
 		'DBPrefix' => '',

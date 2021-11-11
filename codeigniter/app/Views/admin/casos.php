@@ -1074,7 +1074,7 @@
             modalEdLeito(decodeURIComponent(municipio), decodeURIComponent(dataLeitos));
         }
 
-        function editarVacina(id, qnt1Dose, qnt2Dose,qnt3Dose, municipio, dataVacinometro, idMunicipio, fonteVacinometro) {
+        function editarVacina(id, qnt1Dose, qnt2Dose, qnt3Dose, municipio, dataVacinometro, idMunicipio, fonteVacinometro) {
             $('#idVacina').val(decodeURIComponent(id));
             $('#idMunicipio3').val(decodeURIComponent(idMunicipio));
             $('#1adose').val(decodeURIComponent(qnt1Dose));

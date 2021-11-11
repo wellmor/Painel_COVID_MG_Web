@@ -385,27 +385,24 @@
             <div class="card-body">
               <h5 class="subtext">Mapa</h5>
               <h6 class="card-subtitle mb-2 text-muted">Visualize informações sobre seu município no mapa interativo</h6>
-              <div id="map" style="height: 440px;"></div>
+              <div id="map" style="height: 420px;"></div>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="card animated bounceInUp slow">
             <div class="card-body" style="height: auto;">
-              <h5 class="subtext">Gráficos</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio</h6>
-              <div id="container" style="height: 100%;"></div>
+              <h5 class="subtext">Vacinômetro</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Acompanhe a vacinação em seu município</h6>
+              <div id="container1" style="height: 100%;"></div>
               <div class="float-right">
-                <div class="btn-group" id="toggle_event_editing">
-                  <button type="button" class="btn btn-primary btn-sm locked_active">escala linear</button>
-                  <button type="button" class="btn btn-light btn-sm unlocked_inactive">escala logarítmica</button>
-                </div>
+              <div id=container1 class="highcharts-figure" style="height: 100%;"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row" style="margin-bottom: 10px;">
+      <div class="row" style="margin-bottom: 15px;">
         <div class="col-md-6">
           <div class="card animated bounceInUp slow">
             <div class="card-body">
@@ -417,7 +414,7 @@
               }
               echo '<h6 class="card-subtitle mb-2 text-muted">Todas as notícias de ' . $casos["nomeMunicipio"] . '</h6>';
               if ($casos['fonteNoticia'] == 'facebook') {
-                echo '<div class="fb-page" data-href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" data-tabs="timeline" data-width="500" data-height="420" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
+                echo '<div class="fb-page" data-href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" data-tabs="timeline" data-width="500" data-height="435" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="false">
                     <blockquote cite="https://www.facebook.com/' . $casos['facebookMunicipio'] . '" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/' . $casos['facebookMunicipio'] . '">' . $casos['nomeMunicipio'] . '</a></blockquote></div>';
               } else {
                 $url = file_get_contents('http://newsapi.org/v2/everything?q=' . str_replace(' ', '%20', $casos['nomeMunicipio']) . '%20mg&language=pt&sortBy=popularity&apiKey=ecc3c4f594974cfba75017225754f9e6');
@@ -442,23 +439,26 @@
         <div class="col-md-6">
           <div class="card animated bounceInUp slow">
             <div class="card-body" style="height: auto;">
-              <h5 class="subtext">Vacinômetro</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Acompanhe a vacinação em seu município</h6>
-              <div id="container1" style="height: 100%;"></div>
+              <h5 class="subtext">Casos</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Acompanhe a evolução de casos em seu munícipio </h6>
+              <div id="container" style="height: 100%;"></div>
               <div class="float-right">
-                <div id=container1 class="highcharts-figure" style="height: 100%;"></div>
+              <div class="btn-group" id="toggle_event_editing">
+                  <button type="button" class="btn btn-primary btn-sm locked_active">escala linear</button>
+                  <button type="button" class="btn btn-light btn-sm unlocked_inactive">escala logarítmica</button>
+              </div>
+                
             </div>
           </div>
         </div>
       </div>
         <div class="col-md-6">
-          <div class="row">
             <div class="col-md-12">
               <div class="card animated bounceInUp slow" style="margin:5px">
                 <div class="card-body text-center">
                   <div class="row">
                     <div class="col-md-6">
-                      <img src="/assets/images/dicas.png" width="70px" height="70">
+                    <img src="/assets/images/dicas.png" width="70px" height="70">
                       <h5 class="subtext mt-2">Dicas</h5>
                     </div>
                     <div class="col-md-6">
@@ -469,6 +469,8 @@
                 </div>
               </div>
             </div>
+        </div>
+        <div class="col-md-6"> 
             <div class="col-md-12">
               <div class="card animated bounceInUp slow" style="margin:5px">
                 <div class="card-body text-center">
@@ -485,15 +487,14 @@
                 </div>
               </div>
             </div>
-          </div>
-            <!-- vai pra direita -->
-            <div class="row">
+      </div>
+      <div class="col-md-6" style="width=100;">
             <div class="col-md-12">
-              <div class="card animated bounceInUp" style="margin:5px">
+              <div class="card animated bounceInUp slow" style="margin:5px">
                 <div class="card-body text-center">
                   <div class="row">
                     <div class="col-md-6">
-                      <img src="/assets/images/sobre.png" width="70px" height="70">
+                    <img src="/assets/images/sobre.png" width="70px" height="70">
                       <h5 class="subtext mt-2">Sobre</h5>
                     </div>
                     <div class="col-md-6">
@@ -504,26 +505,26 @@
                 </div>
               </div>
             </div>
-            <!--<div class="col-md-12">
+        </div>
+        <div class="col-md-6"> 
+            <div class="col-md-12">
               <div class="card animated bounceInUp slow" style="margin:5px">
                 <div class="card-body text-center">
                   <div class="row">
                     <div class="col-md-6">
-                      <img src="/assets/images/caixa.png" width="70px" height="70">
-                      <h5 class="subtext mt-2">Doação</h5>
+                      <img src="/assets/images/vacinaOk.png" width="70px" height="70">
+                      <h5 class="subtext mt-2">Já se vacinou?</h5>
                     </div>
                     <div class="col-md-6">
-                      <div class="card-subtitle mb-4 text-muted">Ajude quem realmente precisa doando</div>
-                      <a href="/home/doacoes" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
+                      <div class="card-subtitle mb-4 text-muted">Emita seu cartão nacional de vacinação</div>
+                      <a href="https://conectesus-paciente.saude.gov.br/menu" type="button" class="btn btn-outline-dark btn-block">Ver mais</a>
                     </div>
                   </div>
                 </div>
               </div>
-            </div> -->
-          </div>
-        </div>
+            </div>
+            </div>
       </div>
-
       <div class="card animated bounceInUp slow text-center" style="padding:30px; margin-bottom:15px;">
         <div class="row">
           <div class="col-sm-12 col-md-4">
@@ -641,13 +642,18 @@
           let fonteVacina = parseInt(data[0].fonteVacinometro);
           let categoria = [];
           let serie = [];
+          let primeiraDosePercent = 100 - (((populacaoTotal - primeiraDose) * 100) / populacaoTotal).toFixed(2);
+          let segundaDosePercent = 100 - (((populacaoTotal - segundaDose) * 100) / populacaoTotal).toFixed(2);
+          let terceiraDosePercent = 100 - (((populacaoTotal - terceiraDose) * 100) / populacaoTotal).toFixed(2);
+          let naoVacinadosPercent = 100 - (((populacaoTotal - (populacaoTotal - primeiraDose)) * 100) / populacaoTotal).toFixed(2);
+          
         if(terceiraDose > 0){
           categoria = ['1ª Dose' , '2ª Dose' , '3ª Dose' , 'Não vacinados'];
-          serie = [primeiraDose,segundaDose,terceiraDose,(populacaoTotal - primeiraDose)];
+          serie = [primeiraDosePercent,segundaDosePercent,terceiraDosePercent,naoVacinadosPercent];
           
         }else{
           categoria = ['1ª Dose' , '2ª Dose' , 'Não vacinados'];
-          serie = [primeiraDose,segundaDose,(populacaoTotal - primeiraDose)];
+          serie = [primeiraDosePercent,segundaDosePercent,naoVacinadosPercent];
         }
         Highcharts.chart('container1', {
     chart: {
@@ -658,14 +664,11 @@
     },
     xAxis: {
         categories: categoria,
-        title: {
-            text: null
-        }
     },
     yAxis: {
-        min: 0,
+        max: 100,
         title: {
-            text: 'População',
+            text: '% da População Total',
             align: 'high'
         },
         labels: {
@@ -674,12 +677,28 @@
     },
     
     tooltip: {
-        valueSuffix: ' pessoas'
+        formatter: function(){
+          //Como não tenho índice na função, coloquei IF para identeficar
+          //Como há muitas casas depois da vírgula, a transformação de volta, caso número grande, fica com valores abaixo/acima
+          let valorFormatado = 0;
+          if(this.y == primeiraDosePercent){
+            valorFormatado = primeiraDose;
+          }else if(this.y == segundaDosePercent){
+            valorFormatado = segundaDose;
+          }else if(this.y == terceiraDosePercent){
+            valorFormatado = terceiraDose;
+          }else{
+            valorFormatado = populacaoTotal - primeiraDose;
+          }
+          return 'Total de <b>' + valorFormatado.toLocaleString('pt-BR') + '</b> pessoas';
+        }
+
     },
     plotOptions: {
         bar: {
             dataLabels: {
-                enabled: true
+                enabled: true,
+                format : '{point.y:.1f}%'
             }
         }
     },
@@ -698,8 +717,7 @@
     credits: {
         enabled: false
     },
-    series:[{name: '',data:serie,}]});
-        //codigo grafico
+    series:[{name: '',data:serie,color:'green'}]});
         },
       })
     });

@@ -260,7 +260,7 @@
       </div>
 
       <section class="jumbotron text-center p-0">
-        <h2 class="jumbotron-heading animated bounceInUp slow delay-0s">Antigos Participantes</h2>
+        <h2 class="jumbotron-heading animated bounceInUp slow delay-0s">Ex-Participantes</h2>
         <p class="lead text-muted animated bounceInUp slow delay-0s">Confira a seguir os alunos que já colaboraram com o projeto</b></p>
       </section>
       <div class="row" style="margin-bottom: 30px;">

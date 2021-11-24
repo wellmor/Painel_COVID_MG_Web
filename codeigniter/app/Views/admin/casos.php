@@ -342,7 +342,7 @@
                             </div>
                             <div class="col-sm-6 formVacinometro">
                                 <label>Fonte</label>
-                                <input type="text" class="form-control" name="fonteVacinometro" id="fonteVacinometro" placeholder="https://www.google.com.br/">
+                                <input type="text" class="form-control" name="fonteVacinometro" id="fonteVacinometro">
                             </div>
                         </div>
                         <div class="modal-title text-center" id="modalCasosAELabelInfo" style="color:red"></div>
@@ -541,11 +541,6 @@
 
             $("#desativarCasos").on("click", function() {
                 if ($("#desativarCasos").is(':checked')) {
-                    $("#confirmados").val("");
-                    $("#suspeitos").val("");
-                    $("#descartados").val("");
-                    $("#recuperados").val("");
-                    $("#obitos").val("");
                     $(".formCasos").hide();
                 } else {
                     $(".formCasos").show();
@@ -554,10 +549,6 @@
 
             $("#desativarLeitos").on("click", function() {
                 if ($("#desativarLeitos").is(':checked')) {
-                    $("#qntLeitosDisponiveisUTI").val("");
-                    $("#qntLeitosOcupadosUTI").val("");
-                    $("#qntLeitosDisponiveisClinico").val("");
-                    $("#qntLeitosOcupadosClinico").val("");
                     $(".formLeitos").hide();
                 } else {
                     $(".formLeitos").show();
@@ -566,9 +557,6 @@
 
             $("#desativarVacinometro").on("click", function() {
                 if ($("#desativarVacinometro").is(':checked')) {
-                    $("#qnt1Dose").val("");
-                    $("#qnt2Dose").val("");
-                    $("#qnt3Dose").val("");
                     $(".formVacinometro").hide();
                 } else {
                     $(".formVacinometro").show();
@@ -811,6 +799,7 @@
                     {
                         data: "qnt3Dose"
                     },
+                    
                     {
                         data: "idMunicipio",
                         visible: false
@@ -948,6 +937,13 @@
         //cadastro e edição de casos
         $(document).ready(function() {
             $('#btnSalvarCaso').click(function() {
+                if ($("#desativarCasos").is(':checked')) {
+                    $("#confirmados").val("");
+                    $("#suspeitos").val("");
+                    $("#descartados").val("");
+                    $("#recuperados").val("");
+                    $("#obitos").val("");
+                }
                 var dados = $('#formCasos').serializeArray();
                 console.log(dados[7].value)
                 if (dados[7].value == "" && !$("#desativarCasos").is(':checked')) {
@@ -996,6 +992,12 @@
 
         $(document).ready(function() {
             $('#btnSalvarLeito').click(function() {
+                if ($("#desativarLeitos").is(':checked')) {
+                    $("#qntLeitosDisponiveisUTI").val("");
+                    $("#qntLeitosOcupadosUTI").val("");
+                    $("#qntLeitosDisponiveisClinico").val("");
+                    $("#qntLeitosOcupadosClinico").val("");
+                }
                 var dados = $('#formLeitos').serializeArray();
                 $('#modalLeitosAE').modal('hide');
                 $body = $("body");
@@ -1022,6 +1024,12 @@
 
         $(document).ready(function() {
             $('#btnSalvarVacina').click(function() {
+                if ($("#desativarVacinometro").is(':checked')) {
+                    $("#qnt1Dose").val("");
+                    $("#qnt2Dose").val("");
+                    $("#qnt3Dose").val("");
+                    $("#fonteVacinoemtro").val("");
+                }
                 var dados = $('#formVacinas').serializeArray();
                 $('#modalVacinasAE').modal('hide');
                 $body = $("body");
@@ -1416,6 +1424,7 @@
                         $('#qnt1Dose').val(dados[0].qnt1Dose);
                         $('#qnt2Dose').val(dados[0].qnt2Dose);
                         $('#qnt3Dose').val(dados[0].qnt3Dose);
+                        $('#fonteVacinometro').val(dados[0].fonteVacinometro);
                     }
                 });
 

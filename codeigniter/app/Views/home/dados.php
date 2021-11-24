@@ -334,16 +334,17 @@
           <div class="card card-borda-verde animated bounceInUp slow">
             <div class="card-body" style="margin: 2px;">
               <div class="row" style="padding:1px">
+              <p class="cor3" style="font-size: 20px; margin-bottom:5px; margin-top:5px;">Atualizações Diárias</p>
                 <div class="col-md-6 text-center">
-                  <p class="subtext" style="margin-bottom:30px">Pelo <b>navegador</b></p>
-                  <p class="subtext">Via <b>Whatsapp</b></p>
+                  <p class="subtext" style="margin-bottom:25px">Pelo <b>navegador</b></p>
+                  <!--<p class="subtext">Via <b>Whatsapp</b></p> -->
                 </div>
                 <div class="col-md-6 text-center">
                   <form id="formAlerta" method="post">
                     <input type="hidden" class="form-control" name="idMunicipio" id="idMunicipio" value="<?= esc($casos['idMunicipio']) ?>">
                     <button style="margin-bottom:19px" type="button" class="btn btn-warning" id="my-notification-button"><b>Notificação</b></button>
                   </form>
-                  <a href="#" data-target="#modalWpp" data-toggle="modal"><img src="/assets/images/wpp.png" height="33px"></a>
+                  <!-- <a href="#" data-target="#modalWpp" data-toggle="modal"><img src="/assets/images/wpp.png" height="33px"></a> -->
                 </div>
               </div>
             </div>

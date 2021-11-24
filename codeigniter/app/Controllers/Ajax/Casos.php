@@ -76,7 +76,7 @@ class Casos extends Controller
         $model = new LeitosModel();
         $model->select("*");
         $model->join('municipio', 'municipio.idMunicipio = leito.idMunicipio');
-        $model->where("idUsuario", session()->get('idUsuario'));
+        //$model->where("idUsuario", session()->get('idUsuario'));
         $model->where("leito.idMunicipio", $idMunicipio);
         $model->orderBy('leito.dataLeitos', 'DESC');
         $leitos = $model->findAll(1);
@@ -87,6 +87,7 @@ class Casos extends Controller
             $data[$i]['qntLeitosDisponiveisClinico'] = $leito['qntLeitosDisponiveisClinico'];
             $data[$i]['qntLeitosOcupadosUTI'] = $leito['qntLeitosOcupadosUTI'];
             $data[$i]['qntLeitosDisponiveisUTI'] = $leito['qntLeitosDisponiveisUTI'];
+            $data[$i]['fonteLeitos'] = $leito['fonteLeitos'];
             $i++;
         }
 
@@ -98,7 +99,7 @@ class Casos extends Controller
         $model = new VacinometroModel();
         $model->select("*");
         $model->join('municipio', 'municipio.idMunicipio = vacinometro.idMunicipio');
-        $model->where("idUsuario", session()->get('idUsuario'));
+        //$model->where("idUsuario", session()->get('idUsuario'));
         $model->where("vacinometro.idMunicipio", $idMunicipio);
         $model->orderBy('vacinometro.dataVacinometro', 'DESC');
         $vacinometros = $model->findAll(1);
@@ -108,6 +109,7 @@ class Casos extends Controller
             $data[$i]['qnt1Dose'] = $vacinometro['qnt1Dose'];
             $data[$i]['qnt2Dose'] = $vacinometro['qnt2Dose'];
             $data[$i]['qnt3Dose'] = $vacinometro['qnt3Dose'];
+            $data[$i]['fonteVacinometro'] = $vacinometro['fonteVacinometro'];
             $i++;
         }
 
